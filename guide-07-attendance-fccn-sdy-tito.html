@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Attendance — FCCN / SDY (TITO) — ECMS User Guide</title><style>
+:root{--ink:#1B2430;--head:#0B2545;--muted:#5B6478;--link:#1657CE;--line:#DCE1EA;--line2:#EAEDF3;--code:#F5F7FB;--navy:#0B2545;--accent:#1657CE;--do:#1657CE;--res:#1E8E5A;--soft:#F5F7FB;--brandA:#0072CE;--brandB:#00A65A;--brandC:#F5A623;--brandD:#D0103A;}
+*{box-sizing:border-box;} html{scroll-behavior:smooth;}
+body{margin:0;color:var(--ink);background:#fff;font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;line-height:1.65;font-size:16px;}
+a{color:var(--link);text-decoration:none;} a:hover{text-decoration:underline;}
+code{font-family:'SFMono-Regular',Consolas,Menlo,monospace;background:var(--code);border:1px solid var(--line);border-radius:4px;padding:1px 6px;font-size:13.5px;color:#0a2a5e;}
+.topbar{position:sticky;top:0;z-index:10;box-shadow:0 1px 0 var(--line);}
+.tb-top{background:#fff;border-bottom:1px solid var(--line);}
+.tb-top .in{max-width:1260px;margin:0 auto;padding:14px 32px;display:flex;align-items:center;gap:12px;}
+.doe-logo{display:flex;align-items:baseline;gap:1px;font-weight:800;font-size:20px;letter-spacing:.2px;}
+.doe-logo b:nth-child(1){color:var(--brandA);} .doe-logo b:nth-child(2){color:var(--brandC);} .doe-logo b:nth-child(3){color:var(--brandB);} .doe-logo b:nth-child(4){color:var(--brandD);}
+.doe-sub{color:var(--muted);font-size:12.5px;padding-left:10px;border-left:1px solid var(--line);}
+.tb-bottom{background:var(--navy);}
+.tb-bottom .in{max-width:1260px;margin:0 auto;padding:10px 32px;display:flex;align-items:center;gap:22px;}
+.ecms-brand{color:#fff;font-weight:700;font-size:15px;letter-spacing:.3px;}
+.topnav{display:flex;gap:24px;margin-left:6px;}
+.topnav a{color:#cfe0fb;font-weight:600;font-size:13.5px;}
+.topnav a.cur{color:#fff;}
+@media (max-width:760px){.topnav{display:none;}}
+.crumbs{max-width:1260px;margin:0 auto;padding:16px 32px 0;font-size:13px;color:var(--muted);}
+.crumbs a{color:var(--muted);} .crumbs span{margin:0 7px;}
+.wrap{max-width:1260px;margin:0 auto;padding:8px 32px 60px;display:grid;grid-template-columns:270px minmax(0,1fr);gap:52px;}
+main{min-width:0;max-width:840px;}
+h1{font-size:32px;line-height:1.2;color:var(--head);margin:14px 0 6px;font-weight:700;}
+.lead{font-size:16.5px;color:var(--ink);margin:10px 0 4px;}
+.subtext{color:var(--muted);font-size:14px;margin:2px 0 0;}
+h2{font-size:22px;color:var(--head);font-weight:700;margin:42px 0 6px;padding-bottom:8px;border-bottom:1px solid var(--line);}
+h3{font-size:17.5px;color:var(--head);font-weight:700;margin:8px 0 2px;}
+p{margin:10px 0;}
+ul.bul{margin:10px 0;padding-left:22px;} ul.bul li{margin:6px 0;}
+table{border-collapse:collapse;width:100%;margin:16px 0;font-size:14.5px;}
+th,td{border:1px solid var(--line);padding:9px 13px;text-align:left;vertical-align:top;}
+th{background:var(--soft);color:var(--head);font-weight:700;}
+.lbl{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;padding:2px 9px;border-radius:4px;margin-right:8px;vertical-align:middle;}
+.lbl-do{background:#E6EFFC;color:var(--do);} .lbl-res{background:#E5F5EC;color:var(--res);}
+.step{scroll-margin-top:118px;border-top:1px solid var(--line2);padding-top:28px;margin-top:28px;}
+.step:first-of-type{border-top:none;margin-top:14px;padding-top:8px;}
+.step .stepnum{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;background:var(--navy);color:#fff;font-weight:700;font-size:14px;margin-right:10px;vertical-align:middle;}
+.step h3{display:inline;}
+h2,h3{scroll-margin-top:118px;}
+figure{margin:14px 0 4px;}
+figure img{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:8px;box-shadow:0 4px 14px rgba(11,37,69,.08);}
+figcaption{font-size:13px;color:var(--muted);margin-top:8px;font-style:italic;}
+.callout{background:var(--soft);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:6px;padding:14px 18px;margin:14px 0;}
+.callout b{color:var(--head);}
+.note{background:#fff8ec;border:1px solid #f3e2bd;border-left:4px solid #e0a127;border-radius:6px;padding:6px 18px;margin:14px 0;}
+.sidenav{position:sticky;top:104px;align-self:start;font-size:14px;max-height:calc(100vh - 120px);overflow:auto;padding-right:6px;}
+.nav-cat{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);font-weight:700;padding:0 0 10px;border-bottom:1px solid var(--line);margin-bottom:8px;}
+ul.nav{list-style:none;margin:0;padding:0;} ul.nav>li{margin:2px 0;}
+a.lvl1{display:block;padding:7px 10px;border-radius:6px;color:var(--head);font-weight:600;font-size:13.6px;}
+a.lvl1:hover{background:var(--soft);text-decoration:none;}
+a.lvl1.cur{color:var(--accent);background:var(--soft);border-left:3px solid var(--accent);padding-left:8px;}
+.backhome{display:inline-block;margin:14px 0 4px;font-weight:700;font-size:13.5px;}
+.meta-row{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 6px;}
+.chip{font-size:11.5px;font-weight:600;color:var(--navy);background:var(--soft);border:1px solid var(--line);border-radius:20px;padding:3px 10px;}
+.site-footer{background:var(--navy);color:#fff;margin-top:48px;}
+.site-footer .ft-in{max-width:1260px;margin:0 auto;padding:22px 32px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px;}
+.ft-left b{font-size:14px;} .ft-left div{color:#B9C7E3;font-size:12.5px;margin-top:4px;}
+.ft-nav a{color:#fff;font-size:13px;}
+@media (max-width:900px){.wrap{grid-template-columns:1fr;}.sidenav{position:static;max-height:none;}}
+</style></head>
+<body>
+<div class="topbar">
+  <div class="tb-top"><div class="in">
+    <span class="doe-logo"><b>N</b><b>Y</b><b>C</b></span>
+    <span class="doe-sub">Department of Education &middot; Division of Early Childhood Education</span>
+  </div></div>
+  <div class="tb-bottom"><div class="in">
+    <span class="ecms-brand">ECMS User Guide</span>
+    <nav class="topnav"><a href="index.html">Home</a></nav>
+  </div></div>
+</div>
+<div class="crumbs"><a href="index.html">ECMS User Guide</a><span>/</span>Attendance &mdash; FCCN / SDY (TITO)</div>
+<div class="wrap">
+
+  <nav class="sidenav">
+    <div class="nav-cat">On this page</div>
+    <ul class="nav">
+      <li><a class="lvl1" href="#overview">Overview</a></li>
+      <li><a class="lvl1" href="#step-1">1. Open the Attendance list for the Provider</a></li>
+      <li><a class="lvl1" href="#step-2">2. Open a SDY attendance record</a></li>
+      <li><a class="lvl1" href="#step-3">3. Open the record for editing</a></li>
+      <li><a class="lvl1" href="#step-4">4. Enter the Check-in and Check-out time</a></li>
+      <li><a class="lvl1" href="#step-5">5. Enter a second pair for a split session</a></li>
+      <li><a class="lvl1" href="#step-6">6. Decide whether to save</a></li>
+      <li><a class="lvl1" href="#step-7">7. Submit and certify, same as standard attendance</a></li>
+      <li><a class="lvl1" href="#step-8">8. Understand why TITO feeds billing differently</a></li>
+      <li><a class="lvl1" href="#step-9">9. Check the SDY+ indicator on an Enrollment</a></li>
+      <li><a class="lvl1" href="#step-10">10. Run the SDY+ Active Enrollment Report</a></li>
+      <li><a class="lvl1" href="#step-11">11. Watch for the infant-to-toddler age validation alert</a></li>
+      <li><a class="lvl1" href="#step-12">12. Understand the 176-day SDY attendance limit</a></li>
+      <li><a class="lvl1" href="#step-13">13. Understand the monthly certification reminder</a></li>
+      <li><a class="lvl1" href="#step-14">14. FCCN Calendar Management (brief note)</a></li>
+    </ul>
+    <a class="backhome" href="index.html">&larr; Back to User Guide home</a>
+  </nav>
+
+  <main id="top">
+    <h1>Attendance &mdash; FCCN / SDY (TITO)</h1>
+    <p class="lead">How attendance works differently for extended-day seat types that use a clock-in /
+    clock-out style record &mdash; called <strong>TITO</strong> (Time In / Time Out) &mdash; instead of a
+    simple present/absent daily flag. This guide uses an FCCN / FCC Provider example, since extended-day
+    seats are especially common on the Family Child Care side of ECMS.</p>
+    <div class="meta-row">
+      <span class="chip">14 steps</span><span class="chip">~15 min read</span><span class="chip">Persona: FCCN / SDY Attendance Taker</span>
+    </div>
+
+    <h2 id="overview">Overview</h2>
+    <p>Standard attendance in ECMS (covered in the companion <em>Attendance (CBO)</em> guide) is a simple
+    daily record: was the child present or absent on a given date, tied back to their Enrollment and Class.
+    <strong>TITO attendance adds an actual clock-in / clock-out record on top of that</strong> &mdash; a
+    Check-in Time and a Check-out Time (and, for children who leave and come back the same day, a second
+    Check-in/Check-out pair) &mdash; because certain seats are funded and billed based on the actual hours of
+    care provided, not just a day/absent flag. The <code>ECMS_Attendance__c</code> object always has the same
+    four time fields available (<code>Check_In_Time__c</code>, <code>Check_Out_Time__c</code>,
+    <code>Check_in_Time_2__c</code>, <code>Check_out_Time_2__c</code>); whether they're expected to be filled
+    in depends on the seat's type. This guide uses ECMS's real UAT example of a seat coded
+    <strong>SDY</strong> to illustrate the TITO fields, and is written from the FCCN / FCC Provider side,
+    where an <strong>Attendance Taker</strong> at the Provider (or their FCCN oversight staff) records daily
+    attendance for the children in that home-based program.</p>
+    <div class="callout">
+      <b>Where this fits.</b> Attendance sits in the same place in the workflow chain regardless of seat type:
+      <strong>Enrollment &rarr; Attendance &rarr; Budget approval &rarr; Invoice</strong>. What changes for
+      TITO seats is <em>what attendance records</em>: instead of only a present/absent flag, the Attendance
+      Taker also captures the actual times a child was dropped off and picked up, because that's what an
+      extended-day seat's funding is ultimately tied to.
+    </div>
+    <div class="note">
+      <b>A note on seat-type naming.</b> The onboarding glossary describes <strong>EDY (Extended Day/Year)</strong>
+      as the seat type that requires ACCIS subsidy eligibility and <strong>SDY (Standard Day/Year)</strong> as
+      the standard-hours type that does not. In practice, the real attendance records in the UAT org used for
+      this guide's screenshots are coded <code>Seat_Type__c = "SDY"</code>, and every TITO field is exposed on
+      them. Rather than assert a firm claim that conflicts with the glossary, this guide describes the
+      behavior generically as applying to <strong>extended-day seat types</strong> &mdash; if you're unsure
+      whether a specific seat type requires TITO, check with Portfolio or an Operations Analyst.
+    </div>
+
+    <div class="note">
+      <b>Draft BRD notice.</b> Steps 9&ndash;14 below are grounded in <strong>BRD D07 (Attendance)</strong>,
+      dated 2026.05.20 &mdash; specifically Section 4 (<em>TITO 1.5 Enhancements and SDY+ Tracker</em>) and
+      Section 5 (<em>FCCN SDY Attendance Management</em>). This BRD is still a <strong>Draft</strong>, not a
+      signed/approved deliverable like the D01&ndash;D04 BRDs. Field names, validation message text, and
+      exact behavior described below may still change before final DOE sign-off. Where a feature could be
+      confirmed as already built and observed live in the UAT org, this guide says so explicitly and shows a
+      real screenshot; where it could not, this guide says that explicitly too, instead of guessing.
+    </div>
+
+    <h2>Steps</h2>
+
+    <div class="step" id="step-1">
+      <h3><span class="stepnum">1</span>Open the Attendance list for the Provider</h3>
+      <p><span class="lbl lbl-do">DO</span> Click the <strong>Attendances</strong> object tab (or, from the
+      Enrollment or Site Master record, the <strong>Attendance</strong> related list) to see the daily
+      attendance records tied to <strong>Riverbend FCC Provider &ndash; Woodlawn Site</strong>, part of the
+      <strong>Riverbend Family Childcare Network</strong> FCCN.</p>
+      <p><span class="lbl lbl-res">RESULT</span> The Attendances list view loads, showing one row per
+      student per day, each linked to its Enrollment and Class (the FCC Provider site).</p>
+      <figure>
+        <img src="screenshots/g7-01-attendance-list.png" alt="Attendances list view showing daily attendance rows for students at Uncertified 2345Manual FCC Provider - Parkchester Site, each linked to its Enrollment and Class" />
+        <figcaption>Attendances list &mdash; one row per student per day, same shape whether the underlying seat is standard or extended-day.</figcaption>
+      </figure>
+      <div class="note">
+        <b>Note:</b> This particular list view happens to show a different FCC Provider (Parkchester); the
+        record used in the remaining steps below is a real SDY-seat attendance record for
+        <strong>Naomi Ferreira</strong> at <strong>Riverbend FCC Provider &ndash; Woodlawn Site</strong>. From
+        this list you would open any attendance row the same way.
+      </div>
+    </div>
+
+    <div class="step" id="step-2">
+      <h3><span class="stepnum">2</span>Open a SDY attendance record</h3>
+      <p><span class="lbl lbl-do">DO</span> Click into <strong>ATTEND-0000003174</strong>, the 8/19/2026
+      attendance record for Naomi Ferreira's enrollment at Riverbend FCC Provider &ndash; Woodlawn Site.</p>
+      <p><span class="lbl lbl-res">RESULT</span> The record detail page loads. Alongside the standard
+      Status, Student, Enrollment, and Class fields, an <strong>Attendance Information</strong> section shows
+      <strong>Seat Type: SDY</strong> and four time fields &mdash; <strong>Check-in Time</strong>,
+      <strong>Check-out Time</strong>, <strong>Check-in Time 2</strong>, and <strong>Check-out Time 2</strong>
+      &mdash; all currently blank on this record.</p>
+      <figure>
+        <img src="screenshots/g7-02-sdy-attendance-detail.png" alt="Attendance detail page for ATTEND-0000003174, Naomi Ferreira, Seat Type SDY, showing empty Check-in Time, Check-out Time, Check-in Time 2, and Check-out Time 2 fields" />
+        <figcaption>ATTEND-0000003174 &mdash; a real SDY-seat attendance record, TITO fields present but not yet filled in.</figcaption>
+      </figure>
+      <div class="callout">
+        <b>What TITO adds, concretely.</b> Compared with a standard CBO attendance record (Status +
+        Student + Enrollment + Class + Date), a TITO-eligible record carries the same fields <em>plus</em>
+        <strong>Check-in Time</strong>, <strong>Check-out Time</strong>, and a second
+        <strong>Check-in/Check-out</strong> pair for a child who leaves and returns the same day (a split
+        session). It's the same object and the same Status/certification lifecycle underneath &mdash; TITO is
+        additional data captured on top, not a separate approval flow.
+      </div>
+    </div>
+
+    <div class="step" id="step-3">
+      <h3><span class="stepnum">3</span>Open the record for editing</h3>
+      <p><span class="lbl lbl-do">DO</span> Click <strong>Edit</strong> on the record.</p>
+      <p><span class="lbl lbl-res">RESULT</span> The edit form opens with the same four time fields laid out
+      as Date + Time pairs under <strong>Check-in Time</strong>, <strong>Check-out Time</strong>,
+      <strong>Check-in Time 2</strong>, and <strong>Check-out Time 2</strong>. Notice <strong>Seat Type</strong>
+      is shown as read-only with the note "This field is calculated upon save" &mdash; it isn't something the
+      Attendance Taker sets directly; it's derived from the underlying seat/enrollment.</p>
+      <figure>
+        <img src="screenshots/g7-03-edit-form-blank.png" alt="Edit form for ATTEND-0000003174 showing blank Date and Time inputs for Check-in Time, Check-out Time, Check-in Time 2, and Check-out Time 2, with Seat Type shown read-only as SDY" />
+        <figcaption>Edit ATTEND-0000003174 &mdash; the four TITO Date/Time field pairs, still blank.</figcaption>
+      </figure>
+    </div>
+
+    <div class="step" id="step-4">
+      <h3><span class="stepnum">4</span>Enter the Check-in and Check-out time</h3>
+      <p><span class="lbl lbl-do">DO</span> Enter the date and time the child actually arrived under
+      <strong>Check-in Time</strong> (for example, 8/19/2026 at 7:45 AM), and the date and time they were
+      picked up under <strong>Check-out Time</strong> (for example, 8/19/2026 at 6:00 PM).</p>
+      <p><span class="lbl lbl-res">RESULT</span> The two fields now show the entered date/time pairs.</p>
+      <figure>
+        <img src="screenshots/g7-04-edit-form-filled.png" alt="Edit form for ATTEND-0000003174 with Check-in Time filled as 8/19/2026 7:45 AM and Check-out Time filled as 8/19/2026 6:00 PM, Check-in Time 2 and Check-out Time 2 still blank" />
+        <figcaption>Check-in Time and Check-out Time filled in &mdash; illustration only, not saved.</figcaption>
+      </figure>
+      <div class="note">
+        <b>Important &mdash; this is an unsaved illustration.</b> At the time this guide was written, no
+        existing Attendance record in the UAT org actually had Check-in/Check-out times populated, even on
+        SDY-seat records like this one. The times shown here (7:45 AM / 6:00 PM) were typed into the Edit form
+        purely to show where the TITO fields live in the UI &mdash; the form was <strong>not saved</strong>, so
+        this is not a certified real attendance record. Treat it as a field-layout reference, not sample data
+        to copy.
+      </div>
+    </div>
+
+    <div class="step" id="step-5">
+      <h3><span class="stepnum">5</span>Enter a second pair for a split session</h3>
+      <p><span class="lbl lbl-do">DO</span> If a child leaves partway through the day and returns later
+      (a split session &mdash; for example, leaving for a medical appointment and coming back), also fill in
+      <strong>Check-in Time 2</strong> and <strong>Check-out Time 2</strong> with that second arrival/departure.</p>
+      <p><span class="lbl lbl-res">RESULT</span> All four time fields are populated: one Check-in/Check-out
+      pair for the morning block, a second pair for the afternoon block.</p>
+      <figure>
+        <img src="screenshots/g7-05-edit-form-split-session.png" alt="Edit form for ATTEND-0000003174 with all four TITO fields filled: Check-in Time 7:45 AM, Check-out Time 6:00 PM, Check-in Time 2 12:30 PM, Check-out Time 2 3:15 PM" />
+        <figcaption>Both Check-in/Check-out pairs filled in, illustrating a two-session (split) day.</figcaption>
+      </figure>
+      <div class="callout">
+        <b>Twice-daily pairs, one record.</b> A TITO record doesn't need a second attendance row for a split
+        session &mdash; the second Check-in/Check-out pair lives on the same daily record. This keeps one
+        record per student per day even when a child comes and goes twice, which matters downstream because
+        Budget and Invoice calculations tie back to <em>one</em> attendance record per student per day.
+      </div>
+    </div>
+
+    <div class="step" id="step-6">
+      <h3><span class="stepnum">6</span>Decide whether to save</h3>
+      <p><span class="lbl lbl-do">DO</span> In real use, click <strong>Save</strong> once the actual
+      check-in/check-out times for the day have been entered correctly. (For this guide, the form was
+      cancelled, not saved &mdash; see the note in Step 4.)</p>
+      <p><span class="lbl lbl-res">RESULT</span> Saving recalculates <strong>Seat Type</strong> and commits
+      the times to the record, the same way any other field edit on Attendance is saved.</p>
+      <div class="note">
+        <b>Note:</b> Because Check-out Time (and both fields in the second pair) aren't marked required on
+        this form, it's possible to save a TITO record with only a Check-in Time. For extended-day seats,
+        make a habit of confirming both a check-in <em>and</em> check-out time are captured before submitting
+        &mdash; an incomplete pair can understate the hours of care actually provided.
+      </div>
+    </div>
+
+    <div class="step" id="step-7">
+      <h3><span class="stepnum">7</span>Submit and certify, same as standard attendance</h3>
+      <p><span class="lbl lbl-do">DO</span> Submit and certify the day's attendance the same way you would
+      for a standard (non-TITO) record &mdash; the <strong>Status</strong> field (Draft &rarr; Submitted &rarr;
+      Certified) and the certification step work identically regardless of seat type.</p>
+      <p><span class="lbl lbl-res">RESULT</span> The record's Status advances exactly as it would for a
+      standard CBO attendance record. TITO doesn't introduce a separate approval chain &mdash; it only adds
+      the check-in/check-out data captured on the record before that status moves forward.</p>
+      <div class="callout">
+        <b>Compared to standard CBO attendance.</b> If you've worked through the standard <em>Attendance
+        (CBO)</em> guide, everything about <em>how</em> a record moves from Draft to Submitted to Certified is
+        the same here. The only difference for FCCN/SDY (extended-day) seats is <em>what's on the record</em>:
+        actual check-in and check-out times, potentially twice in a day, instead of just a present/absent flag.
+      </div>
+    </div>
+
+    <div class="step" id="step-8">
+      <h3><span class="stepnum">8</span>Understand why TITO feeds billing differently</h3>
+      <p><span class="lbl lbl-do">DO</span> Keep in mind, when entering or reviewing TITO attendance, that
+      these times are not just informational &mdash; they exist because extended-day seats are
+      <strong>funded and billed based on actual hours of care provided</strong>, not a flat daily rate.</p>
+      <p><span class="lbl lbl-res">RESULT</span> Downstream, certified attendance (present/absent for
+      standard seats, or check-in/check-out for extended-day seats) is what the CBO/FCCN's monthly Invoice
+      relies on. For extended-day/SDY seats, an incomplete or missing Check-in/Check-out pair can be the
+      difference between an invoice correctly reflecting the hours a child was actually cared for and one that
+      understates it.</p>
+      <div class="callout">
+        <b>Setup complete.</b> You've now seen how TITO attendance differs from standard attendance: same
+        object, same Enrollment/Class linkage, same Draft &rarr; Submitted &rarr; Certified lifecycle &mdash;
+        plus Check-in/Check-out (and a second pair for split sessions) captured because extended-day seats are
+        billed on actual hours, not a day/absent flag. From here, the next step in the chain is the site's
+        <strong>Budget</strong> and <strong>Invoice</strong> (see those guides), which rely on this certified
+        attendance data.
+      </div>
+    </div>
+
+    <div class="step" id="step-9">
+      <h3><span class="stepnum">9</span>Check the SDY+ indicator on an Enrollment</h3>
+      <p><span class="lbl lbl-do">DO</span> Open a live SDY-seat Enrollment record and look for an
+      <strong>SDY+ Information</strong> section &mdash; for example <strong>ENROL-0000000543</strong> (an
+      Active enrollment at SDY Plus Test Site Alpha).</p>
+      <p><span class="lbl lbl-res">RESULT</span> The record shows a checked <strong>SDY+</strong> indicator,
+      plus a related <strong>SDY+ Enrollments</strong> list containing a child <strong>SDY+ Enrollment</strong>
+      record (<code>SDY-PLUS-ENROL-...</code>) that tracks its own Start Date and who started it. This is the
+      <code>SDY_Plus__c</code> Boolean field on <code>ECMS_Enrollment__c</code> described by the BRD, plus a
+      related tracking record for the Start/End Date history the BRD calls for.</p>
+      <figure>
+        <img src="screenshots/g7-06-enrollment-sdy-plus-checked.png" alt="ENROL-0000000543 detail page showing a checked SDY+ indicator under SDY+ Information, and a related SDY+ Enrollments list with one SDY-PLUS-ENROL child record" />
+        <figcaption>ENROL-0000000543 &mdash; live UAT record with SDY+ checked and a related SDY+ Enrollment tracking record (start date 8/31/2026).</figcaption>
+      </figure>
+      <div class="callout">
+        <b>DOEECMS-2343 &mdash; Add SDY+ Checkbox Indicator to Student Enrollment Record.</b> Per the draft
+        BRD, this field is only applicable and editable when <strong>Seat Type = SDY</strong>, and is meant to
+        flag students attending the SDY+ program so downstream processes and reporting can identify them.
+        Several other real UAT enrollments carry <code>SDY_Plus__c = true</code> as well, for example
+        <strong>ENROL-0000000064</strong> and <strong>ENROL-0000000264</strong> (both Draft status) &mdash;
+        confirmed via <code>node scripts/audit-uat-soql.js</code> against <code>ECMS_Enrollment__c</code>.
+      </div>
+    </div>
+
+    <div class="step" id="step-10">
+      <h3><span class="stepnum">10</span>Run the SDY+ Active Enrollment Report</h3>
+      <p><span class="lbl lbl-do">DO</span> From the app's <strong>Reports</strong> tab, search
+      <strong>All Reports</strong> for <code>SDY+</code>.</p>
+      <p><span class="lbl lbl-res">RESULT</span> A report literally titled <strong>SDY+ Active Enrollment
+      Report</strong> is returned, living in the Public Reports folder.</p>
+      <figure>
+        <img src="screenshots/g7-08-sdy-plus-report-search.png" alt="Reports tab, All Reports, search box containing SDY+, showing one result: SDY+ Active Enrollment Report in the Public Reports folder" />
+        <figcaption>Searching All Reports for "SDY+" &mdash; the report exists in the live UAT org, in Public Reports.</figcaption>
+      </figure>
+      <p><span class="lbl lbl-do">DO</span> Open the report.</p>
+      <p><span class="lbl lbl-res">RESULT</span> It returns only <strong>Approved</strong> or
+      <strong>Active</strong> enrollments, grouped by Site, with Enrollment # and Status columns &mdash; six
+      rows in this UAT org at the time of writing, matching the enrollments with <code>SDY_Plus__c = true</code>
+      seen in Step 9.</p>
+      <figure>
+        <img src="screenshots/g7-09-sdy-plus-report-open.png" alt="SDY+ Active Enrollment Report open, showing Total Records 6, a donut chart grouped by Site: Site Master Name, and a details table listing ENROL-0000000481, 499, 543, 544, 545, 546 with Approved/Active statuses" />
+        <figcaption>SDY+ Active Enrollment Report, run live &mdash; grouped by Site, filtered to Approved/Active + SDY+ enrollments.</figcaption>
+      </figure>
+      <div class="callout">
+        <b>DOEECMS-2344 &mdash; Create SDY+ Active Enrollment Report by Site, Class, and Student.</b> The
+        draft BRD calls for the report to group results by <strong>Site, Class, and Student</strong> and
+        include Student Name, Site, Class, and Enrollment Status at minimum. The live report groups by Site
+        and shows Enrollment # and Status; whether Class/Student-level grouping and a Student Name column are
+        also present depends on the report's format (summary vs. matrix) and column configuration, which
+        wasn't fully explored here &mdash; treat the detailed column/grouping spec as still subject to the
+        draft BRD, not fully confirmed against this screenshot.
+      </div>
+    </div>
+
+    <div class="step" id="step-11">
+      <h3><span class="stepnum">11</span>Watch for the infant-to-toddler age validation alert</h3>
+      <div class="note">
+        <b>Not independently observed in the live UI.</b> This step is described from the draft BRD text
+        only. A live combination of an infant-seat enrollment with a student already past the relevant
+        birthday could not be located/triggered in the UAT org during this pass, so no screenshot is included
+        here &mdash; rather than fabricate one, this section is intentionally text-only.
+      </div>
+      <p><span class="lbl lbl-do">DO</span> Per <strong>DOEECMS-2191 (Age Validation Alert for
+      Infant-to-Toddler Transition)</strong>, be aware that when attendance is taken for a student who is
+      past their <strong>1st birthday (CBO/GFDC)</strong> or <strong>2nd birthday (FCC)</strong> while still
+      assigned to an infant seat/program, the BRD calls for the system to evaluate the child's age and class
+      assignment at the point of attendance entry.</p>
+      <p><span class="lbl lbl-res">RESULT</span> Per the BRD's acceptance criteria, this should display a
+      non-blocking warning alert (banner, inline warning, or modal) stating the student is past the relevant
+      birthday and should be moved to a toddler seat/program via an Enrollment Change Request. No alert is
+      expected if the student is under or exactly one year old. Age is meant to be calculated using the
+      facility's local time zone.</p>
+      <div class="callout">
+        <b>Related change-request flow.</b> The BRD notes the vendor should be able to submit an
+        <strong>Enrollment Change Request</strong> (Discharge, Change Seat Type, Change Class, or Program
+        Type) to act on this alert, tracked separately under DOEECMS-2243. As of the BRD's dev notes, an
+        earlier plan to also expose the SDY+ checkbox inside that same change-request modal was explicitly
+        struck from scope after technical discussion &mdash; SDY+ start/end dates are tracked automatically
+        off the checkbox value instead (DOEECMS-2625).
+      </div>
+    </div>
+
+    <div class="step" id="step-12">
+      <h3><span class="stepnum">12</span>Understand the 176-day SDY attendance limit</h3>
+      <p><span class="lbl lbl-do">DO</span> Know that for <strong>FCCN users on SDY seats</strong>, ECMS
+      enforces a cap on total attendance days per enrollment year. This isn't only described in the BRD text
+      &mdash; the live UAT org has it configured today, in <strong>Setup &rarr; Custom Metadata Types &rarr;
+      ECMS Attendance Config</strong>, on the <strong>FCCN SDY</strong> record.</p>
+      <p><span class="lbl lbl-res">RESULT</span> The config record shows <strong>Operating Day Limit
+      Enabled</strong> checked, an <strong>Operating Day Limit Max</strong> of <strong>176</strong>, and an
+      <strong>Operating Day Limit Error Message</strong> reading exactly: <em>&ldquo;SDY attendance is limited
+      to 176 days per year, accounting for 4 professional learning days for a total of 180 paid days.&rdquo;</em></p>
+      <figure>
+        <img src="screenshots/g7-07-attendance-config-176-limit.png" alt="ECMS Attendance Config Detail page for the FCCN SDY custom metadata record, showing Operating Day Limit Enabled checked, Operating Day Limit Max 176, and the Operating Day Limit Error Message about 176 days" />
+        <figcaption>Setup &rarr; Custom Metadata Types &rarr; ECMS Attendance Config &rarr; FCCN SDY &mdash; the live 176-day limit configuration, not the point-of-entry error banner itself.</figcaption>
+      </figure>
+      <div class="callout">
+        <b>DOEECMS-2347 &mdash; Enforce 176-Day Attendance Limit for SDY Seats.</b> Per the BRD, the system
+        blocks attendance entry on <strong>Save/Submit</strong> once a SDY-seat enrollment's recorded
+        attendance (Present/Absent) for the enrollment year would exceed 176 total days, and this validation
+        applies only to <strong>SDY seat types and FCCN users</strong> (not CBOs). This screenshot shows the
+        configuration that drives the rule (including the counter field,
+        <code>Operating_Attendance_Days_Completed__c</code>, referenced in Jira comments), not the actual
+        error banner a user sees when Saving the 177th day &mdash; that in-the-moment validation banner was
+        not independently reproduced for this guide.
+      </div>
+    </div>
+
+    <div class="step" id="step-13">
+      <h3><span class="stepnum">13</span>Understand the monthly certification reminder</h3>
+      <div class="note">
+        <b>Not independently observed in the live UI.</b> Monthly reminders are a notification/automation
+        behavior (not a page you navigate to and screenshot on demand), so this step is described from the
+        BRD and Jira acceptance criteria only, without a screenshot.
+      </div>
+      <p><span class="lbl lbl-do">DO</span> Per <strong>DOEECMS-2346</strong>, know that after the 1st of
+      each month, FCCN and CBO users with attendance still awaiting certification for a prior month receive a
+      reminder, and that reminder repeats <strong>weekly (every 7th day)</strong> until certification is
+      complete. Per the Jira comments, the reminder scope was broadened beyond SDY-only: for CBOs it covers
+      all enrollments' attendance, and for FCCNs it covers SDY attendance from ECMS plus EDY attendance status
+      imported from CAPS Online (DOEECMS-2391).</p>
+      <p><span class="lbl lbl-res">RESULT</span> If you (as an FCCN Network Director/Education Director, or
+      a CBO Executive/Education/Fiscal Director with an active Salesforce user) attempt to certify a month
+      before all of that month's enrollments and attendance days are complete, the system blocks certification
+      and shows a message indicating all enrollments and days must be completed first &mdash; this
+      completeness check is existing system functionality already implemented for CBO users.</p>
+      <div class="callout">
+        <b>Recipients.</b> Per the BRD's dev notes, CBO reminders go to the Executive Director, Education
+        Director, and Fiscal Director contacts on the organization; FCCN reminders go to the Network Director
+        and Education Director contacts &mdash; in both cases only if that contact has an active Salesforce
+        user account.
+      </div>
+    </div>
+
+    <div class="step" id="step-14">
+      <h3><span class="stepnum">14</span>FCCN Calendar Management (brief note)</h3>
+      <div class="callout">
+        <b>DOEECMS-2406 &mdash; Enable FCCN Calendar Management.</b> FCCNs submit and manage a primary
+        network calendar, approved annually by the DOE (with the network's calendar acting as the default
+        that affiliated FCC Providers inherit, unless an approved alternative calendar applies to a specific
+        provider). Network Director and External Admin personas can submit calendars for approval by default;
+        an external admin can extend that ability to other FCCN user personas. This is FCCN-specific &mdash;
+        it has no CBO equivalent in this guide.
+      </div>
+      <p>The underlying <code>ECMS_Calendar__c</code> object exists in the live UAT org (confirmed via SOQL),
+      but no calendar records were present in UAT at the time of writing, and a full calendar-submission
+      walkthrough is <strong>out of scope for this Attendance guide</strong>. This step exists only to
+      establish that the capability is built and where it fits, not to document its own workflow end to end.</p>
+    </div>
+
+    <a class="backhome" href="index.html">&larr; Back to User Guide home</a>
+  </main>
+</div>
+<div class="site-footer">
+  <div class="ft-in">
+    <div class="ft-left"><b>NYC DOE &middot; Division of Early Childhood Education</b><div>Early Childhood Management System (ECMS)</div></div>
+    <nav class="ft-nav"><a href="index.html">User Guide Home</a></nav>
+  </div>
+</div>
+</body></html>

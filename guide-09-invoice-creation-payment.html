@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Invoice Creation &amp; Payment — ECMS User Guide</title><style>
+:root{--ink:#1B2430;--head:#0B2545;--muted:#5B6478;--link:#1657CE;--line:#DCE1EA;--line2:#EAEDF3;--code:#F5F7FB;--navy:#0B2545;--accent:#1657CE;--do:#1657CE;--res:#1E8E5A;--soft:#F5F7FB;--brandA:#0072CE;--brandB:#00A65A;--brandC:#F5A623;--brandD:#D0103A;}
+*{box-sizing:border-box;} html{scroll-behavior:smooth;}
+body{margin:0;color:var(--ink);background:#fff;font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;line-height:1.65;font-size:16px;}
+a{color:var(--link);text-decoration:none;} a:hover{text-decoration:underline;}
+code{font-family:'SFMono-Regular',Consolas,Menlo,monospace;background:var(--code);border:1px solid var(--line);border-radius:4px;padding:1px 6px;font-size:13.5px;color:#0a2a5e;}
+.topbar{position:sticky;top:0;z-index:10;box-shadow:0 1px 0 var(--line);}
+.tb-top{background:#fff;border-bottom:1px solid var(--line);}
+.tb-top .in{max-width:1260px;margin:0 auto;padding:14px 32px;display:flex;align-items:center;gap:12px;}
+.doe-logo{display:flex;align-items:baseline;gap:1px;font-weight:800;font-size:20px;letter-spacing:.2px;}
+.doe-logo b:nth-child(1){color:var(--brandA);} .doe-logo b:nth-child(2){color:var(--brandC);} .doe-logo b:nth-child(3){color:var(--brandB);} .doe-logo b:nth-child(4){color:var(--brandD);}
+.doe-sub{color:var(--muted);font-size:12.5px;padding-left:10px;border-left:1px solid var(--line);}
+.tb-bottom{background:var(--navy);}
+.tb-bottom .in{max-width:1260px;margin:0 auto;padding:10px 32px;display:flex;align-items:center;gap:22px;}
+.ecms-brand{color:#fff;font-weight:700;font-size:15px;letter-spacing:.3px;}
+.topnav{display:flex;gap:24px;margin-left:6px;}
+.topnav a{color:#cfe0fb;font-weight:600;font-size:13.5px;}
+.topnav a.cur{color:#fff;}
+@media (max-width:760px){.topnav{display:none;}}
+.crumbs{max-width:1260px;margin:0 auto;padding:16px 32px 0;font-size:13px;color:var(--muted);}
+.crumbs a{color:var(--muted);} .crumbs span{margin:0 7px;}
+.wrap{max-width:1260px;margin:0 auto;padding:8px 32px 60px;display:grid;grid-template-columns:270px minmax(0,1fr);gap:52px;}
+main{min-width:0;max-width:840px;}
+h1{font-size:32px;line-height:1.2;color:var(--head);margin:14px 0 6px;font-weight:700;}
+.lead{font-size:16.5px;color:var(--ink);margin:10px 0 4px;}
+.subtext{color:var(--muted);font-size:14px;margin:2px 0 0;}
+h2{font-size:22px;color:var(--head);font-weight:700;margin:42px 0 6px;padding-bottom:8px;border-bottom:1px solid var(--line);}
+h3{font-size:17.5px;color:var(--head);font-weight:700;margin:8px 0 2px;}
+p{margin:10px 0;}
+ul.bul{margin:10px 0;padding-left:22px;} ul.bul li{margin:6px 0;}
+table{border-collapse:collapse;width:100%;margin:16px 0;font-size:14.5px;}
+th,td{border:1px solid var(--line);padding:9px 13px;text-align:left;vertical-align:top;}
+th{background:var(--soft);color:var(--head);font-weight:700;}
+.lbl{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;padding:2px 9px;border-radius:4px;margin-right:8px;vertical-align:middle;}
+.lbl-do{background:#E6EFFC;color:var(--do);} .lbl-res{background:#E5F5EC;color:var(--res);}
+.step{scroll-margin-top:118px;border-top:1px solid var(--line2);padding-top:28px;margin-top:28px;}
+.step:first-of-type{border-top:none;margin-top:14px;padding-top:8px;}
+.step .stepnum{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;background:var(--navy);color:#fff;font-weight:700;font-size:14px;margin-right:10px;vertical-align:middle;}
+.step h3{display:inline;}
+h2,h3{scroll-margin-top:118px;}
+figure{margin:14px 0 4px;}
+figure img{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:8px;box-shadow:0 4px 14px rgba(11,37,69,.08);}
+figcaption{font-size:13px;color:var(--muted);margin-top:8px;font-style:italic;}
+.callout{background:var(--soft);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:6px;padding:14px 18px;margin:14px 0;}
+.callout b{color:var(--head);}
+.note{background:#fff8ec;border:1px solid #f3e2bd;border-left:4px solid #e0a127;border-radius:6px;padding:6px 18px;margin:14px 0;}
+.sidenav{position:sticky;top:104px;align-self:start;font-size:14px;max-height:calc(100vh - 120px);overflow:auto;padding-right:6px;}
+.nav-cat{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);font-weight:700;padding:0 0 10px;border-bottom:1px solid var(--line);margin-bottom:8px;}
+ul.nav{list-style:none;margin:0;padding:0;} ul.nav>li{margin:2px 0;}
+a.lvl1{display:block;padding:7px 10px;border-radius:6px;color:var(--head);font-weight:600;font-size:13.6px;}
+a.lvl1:hover{background:var(--soft);text-decoration:none;}
+a.lvl1.cur{color:var(--accent);background:var(--soft);border-left:3px solid var(--accent);padding-left:8px;}
+.backhome{display:inline-block;margin:14px 0 4px;font-weight:700;font-size:13.5px;}
+.meta-row{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 6px;}
+.chip{font-size:11.5px;font-weight:600;color:var(--navy);background:var(--soft);border:1px solid var(--line);border-radius:20px;padding:3px 10px;}
+.site-footer{background:var(--navy);color:#fff;margin-top:48px;}
+.site-footer .ft-in{max-width:1260px;margin:0 auto;padding:22px 32px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px;}
+.ft-left b{font-size:14px;} .ft-left div{color:#B9C7E3;font-size:12.5px;margin-top:4px;}
+.ft-nav a{color:#fff;font-size:13px;}
+@media (max-width:900px){.wrap{grid-template-columns:1fr;}.sidenav{position:static;max-height:none;}}
+</style></head>
+<body>
+<div class="topbar">
+  <div class="tb-top"><div class="in">
+    <span class="doe-logo"><b>N</b><b>Y</b><b>C</b></span>
+    <span class="doe-sub">Department of Education &middot; Division of Early Childhood Education</span>
+  </div></div>
+  <div class="tb-bottom"><div class="in">
+    <span class="ecms-brand">ECMS User Guide</span>
+    <nav class="topnav"><a href="index.html">Home</a></nav>
+  </div></div>
+</div>
+<div class="crumbs"><a href="index.html">ECMS User Guide</a><span>/</span>Invoice Creation &amp; Payment</div>
+<div class="wrap">
+
+  <nav class="sidenav">
+    <div class="nav-cat">On this page</div>
+    <ul class="nav">
+      <li><a class="lvl1" href="#overview">Overview</a></li>
+      <li><a class="lvl1" href="#step-1">1. Confirm the budget is approved</a></li>
+      <li><a class="lvl1" href="#step-2">2. Log in as the Invoice Manager</a></li>
+      <li><a class="lvl1" href="#step-3">3. Open the vendor's Invoices list</a></li>
+      <li><a class="lvl1" href="#step-4">4. Review the saved invoice</a></li>
+      <li><a class="lvl1" href="#step-5">5. Submit the invoice</a></li>
+      <li><a class="lvl1" href="#step-6">6. Operations Analyst (OA) review</a></li>
+      <li><a class="lvl1" href="#step-7">7. Operations Director (OD) final approval</a></li>
+      <li><a class="lvl1" href="#step-8">8. Read the full Approval History</a></li>
+      <li><a class="lvl1" href="#step-9">9. ECMS sends the invoice to FAMIS</a></li>
+      <li><a class="lvl1" href="#step-10">10. Advance Payment Invoices (draft BRD)</a></li>
+      <li><a class="lvl1" href="#step-11">11. Third-level Central Approval for EDY/HS-CTL invoices</a></li>
+    </ul>
+    <a class="backhome" href="index.html">&larr; Back to User Guide home</a>
+  </nav>
+
+  <main id="top">
+    <h1>Invoice Creation &amp; Payment</h1>
+    <p class="lead">How a CBO Invoice Manager submits a monthly invoice against an approved budget and that
+    month's certified attendance, how it moves through the Operations Analyst (OA) &rarr; Operations Director
+    (OD) review chain inside ECMS, and how ECMS finally hands it off to FAMIS so the vendor actually gets
+    paid.</p>
+    <div class="meta-row">
+      <span class="chip">11 steps</span><span class="chip">~15 min read</span>
+      <span class="chip">Persona: CBO Invoice Manager / Operations Analyst / Operations Director</span>
+    </div>
+
+    <h2 id="overview">Overview</h2>
+    <p>An invoice is the last step in the money chain: a <strong>Budget Creator</strong> builds the site's
+    yearly budget, DOE approves it, an <strong>Attendance Taker</strong> records and certifies each month's
+    attendance, and only then can the CBO's <strong>Invoice Manager</strong> submit that month's invoice
+    requesting payment. Like a budget, an invoice goes through the same two-stage <strong>OA &rarr; OD</strong>
+    review chain before it's considered fully approved. Once it clears that chain, ECMS automatically hands the
+    invoice off to <strong>FAMIS</strong>, the city's financial system, which is what actually issues the
+    payment &mdash; and ECMS later checks back with FAMIS to see whether that payment was sent, paid, or
+    rejected.</p>
+    <div class="callout">
+      <b>Where this fits.</b> Invoice Creation &amp; Payment is the final link in the ECMS workflow chain:
+      <strong>Site/Vendor setup &rarr; Contracts &amp; Seats &rarr; Enrollment &rarr; Attendance &rarr; Budget
+      &rarr; Invoice &rarr; FAMIS payment</strong>. See the Budget Approval and Attendance Certification guides
+      for the two preconditions this guide assumes are already in place.
+    </div>
+    <div class="note">
+      <b>Note:</b> You cannot submit an invoice for a month until that month's attendance has been
+      <strong>certified</strong> by the vendor. Certification is a hard requirement enforced by ECMS, not just
+      a best practice &mdash; if the Submit Invoice action is unavailable or the invoice comes back rejected,
+      an uncertified month is one of the first things to check.
+    </div>
+    <div class="callout">
+      <b>Draft BRD content ahead.</b> Steps 10&ndash;11 below describe two additional invoice behaviors
+      &mdash; <strong>Advance Payment Invoices</strong> and <strong>third-level Central Approval for EDY/HS-CTL
+      seats</strong> &mdash; documented in the <strong>Budgets &amp; Invoicing (D08)</strong> BRD, which is
+      still a <strong>Draft</strong>, not yet signed off by DOE. The requirements, field names, and workflow
+      described are accurate as of this draft revision but may still change before final sign-off. Where a
+      draft-only detail conflicts with an approved BRD elsewhere in this guide set, treat the approved BRD as
+      authoritative.
+    </div>
+
+    <h2>Steps</h2>
+
+    <div class="step" id="step-1">
+      <h3><span class="stepnum">1</span>Confirm the budget is approved</h3>
+      <p><span class="lbl lbl-do">DO</span> Before starting a new invoice, open the site's <strong>Budget</strong>
+      record and check its approval-stage progress bar and <strong>Status</strong> field.</p>
+      <p><span class="lbl lbl-res">RESULT</span> Cedar Point Early Childhood Academy's budget <strong>B-00000057</strong>
+      shows <strong>Approved by DOE</strong>, with the page's own guidance text confirming: "The budget has
+      been approved by the Department of Education team. Invoices may now be submitted for this budget."</p>
+      <figure>
+        <img src="screenshots/g9-01-budget-approved.png" alt="Budget B-00000057 detail page for Cedar Point Early Childhood Academy, showing an Approved by DOE status and guidance text stating invoices may now be submitted" />
+        <figcaption>Budget B-00000057 &mdash; Approved by DOE, the precondition for submitting an invoice against it.</figcaption>
+      </figure>
+    </div>
+
+    <div class="step" id="step-2">
+      <h3><span class="stepnum">2</span>Log in as the Invoice Manager</h3>
+      <p><span class="lbl lbl-do">DO</span> As the CBO's provisioned Invoice Manager, log into the vendor
+      portal. (Cedar Point's site contact <strong>Damien Ortiz</strong> was provisioned with Invoice Management
+      access during site setup &mdash; see the Vendor &amp; Site Setup guide.)</p>
+      <p><span class="lbl lbl-res">RESULT</span> The portal home page loads with a <strong>Create Invoice</strong>
+      quick-action tile alongside Create Budget, Create Enrollment, and Report Incident.</p>
+      <figure>
+        <img src="screenshots/g9-02-portal-home.png" alt="Vendor portal home page for Damien Ortiz of Cedar Point Early Childhood Academy, showing a Create Invoice quick-action tile" />
+        <figcaption>Vendor portal home &mdash; logged in as Damien Ortiz, Invoice Manager for Cedar Point.</figcaption>
+      </figure>
+    </div>
+
+    <div class="step" id="step-3">
+      <h3><span class="stepnum">3</span>Open the vendor's Invoices list</h3>
+      <p><span class="lbl lbl-do">DO</span> Click the <strong>Create Invoice</strong> tile.</p>
+      <p><span class="lbl lbl-res">RESULT</span> ECMS opens the portal's <strong>Invoices</strong> list, scoped
+      to this vendor. Cedar Point already has one invoice in progress, <strong>INV-00021</strong>, for July,
+      Status <em>Saved Invoice</em>, still linked to Budget B-00000057. From here the Invoice Manager can click
+      <strong>New</strong> to start another invoice, or continue an existing one.</p>
+      <figure>
+        <img src="screenshots/g9-03-portal-invoices-list.png" alt="Vendor portal Invoices list scoped to Cedar Point Early Childhood Academy, showing INV-00021 for July with Status Saved Invoice, and New and Request Payment Status Update buttons" />
+        <figcaption>Portal Invoices list &mdash; Cedar Point's in-progress invoice, INV-00021.</figcaption>
+      </figure>
+      <div class="note">
+        <b>Note:</b> The <strong>Request Payment Status Update</strong> button visible here is the vendor-side
+        half of the FAMIS round trip described in Step 9 &mdash; it lets the Invoice Manager ask ECMS to
+        re-check FAMIS for a status update on a submitted invoice, rather than waiting for the nightly refresh.
+      </div>
+    </div>
+
+    <div class="step" id="step-4">
+      <h3><span class="stepnum">4</span>Review the saved invoice</h3>
+      <p><span class="lbl lbl-do">DO</span> Open <strong>INV-00021</strong> and review its detail page: Site,
+      Service Month, Invoice Total Amount, and the linked Budget, before submitting it.</p>
+      <p><span class="lbl lbl-res">RESULT</span> The invoice's own status stepper shows <strong>Saved
+      Invoice</strong> as the current stage, with guidance text: "Vendor has created the invoice and is still
+      adding information prior to submitting for approval." The <strong>Submit Invoice</strong> button is
+      available in the action bar, and Approval History is still empty (0) &mdash; nothing has been submitted
+      yet.</p>
+      <figure>
+        <img src="screenshots/g9-04-invoice-saved-detail.png" alt="Invoice detail page for INV-00021, Status Saved Invoice, showing the Submit Invoice action button and an empty Approval History related list" />
+        <figcaption>INV-00021 &mdash; Saved Invoice, ready to submit for OA/OD review.</figcaption>
+      </figure>
+    </div>
+
+    <div class="step" id="step-5">
+      <h3><span class="stepnum">5</span>Submit the invoice</h3>
+      <p><span class="lbl lbl-do">DO</span> Click <strong>Submit Invoice</strong> in the action bar.</p>
+      <p><span class="lbl lbl-res">RESULT</span> The invoice's status advances along the stepper from <em>Saved
+      Invoice</em> to <em>Submitted</em>, then to <strong>Pending Approval</strong>, and an Approval History
+      entry is created recording the submission. The example below (INV-00017, a different vendor's invoice
+      further along in its real lifecycle than Cedar Point's) shows exactly what that looks like once
+      submitted.</p>
+      <figure>
+        <img src="screenshots/g9-05-invoice-pending-oa.png" alt="Invoice INV-00017 detail page, Status Pending Approval, showing two completed stepper stages and guidance text that the invoice is pending approval by the Department of Education team" />
+        <figcaption>A submitted invoice (INV-00017) &mdash; Status: Pending Approval, awaiting OA review.</figcaption>
+      </figure>
+    </div>
+
+    <div class="step" id="step-6">
+      <h3><span class="stepnum">6</span>Operations Analyst (OA) review</h3>
+      <p><span class="lbl lbl-do">DO</span> As the Operations Analyst, open the invoice's <strong>Approval
+      History</strong> tab and click <strong>Approve</strong> (or <strong>Reject</strong>) on the pending OA
+      Approval step.</p>
+      <p><span class="lbl lbl-res">RESULT</span> The Approval History list shows two rows so far: <em>Approval
+      Request Submitted</em> and <em>OA Approval</em> (assigned to Oscar Adams, still Pending). This is the
+      same tab the onboarding materials describe as showing "each step &mdash; submission, Operations Analyst
+      review, and Operations Director review &mdash; with who acted on it and when."</p>
+      <figure>
+        <img src="screenshots/g9-06-approval-history-pending.png" alt="Approval History tab for invoice INV-00017, listing Approval Request Submitted and OA Approval steps, the OA Approval step assigned to Oscar Adams with status Pending, and Approve/Reject buttons" />
+        <figcaption>Approval History &mdash; submission recorded, OA Approval pending with Oscar Adams.</figcaption>
+      </figure>
+    </div>
+
+    <div class="step" id="step-7">
+      <h3><span class="stepnum">7</span>Operations Director (OD) final approval</h3>
+      <p><span class="lbl lbl-do">DO</span> Once the OA approves, the invoice routes to the Operations Director
+      for the second and final sign-off. The OD reviews the same record and approves it.</p>
+      <p><span class="lbl lbl-res">RESULT</span> The invoice's status stepper reaches the end: <strong>Approved
+      by DOE</strong>, with guidance text "The invoice has been approved by the Department of Education team."
+      Because Cedar Point's own invoice hasn't reached this stage yet in the UAT sandbox, the screenshot below
+      uses a different, further-along example invoice, <strong>INV-00031</strong> for FAMIS-2422 Gamma Youth
+      Academy, to show what a fully-approved invoice looks like.</p>
+      <figure>
+        <img src="screenshots/g9-07-invoice-approved-paid.png" alt="Invoice INV-00031 detail page, Status Approved by DOE, with every stepper stage checked green ending in Approved by DOE" />
+        <figcaption>INV-00031 (a different, further-along example vendor) &mdash; Status: Approved by DOE, the final internal stage.</figcaption>
+      </figure>
+    </div>
+
+    <div class="step" id="step-8">
+      <h3><span class="stepnum">8</span>Read the full Approval History</h3>
+      <p><span class="lbl lbl-do">DO</span> Open the <strong>Approval History</strong> tab on that same
+      fully-approved invoice.</p>
+      <p><span class="lbl lbl-res">RESULT</span> All three steps are now visible with a name, a date/time, and
+      a status: <em>Approval Request Submitted</em> (Priya FamisGamma), <em>OA Approval</em> &mdash; Approved
+      (Oscar Adams), and <strong>OD/DOD Approval</strong> &mdash; Approved (Olivia Dean). This is the complete
+      audit trail referenced in the ECMS onboarding overview.</p>
+      <figure>
+        <img src="screenshots/g9-08-approval-history-full.png" alt="Approval History tab for invoice INV-00031, listing three rows: Approval Request Submitted, OA Approval Approved by Oscar Adams, and OD/DOD Approval Approved by Olivia Dean, each with a date and time" />
+        <figcaption>Full Approval History &mdash; submission, OA Approval, and OD/DOD Approval, each with approver and timestamp.</figcaption>
+      </figure>
+    </div>
+
+    <div class="step" id="step-9">
+      <h3><span class="stepnum">9</span>ECMS sends the invoice to FAMIS</h3>
+      <p><span class="lbl lbl-do">DO</span> No manual action is needed here &mdash; once an invoice reaches
+      Approved by DOE, ECMS automatically sends it to FAMIS to trigger the payment. Scroll to the
+      <strong>FAMIS Attributes</strong> section on the Details tab to see the result.</p>
+      <p><span class="lbl lbl-res">RESULT</span> INV-00031 now shows a <strong>FAMIS Document Number</strong>
+      (<code>FD-2026-00103</code>) and a <strong>FAMIS Payment Status</strong> of <strong>Paid</strong>. ECMS
+      periodically checks back with FAMIS and updates this same field, so the invoice record itself becomes
+      the single place to see whether a payment was sent, paid, or rejected.</p>
+      <figure>
+        <img src="screenshots/g9-09-famis-payment-status.png" alt="FAMIS Attributes section on invoice INV-00031, showing FAMIS Document Number FD-2026-00103 and FAMIS Payment Status Paid" />
+        <figcaption>FAMIS Attributes &mdash; the invoice's document number and payment status, updated by ECMS after checking back with FAMIS.</figcaption>
+      </figure>
+      <div class="callout">
+        <b>Invoice lifecycle complete.</b> This closes the ECMS workflow chain: Site/Vendor setup &rarr;
+        Contracts &amp; Seats &rarr; Enrollment &rarr; Attendance &rarr; Budget &rarr; Invoice &rarr; FAMIS
+        payment. Each subsequent month, the Invoice Manager repeats Steps 3&ndash;5 against that month's newly
+        certified attendance.
+      </div>
+    </div>
+
+    <div class="step" id="step-10">
+      <h3><span class="stepnum">10</span>Advance Payment Invoices (draft BRD)</h3>
+      <p><span class="lbl lbl-do">DO</span> This step describes a separate invoice type an Operational
+      Analyst (OA) can use, rather than something the Invoice Manager does in Steps 1&ndash;9 above.</p>
+      <p><span class="lbl lbl-res">RESULT</span> Per BRD story <strong>3.2.4 &ldquo;Create &amp; Submit
+      Advance Payment Invoice on Submitted Budget&rdquo;</strong> (<strong>Jira key DOEECMS-2419</strong>), an
+      <strong>Advance Payment Invoice</strong> does not wait for the budget to reach <em>Approved by DOE</em>
+      the way a regular invoice does. Per AC&nbsp;1, the trigger condition is: <em>given a budget is in
+      <strong>Submitted or Approved</strong> status (an exception applies to legacy budgets, handled under
+      AC&nbsp;3&rsquo;s September advance-invoice rule) and the budget is linked with a valid contract number,
+      when the OA navigates to the invoice section, then the system should allow the OA to create an Advance
+      Payment Invoice</em> &mdash; and the system automatically adds an identifier so this invoice type is
+      distinguishable at a glance. Per AC&nbsp;2, once created it still routes to the <strong>OD</strong> for
+      approval (explicitly <em>not</em> the OA), and only after OD (and any additional required approvers)
+      gives final approval does ECMS send the advance payment request details to FAMIS.</p>
+      <div class="callout">
+        <b>Draft BRD, no live example found.</b> This detail comes from draft BRD story 3.2.4
+        (DOEECMS-2419) and has not yet been verified against a signed-off BRD. A search of every invoice
+        currently in the UAT sandbox (<code>SELECT Id, Name, Status__c, Budget__c FROM ECMS_Invoice__c</code>,
+        cross-referenced against each linked budget's <code>Status__c</code>) found that every existing
+        invoice's budget was already <strong>Approved by DOE</strong> &mdash; none were only <em>Submitted</em>.
+        No <code>ECMS_Invoice__c</code> field or record type for &ldquo;Advance Payment&rdquo; exists in the
+        org's field/record-type metadata yet either. This step is therefore described from the BRD text only,
+        with no accompanying screenshot, rather than fabricating one.
+      </div>
+    </div>
+
+    <div class="step" id="step-11">
+      <h3><span class="stepnum">11</span>Third-level Central Approval for EDY/HS-CTL invoices</h3>
+      <p><span class="lbl lbl-do">DO</span> Open an invoice that includes one or more <strong>EDY</strong> or
+      <strong>Head Start / Head Start-CTL (HS-CTL)</strong> seats, after it has already cleared the normal
+      OA &rarr; OD chain, and review its stepper and <strong>Approval History</strong> tab.</p>
+      <p><span class="lbl lbl-res">RESULT</span> Per BRD story <strong>3.3.12 &ldquo;Add Third-Level Central
+      Approval for Invoices with EDY or HS/HS-CTL Seats&rdquo;</strong> (<strong>Jira key DOEECMS-2473</strong>),
+      invoices with EDY or HS/HS-CTL seats don't go straight to FAMIS once OA and OD approve &mdash; they are
+      routed to a <strong>Central Approvers</strong> queue for a third sign-off, with the invoice status
+      staying <em>Submitted</em> until that last approval is processed. <strong>INV-00036</strong>
+      (Id <code>a0sSK000001bbuTYAQ</code>), for the EDY-seat site 2500 UAT Verify EDY Site, shows exactly this:
+      its <code>Requires_Central_Approval__c</code> field is <code>true</code>, and its stepper carries an
+      extra approval stage beyond the usual OA/OD pipeline before landing on <strong>Approved by DOE</strong>.</p>
+      <figure>
+        <img src="screenshots/g9-10-invoice-central-approval-flag.png" alt="Invoice INV-00036 detail page for 2500 UAT Verify EDY Center, Status Approved by DOE, showing an eight-stage approval stepper (one stage more than a regular OA/OD-only invoice) and PW-Seat and BTF EDY T seat-type line items" />
+        <figcaption>INV-00036 &mdash; an EDY-seat invoice with <code>Requires_Central_Approval__c = true</code>, its stepper reflecting the extra Central Approval stage.</figcaption>
+      </figure>
+      <p>Its Approval History tab makes the extra step explicit: alongside the familiar <em>OD/DOD
+      Approval</em> rows, there are separate <strong>Central Approval</strong> rows &mdash; including one
+      showing a Central Approver <em>Rejecting</em> an earlier submission, and a later one <em>Approved</em>
+      by the Central Approvers queue, matching AC&nbsp;3 and AC&nbsp;4 of DOEECMS-2473 (a Central Approver's
+      approval sends the invoice on to FAMIS; a rejection follows the existing invoice rejection workflow).</p>
+      <figure>
+        <img src="screenshots/g9-11-invoice-central-approval-history.png" alt="Approval History tab for invoice INV-00036, listing Central Approval and OD/DOD Approval rows, including one Central Approval row with Status Rejected and a later Central Approval row with Status Approved" />
+        <figcaption>Approval History for INV-00036 &mdash; distinct Central Approval rows (including a rejection and a final approval) alongside the standard OD/DOD Approval rows.</figcaption>
+      </figure>
+      <div class="note">
+        <b>Note:</b> Per AC&nbsp;2 of DOEECMS-2473, an invoice with <em>no</em> EDY or HS/HS-CTL seats skips
+        this queue entirely and goes straight to FAMIS once OA and OD approve it, exactly as described in
+        Steps 6&ndash;9 above. The <code>Sub_Status__c</code> picklist on <code>ECMS_Invoice__c</code> also
+        includes a &ldquo;Rejected by Central Approver&rdquo; value for tracking a Central Approver rejection
+        distinctly from an OA/OD rejection. This story (3.3.12) is documented in the same draft, not-yet-signed
+        BRD as Step 10 above.
+      </div>
+    </div>
+
+    <a class="backhome" href="index.html">&larr; Back to User Guide home</a>
+  </main>
+</div>
+<div class="site-footer">
+  <div class="ft-in">
+    <div class="ft-left"><b>NYC DOE &middot; Division of Early Childhood Education</b><div>Early Childhood Management System (ECMS)</div></div>
+    <nav class="ft-nav"><a href="index.html">User Guide Home</a></nav>
+  </div>
+</div>
+</body></html>

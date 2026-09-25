@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>ECMS User Guide</title><style>
+:root{--ink:#1B2430;--head:#0B2545;--muted:#5B6478;--link:#1657CE;--line:#DCE1EA;--line2:#EAEDF3;--code:#F5F7FB;--navy:#0B2545;--accent:#1657CE;--do:#1657CE;--res:#1E8E5A;--soft:#F5F7FB;--warn:#B8860B;--brandA:#0072CE;--brandB:#00A65A;--brandC:#F5A623;--brandD:#D0103A;}
+*{box-sizing:border-box;} html{scroll-behavior:smooth;}
+body{margin:0;color:var(--ink);background:#fff;font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;line-height:1.65;font-size:16px;}
+a{color:var(--link);text-decoration:none;} a:hover{text-decoration:underline;}
+.topbar{position:sticky;top:0;z-index:10;box-shadow:0 1px 0 var(--line);}
+.tb-top{background:#fff;border-bottom:1px solid var(--line);}
+.tb-top .in{max-width:1260px;margin:0 auto;padding:14px 32px;display:flex;align-items:center;gap:12px;}
+.doe-logo{display:flex;align-items:baseline;gap:1px;font-weight:800;font-size:20px;letter-spacing:.2px;}
+.doe-logo b:nth-child(1){color:var(--brandA);} .doe-logo b:nth-child(2){color:var(--brandC);} .doe-logo b:nth-child(3){color:var(--brandB);} .doe-logo b:nth-child(4){color:var(--brandD);}
+.doe-sub{color:var(--muted);font-size:12.5px;padding-left:10px;border-left:1px solid var(--line);}
+.tb-bottom{background:var(--navy);}
+.tb-bottom .in{max-width:1260px;margin:0 auto;padding:10px 32px;display:flex;align-items:center;gap:22px;}
+.ecms-brand{color:#fff;font-weight:700;font-size:15px;letter-spacing:.3px;}
+.topnav{display:flex;gap:24px;margin-left:6px;}
+.topnav a{color:#cfe0fb;font-weight:600;font-size:13.5px;}
+.topnav a.cur{color:#fff;}
+@media (max-width:760px){.topnav{display:none;}}
+.wrap{max-width:1180px;margin:0 auto;padding:8px 32px 60px;}
+.hero{position:relative;overflow:hidden;background:linear-gradient(135deg,#0B2545,#1657CE);color:#fff;border-radius:14px;padding:40px 42px;margin:26px 0 6px;}
+.hero::after{content:"";position:absolute;right:-60px;top:-60px;width:240px;height:240px;border-radius:50%;background:rgba(255,255,255,.07);}
+.hero::before{content:"";position:absolute;right:70px;bottom:-90px;width:200px;height:200px;border-radius:50%;background:rgba(255,255,255,.05);}
+.hero .eyebrow{position:relative;z-index:1;font-size:11px;letter-spacing:1.4px;text-transform:uppercase;color:#BFD3F5;font-weight:700;}
+.hero h1{position:relative;z-index:1;color:#fff;margin:10px 0 10px;font-size:32px;}
+.hero p{position:relative;z-index:1;color:#E4ECFB;margin:0;font-size:16px;max-width:700px;}
+.statbar{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:20px 0 6px;}
+.stat{border:1px solid var(--line);border-radius:10px;padding:14px 16px;background:#fff;}
+.stat .n{font-size:24px;font-weight:800;color:var(--head);line-height:1;}
+.stat .t{font-size:12.5px;color:var(--muted);margin-top:6px;}
+h2{font-size:22px;color:var(--head);font-weight:700;margin:38px 0 6px;padding-bottom:8px;border-bottom:1px solid var(--line);}
+p.lead{margin:8px 0 4px;color:var(--muted);font-size:15px;}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin:20px 0;}
+.card{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:12px;padding:22px 24px;background:#fff;transition:.15s;position:relative;}
+.card:hover{box-shadow:0 8px 22px rgba(11,37,69,.10);border-color:#c9dcf7;transform:translateY(-2px);}
+.card .ic{width:42px;height:42px;border-radius:10px;background:#EAF2FE;display:flex;align-items:center;justify-content:center;color:var(--accent);margin-bottom:14px;}
+.card .ic svg{width:22px;height:22px;}
+.card .k{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--accent);font-weight:700;}
+.card h3{margin:6px 0 8px;font-size:18px;color:var(--head);}
+.card p{margin:0 0 14px;color:var(--muted);font-size:14px;}
+.card .meta{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 16px;}
+.chip{font-size:11.5px;font-weight:600;color:var(--navy);background:var(--soft);border:1px solid var(--line);border-radius:20px;padding:3px 10px;}
+.chip.soon{color:var(--warn);background:#FFF8E8;border-color:#F0DDA6;}
+.card a.open{margin-top:auto;font-weight:700;color:var(--accent);}
+.card.disabled{opacity:.72;}
+.card.disabled h3{color:var(--muted);}
+.card .soonlbl{font-weight:700;color:var(--muted);}
+.callout{background:var(--soft);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:6px;padding:14px 18px;margin:14px 0;font-size:14.5px;}
+.site-footer{background:var(--navy);color:#fff;margin-top:48px;}
+.site-footer .ft-in{max-width:1180px;margin:0 auto;padding:22px 32px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px;}
+.ft-left b{font-size:14px;} .ft-left div{color:#B9C7E3;font-size:12.5px;margin-top:4px;}
+.ft-nav{display:flex;gap:20px;flex-wrap:wrap;}
+.ft-nav a{color:#fff;font-size:13px;}
+.ft-sub{margin:0;padding:0 32px 30px;max-width:1180px;margin:0 auto;color:#8FA3C6;font-size:12px;}
+@media (max-width:900px){.cards,.statbar{grid-template-columns:1fr;}}
+</style></head>
+<body>
+<div class="topbar">
+  <div class="tb-top"><div class="in">
+    <span class="doe-logo"><b>N</b><b>Y</b><b>C</b></span>
+    <span class="doe-sub">Department of Education &middot; Division of Early Childhood Education</span>
+  </div></div>
+  <div class="tb-bottom"><div class="in">
+    <span class="ecms-brand">ECMS User Guide</span>
+    <nav class="topnav"><a href="index.html" class="cur">Home</a></nav>
+  </div></div>
+</div>
+<div class="wrap">
+  <main id="top">
+    <div class="hero">
+      <p class="eyebrow">Early Childhood Management System &middot; Step-by-step training</p>
+      <h1>ECMS User Guide</h1>
+      <p>Your hub for illustrated, step-by-step guides to every major ECMS workflow &mdash; from setting up a new
+      CBO or FCCN vendor through enrollment, attendance, budgets, invoicing, and discharges. Select a guide
+      below to open it. Each guide shows real screens with the exact clicks (<strong>DO</strong>) and the
+      exact result (<strong>RESULT</strong>) to expect at every step.</p>
+    </div>
+    <div class="statbar">
+      <div class="stat"><div class="n">11</div><div class="t">Published guides</div></div>
+      <div class="stat"><div class="n">100%</div><div class="t">Illustrated with real ECMS screenshots</div></div>
+      <div class="stat"><div class="n">UAT</div><div class="t">Screens captured in the ECMS UAT sandbox</div></div>
+    </div>
+
+    <h2 id="guides">Guides</h2>
+    <p class="lead">Each guide is self-contained and pairs every step with a clear <strong>DO</strong> (what to
+    click, type, or select) and <strong>RESULT</strong> (what you should see happen next), illustrated with a
+    real screenshot.</p>
+
+    <div class="cards" id="cards">
+
+      <div class="card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/><path d="M9 9v.01M9 12v.01M9 15v.01M9 18v.01"/></svg></div>
+        <div class="k">Guide 1 &middot; Site &amp; Vendor Setup</div>
+        <h3>Vendor &amp; Site Setup (CBO)</h3>
+        <p>Create a new Community-Based Organization account, add its physical site, assign a site contact,
+        provision that contact with a vendor portal login, and manage ongoing site closure/reopen and
+        vendor staff tracking.</p>
+        <div class="meta"><span class="chip">18 steps</span><span class="chip">~18 min read</span></div>
+        <a class="open" href="guide-01-vendor-site-setup-cbo.html">Open guide &rarr;</a>
+      </div>
+
+      <div class="card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M4 12a8 8 0 0 1 14-5"/><path d="M20 12a8 8 0 0 1-14 5"/></svg></div>
+        <div class="k">Guide 2 &middot; Site &amp; Vendor Setup</div>
+        <h3>FCCN Network &amp; Provider Setup</h3>
+        <p>Set up a Family Child Care Network account and affiliate individual home-based FCC Providers with it.</p>
+        <div class="meta"><span class="chip">10 steps</span><span class="chip">~10 min read</span></div>
+        <a class="open" href="guide-02-fccn-network-provider-setup.html">Open guide &rarr;</a>
+      </div>
+
+      <div class="card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 13h6M9 17h6"/></svg></div>
+        <div class="k">Guide 3 &middot; Contracts</div>
+        <h3>Contracts &amp; Seats</h3>
+        <p>Create a contract and contract period for a vendor, define funded seats, and use the
+        FY Seat Planning app to draft/publish an upcoming fiscal year's full seat dataset.</p>
+        <div class="meta"><span class="chip">14 steps</span><span class="chip">~14 min read</span></div>
+        <a class="open" href="guide-03-contracts-seats.html">Open guide &rarr;</a>
+      </div>
+
+      <div class="card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+        <div class="k">Guide 4 &middot; Enrollments</div>
+        <h3>Enrollments &mdash; CBO</h3>
+        <p>Finish a MySchools draft enrollment, submit it for review, and track it through DOE approval,
+        registration packet requirements, Admit Code assignment, ACCIS eligibility, and auto-approval.</p>
+        <div class="meta"><span class="chip">15 steps</span><span class="chip">~19 min read</span></div>
+        <a class="open" href="guide-04-enrollments-cbo.html">Open guide &rarr;</a>
+      </div>
+
+      <div class="card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <div class="k">Guide 5 &middot; Enrollments</div>
+        <h3>Enrollments &mdash; FCCN</h3>
+        <p>The same enrollment workflow from the FCCN side, with each place a home-Provider affiliation
+        changes the process called out explicitly.</p>
+        <div class="meta"><span class="chip">9 steps</span><span class="chip">~11 min read</span></div>
+        <a class="open" href="guide-05-enrollments-fccn.html">Open guide &rarr;</a>
+      </div>
+
+      <div class="card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><path d="M9 16l2 2 4-4"/></svg></div>
+        <div class="k">Guide 6 &middot; Attendance</div>
+        <h3>Attendance &mdash; CBO</h3>
+        <p>Record daily attendance for enrolled students and certify a full month before invoicing.</p>
+        <div class="meta"><span class="chip">9 steps</span><span class="chip">~9 min read</span></div>
+        <a class="open" href="guide-06-attendance-cbo.html">Open guide &rarr;</a>
+      </div>
+
+      <div class="card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
+        <div class="k">Guide 7 &middot; Attendance</div>
+        <h3>Attendance &mdash; FCCN / SDY (TITO)</h3>
+        <p>How clock-in/clock-out (TITO) attendance for extended-day and SDY seats differs from standard
+        CBO attendance, plus SDY+ indicators, the 176-day attendance limit, and FCCN calendar management.</p>
+        <div class="meta"><span class="chip">14 steps</span><span class="chip">~15 min read</span></div>
+        <a class="open" href="guide-07-attendance-fccn-sdy-tito.html">Open guide &rarr;</a>
+      </div>
+
+      <div class="card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+        <div class="k">Guide 8 &middot; Budgets</div>
+        <h3>Budget Creation &amp; Approval</h3>
+        <p>Build a site's yearly budget and follow it through the OA &rarr; OD (and, when required, Central
+        Approver) review chain.</p>
+        <div class="meta"><span class="chip">10 steps</span><span class="chip">~11 min read</span></div>
+        <a class="open" href="guide-08-budget-creation-approval.html">Open guide &rarr;</a>
+      </div>
+
+      <div class="card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-2"/><path d="M9 3a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1z"/><path d="M9 12h6M9 16h6"/></svg></div>
+        <div class="k">Guide 9 &middot; Invoices</div>
+        <h3>Invoice Creation &amp; Payment</h3>
+        <p>Submit a monthly invoice against certified attendance and an approved budget, through OA &rarr; OD
+        review, Advance Payment invoices, third-level Central Approval, and on to FAMIS payment.</p>
+        <div class="meta"><span class="chip">11 steps</span><span class="chip">~15 min read</span></div>
+        <a class="open" href="guide-09-invoice-creation-payment.html">Open guide &rarr;</a>
+      </div>
+
+      <div class="card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><path d="M9 12h6M9 16h4"/></svg></div>
+        <div class="k">Guide 10 &middot; Discharges</div>
+        <h3>Discharges</h3>
+        <p>Formally end a child's enrollment &mdash; required documentation, date rules, and how it updates
+        attendance, enrollment, and outside systems.</p>
+        <div class="meta"><span class="chip">8 steps</span><span class="chip">~9 min read</span></div>
+        <a class="open" href="guide-10-discharges.html">Open guide &rarr;</a>
+      </div>
+
+      <div class="card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></div>
+        <div class="k">Guide 11 &middot; Enrollments</div>
+        <h3>Summer Enrollments</h3>
+        <p>The automated summer-enrollment lifecycle &mdash; auto-creation for EDY/CTL seat types, vendor
+        review and submission, auto-approval, late-submission handling, and the manual-creation fallback.</p>
+        <div class="meta"><span class="chip">12 steps</span><span class="chip">~13 min read</span></div>
+        <a class="open" href="guide-11-summer-enrollments.html">Open guide &rarr;</a>
+      </div>
+
+    </div>
+
+    <div class="callout">
+      <strong>Coverage.</strong> All 11 guides above are illustrated end-to-end with real screenshots from the
+      ECMS UAT sandbox, following one continuous running example (Cedar Point Early Childhood Academy for the
+      CBO track, Riverbend Family Childcare Network for the FCCN track) wherever the workflow allowed it, so
+      the guides can be read either standalone or as one connected story. Several guides also cover deeper
+      features found via a cross-reference against the signed and draft Phase 2 BRDs and Jira corpus (Site
+      Closure/Reopen, Vendor Staff Tracking, Seat Planning, SDY+/176-day limits, Advance Payment Invoices,
+      Central Approval, Admit Codes, ACCIS eligibility, auto-approval, and the full Enrollment Change Request
+      family) &mdash; each such addition cites its source Jira key inline.
+    </div>
+  </main>
+</div>
+<div class="site-footer">
+  <div class="ft-in">
+    <div class="ft-left"><b>NYC DOE &middot; Division of Early Childhood Education</b><div>Early Childhood Management System (ECMS)</div></div>
+    <nav class="ft-nav"><a href="index.html">User Guide Home</a></nav>
+  </div>
+</div>
+<p class="ft-sub">Internal training material &middot; ECMS UAT sandbox screenshots &middot; not for external distribution.</p>
+</body></html>

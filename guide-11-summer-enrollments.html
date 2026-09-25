@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Summer Enrollments — ECMS User Guide</title><style>
+:root{--ink:#1B2430;--head:#0B2545;--muted:#5B6478;--link:#1657CE;--line:#DCE1EA;--line2:#EAEDF3;--code:#F5F7FB;--navy:#0B2545;--accent:#1657CE;--do:#1657CE;--res:#1E8E5A;--soft:#F5F7FB;--brandA:#0072CE;--brandB:#00A65A;--brandC:#F5A623;--brandD:#D0103A;}
+*{box-sizing:border-box;} html{scroll-behavior:smooth;}
+body{margin:0;color:var(--ink);background:#fff;font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;line-height:1.65;font-size:16px;}
+a{color:var(--link);text-decoration:none;} a:hover{text-decoration:underline;}
+code{font-family:'SFMono-Regular',Consolas,Menlo,monospace;background:var(--code);border:1px solid var(--line);border-radius:4px;padding:1px 6px;font-size:13.5px;color:#0a2a5e;}
+.topbar{position:sticky;top:0;z-index:10;box-shadow:0 1px 0 var(--line);}
+.tb-top{background:#fff;border-bottom:1px solid var(--line);}
+.tb-top .in{max-width:1260px;margin:0 auto;padding:14px 32px;display:flex;align-items:center;gap:12px;}
+.doe-logo{display:flex;align-items:baseline;gap:1px;font-weight:800;font-size:20px;letter-spacing:.2px;}
+.doe-logo b:nth-child(1){color:var(--brandA);} .doe-logo b:nth-child(2){color:var(--brandC);} .doe-logo b:nth-child(3){color:var(--brandB);} .doe-logo b:nth-child(4){color:var(--brandD);}
+.doe-sub{color:var(--muted);font-size:12.5px;padding-left:10px;border-left:1px solid var(--line);}
+.tb-bottom{background:var(--navy);}
+.tb-bottom .in{max-width:1260px;margin:0 auto;padding:10px 32px;display:flex;align-items:center;gap:22px;}
+.ecms-brand{color:#fff;font-weight:700;font-size:15px;letter-spacing:.3px;}
+.topnav{display:flex;gap:24px;margin-left:6px;}
+.topnav a{color:#cfe0fb;font-weight:600;font-size:13.5px;}
+.topnav a.cur{color:#fff;}
+@media (max-width:760px){.topnav{display:none;}}
+.crumbs{max-width:1260px;margin:0 auto;padding:16px 32px 0;font-size:13px;color:var(--muted);}
+.crumbs a{color:var(--muted);} .crumbs span{margin:0 7px;}
+.wrap{max-width:1260px;margin:0 auto;padding:8px 32px 60px;display:grid;grid-template-columns:270px minmax(0,1fr);gap:52px;}
+main{min-width:0;max-width:840px;}
+h1{font-size:32px;line-height:1.2;color:var(--head);margin:14px 0 6px;font-weight:700;}
+.lead{font-size:16.5px;color:var(--ink);margin:10px 0 4px;}
+.subtext{color:var(--muted);font-size:14px;margin:2px 0 0;}
+h2{font-size:22px;color:var(--head);font-weight:700;margin:42px 0 6px;padding-bottom:8px;border-bottom:1px solid var(--line);}
+h3{font-size:17.5px;color:var(--head);font-weight:700;margin:8px 0 2px;}
+p{margin:10px 0;}
+ul.bul{margin:10px 0;padding-left:22px;} ul.bul li{margin:6px 0;}
+table{border-collapse:collapse;width:100%;margin:16px 0;font-size:14.5px;}
+th,td{border:1px solid var(--line);padding:9px 13px;text-align:left;vertical-align:top;}
+th{background:var(--soft);color:var(--head);font-weight:700;}
+.lbl{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;padding:2px 9px;border-radius:4px;margin-right:8px;vertical-align:middle;}
+.lbl-do{background:#E6EFFC;color:var(--do);} .lbl-res{background:#E5F5EC;color:var(--res);}
+.step{scroll-margin-top:118px;border-top:1px solid var(--line2);padding-top:28px;margin-top:28px;}
+.step:first-of-type{border-top:none;margin-top:14px;padding-top:8px;}
+.step .stepnum{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;background:var(--navy);color:#fff;font-weight:700;font-size:14px;margin-right:10px;vertical-align:middle;}
+.step h3{display:inline;}
+h2,h3{scroll-margin-top:118px;}
+figure{margin:14px 0 4px;}
+figure img{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:8px;box-shadow:0 4px 14px rgba(11,37,69,.08);}
+figcaption{font-size:13px;color:var(--muted);margin-top:8px;font-style:italic;}
+.callout{background:var(--soft);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:6px;padding:14px 18px;margin:14px 0;}
+.callout b{color:var(--head);}
+.note{background:#fff8ec;border:1px solid #f3e2bd;border-left:4px solid #e0a127;border-radius:6px;padding:6px 18px;margin:14px 0;}
+.sidenav{position:sticky;top:104px;align-self:start;font-size:14px;max-height:calc(100vh - 120px);overflow:auto;padding-right:6px;}
+.nav-cat{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);font-weight:700;padding:0 0 10px;border-bottom:1px solid var(--line);margin-bottom:8px;}
+ul.nav{list-style:none;margin:0;padding:0;} ul.nav>li{margin:2px 0;}
+a.lvl1{display:block;padding:7px 10px;border-radius:6px;color:var(--head);font-weight:600;font-size:13.6px;}
+a.lvl1:hover{background:var(--soft);text-decoration:none;}
+a.lvl1.cur{color:var(--accent);background:var(--soft);border-left:3px solid var(--accent);padding-left:8px;}
+.backhome{display:inline-block;margin:14px 0 4px;font-weight:700;font-size:13.5px;}
+.meta-row{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 6px;}
+.chip{font-size:11.5px;font-weight:600;color:var(--navy);background:var(--soft);border:1px solid var(--line);border-radius:20px;padding:3px 10px;}
+.site-footer{background:var(--navy);color:#fff;margin-top:48px;}
+.site-footer .ft-in{max-width:1260px;margin:0 auto;padding:22px 32px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px;}
+.ft-left b{font-size:14px;} .ft-left div{color:#B9C7E3;font-size:12.5px;margin-top:4px;}
+.ft-nav a{color:#fff;font-size:13px;}
+@media (max-width:900px){.wrap{grid-template-columns:1fr;}.sidenav{position:static;max-height:none;}}
+</style></head>
+<body>
+<div class="topbar">
+  <div class="tb-top"><div class="in">
+    <span class="doe-logo"><b>N</b><b>Y</b><b>C</b></span>
+    <span class="doe-sub">Department of Education &middot; Division of Early Childhood Education</span>
+  </div></div>
+  <div class="tb-bottom"><div class="in">
+    <span class="ecms-brand">ECMS User Guide</span>
+    <nav class="topnav"><a href="index.html">Home</a></nav>
+  </div></div>
+</div>
+<div class="crumbs"><a href="index.html">ECMS User Guide</a><span>/</span>Summer Enrollments</div>
+<div class="wrap">
+
+  <nav class="sidenav">
+    <div class="nav-cat">On this page</div>
+    <ul class="nav">
+      <li><a class="lvl1" href="#overview">Overview</a></li>
+      <li><a class="lvl1" href="#step-1">1. ECMS auto-creates a Draft summer enrollment</a></li>
+      <li><a class="lvl1" href="#step-2">2. It appears on the student's Contact record</a></li>
+      <li><a class="lvl1" href="#step-3">3. The vendor sees it in the portal</a></li>
+      <li><a class="lvl1" href="#step-4">4. Vendor reviews and edits before submitting</a></li>
+      <li><a class="lvl1" href="#step-5">5. Vendor submits the summer enrollment</a></li>
+      <li><a class="lvl1" href="#step-6">6. ECMS auto-approves it on submission</a></li>
+      <li><a class="lvl1" href="#step-7">7. Exception: an address change routes to review</a></li>
+      <li><a class="lvl1" href="#step-8">8. No student screening record is created</a></li>
+      <li><a class="lvl1" href="#step-9">9. Late submissions still resolve automatically</a></li>
+      <li><a class="lvl1" href="#step-10">10. Summer enrollments in the reporting dashboard</a></li>
+      <li><a class="lvl1" href="#step-11">11. End of the summer session</a></li>
+      <li><a class="lvl1" href="#step-12">12. The manual fallback for late-approved regular enrollments</a></li>
+    </ul>
+    <a class="backhome" href="index.html">&larr; Back to User Guide home</a>
+  </nav>
+
+  <main id="top">
+    <h1>Summer Enrollments</h1>
+    <p class="lead">A separate, mostly-automated enrollment lifecycle that runs alongside the regular school-year
+    enrollment lifecycle every summer. ECMS itself is the primary actor for most of this guide &mdash; it
+    creates the records, and (in almost every case) it approves them too &mdash; with the CBO/FCCN vendor's
+    <strong>Enrollment Manager</strong> reviewing, editing, and submitting each one, and a <strong>DOE Enrollment
+    Specialist</strong> only entering the picture for one specific exception.</p>
+    <div class="meta-row">
+      <span class="chip">12 steps</span><span class="chip">~13 min read</span>
+      <span class="chip">Persona: ECMS (automated) / CBO&ndash;FCCN Enrollment Manager / DOE Enrollment Specialist (exception path only)</span>
+    </div>
+
+    <h2 id="overview">Overview</h2>
+    <p>This guide is the summer-specific variant of the enrollment lifecycle already covered in
+    <a href="guide-04-enrollments-cbo.html">Guide 4 (Enrollments &mdash; CBO)</a> and
+    <a href="guide-05-enrollments-fccn.html">Guide 5 (Enrollments &mdash; FCCN)</a> &mdash; it does not re-explain
+    the basic Draft &rarr; Submitted &rarr; Approved &rarr; Active &rarr; Discharged status path, MySchools, OASIS,
+    or ACCIS, all of which work the same way here. What's different about summer is <em>who (or what) does each
+    step</em>. Every summer is preceded by an approved signed BRD, D03.1 (Jira epic <strong>DOEECMS-1676</strong>),
+    that automates almost the entire lifecycle: at the end of the school year, ECMS itself &mdash; not a person
+    &mdash; automatically clones every eligible school-year enrollment into a new Draft summer enrollment. The
+    vendor then reviews, edits, and submits it from the portal exactly as they would any other enrollment. From
+    there, ECMS again acts on its own: it automatically approves the submission, without a DOE Enrollment
+    Specialist in the loop at all &mdash; unless the student's address changed, which is the one case that still
+    routes to a human reviewer. There's also a narrow manual fallback, covered at the end of this guide, for
+    school-year enrollments that get approved <em>after</em> the automation has already run for the year.
+    On the object model, a summer enrollment is not a separate record type: it's the same
+    <code>ECMS_Enrollment__c</code> object, distinguished only by <code>Type__c</code> = <em>Summer</em> instead
+    of <em>Regular</em>. This guide follows one real family through the whole lifecycle &mdash; student
+    <strong>Raj sing</strong> at the <strong>CBO site</strong> (network account &ldquo;CBO Acoount&rdquo;), whose
+    portal-provisioned Enrollment Manager is <strong>Sunny Sing</strong> &mdash; and switches to a small number of
+    sibling records at the same site for the stages Raj sing's own enrollment hadn't reached yet, following the
+    same transparent-about-switching-examples approach used in Guides 8 and 9.</p>
+
+    <div class="step" id="step-1">
+      <h3><span class="stepnum">1</span>ECMS auto-creates a Draft summer enrollment</h3>
+      <p><span class="lbl lbl-do">DO</span> Nothing &mdash; this step happens entirely inside ECMS, with no
+      vendor or DOE action. Per <strong>DOEECMS-2158</strong>, once the last day of the regular school year has
+      passed (the automation runs the night of June 30th, tenant time, provided an active/published vendor site
+      mapping exists for the new fiscal year), the system scans every school-year enrollment in <em>Approved</em>
+      or <em>Information Requested</em> status for the eligible seat types &mdash; HS-CTL, Toddler CTL, Infant
+      CTL, and EDY, across all program types &mdash; and clones one summer enrollment per eligible record.</p>
+      <p><span class="lbl lbl-res">RESULT</span> A brand-new Enrollment record appears with its own unique
+      enrollment number, <strong>Type</strong> = <em>Summer</em>, and <strong>Status</strong> = <em>Draft</em> by
+      default. Almost every field is copied as-is from the school-year enrollment &mdash; except
+      <strong>First Day of Attendance</strong>, which is reset to the first day of summer school. Per the BRD's
+      data-cloning acceptance criteria, <strong>Attendance</strong> records, <strong>Approval History</strong>,
+      and eligibility results are deliberately <em>not</em> copied over (only the underlying student IDs &mdash;
+      Case Number, Child Number, Student ID &mdash; carry across). Below, ENROL-0000000025, Raj sing's newly
+      auto-created summer enrollment: Fiscal Year 2027, First Day of Attendance 6/23/2026, Status Draft, owned by
+      Sunny Sing (the record was cloned from a school-year enrollment already assigned to that Enrollment
+      Manager).</p>
+      <figure>
+        <img src="screenshots/g11-01-draft-summer-enrollment-detail.png" alt="Internal Enrollment detail page for ENROL-0000000025, student Raj sing, Type Summer, Status Draft, First Day of Attendance 6/23/2026, at CBO site" />
+        <figcaption>ENROL-0000000025 &mdash; auto-created Draft summer enrollment for Raj sing (DOEECMS-2158).</figcaption>
+      </figure>
+    </div>
+
+    <div class="step" id="step-2">
+      <h3><span class="stepnum">2</span>It appears on the student's Contact record</h3>
+      <p><span class="lbl lbl-do">DO</span> Nothing further &mdash; navigate to Raj sing's Contact record to
+      confirm this.</p>
+      <p><span class="lbl lbl-res">RESULT</span> Per DOEECMS-2158's Contact-visibility acceptance criteria, the
+      new summer enrollment shows up immediately in the <strong>Enrollments</strong> related list on the
+      student's Contact record, alongside the prior school-year enrollment it was cloned from &mdash; here,
+      Raj sing's Contact shows both ENROL-0000000007 (Discharged, Regular, the closed-out school-year record)
+      and ENROL-0000000025 (Draft, Summer, the new one). Internal ECMS users with enrollment access can see the
+      new record right away, regardless of its status &mdash; there's no waiting period.</p>
+      <figure>
+        <img src="screenshots/g11-02-contact-enrollments-related-list.png" alt="Contact detail page for Raj sing showing an Enrollments related list with two records: ENROL-0000000007 Discharged Regular and ENROL-0000000025 Draft Summer" />
+        <figcaption>Raj sing's Contact record &mdash; the new summer enrollment appears in the Enrollments related list right away.</figcaption>
+      </figure>
+    </div>
+
+    <div class="step" id="step-3">
+      <h3><span class="stepnum">3</span>The vendor sees it in the portal</h3>
+      <p><span class="lbl lbl-do">DO</span> Logged into the vendor portal as Sunny Sing (Enrollment Manager for
+      CBO Acoount), open <strong>Student Enrollments</strong>.</p>
+      <p><span class="lbl lbl-res">RESULT</span> Per DOEECMS-2169 AC1, once a summer enrollment has been
+      auto-created, it's immediately visible to the vendor in the portal's Enrollments list, mixed in with
+      enrollments at every other stage of the lifecycle &mdash; here, Draft (e.g. Toofu Dairy 2), Submitted
+      (Toofu Dairy), and already-Approved records (Agoda Jio, Martin Hook) all sit side by side at CBO site.</p>
+      <figure>
+        <img src="screenshots/g11-03-portal-enrollments-list.png" alt="Vendor portal Student Enrollments list, logged in as Sunny Sing of CBO Acoount, showing 12 enrollments at CBO site in a mix of Draft, Submitted, Approved and Discharged statuses" />
+        <figcaption>Vendor portal &mdash; Enrollments list, scoped to CBO site, showing summer enrollments at multiple stages.</figcaption>
+      </figure>
+    </div>
+
+    <div class="step" id="step-4">
+      <h3><span class="stepnum">4</span>Vendor reviews and edits before submitting</h3>
+      <p><span class="lbl lbl-do">DO</span> The Enrollment Manager opens the Draft summer enrollment
+      (ENROL-0000000025, Raj sing) and reviews it, correcting the <strong>First Day of Attendance</strong> or
+      other permitted enrollment details as needed.</p>
+      <p><span class="lbl lbl-res">RESULT</span> Per DOEECMS-2169 AC2, the vendor can update editable fields
+      like First Day of Attendance and other enrollment details, and the system saves whatever they enter.
+      Key student identity fields &mdash; <strong>First Name, Last Name, Date of Birth, and Gender</strong>
+      &mdash; remain non-editable for the vendor on a Draft summer enrollment record. The portal view below shows
+      exactly this record mid-review: Status still Draft, an <strong>Edit</strong> action available, and a
+      <strong>Submit Enrollment</strong> button ready for the next step.</p>
+      <figure>
+        <img src="screenshots/g11-04-portal-draft-summer-enrollment-review.png" alt="Vendor portal Enrollment detail page for ENROL-0000000025, Raj sing, Type Summer, Status Draft, with Edit and Submit Enrollment buttons visible" />
+        <figcaption>Vendor portal &mdash; reviewing the Draft summer enrollment before submission (DOEECMS-2169).</figcaption>
+      </figure>
+    </div>
+
+    <div class="step" id="step-5">
+      <h3><span class="stepnum">5</span>Vendor submits the summer enrollment</h3>
+      <p><span class="lbl lbl-do">DO</span> Once satisfied, the Enrollment Manager clicks
+      <strong>Submit Enrollment</strong>.</p>
+      <p><span class="lbl lbl-res">RESULT</span> Per DOEECMS-2169 AC3, the enrollment is submitted following the
+      existing validation and flow rules, and <strong>Status</strong> advances to <em>Submitted</em>. The example
+      below, ENROL-0000000069 (Toofu Dairy, same CBO site), shows this state: Type Summer, Status Submitted,
+      Fiscal Year 2027, with an <strong>Enrolment Specialist Approval</strong> step already sitting Pending in
+      Approval History &mdash; the trigger for what happens automatically in the next step.</p>
+      <figure>
+        <img src="screenshots/g11-05-portal-submitted-summer-enrollment.png" alt="Vendor portal Enrollment detail page for ENROL-0000000069, Toofu Dairy, Type Summer, Status Submitted, with an Approval History showing a Pending Enrolment Specialist Approval step" />
+        <figcaption>ENROL-0000000069, submitted &mdash; the auto-approve automation now picks this up (DOEECMS-2169 AC3).</figcaption>
+      </figure>
+    </div>
+
+    <div class="step" id="step-6">
+      <h3><span class="stepnum">6</span>ECMS auto-approves it on submission</h3>
+      <p><span class="lbl lbl-do">DO</span> Nothing &mdash; this is the headline automation in
+      <strong>DOEECMS-2164</strong>. Unlike a regular school-year enrollment, a summer enrollment does not wait
+      in the Enrollment Specialists' review queue.</p>
+      <p><span class="lbl lbl-res">RESULT</span> The moment the vendor submits, ECMS immediately approves the
+      record itself: <strong>Status</strong> flips to <em>Approved</em>, the <strong>Auto Approved</strong>
+      checkbox is set, and both the portal and internal path bars reflect Approved. An
+      <strong>Approval History</strong> entry is written with the note
+      &ldquo;<em>Auto-approved vendor-submitted summer enrollment.</em>&rdquo; &mdash; the audit trail
+      DOEECMS-2164 AC1 calls for. Below, ENROL-0000000373 (Agoda Jio, CBO site): Approved, Auto Approved checked,
+      and that exact comment recorded against the Enrolment Specialist Approval step. After submission the
+      record is read-only to the vendor again, same as before.</p>
+      <figure>
+        <img src="screenshots/g11-06-auto-approved-summer-enrollment.png" alt="Internal Enrollment detail page for ENROL-0000000373, Agoda Jio, Type Summer, Status Approved, Auto Approved checked, with an Approval History entry commented Auto-approved vendor-submitted summer enrollment" />
+        <figcaption>ENROL-0000000373 &mdash; auto-approved the instant it was submitted, no Enrollment Specialist involved (DOEECMS-2164 AC1).</figcaption>
+      </figure>
+      <div class="note">
+        <b>Note on the &ldquo;actor.&rdquo;</b> DOEECMS-2164 AC1 calls for the Approval History entry's actor to
+        read <em>System</em>. In this UAT org the Actual Approver field instead shows the enrollment's own
+        submitting portal user (here, Sunny Sing) &mdash; the automation runs in that user's context rather than
+        under a distinct system account. The distinguishing signal in practice is the
+        <strong>Auto Approved</strong> checkbox plus the comment text, not the actor name.
+      </div>
+    </div>
+
+    <div class="step" id="step-7">
+      <h3><span class="stepnum">7</span>Exception: an address change routes to review</h3>
+      <p><span class="lbl lbl-do">DO</span> Nothing extra from the vendor's side &mdash; but if the student's
+      address was modified as part of the vendor's edits before submission, be aware the outcome is different
+      from Step 6.</p>
+      <p><span class="lbl lbl-res">RESULT</span> Per DOEECMS-2164's additional context, if the student's address
+      was changed, the enrollment does <em>not</em> auto-approve. Instead it requires review by a DOE
+      <strong>Enrollment Specialist</strong> through the existing review flow, and <strong>Status</strong> stays
+      at <em>Submitted</em> until that review completes &mdash; this is the one path in the whole summer
+      lifecycle where a person, not the system, makes the approval decision. The system still stores the updated
+      address on the student's Contact record, overwriting the previous one. Internally, this is the same
+      Enrollments list every other queued record shows up in &mdash; there's no separate "address exception"
+      queue; an Enrollment Specialist simply finds it the same way they'd find any Submitted record.</p>
+      <figure>
+        <img src="screenshots/g11-07-internal-enrollments-list-context.png" alt="Internal Enrollments list view showing enrollment records across Draft, Submitted, Approved, and Discharged statuses at multiple sites, including the CBO site summer enrollments" />
+        <figcaption>Internal Enrollments list &mdash; where an address-changed summer submission would sit, same as any other queued record (DOEECMS-2164).</figcaption>
+      </figure>
+    </div>
+
+    <div class="step" id="step-8">
+      <h3><span class="stepnum">8</span>No student screening record is created</h3>
+      <p><span class="lbl lbl-do">DO</span> Nothing to do here &mdash; this is a deliberate gap worth knowing
+      about so you don't go looking for something that isn't there.</p>
+      <p><span class="lbl lbl-res">RESULT</span> Per DOEECMS-2164 AC3, submitting a summer enrollment does
+      <em>not</em> automatically create a corresponding <strong>Student Screening</strong> record, unlike a
+      regular school-year enrollment submission, which still does. Look back at the Related List Quick Links on
+      ENROL-0000000373 in Step 6 &mdash; <strong>Student Screenings (0)</strong> &mdash; even though the record
+      is fully Approved. If you're used to seeing a screening appear automatically after a regular enrollment is
+      submitted, don't expect the same behavior here.</p>
+      <div class="callout">
+        <b>Regular enrollments are unaffected.</b> DOEECMS-2164 AC3 is explicit that student screening
+        auto-creation must continue to work normally for regular (non-summer) enrollment records &mdash; this
+        change is scoped to summer submissions only.
+      </div>
+    </div>
+
+    <div class="step" id="step-9">
+      <h3><span class="stepnum">9</span>Late submissions still resolve automatically</h3>
+      <p><span class="lbl lbl-do">DO</span> Nothing &mdash; this covers what happens if a summer enrollment is
+      still sitting in Draft, or gets submitted, after the summer session has already ended.</p>
+      <p><span class="lbl lbl-res">RESULT</span> Per <strong>DOEECMS-2165</strong>, a summer enrollment that is
+      submitted and approved (whether by an Enrollment Specialist or by the automation in Step 6) after the
+      summer period has ended is still resolved consistently: the system automatically updates its status to
+      reflect <em>Approved for the Summer Program</em>, in both the portal and internal path, with no manual
+      status override required or available. Below, ENROL-0000000056 (Martin Hook, CBO site): Approved, with the
+      Approval History comment reading &ldquo;<em>Summer school has ended. This enrollment has been
+      automatically approved.</em>&rdquo; &mdash; the exact late-resolution wording the BRD calls for, distinct
+      from the on-time auto-approve comment in Step 6.</p>
+      <figure>
+        <img src="screenshots/g11-08-late-summer-enrollment-approved.png" alt="Internal Enrollment detail page for ENROL-0000000056, Martin Hook, Type Summer, Status Approved, with an Approval History entry commented Summer school has ended. This enrollment has been automatically approved." />
+        <figcaption>ENROL-0000000056 &mdash; resolved automatically even though summer school had already ended (DOEECMS-2165).</figcaption>
+      </figure>
+    </div>
+
+    <div class="step" id="step-10">
+      <h3><span class="stepnum">10</span>Summer enrollments in the reporting dashboard</h3>
+      <p><span class="lbl lbl-do">DO</span> As DOE internal staff with reporting access, open the
+      <strong>ECMS reporting Dashboard</strong> from Home and set its <strong>Enrollment Type</strong> filter to
+      <em>contains Summer</em>.</p>
+      <p><span class="lbl lbl-res">RESULT</span> Per <strong>DOEECMS-2168</strong>, the existing dashboard
+      components &mdash; not a separate summer-only dashboard &mdash; simply re-render against summer data: Total
+      Active/Approved Enrollments, Total Submitted Enrollments, Enrollments by Status and Seat Type,
+      Enrollments Awaiting Approval, and Enrollments &ndash; Additional Info Needed. The dashboard below is
+      filtered exactly this way and shows real counts (20 Active/Approved, 6 Submitted, 6 Awaiting Approval)
+      across the summer enrollment population. Per the BRD, this same report can be run, refreshed, and exported
+      at any time, regardless of enrollment status, and once summer ends the same components simply reflect
+      regular school-year data again &mdash; no components are removed or hidden.</p>
+      <figure>
+        <img src="screenshots/g11-09-reporting-dashboard-summer.png" alt="ECMS reporting Dashboard filtered by Enrollment Type contains Summer, showing widgets for Total Active/Approved enrollments (20), Total Submitted enrollments (6), Enrollments by Status and Seat Type, Enrollments Awaiting Approval (6), and Enrollments - additional info needed (0)" />
+        <figcaption>ECMS reporting Dashboard, filtered to Summer enrollments &mdash; the same existing components DOE staff already use (DOEECMS-2168).</figcaption>
+      </figure>
+    </div>
+
+    <div class="step" id="step-11">
+      <h3><span class="stepnum">11</span>End of the summer session</h3>
+      <p><span class="lbl lbl-do">DO</span> Nothing &mdash; a formal Discharge closes out the summer enrollment
+      the same way it would close out any enrollment (see the Discharges guide for the general mechanics).</p>
+      <p><span class="lbl lbl-res">RESULT</span> <strong>Status</strong> moves to <em>Discharged</em> with a
+      mandatory <strong>Discharge Date</strong> (DOEECMS-2134 AC3/AC4 &mdash; the system will not save a
+      Discharge without one, on summer or regular enrollments alike). Below, ENROL-0000000041 (Rakul sing, CBO
+      site): Discharged, Discharge Date 7/6/2026, Status Reason &ldquo;Parent Request,&rdquo; with its Approval
+      History still showing the earlier &ldquo;Summer school has ended&rdquo; auto-approval note from Step 9
+      before the record was later discharged.</p>
+      <figure>
+        <img src="screenshots/g11-10-discharged-summer-enrollment.png" alt="Internal Enrollment detail page for ENROL-0000000041, Rakul sing, Type Summer, Status Discharged, Discharge Date 7/6/2026, Status Reason Parent Request" />
+        <figcaption>ENROL-0000000041 &mdash; a summer enrollment closed out through Discharge, same rules as any other enrollment.</figcaption>
+      </figure>
+    </div>
+
+    <div class="step" id="step-12">
+      <h3><span class="stepnum">12</span>The manual fallback for late-approved regular enrollments</h3>
+      <p><span class="lbl lbl-do">DO</span> As a vendor (CBO/FCCN) or Enrollment Specialist, if a
+      <em>regular school-year</em> enrollment gets submitted and approved <strong>after</strong> the June 30th
+      rollover automation has already run &mdash; but summer school hasn't ended yet &mdash; open that Approved
+      (or Discharged, for valid return scenarios) regular enrollment record and click
+      <strong>Create Summer Enrollment</strong>.</p>
+      <p><span class="lbl lbl-res">RESULT</span> Per <strong>DOEECMS-2661</strong>, ECMS deliberately does
+      <em>not</em> auto-roll a late-approved or late-discharged regular enrollment into summer &mdash; the
+      automation in Step 1 already ran once for the year. Instead, the record's page layout surfaces a
+      <strong>Create Summer Enrollment</strong> action so the vendor or Enrollment Specialist can trigger it
+      intentionally. Clicking it clones the school-year enrollment into a new Draft summer enrollment with a new
+      unique enrollment number, using the same cloning behavior as the automatic path in Step 1, and the new
+      record then follows the standard summer submission/auto-approval workflow described in Steps 4&ndash;6.
+      Below, ENROL-0000000937 (a Regular enrollment, First Day of Attendance 7/1/2026, approved well after the
+      rollover date): the <strong>Create Summer Enrollment</strong> button sits right alongside Edit and
+      Enrollment Change Request on the record's action bar.</p>
+      <figure>
+        <img src="screenshots/g11-11-manual-create-summer-enrollment-action.png" alt="Internal Enrollment detail page for ENROL-0000000937, Type Regular, Status Approved, First Day of Attendance 7/1/2026, with a Create Summer Enrollment button in the action bar" />
+        <figcaption>ENROL-0000000937 &mdash; a late-approved regular enrollment with the manual Create Summer Enrollment fallback available (DOEECMS-2661).</figcaption>
+      </figure>
+      <div class="callout">
+        <b>Summer enrollments, end to end.</b> That's the full lifecycle: an automatic Draft at year-end, a
+        vendor review/submit step identical in spirit to Guides 4/5, an automatic approval with only one
+        human-review exception, consistent handling of late submissions, full reporting visibility alongside
+        regular enrollments, and a deliberate manual fallback for the one case the automation is designed to
+        skip. See Guides 4 and 5 for how the underlying status path, MySchools handoff, and OASIS/ACCIS
+        integrations behave day to day.
+      </div>
+    </div>
+
+    <a class="backhome" href="index.html">&larr; Back to User Guide home</a>
+  </main>
+</div>
+<div class="site-footer">
+  <div class="ft-in">
+    <div class="ft-left"><b>NYC DOE &middot; Division of Early Childhood Education</b><div>Early Childhood Management System (ECMS)</div></div>
+    <nav class="ft-nav"><a href="index.html">User Guide Home</a></nav>
+  </div>
+</div>
+</body></html>

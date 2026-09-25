@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Contracts &amp; Seats — ECMS User Guide</title><style>
+:root{--ink:#1B2430;--head:#0B2545;--muted:#5B6478;--link:#1657CE;--line:#DCE1EA;--line2:#EAEDF3;--code:#F5F7FB;--navy:#0B2545;--accent:#1657CE;--do:#1657CE;--res:#1E8E5A;--soft:#F5F7FB;--brandA:#0072CE;--brandB:#00A65A;--brandC:#F5A623;--brandD:#D0103A;}
+*{box-sizing:border-box;} html{scroll-behavior:smooth;}
+body{margin:0;color:var(--ink);background:#fff;font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;line-height:1.65;font-size:16px;}
+a{color:var(--link);text-decoration:none;} a:hover{text-decoration:underline;}
+code{font-family:'SFMono-Regular',Consolas,Menlo,monospace;background:var(--code);border:1px solid var(--line);border-radius:4px;padding:1px 6px;font-size:13.5px;color:#0a2a5e;}
+.topbar{position:sticky;top:0;z-index:10;box-shadow:0 1px 0 var(--line);}
+.tb-top{background:#fff;border-bottom:1px solid var(--line);}
+.tb-top .in{max-width:1260px;margin:0 auto;padding:14px 32px;display:flex;align-items:center;gap:12px;}
+.doe-logo{display:flex;align-items:baseline;gap:1px;font-weight:800;font-size:20px;letter-spacing:.2px;}
+.doe-logo b:nth-child(1){color:var(--brandA);} .doe-logo b:nth-child(2){color:var(--brandC);} .doe-logo b:nth-child(3){color:var(--brandB);} .doe-logo b:nth-child(4){color:var(--brandD);}
+.doe-sub{color:var(--muted);font-size:12.5px;padding-left:10px;border-left:1px solid var(--line);}
+.tb-bottom{background:var(--navy);}
+.tb-bottom .in{max-width:1260px;margin:0 auto;padding:10px 32px;display:flex;align-items:center;gap:22px;}
+.ecms-brand{color:#fff;font-weight:700;font-size:15px;letter-spacing:.3px;}
+.topnav{display:flex;gap:24px;margin-left:6px;}
+.topnav a{color:#cfe0fb;font-weight:600;font-size:13.5px;}
+.topnav a.cur{color:#fff;}
+@media (max-width:760px){.topnav{display:none;}}
+.crumbs{max-width:1260px;margin:0 auto;padding:16px 32px 0;font-size:13px;color:var(--muted);}
+.crumbs a{color:var(--muted);} .crumbs span{margin:0 7px;}
+.wrap{max-width:1260px;margin:0 auto;padding:8px 32px 60px;display:grid;grid-template-columns:270px minmax(0,1fr);gap:52px;}
+main{min-width:0;max-width:840px;}
+h1{font-size:32px;line-height:1.2;color:var(--head);margin:14px 0 6px;font-weight:700;}
+.lead{font-size:16.5px;color:var(--ink);margin:10px 0 4px;}
+.subtext{color:var(--muted);font-size:14px;margin:2px 0 0;}
+h2{font-size:22px;color:var(--head);font-weight:700;margin:42px 0 6px;padding-bottom:8px;border-bottom:1px solid var(--line);}
+h3{font-size:17.5px;color:var(--head);font-weight:700;margin:8px 0 2px;}
+p{margin:10px 0;}
+ul.bul{margin:10px 0;padding-left:22px;} ul.bul li{margin:6px 0;}
+table{border-collapse:collapse;width:100%;margin:16px 0;font-size:14.5px;}
+th,td{border:1px solid var(--line);padding:9px 13px;text-align:left;vertical-align:top;}
+th{background:var(--soft);color:var(--head);font-weight:700;}
+.lbl{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;padding:2px 9px;border-radius:4px;margin-right:8px;vertical-align:middle;}
+.lbl-do{background:#E6EFFC;color:var(--do);} .lbl-res{background:#E5F5EC;color:var(--res);}
+.step{scroll-margin-top:118px;border-top:1px solid var(--line2);padding-top:28px;margin-top:28px;}
+.step:first-of-type{border-top:none;margin-top:14px;padding-top:8px;}
+.step .stepnum{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;background:var(--navy);color:#fff;font-weight:700;font-size:14px;margin-right:10px;vertical-align:middle;}
+.step h3{display:inline;}
+h2,h3{scroll-margin-top:118px;}
+figure{margin:14px 0 4px;}
+figure img{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:8px;box-shadow:0 4px 14px rgba(11,37,69,.08);}
+figcaption{font-size:13px;color:var(--muted);margin-top:8px;font-style:italic;}
+.callout{background:var(--soft);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:6px;padding:14px 18px;margin:14px 0;}
+.callout b{color:var(--head);}
+.note{background:#fff8ec;border:1px solid #f3e2bd;border-left:4px solid #e0a127;border-radius:6px;padding:6px 18px;margin:14px 0;}
+.sidenav{position:sticky;top:104px;align-self:start;font-size:14px;max-height:calc(100vh - 120px);overflow:auto;padding-right:6px;}
+.nav-cat{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);font-weight:700;padding:0 0 10px;border-bottom:1px solid var(--line);margin-bottom:8px;}
+ul.nav{list-style:none;margin:0;padding:0;} ul.nav>li{margin:2px 0;}
+a.lvl1{display:block;padding:7px 10px;border-radius:6px;color:var(--head);font-weight:600;font-size:13.6px;}
+a.lvl1:hover{background:var(--soft);text-decoration:none;}
+a.lvl1.cur{color:var(--accent);background:var(--soft);border-left:3px solid var(--accent);padding-left:8px;}
+.backhome{display:inline-block;margin:14px 0 4px;font-weight:700;font-size:13.5px;}
+.meta-row{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 6px;}
+.chip{font-size:11.5px;font-weight:600;color:var(--navy);background:var(--soft);border:1px solid var(--line);border-radius:20px;padding:3px 10px;}
+.site-footer{background:var(--navy);color:#fff;margin-top:48px;}
+.site-footer .ft-in{max-width:1260px;margin:0 auto;padding:22px 32px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px;}
+.ft-left b{font-size:14px;} .ft-left div{color:#B9C7E3;font-size:12.5px;margin-top:4px;}
+.ft-nav a{color:#fff;font-size:13px;}
+@media (max-width:900px){.wrap{grid-template-columns:1fr;}.sidenav{position:static;max-height:none;}}
+</style></head>
+<body>
+<div class="topbar">
+  <div class="tb-top"><div class="in">
+    <span class="doe-logo"><b>N</b><b>Y</b><b>C</b></span>
+    <span class="doe-sub">Department of Education &middot; Division of Early Childhood Education</span>
+  </div></div>
+  <div class="tb-bottom"><div class="in">
+    <span class="ecms-brand">ECMS User Guide</span>
+    <nav class="topnav"><a href="index.html">Home</a></nav>
+  </div></div>
+</div>
+<div class="crumbs"><a href="index.html">ECMS User Guide</a><span>/</span>Contracts &amp; Seats</div>
+<div class="wrap">
+
+  <nav class="sidenav">
+    <div class="nav-cat">On this page</div>
+    <ul class="nav">
+      <li><a class="lvl1" href="#overview">Overview</a></li>
+      <li><a class="lvl1" href="#step-1">1. Find the vendor's contracts</a></li>
+      <li><a class="lvl1" href="#step-2">2. Start a new contract</a></li>
+      <li><a class="lvl1" href="#step-3">3. Review the saved contract</a></li>
+      <li><a class="lvl1" href="#step-4">4. Open the Contract Periods related list</a></li>
+      <li><a class="lvl1" href="#step-5">5. Add a contract period</a></li>
+      <li><a class="lvl1" href="#step-6">6. Review the saved contract period</a></li>
+      <li><a class="lvl1" href="#step-7">7. Open the Contract Seats related list</a></li>
+      <li><a class="lvl1" href="#step-8">8. Define a contract seat</a></li>
+      <li><a class="lvl1" href="#step-9">9. Review the saved contract seat</a></li>
+      <li><a class="lvl1" href="#step-10">10. Find the Seat Planning tab</a></li>
+      <li><a class="lvl1" href="#step-11">11. Start or open a FY draft seat plan</a></li>
+      <li><a class="lvl1" href="#step-12">12. Open the Seat Plan record and check its Status</a></li>
+      <li><a class="lvl1" href="#step-13">13. Track Finalized and Published datasets</a></li>
+      <li><a class="lvl1" href="#step-14">14. What "drafting" the dataset covers</a></li>
+    </ul>
+    <a class="backhome" href="index.html">&larr; Back to User Guide home</a>
+  </nav>
+
+  <main id="top">
+    <h1>Contracts &amp; Seats</h1>
+    <p class="lead">How to formalize DOE's funding relationship with a CBO/FCCN vendor in ECMS: create a
+    <strong>Contract</strong>, break it into a <strong>Contract Period</strong> (typically a fiscal year), and
+    define the funded <strong>Contract Seats</strong> within that period.</p>
+    <div class="meta-row">
+      <span class="chip">14 steps</span><span class="chip">~14 min read</span><span class="chip">Persona: Operations Analyst / Portfolio Team Member</span>
+    </div>
+
+    <h2 id="overview">Overview</h2>
+    <p>Once a CBO or FCCN exists in ECMS with an account and at least one site (see the
+    <strong>Vendor &amp; Site Setup</strong> guide), DOE still needs to formalize <em>what it's actually paying
+    the vendor to do</em>. That's the job of the <strong>Contract</strong> object: it records the funding
+    relationship between DOE and the vendor, is broken into one or more <strong>Contract Periods</strong>
+    (typically a fiscal year), and each period is then broken into individual <strong>Contract Seats</strong>
+    &mdash; funded enrollment slots of a specific type. This is internal, DOE-side setup work, normally done by
+    an <strong>Operations Analyst</strong> or the newer Phase 2 <strong>Portfolio Team Member</strong> role,
+    which exists specifically to keep contract and seat numbers accurate and validated.</p>
+    <p>This guide continues the running example from Vendor &amp; Site Setup: <strong>Cedar Point Early
+    Childhood Academy</strong>, whose contract, period, and seat already exist in this UAT environment. The
+    result screenshots below show that real record; the "New" form screenshots illustrate the creation steps
+    without actually saving a duplicate.</p>
+    <div class="callout">
+      <b>Where this fits.</b> Contracts &amp; Seats is the second step in the ECMS workflow chain:
+      <strong>Site/Vendor setup &rarr; Contracts &amp; Seats &rarr; Enrollment &rarr; Attendance &rarr; Budget
+      &rarr; Invoice</strong>. Nothing downstream &mdash; not a budget, not an enrollment against a funded
+      seat &mdash; can happen until the contract, its period, and its seats exist.
+    </div>
+
+    <h2>Steps</h2>
+
+    <div class="step" id="step-1">
+      <h3><span class="stepnum">1</span>Find the vendor's contracts</h3>
+      <p><span class="lbl lbl-do">DO</span> Open the CBO/FCCN's <strong>Account</strong> record (here, Cedar
+      Point Early Childhood Academy) and scroll to its <strong>ECMS Contracts</strong> related list.</p>
+      <p><span class="lbl lbl-res">RESULT</span> The related list shows every contract already on file for this
+      vendor &mdash; contract name, linked site, start/end dates, amount, and contract type &mdash; with a
+      <strong>New</strong> button to add another.</p>
+      <figure>
+        <img src="screenshots/g3-01-account-contracts-related-list.png" alt="Cedar Point Early Childhood Academy account, ECMS Contracts related list, showing contract HS-BTF-2026-CP-1101 linked to Cedar Point - Riverdale Campus, dates 7/1/2026-6/30/2027, amount $50,000, type Birth-To-Five (BTF)" />
+        <figcaption>Account &rarr; ECMS Contracts related list.</figcaption>
+      </figure>
+    </div>
+
+    <div class="step" id="step-2">
+      <h3><span class="stepnum">2</span>Start a new contract</h3>
+      <p><span class="lbl lbl-do">DO</span> Click <strong>New</strong> on the related list. The
+      <strong>Vendor</strong> lookup pre-fills to this account. Fill in <strong>Contract Name</strong>,
+      <strong>RFP Number</strong>, <strong>Contract Start/End Date</strong>, <strong>Contract Amount</strong>,
+      and optionally <strong>Contract Type</strong>, <strong>Program Name</strong>, and <strong>Site</strong>.</p>
+      <p><span class="lbl lbl-res">RESULT</span> A "New ECMS Contract" form opens, already linked to the
+      vendor, with fields for the contract's core terms and its FAMIS Contract ID.</p>
+      <figure>
+        <img src="screenshots/g3-02-new-contract-form.png" alt="New ECMS Contract form, Vendor pre-filled to Cedar Point Early Childhood Academy, Contract Name HS-BTF-2027-CP-1102, RFP Number, Contract Start Date 7/1/2027, Contract End Date 6/30/2028, Contract Amount $55,000" />
+        <figcaption>New ECMS Contract form, vendor pre-linked from the related list.</figcaption>
+      </figure>
+      <div class="note">
+        <b>Note:</b> <strong>Contract Type</strong> (e.g. Birth-To-Five/BTF, Head Start/HST, or a legacy
+        carryover type) drives how the contract's seats are later categorized and referenced elsewhere in
+        ECMS &mdash; set it deliberately rather than leaving it at the default.
+      </div>
+    </div>
+
+    <div class="step" id="step-3">
+      <h3><span class="stepnum">3</span>Review the saved contract</h3>
+      <p><span class="lbl lbl-do">DO</span> Click <strong>Save</strong>.</p>
+      <p><span class="lbl lbl-res">RESULT</span> The Contract record is created and you land on its detail
+      page, with a status path (here, <strong>Active</strong>) and related-list quick links for Contract
+      Periods, Budgets, Contract Authorizations, and Contract Reference Documents.</p>
+      <figure>
+        <img src="screenshots/g3-03-contract-detail.png" alt="ECMS Contract detail page for HS-BTF-2026-CP-1101, status path showing Active, Contract Start Date 7/1/2026, Contract End Date 6/30/2027, Contract Amount $50,000, Vendor Cedar Point Early Childhood Academy, Site Cedar Point - Riverdale Campus, Related List Quick Links for Contract Periods (1) and Budgets (1)" />
+        <figcaption>HS-BTF-2026-CP-1101 &mdash; the saved contract record for Cedar Point.</figcaption>
+      </figure>
+    </div>
+
+    <div class="step" id="step-4">
+      <h3><span class="stepnum">4</span>Open the Contract Periods related list</h3>
+      <p><span class="lbl lbl-do">DO</span> From the contract's detail page, click into the <strong>Contract
+      Periods</strong> related list (or its quick link).</p>
+      <p><span class="lbl lbl-res">RESULT</span> The list shows every fiscal-year period defined under this
+      contract &mdash; here, one period running 7/1/2026&ndash;6/30/2027 &mdash; with a <strong>New</strong>
+      button to add the next one.</p>
+      <figure>
+        <img src="screenshots/g3-04-contract-periods-related-list.png" alt="Contract Periods related list on contract HS-BTF-2026-CP-1101, showing period CP-000034 with Period Start Date 7/1/2026 and Period End Date 6/30/2027" />
+        <figcaption>ECMS Contract &rarr; Contract Periods related list.</figcaption>
+      </figure>
+    </div>
+
+    <div class="step" id="step-5">
+      <h3><span class="stepnum">5</span>Add a contract period</h3>
+      <p><span class="lbl lbl-do">DO</span> Click <strong>New</strong>. The <strong>Contract</strong> lookup
+      pre-fills to the parent contract. Fill in <strong>Period Start Date</strong>, <strong>Period End
+      Date</strong>, and <strong>Period Budget Total</strong>.</p>
+      <p><span class="lbl lbl-res">RESULT</span> A "New Contract Period" form opens, pre-linked to the parent
+      contract, with its own auto-numbered <strong>Contract Period ID</strong> and fields for the period's
+      budget total and milestone dates.</p>
+      <figure>
+        <img src="screenshots/g3-05-new-contract-period-form.png" alt="New Contract Period form, Contract pre-filled to HS-BTF-2026-CP-1101, Period Budget Total $55,000, Period Start Date 7/1/2027, Period End Date 6/30/2028" />
+        <figcaption>New Contract Period form, linked back to the parent contract.</figcaption>
+      </figure>
+    </div>
+
+    <div class="step" id="step-6">
+      <h3><span class="stepnum">6</span>Review the saved contract period</h3>
+      <p><span class="lbl lbl-do">DO</span> Click <strong>Save</strong>.</p>
+      <p><span class="lbl lbl-res">RESULT</span> The Contract Period record is created, showing its Period
+      Fiscal Year, milestone dates, and related-list quick links for Contract Seats and Budgets.</p>
+      <figure>
+        <img src="screenshots/g3-06-contract-period-detail.png" alt="Contract Period detail page for CP-000034, linked to contract HS-BTF-2026-CP-1101, Period Fiscal Year 2027, Period Start Date 7/1/2026, Period End Date 6/30/2027, Related List Quick Links showing Contract Seats (1) and Budgets (1)" />
+        <figcaption>CP-000034 &mdash; the saved contract period, fiscal year 2027.</figcaption>
+      </figure>
+      <div class="callout">
+        <b>One period already has a budget.</b> Notice the <strong>Budgets</strong> related list already shows
+        a budget tied to this period. As covered in the ECMS overview, a site's yearly <strong>budget</strong>
+        is a spending plan built against a specific contract and period &mdash; which is exactly why the
+        contract period has to exist, funded and correct, before that budget work can happen.
+      </div>
+    </div>
+
+    <div class="step" id="step-7">
+      <h3><span class="stepnum">7</span>Open the Contract Seats related list</h3>
+      <p><span class="lbl lbl-do">DO</span> From the contract period's detail page, click into the
+      <strong>Contract Seats</strong> related list.</p>
+      <p><span class="lbl lbl-res">RESULT</span> The list shows every funded seat type defined for this period
+      &mdash; here, one seat linked to the <strong>PW-Seat</strong> seat type, with 20 quantity, 5 days, 5
+      hours, $75.00 cost per child, and $1,500.00 total funding &mdash; plus a <strong>New</strong> button.</p>
+      <figure>
+        <img src="screenshots/g3-07-contract-seats-related-list.png" alt="Contract Seats related list on contract period CP-000034, showing seat CS-00000034 linked to Seat PW-Seat, Days 5, Hours 5, Quantity 20, Cost Per Child $75.00, Total Funding $1,500.00" />
+        <figcaption>Contract Period &rarr; Contract Seats related list.</figcaption>
+      </figure>
+    </div>
+
+    <div class="step" id="step-8">
+      <h3><span class="stepnum">8</span>Define a contract seat</h3>
+      <p><span class="lbl lbl-do">DO</span> Click <strong>New</strong>. The <strong>Contract Period</strong>
+      lookup pre-fills. Use the <strong>Seat</strong> lookup to search the Seat Master catalog (e.g.
+      "PW-Seat") and select the seat type, then fill in <strong>Quantity</strong>, <strong>Cost Per
+      Child</strong>, <strong>Days</strong>, and <strong>Hours</strong>.</p>
+      <p><span class="lbl lbl-res">RESULT</span> A "New Contract Seat" form opens, pre-linked to the contract
+      period, with the chosen Seat Master record attached and the funding fields ready to fill in.</p>
+      <figure>
+        <img src="screenshots/g3-08-new-contract-seat-form.png" alt="New Contract Seat form, Contract Period pre-filled to CP-000034, Seat lookup set to PW-Seat, Quantity 20, Cost Per Child $75.00, Days 5, Hours 5" />
+        <figcaption>New Contract Seat form, with the Seat Master catalog lookup filled in.</figcaption>
+      </figure>
+      <div class="note">
+        <b>Note:</b> The <strong>Seat</strong> lookup points to the <strong>Seat Master</strong> catalog
+        &mdash; a shared list of seat types (Seat Type / Contract Type in the glossary) that DOE maintains
+        centrally. You're not typing a seat type by hand here; you're attaching this contract seat to one of
+        those existing catalog entries.
+      </div>
+    </div>
+
+    <div class="step" id="step-9">
+      <h3><span class="stepnum">9</span>Review the saved contract seat</h3>
+      <p><span class="lbl lbl-do">DO</span> Click <strong>Save</strong>.</p>
+      <p><span class="lbl lbl-res">RESULT</span> The Contract Seat record is created, showing Cost Per Child,
+      Quantity, Original Contracted Seat Quantity, the linked Seat, and the calculated Total Funding.</p>
+      <figure>
+        <img src="screenshots/g3-09-contract-seat-detail.png" alt="Contract Seat detail page for CS-00000034, Cost Per Child $75.00, Quantity 20, Original Contracted Seat Quantity 20, Seat PW-Seat, Total Funding $1,500.00, Hours 5, Days 5, linked to Contract Period CP-000034" />
+        <figcaption>CS-00000034 &mdash; the saved contract seat, 20 seats at $75.00/child.</figcaption>
+      </figure>
+      <div class="callout">
+        <b>This number becomes the budget's funding ceiling.</b> Per the ECMS overview's Budgets &amp; Invoices
+        section, a site's budget is built against its contract and period &mdash; and a contract seat's
+        <strong>Quantity</strong> &times; <strong>Cost Per Child</strong> (here, 20 &times; $75.00 =
+        $1,500.00 <strong>Total Funding</strong>) is exactly the kind of seat-level funding figure that budget
+        creators and DOE approvers reconcile against when the budget is built and reviewed. Getting Quantity
+        and Cost Per Child right here, before any budget work starts, is what the Portfolio Team Member role
+        exists to validate.
+      </div>
+      <p>With the contract, period, and seats in place, the next step in the chain is usually enrolling
+      children against these funded seats (see the Enrollment guide) or building the site's budget for this
+      period.</p>
+    </div>
+
+    <h2>Seat Planning: preparing the next fiscal year's dataset</h2>
+    <p>The steps above walk through creating <em>one</em> Contract, Contract Period, and Contract Seat by hand
+    &mdash; useful for a single new vendor or an ad-hoc correction. But per the approved BRD D04.1 (Jira
+    DOEECMS-2183), DOE also runs an annual, org-wide process every December in which the Portfolio team
+    drafts the <em>entire</em> upcoming fiscal year's seat and contract dataset, then publishes it on July 1st
+    so it becomes the live data for the new FY. ECMS supports this with a dedicated <strong>Seat
+    Planning</strong> app, distinct from the per-record contract/seat screens covered above.</p>
+
+    <div class="step" id="step-10">
+      <h3><span class="stepnum">10</span>Find the Seat Planning tab</h3>
+      <p><span class="lbl lbl-do">DO</span> From the internal ECMS nav bar (visible from the app's Home page
+      or any object tab), click <strong>Seat Planning</strong>.</p>
+      <p><span class="lbl lbl-res">RESULT</span> The nav bar shows <strong>Seat Planning</strong> as its own
+      tab, alongside Home, Accounts, ECMS Contracts, Budgets, Invoices, Enrollments, and Student Screenings
+      &mdash; confirming it's a separate, purpose-built app rather than a related list buried under Contracts.</p>
+      <figure>
+        <img src="screenshots/g3-10-nav-bar-seat-planning-tab.png" alt="ECMS internal nav bar showing tabs Home, Seat Planning, Accounts, Contacts, ECMS Contracts, Budgets, Invoices, Enrollments, Student Screenings, and More, with Seat Planning as its own dedicated tab" />
+        <figcaption>The Seat Planning tab, distinct from ECMS Contracts and Budgets.</figcaption>
+      </figure>
+    </div>
+
+    <div class="step" id="step-11">
+      <h3><span class="stepnum">11</span>Start or open a FY draft seat plan</h3>
+      <p><span class="lbl lbl-do">DO</span> On the Seat Planning app page, either fill in a <strong>Fiscal
+      Year</strong> under <strong>Initiate Seat Plan</strong> and click <strong>Next</strong> to start a new
+      one, or open an existing entry from the <strong>Draft Seat Plans</strong> list below it.</p>
+      <p><span class="lbl lbl-res">RESULT</span> The app page is organized into an "Initiate Seat Plan"
+      action at the top and separate list panels underneath for each dataset status. In this UAT org there is
+      currently exactly one seat plan on file: <strong>FY2027</strong>, <strong>Status = Draft</strong>,
+      appearing in the <strong>Draft Seat Plans</strong> list &mdash; this matches the BRD's "Start FY Seat
+      Planning" action creating a draft dataset tagged with fiscal year, status, and creation date.</p>
+      <figure>
+        <img src="screenshots/g3-12-seat-planning-list-view.png" alt="Seat Planning app page with an Initiate Seat Plan panel (Fiscal Year field and Next button) above a Draft Seat Plans list showing one record a1QSK000000iylF, Fiscal Year 2027, Status Draft, Created Date 9/8/2026, and an empty Finalized Seat Plans list below it" />
+        <figcaption>Seat Planning app: Initiate Seat Plan action, Draft Seat Plans list (1 item, FY2027).</figcaption>
+      </figure>
+      <div class="note">
+        <b>Note:</b> This UAT org only has one seat plan on record so far, for FY2027. That's expected for a
+        sandbox that hasn't run a full annual planning cycle &mdash; the list panels themselves (Draft /
+        Finalized / Published, seen in the next step) are what confirm the dataset-lifecycle feature exists,
+        even with just one example record to look at.
+      </div>
+    </div>
+
+    <div class="step" id="step-12">
+      <h3><span class="stepnum">12</span>Open the Seat Plan record and check its Status</h3>
+      <p><span class="lbl lbl-do">DO</span> Click into the FY2027 seat plan record from the Draft Seat Plans
+      list.</p>
+      <p><span class="lbl lbl-res">RESULT</span> The <strong>Seat Plan</strong> detail page opens, with
+      page-header actions for <strong>Edit</strong>, <strong>Manage Seat Mapping</strong>, and
+      <strong>Finalize Seat Plan</strong>. The Details tab on this record is minimal &mdash; just Seat Plan
+      Name, Owner, and system audit fields &mdash; the <strong>Fiscal Year</strong> and <strong>Status</strong>
+      values (2027 / Draft) are the columns you already saw on the list view in the previous step, rather than
+      fields surfaced on this page's layout.</p>
+      <figure>
+        <img src="screenshots/g3-11-seat-plan-detail.png" alt="Seat Plan detail page for record a1QSK000000iylF, page-header actions Edit, Manage Seat Mapping, and Finalize Seat Plan, Details tab showing Seat Plan Name, Owner Moeiz Malik, and Created By / Last Modified By system fields" />
+        <figcaption>Seat Plan detail page, with Manage Seat Mapping and Finalize Seat Plan actions.</figcaption>
+      </figure>
+      <p>Per the BRD, a seat plan's <strong>Status</strong> moves through a defined lifecycle as the annual
+      cycle progresses: <strong>New</strong> (just created) &rarr; <strong>Draft</strong> (editable, being
+      built by the Portfolio team) &rarr; <strong>Finalized</strong> (validated, ready to publish) &rarr;
+      <strong>Published</strong> (live as of July 1st, and downstream-consumable). The <strong>Finalize Seat
+      Plan</strong> action visible above is how a Draft record is expected to move toward that Finalized/
+      Published state.</p>
+    </div>
+
+    <div class="step" id="step-13">
+      <h3><span class="stepnum">13</span>Track Finalized and Published datasets</h3>
+      <p><span class="lbl lbl-do">DO</span> Back on the Seat Planning app page, scroll past Draft Seat Plans
+      to the <strong>Finalized Seat Plans</strong> and <strong>Published Seat Plans</strong> list panels.</p>
+      <p><span class="lbl lbl-res">RESULT</span> Both panels show the same Seat Plan Name / Fiscal Year /
+      Status columns, filtered to their respective status. In this org both currently read <strong>0
+      items</strong> &mdash; consistent with the FY2027 dataset still being in Draft and no prior fiscal year
+      having gone through a full publish/archive cycle yet in this sandbox.</p>
+      <figure>
+        <img src="screenshots/g3-13-seat-planning-published-list.png" alt="Seat Planning app page scrolled down to show Finalized Seat Plans list with 0 items and Published Seat Plans list with 0 items, each with Seat Plan Name, Fiscal Year, and Status columns and a No items to display placeholder" />
+        <figcaption>Finalized and Published Seat Plans lists, both empty in this UAT org.</figcaption>
+      </figure>
+    </div>
+
+    <div class="step" id="step-14">
+      <h3><span class="stepnum">14</span>What "drafting" the dataset covers</h3>
+      <p><span class="lbl lbl-do">DO</span> Understand what happens inside a Draft seat plan before you
+      finalize or publish it &mdash; this guide's UAT record doesn't have populated seat/contract child data to
+      screenshot, so this step summarizes the BRD's documented behavior instead of showing an empty related
+      list.</p>
+      <p><span class="lbl lbl-res">RESULT</span> Per BRD stories DOEECMS-2188 and DOEECMS-2189, drafting a
+      new fiscal year's seat plan is meant to copy the current FY's seat counts and Cost-Per-Child values into
+      an editable planning object, isolated from the live current-FY data until it's published. Portfolio Team
+      Members and OA/ODs can then add, edit, and delete seat and contract data on that draft, collaboratively
+      and incrementally, before an authorized user publishes it on or before July 1st &mdash; at which point
+      it overwrites the live current dataset and the previously-published dataset is archived as a historical
+      record for that prior fiscal year.</p>
+      <div class="callout">
+        <b>Two things ECMS tracks automatically around seat data.</b> Per the BRD:
+        <ul class="bul">
+          <li><strong>Cost-Per-Child change history</strong> (DOEECMS-2186): every update to a Cost-Per-Child
+          value creates a history record capturing the previous value, new value, timestamp, and the user who
+          made the change &mdash; retained permanently and viewable in chronological order on the contract
+          seat record. No history record is created if the value isn't actually changed.</li>
+          <li><strong>OA/OD notification on seat quantity updates</strong> (DOEECMS-2187): whenever a
+          contracted seat quantity is updated &mdash; whether on the live current-FY record or on a Draft
+          record inside the Seat Planning app &mdash; the site's assigned OA/OD is notified, so they can
+          review and adjust the Cost-Per-Child if needed. The notification is expected to clearly state
+          whether the update is for the current fiscal year or the next fiscal year (draft).</li>
+        </ul>
+      </div>
+      <p>This is why Seat Planning exists as its own app rather than another related list: it's the single
+      place the Portfolio team and OA/ODs collaborate on an entire upcoming FY's seats and contracts as one
+      dataset, with its own status lifecycle, instead of editing individual Contract Seat records one at a
+      time.</p>
+    </div>
+
+    <a class="backhome" href="index.html">&larr; Back to User Guide home</a>
+  </main>
+</div>
+<div class="site-footer">
+  <div class="ft-in">
+    <div class="ft-left"><b>NYC DOE &middot; Division of Early Childhood Education</b><div>Early Childhood Management System (ECMS)</div></div>
+    <nav class="ft-nav"><a href="index.html">User Guide Home</a></nav>
+  </div>
+</div>
+</body></html>

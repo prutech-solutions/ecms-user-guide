@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Discharges — ECMS User Guide</title><style>
+:root{--ink:#1B2430;--head:#0B2545;--muted:#5B6478;--link:#1657CE;--line:#DCE1EA;--line2:#EAEDF3;--code:#F5F7FB;--navy:#0B2545;--accent:#1657CE;--do:#1657CE;--res:#1E8E5A;--soft:#F5F7FB;--brandA:#0072CE;--brandB:#00A65A;--brandC:#F5A623;--brandD:#D0103A;}
+*{box-sizing:border-box;} html{scroll-behavior:smooth;}
+body{margin:0;color:var(--ink);background:#fff;font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;line-height:1.65;font-size:16px;}
+a{color:var(--link);text-decoration:none;} a:hover{text-decoration:underline;}
+code{font-family:'SFMono-Regular',Consolas,Menlo,monospace;background:var(--code);border:1px solid var(--line);border-radius:4px;padding:1px 6px;font-size:13.5px;color:#0a2a5e;}
+.topbar{position:sticky;top:0;z-index:10;box-shadow:0 1px 0 var(--line);}
+.tb-top{background:#fff;border-bottom:1px solid var(--line);}
+.tb-top .in{max-width:1260px;margin:0 auto;padding:14px 32px;display:flex;align-items:center;gap:12px;}
+.doe-logo{display:flex;align-items:baseline;gap:1px;font-weight:800;font-size:20px;letter-spacing:.2px;}
+.doe-logo b:nth-child(1){color:var(--brandA);} .doe-logo b:nth-child(2){color:var(--brandC);} .doe-logo b:nth-child(3){color:var(--brandB);} .doe-logo b:nth-child(4){color:var(--brandD);}
+.doe-sub{color:var(--muted);font-size:12.5px;padding-left:10px;border-left:1px solid var(--line);}
+.tb-bottom{background:var(--navy);}
+.tb-bottom .in{max-width:1260px;margin:0 auto;padding:10px 32px;display:flex;align-items:center;gap:22px;}
+.ecms-brand{color:#fff;font-weight:700;font-size:15px;letter-spacing:.3px;}
+.topnav{display:flex;gap:24px;margin-left:6px;}
+.topnav a{color:#cfe0fb;font-weight:600;font-size:13.5px;}
+.topnav a.cur{color:#fff;}
+@media (max-width:760px){.topnav{display:none;}}
+.crumbs{max-width:1260px;margin:0 auto;padding:16px 32px 0;font-size:13px;color:var(--muted);}
+.crumbs a{color:var(--muted);} .crumbs span{margin:0 7px;}
+.wrap{max-width:1260px;margin:0 auto;padding:8px 32px 60px;display:grid;grid-template-columns:270px minmax(0,1fr);gap:52px;}
+main{min-width:0;max-width:840px;}
+h1{font-size:32px;line-height:1.2;color:var(--head);margin:14px 0 6px;font-weight:700;}
+.lead{font-size:16.5px;color:var(--ink);margin:10px 0 4px;}
+.subtext{color:var(--muted);font-size:14px;margin:2px 0 0;}
+h2{font-size:22px;color:var(--head);font-weight:700;margin:42px 0 6px;padding-bottom:8px;border-bottom:1px solid var(--line);}
+h3{font-size:17.5px;color:var(--head);font-weight:700;margin:8px 0 2px;}
+p{margin:10px 0;}
+ul.bul{margin:10px 0;padding-left:22px;} ul.bul li{margin:6px 0;}
+table{border-collapse:collapse;width:100%;margin:16px 0;font-size:14.5px;}
+th,td{border:1px solid var(--line);padding:9px 13px;text-align:left;vertical-align:top;}
+th{background:var(--soft);color:var(--head);font-weight:700;}
+.lbl{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;padding:2px 9px;border-radius:4px;margin-right:8px;vertical-align:middle;}
+.lbl-do{background:#E6EFFC;color:var(--do);} .lbl-res{background:#E5F5EC;color:var(--res);}
+.step{scroll-margin-top:118px;border-top:1px solid var(--line2);padding-top:28px;margin-top:28px;}
+.step:first-of-type{border-top:none;margin-top:14px;padding-top:8px;}
+.step .stepnum{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;background:var(--navy);color:#fff;font-weight:700;font-size:14px;margin-right:10px;vertical-align:middle;}
+.step h3{display:inline;}
+h2,h3{scroll-margin-top:118px;}
+figure{margin:14px 0 4px;}
+figure img{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:8px;box-shadow:0 4px 14px rgba(11,37,69,.08);}
+figcaption{font-size:13px;color:var(--muted);margin-top:8px;font-style:italic;}
+.callout{background:var(--soft);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:6px;padding:14px 18px;margin:14px 0;}
+.callout b{color:var(--head);}
+.note{background:#fff8ec;border:1px solid #f3e2bd;border-left:4px solid #e0a127;border-radius:6px;padding:6px 18px;margin:14px 0;}
+.sidenav{position:sticky;top:104px;align-self:start;font-size:14px;max-height:calc(100vh - 120px);overflow:auto;padding-right:6px;}
+.nav-cat{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);font-weight:700;padding:0 0 10px;border-bottom:1px solid var(--line);margin-bottom:8px;}
+ul.nav{list-style:none;margin:0;padding:0;} ul.nav>li{margin:2px 0;}
+a.lvl1{display:block;padding:7px 10px;border-radius:6px;color:var(--head);font-weight:600;font-size:13.6px;}
+a.lvl1:hover{background:var(--soft);text-decoration:none;}
+a.lvl1.cur{color:var(--accent);background:var(--soft);border-left:3px solid var(--accent);padding-left:8px;}
+.backhome{display:inline-block;margin:14px 0 4px;font-weight:700;font-size:13.5px;}
+.meta-row{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 6px;}
+.chip{font-size:11.5px;font-weight:600;color:var(--navy);background:var(--soft);border:1px solid var(--line);border-radius:20px;padding:3px 10px;}
+.site-footer{background:var(--navy);color:#fff;margin-top:48px;}
+.site-footer .ft-in{max-width:1260px;margin:0 auto;padding:22px 32px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px;}
+.ft-left b{font-size:14px;} .ft-left div{color:#B9C7E3;font-size:12.5px;margin-top:4px;}
+.ft-nav a{color:#fff;font-size:13px;}
+@media (max-width:900px){.wrap{grid-template-columns:1fr;}.sidenav{position:static;max-height:none;}}
+</style></head>
+<body>
+<div class="topbar">
+  <div class="tb-top"><div class="in">
+    <span class="doe-logo"><b>N</b><b>Y</b><b>C</b></span>
+    <span class="doe-sub">Department of Education &middot; Division of Early Childhood Education</span>
+  </div></div>
+  <div class="tb-bottom"><div class="in">
+    <span class="ecms-brand">ECMS User Guide</span>
+    <nav class="topnav"><a href="index.html">Home</a></nav>
+  </div></div>
+</div>
+<div class="crumbs"><a href="index.html">ECMS User Guide</a><span>/</span>Discharges</div>
+<div class="wrap">
+
+  <nav class="sidenav">
+    <div class="nav-cat">On this page</div>
+    <ul class="nav">
+      <li><a class="lvl1" href="#overview">Overview</a></li>
+      <li><a class="lvl1" href="#step-1">1. Open the enrollment to discharge</a></li>
+      <li><a class="lvl1" href="#step-2">2. Review the active enrollment</a></li>
+      <li><a class="lvl1" href="#step-3">3. Start an Enrollment Change Request</a></li>
+      <li><a class="lvl1" href="#step-4">4. Choose "Discharge Request"</a></li>
+      <li><a class="lvl1" href="#step-5">5. Complete the discharge details</a></li>
+      <li><a class="lvl1" href="#step-6">6. DOE reviews the submitted request</a></li>
+      <li><a class="lvl1" href="#step-7">7. DOE approves the discharge</a></li>
+      <li><a class="lvl1" href="#step-8">8. Confirm the enrollment is Discharged</a></li>
+    </ul>
+    <a class="backhome" href="index.html">&larr; Back to User Guide home</a>
+  </nav>
+
+  <main id="top">
+    <h1>Discharges</h1>
+    <p class="lead">How a CBO/FCCN vendor formally ends a currently-enrolled child's placement &mdash; aging
+    out, moving away, or a family deciding to stop &mdash; and how DOE reviews and approves that request so
+    the enrollment moves to its final <strong>Discharged</strong> status.</p>
+    <div class="meta-row">
+      <span class="chip">8 steps</span><span class="chip">~9 min read</span><span class="chip">Persona: CBO/FCCN Enrollment Manager / DOE Enrollment Specialist</span>
+    </div>
+
+    <h2 id="overview">Overview</h2>
+    <p>A <strong>discharge</strong> is the formalized version of "this child is leaving the program." It's
+    initiated by the CBO/FCCN &mdash; usually the <strong>Enrollment Manager</strong> &mdash; from the child's
+    active <strong>Enrollment</strong> record, for reasons like the child aging out of the program, the family
+    moving away, or a parent simply deciding to stop. As the onboarding overview puts it: a discharge
+    "requires supporting paperwork (like a parental release letter), has date-validation rules (e.g., it has
+    to line up with the school calendar), and &mdash; importantly &mdash; it updates attendance and enrollment
+    records and notifies the outside systems that track this child... so everything stays in sync." A DOE
+    <strong>Enrollment Specialist</strong> reviews and approves the request before the enrollment's status
+    bar finally advances to <strong>Discharged</strong>.</p>
+    <div class="callout">
+      <b>Where this fits.</b> Discharge is the closing step of the enrollment lifecycle covered in the
+      Enrollment guides: <strong>Draft &rarr; Submitted &rarr; Approved &rarr; Active &rarr; &hellip; &rarr;
+      Discharged</strong>. It's also the last link in the overall workflow chain &mdash; Site/Contract setup
+      &rarr; Enrollment &rarr; Attendance &rarr; Budget &rarr; Invoice &rarr; Payment &rarr; Discharge.
+    </div>
+
+    <h2>Steps</h2>
+
+    <div class="step" id="step-1">
+      <h3><span class="stepnum">1</span>Open the enrollment to discharge</h3>
+      <p><span class="lbl lbl-do">DO</span> In the vendor portal, go to <strong>Student Enrollments</strong>
+      and locate the child whose placement is ending. This example uses Camila Vasquez, an actively enrolled
+      child at Cedar Point &ndash; Riverdale Campus.</p>
+      <p><span class="lbl lbl-res">RESULT</span> The Enrollments list shows every child currently enrolled at
+      the sites this vendor user has access to, each linked through to its enrollment record.</p>
+      <figure>
+        <img src="screenshots/g10-01-portal-enrollments-list.png" alt="Vendor portal Student Enrollments list showing four Cedar Point enrollments including Camila Vasquez, Leilani Kekoa, Yuki Tanaka, and Jamal Brooks" />
+        <figcaption>Vendor portal &mdash; Student Enrollments list.</figcaption>
+      </figure>
+    </div>
+
+    <div class="step" id="step-2">
+      <h3><span class="stepnum">2</span>Review the active enrollment</h3>
+      <p><span class="lbl lbl-do">DO</span> Click into the enrollment record. Confirm it's the right child and
+      that its lifecycle status bar currently shows <strong>Active</strong> &mdash; only an active (or
+      approved) enrollment can be discharged.</p>
+      <p><span class="lbl lbl-res">RESULT</span> The enrollment detail page loads with its full lifecycle
+      status bar, student and parent/guardian information, and related lists for attendance, approval history,
+      and enrollment change requests.</p>
+      <figure>
+        <img src="screenshots/g10-02-enrollment-active-detail.png" alt="Enrollment detail page for Camila Vasquez showing lifecycle status bar at Active, with empty Reason for Discharge Request and Discharge Date fields" />
+        <figcaption>ENROL-0000000520 &mdash; Camila Vasquez, still Active.</figcaption>
+      </figure>
+    </div>
+
+    <div class="step" id="step-3">
+      <h3><span class="stepnum">3</span>Start an Enrollment Change Request</h3>
+      <p><span class="lbl lbl-do">DO</span> Click <strong>Show more actions</strong> on the enrollment, then
+      choose <strong>Enrollment Change Request</strong> from the dropdown.</p>
+      <p><span class="lbl lbl-res">RESULT</span> An "Enrollment Change Request" wizard opens as a modal, ready
+      to select what kind of change is being requested.</p>
+      <figure>
+        <img src="screenshots/g10-03-enrollment-change-request-menu.png" alt="Show more actions dropdown menu on the enrollment record, with Enrollment Change Request highlighted at the bottom" />
+        <figcaption>Show more actions &rarr; Enrollment Change Request.</figcaption>
+      </figure>
+    </div>
+
+    <div class="step" id="step-4">
+      <h3><span class="stepnum">4</span>Choose "Discharge Request"</h3>
+      <p><span class="lbl lbl-do">DO</span> On the first wizard screen, select <strong>Discharge Request</strong>
+      from the three change types offered (the others being Change Seat Type and Change Class), then click
+      <strong>Next</strong>.</p>
+      <p><span class="lbl lbl-res">RESULT</span> The wizard advances to the discharge-specific details screen,
+      carrying forward the enrollment's current class, program type, seat type, and first day of attendance for
+      context.</p>
+      <figure>
+        <img src="screenshots/g10-04-change-type-discharge-request.png" alt="Enrollment Change Request wizard first screen with the Discharge Request radio button selected, alongside Change Seat Type and Change Class options" />
+        <figcaption>Selecting the Discharge Request change type.</figcaption>
+      </figure>
+    </div>
+
+    <div class="step" id="step-5">
+      <h3><span class="stepnum">5</span>Complete the discharge details</h3>
+      <p><span class="lbl lbl-do">DO</span> Confirm the child is no longer attending the site, then fill in the
+      required <strong>Discharge Date</strong>, upload the <strong>Parental Letter of Release</strong> under
+      Upload Files, choose a <strong>Reason for Discharge</strong> (e.g. Parent Request), and add any
+      <strong>Comments</strong>. Do not click Submit unless you intend to actually file the request.</p>
+      <p><span class="lbl lbl-res">RESULT</span> The form confirms the discharge complies with the Division's
+      policy on student discharges and chronic absenteeism, and warns that once discharged, the child will no
+      longer appear on the site's attendance roster after the effective discharge date.</p>
+      <figure>
+        <img src="screenshots/g10-05-discharge-request-form-filled.png" alt="Request Discharge form filled in with Discharge Date Jun 30 2026, Reason for Discharge set to Parent Request, and comments about the family relocating" />
+        <figcaption>Discharge Request details &mdash; date, supporting document, reason, and comments.</figcaption>
+      </figure>
+      <div class="note">
+        <b>Note &mdash; supporting paperwork and date rules.</b> Per the onboarding overview, a discharge
+        "requires supporting paperwork (like a parental release letter)" and "has date-validation rules (e.g.,
+        it has to line up with the school calendar)." Have the release letter ready to attach before you start
+        the wizard, and expect the Discharge Date to be checked against the school calendar rather than
+        accepted as any arbitrary date.
+      </div>
+    </div>
+
+    <div class="step" id="step-6">
+      <h3><span class="stepnum">6</span>DOE reviews the submitted request</h3>
+      <p><span class="lbl lbl-do">DO</span> Once the vendor submits, the request lands with a DOE Enrollment
+      Specialist for review. Internally, they open the Enrollment Change Request record to check its Status,
+      linked Enrollment, Discharge Date, and Comments.</p>
+      <p><span class="lbl lbl-res">RESULT</span> The Discharge Request record shows <strong>Status:
+      Submitted</strong>, awaiting DOE action, linked back to its Enrollment.</p>
+      <figure>
+        <img src="screenshots/g10-06-admin-cr-submitted.png" alt="Internal Salesforce view of Enrollment Change Request ENROL-CR-00000006, Discharge Request record type, Status Submitted, linked to Enrollment ENROL-0000000027" />
+        <figcaption>ENROL-CR-00000006 &mdash; a Discharge Request awaiting DOE review.</figcaption>
+      </figure>
+    </div>
+
+    <div class="step" id="step-7">
+      <h3><span class="stepnum">7</span>DOE approves the discharge</h3>
+      <p><span class="lbl lbl-do">DO</span> After confirming the paperwork and dates are in order, the DOE
+      Enrollment Specialist approves the request.</p>
+      <p><span class="lbl lbl-res">RESULT</span> The Discharge Request record's Status moves to
+      <strong>Approved</strong> &mdash; a fully processed, closed-out example of the same record type.</p>
+      <figure>
+        <img src="screenshots/g10-07-admin-cr-approved.png" alt="Internal Salesforce view of Enrollment Change Request ENROL-CR-00000005, Discharge Request record type, Status Approved, linked to Enrollment ENROL-0000000005" />
+        <figcaption>ENROL-CR-00000005 &mdash; an approved, fully processed Discharge Request.</figcaption>
+      </figure>
+    </div>
+
+    <div class="step" id="step-8">
+      <h3><span class="stepnum">8</span>Confirm the enrollment is Discharged</h3>
+      <p><span class="lbl lbl-do">DO</span> Once approved, open the underlying Enrollment record and check its
+      lifecycle status bar and Key Fields.</p>
+      <p><span class="lbl lbl-res">RESULT</span> The status bar now shows <strong>Discharged</strong> as the
+      current stage, with the Discharge Date and Status Reason populated in Key Fields.</p>
+      <figure>
+        <img src="screenshots/g10-08-enrollment-discharged-status.png" alt="Enrollment record for Kai Nakamura with lifecycle status bar at Discharged, Key Fields showing Discharge Date 7/31/2026 and Status Reason End of School Period, and Student OSIS number populated" />
+        <figcaption>ENROL-0000000226 &mdash; Kai Nakamura's enrollment, now Discharged.</figcaption>
+      </figure>
+      <div class="callout">
+        <b>Downstream sync.</b> Per the onboarding overview, approving a discharge "updates attendance and
+        enrollment records and notifies the outside systems that track this child... so everything stays in
+        sync." In practice that means OASIS (the DOE's master student registration system, which assigned this
+        child's OSIS Number when the enrollment was first approved) and, for Extended Day/subsidy-eligible
+        seats, ACCIS are both kept current so the child no longer shows as actively enrolled once the discharge
+        date passes.
+      </div>
+      <p>This closes out the enrollment lifecycle for this child. If the family re-enrolls at a later date, a
+      brand-new Enrollment record is created rather than reopening this one.</p>
+    </div>
+
+    <a class="backhome" href="index.html">&larr; Back to User Guide home</a>
+  </main>
+</div>
+<div class="site-footer">
+  <div class="ft-in">
+    <div class="ft-left"><b>NYC DOE &middot; Division of Early Childhood Education</b><div>Early Childhood Management System (ECMS)</div></div>
+    <nav class="ft-nav"><a href="index.html">User Guide Home</a></nav>
+  </div>
+</div>
+</body></html>

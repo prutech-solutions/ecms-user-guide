@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Vendor &amp; Site Setup (CBO) — ECMS User Guide</title><style>
+:root{--ink:#1B2430;--head:#0B2545;--muted:#5B6478;--link:#1657CE;--line:#DCE1EA;--line2:#EAEDF3;--code:#F5F7FB;--navy:#0B2545;--accent:#1657CE;--do:#1657CE;--res:#1E8E5A;--soft:#F5F7FB;--brandA:#0072CE;--brandB:#00A65A;--brandC:#F5A623;--brandD:#D0103A;}
+*{box-sizing:border-box;} html{scroll-behavior:smooth;}
+body{margin:0;color:var(--ink);background:#fff;font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;line-height:1.65;font-size:16px;}
+a{color:var(--link);text-decoration:none;} a:hover{text-decoration:underline;}
+code{font-family:'SFMono-Regular',Consolas,Menlo,monospace;background:var(--code);border:1px solid var(--line);border-radius:4px;padding:1px 6px;font-size:13.5px;color:#0a2a5e;}
+.topbar{position:sticky;top:0;z-index:10;box-shadow:0 1px 0 var(--line);}
+.tb-top{background:#fff;border-bottom:1px solid var(--line);}
+.tb-top .in{max-width:1260px;margin:0 auto;padding:14px 32px;display:flex;align-items:center;gap:12px;}
+.doe-logo{display:flex;align-items:baseline;gap:1px;font-weight:800;font-size:20px;letter-spacing:.2px;}
+.doe-logo b:nth-child(1){color:var(--brandA);} .doe-logo b:nth-child(2){color:var(--brandC);} .doe-logo b:nth-child(3){color:var(--brandB);} .doe-logo b:nth-child(4){color:var(--brandD);}
+.doe-sub{color:var(--muted);font-size:12.5px;padding-left:10px;border-left:1px solid var(--line);}
+.tb-bottom{background:var(--navy);}
+.tb-bottom .in{max-width:1260px;margin:0 auto;padding:10px 32px;display:flex;align-items:center;gap:22px;}
+.ecms-brand{color:#fff;font-weight:700;font-size:15px;letter-spacing:.3px;}
+.topnav{display:flex;gap:24px;margin-left:6px;}
+.topnav a{color:#cfe0fb;font-weight:600;font-size:13.5px;}
+.topnav a.cur{color:#fff;}
+@media (max-width:760px){.topnav{display:none;}}
+.crumbs{max-width:1260px;margin:0 auto;padding:16px 32px 0;font-size:13px;color:var(--muted);}
+.crumbs a{color:var(--muted);} .crumbs span{margin:0 7px;}
+.wrap{max-width:1260px;margin:0 auto;padding:8px 32px 60px;display:grid;grid-template-columns:270px minmax(0,1fr);gap:52px;}
+main{min-width:0;max-width:840px;}
+h1{font-size:32px;line-height:1.2;color:var(--head);margin:14px 0 6px;font-weight:700;}
+.lead{font-size:16.5px;color:var(--ink);margin:10px 0 4px;}
+.subtext{color:var(--muted);font-size:14px;margin:2px 0 0;}
+h2{font-size:22px;color:var(--head);font-weight:700;margin:42px 0 6px;padding-bottom:8px;border-bottom:1px solid var(--line);}
+h3{font-size:17.5px;color:var(--head);font-weight:700;margin:8px 0 2px;}
+p{margin:10px 0;}
+ul.bul{margin:10px 0;padding-left:22px;} ul.bul li{margin:6px 0;}
+table{border-collapse:collapse;width:100%;margin:16px 0;font-size:14.5px;}
+th,td{border:1px solid var(--line);padding:9px 13px;text-align:left;vertical-align:top;}
+th{background:var(--soft);color:var(--head);font-weight:700;}
+.lbl{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;padding:2px 9px;border-radius:4px;margin-right:8px;vertical-align:middle;}
+.lbl-do{background:#E6EFFC;color:var(--do);} .lbl-res{background:#E5F5EC;color:var(--res);}
+.step{scroll-margin-top:118px;border-top:1px solid var(--line2);padding-top:28px;margin-top:28px;}
+.step:first-of-type{border-top:none;margin-top:14px;padding-top:8px;}
+.step .stepnum{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;background:var(--navy);color:#fff;font-weight:700;font-size:14px;margin-right:10px;vertical-align:middle;}
+.step h3{display:inline;}
+h2,h3{scroll-margin-top:118px;}
+figure{margin:14px 0 4px;}
+figure img{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:8px;box-shadow:0 4px 14px rgba(11,37,69,.08);}
+figcaption{font-size:13px;color:var(--muted);margin-top:8px;font-style:italic;}
+.callout{background:var(--soft);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:6px;padding:14px 18px;margin:14px 0;}
+.callout b{color:var(--head);}
+.note{background:#fff8ec;border:1px solid #f3e2bd;border-left:4px solid #e0a127;border-radius:6px;padding:6px 18px;margin:14px 0;}
+.sidenav{position:sticky;top:104px;align-self:start;font-size:14px;max-height:calc(100vh - 120px);overflow:auto;padding-right:6px;}
+.nav-cat{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);font-weight:700;padding:0 0 10px;border-bottom:1px solid var(--line);margin-bottom:8px;}
+ul.nav{list-style:none;margin:0;padding:0;} ul.nav>li{margin:2px 0;}
+a.lvl1{display:block;padding:7px 10px;border-radius:6px;color:var(--head);font-weight:600;font-size:13.6px;}
+a.lvl1:hover{background:var(--soft);text-decoration:none;}
+a.lvl1.cur{color:var(--accent);background:var(--soft);border-left:3px solid var(--accent);padding-left:8px;}
+.backhome{display:inline-block;margin:14px 0 4px;font-weight:700;font-size:13.5px;}
+.meta-row{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 6px;}
+.chip{font-size:11.5px;font-weight:600;color:var(--navy);background:var(--soft);border:1px solid var(--line);border-radius:20px;padding:3px 10px;}
+.site-footer{background:var(--navy);color:#fff;margin-top:48px;}
+.site-footer .ft-in{max-width:1260px;margin:0 auto;padding:22px 32px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px;}
+.ft-left b{font-size:14px;} .ft-left div{color:#B9C7E3;font-size:12.5px;margin-top:4px;}
+.ft-nav a{color:#fff;font-size:13px;}
+@media (max-width:900px){.wrap{grid-template-columns:1fr;}.sidenav{position:static;max-height:none;}}
+</style></head>
+<body>
+<div class="topbar">
+  <div class="tb-top"><div class="in">
+    <span class="doe-logo"><b>N</b><b>Y</b><b>C</b></span>
+    <span class="doe-sub">Department of Education &middot; Division of Early Childhood Education</span>
+  </div></div>
+  <div class="tb-bottom"><div class="in">
+    <span class="ecms-brand">ECMS User Guide</span>
+    <nav class="topnav"><a href="index.html">Home</a></nav>
+  </div></div>
+</div>
+<div class="crumbs"><a href="index.html">ECMS User Guide</a><span>/</span>Vendor &amp; Site Setup (CBO)</div>
+<div class="wrap">
+
+  <nav class="sidenav">
+    <div class="nav-cat">On this page</div>
+    <ul class="nav">
+      <li><a class="lvl1" href="#overview">Overview</a></li>
+      <li><a class="lvl1" href="#step-1">1. Open the Accounts list</a></li>
+      <li><a class="lvl1" href="#step-2">2. Start a new CBO account</a></li>
+      <li><a class="lvl1" href="#step-3">3. Save the account</a></li>
+      <li><a class="lvl1" href="#step-4">4. Add the CBO's site</a></li>
+      <li><a class="lvl1" href="#step-5">5. Save the site</a></li>
+      <li><a class="lvl1" href="#step-6">6. Add a site contact</a></li>
+      <li><a class="lvl1" href="#step-7">7. Save the contact</a></li>
+      <li><a class="lvl1" href="#step-8">8. Provision vendor portal access</a></li>
+      <li><a class="lvl1" href="#step-9">9. Confirm the vendor's portal view</a></li>
+      <li><a class="lvl1" href="#step-10">10. Open a temporarily closed site</a></li>
+      <li><a class="lvl1" href="#step-11">11. Contrast a permanently closed site</a></li>
+      <li><a class="lvl1" href="#step-12">12. Confirm a reopened site</a></li>
+      <li><a class="lvl1" href="#step-13">13. Know what closure blocks downstream</a></li>
+      <li><a class="lvl1" href="#step-14">14. Open an existing Site Staff record</a></li>
+      <li><a class="lvl1" href="#step-15">15. Review qualification attributes</a></li>
+      <li><a class="lvl1" href="#step-16">16. Review &amp; edit employment attributes</a></li>
+      <li><a class="lvl1" href="#step-17">17. Upload a supporting document</a></li>
+      <li><a class="lvl1" href="#step-18">18. Know where staff data rolls up</a></li>
+    </ul>
+    <a class="backhome" href="index.html">&larr; Back to User Guide home</a>
+  </nav>
+
+  <main id="top">
+    <h1>Vendor &amp; Site Setup (CBO)</h1>
+    <p class="lead">How to bring a new Community-Based Organization (CBO) into ECMS: create its account, record
+    its physical site, add a site contact, and give that contact a working vendor portal login.</p>
+    <div class="meta-row">
+      <span class="chip">18 steps</span><span class="chip">~18 min read</span><span class="chip">Persona: Operations Analyst / ECMS Admin</span>
+    </div>
+
+    <h2 id="overview">Overview</h2>
+    <p>Before a CBO can do anything else in ECMS &mdash; enroll a child, take attendance, submit a budget &mdash;
+    it has to exist in the system as an <strong>Account</strong>, with at least one physical <strong>Site
+    Master</strong> record and a <strong>Contact</strong> who can be provisioned with vendor portal access.
+    This is internal, DOE-side setup work: it's normally done by an <strong>Operations Analyst (OA)</strong> or
+    the <strong>ECMS Admin</strong>, working in the internal Salesforce app, not the vendor portal. Once this
+    setup is complete, the CBO's own staff can log into the vendor portal and start doing their own work
+    (budgets, enrollments, attendance, invoices).</p>
+    <div class="callout">
+      <b>Where this fits.</b> Vendor &amp; Site Setup is the very first step in the ECMS workflow chain:
+      <strong>Site/Vendor setup &rarr; Contracts &amp; Seats &rarr; Enrollment &rarr; Attendance &rarr; Budget
+      &rarr; Invoice</strong>. Nothing downstream can happen for a CBO until its account and site exist.
+    </div>
+
+    <h2>Steps</h2>
+
+    <div class="step" id="step-1">
+      <h3><span class="stepnum">1</span>Open the Accounts list</h3>
+      <p><span class="lbl lbl-do">DO</span> Click the <strong>Accounts</strong> tab in the top navigation bar,
+      then switch the list view to <strong>All Accounts</strong> so you can see every existing CBO, FCCN, and
+      household account in the org.</p>
+      <p><span class="lbl lbl-res">RESULT</span> The Accounts list view loads, showing every account with its
+      billing city, phone, and type.</p>
+      <figure>
+        <img src="screenshots/g1-01-accounts-list.png" alt="Accounts tab showing the All Accounts list view with existing CBO, FCCN, and household accounts" />
+        <figcaption>Accounts &rarr; All Accounts list view.</figcaption>
+      </figure>
+    </div>
+
+    <div class="step" id="step-2">
+      <h3><span class="stepnum">2</span>Start a new CBO account</h3>
+      <p><span class="lbl lbl-do">DO</span> Click <strong>New</strong>. When prompted for a record type, choose
+      <strong>Community Based Organization</strong> and click <strong>Next</strong>. Fill in the
+      <strong>Account Name</strong> (the CBO's legal/DBA name), <strong>Vendor Tax ID</strong>, and billing
+      address.</p>
+      <p><span class="lbl lbl-res">RESULT</span> A "New Account: Community Based Organization" form opens with
+      the fields specific to CBOs (Vendor Tax ID, MySchools ID, School DBN).</p>
+      <figure>
+        <img src="screenshots/g1-02-new-account-form.png" alt="New Account form with the Community Based Organization record type, showing Account Name, Vendor Tax ID, and Billing Address fields" />
+        <figcaption>New Account form, Community Based Organization record type.</figcaption>
+      </figure>
+      <div class="note">
+        <b>Note:</b> <strong>Vendor Tax ID</strong> is what FAMIS later matches against for payment, so double
+        check it against the CBO's contract paperwork before saving &mdash; a mismatch here can hold up
+        invoice payment much later in the workflow.
+      </div>
+    </div>
+
+    <div class="step" id="step-3">
+      <h3><span class="stepnum">3</span>Save the account</h3>
+      <p><span class="lbl lbl-do">DO</span> Click <strong>Save</strong>.</p>
+      <p><span class="lbl lbl-res">RESULT</span> The Account record is created and you land on its detail page,
+      with related-list quick links for Contacts, ECMS Contracts, Budgets, Invoices, and Sites Master &mdash;
+      all empty until you fill them in during the steps below and in later guides.</p>
+      <figure>
+        <img src="screenshots/g1-03-account-detail.png" alt="Account detail page for Cedar Point Early Childhood Academy, showing Account Record Type, Billing Address, and Related List Quick Links" />
+        <figcaption>Cedar Point Early Childhood Academy &mdash; the saved CBO account record.</figcaption>
+      </figure>
+    </div>
+
+    <div class="step" id="step-4">
+      <h3><span class="stepnum">4</span>Add the CBO's site</h3>
+      <p><span class="lbl lbl-do">DO</span> From the account's <strong>Sites Master</strong> related list,
+      click <strong>New</strong>. Fill in the <strong>Site Master Name</strong>, and confirm the
+      <strong>School/CBO</strong> lookup points back to the account you just created.</p>
+      <p><span class="lbl lbl-res">RESULT</span> A "New Site Master" form opens, pre-linked to the parent CBO
+      account.</p>
+      <figure>
+        <img src="screenshots/g1-04-new-site-form.png" alt="New Site Master form for Cedar Point - Fordham Annex, linked to the Cedar Point Early Childhood Academy account" />
+        <figcaption>New Site Master form, linked back to the CBO account.</figcaption>
+      </figure>
+      <div class="note">
+        <b>Note:</b> Set <strong>Borough</strong> and <strong>District</strong> explicitly on the site &mdash;
+        don't leave them blank or assume they'll match the account's billing address. These are the fields
+        that drive a student <strong>Enrollment</strong>'s "School Borough" / "School District" values later,
+        and they're independent of the student's own home address fields on the enrollment.
+      </div>
+    </div>
+
+    <div class="step" id="step-5">
+      <h3><span class="stepnum">5</span>Save the site</h3>
+      <p><span class="lbl lbl-do">DO</span> Click <strong>Save</strong>.</p>
+      <p><span class="lbl lbl-res">RESULT</span> The Site Master record is created, showing Site Type, Borough,
+      District, Site Closure Status (defaults to Active), and related lists for Site Staff, Enrollments, and
+      Coaching Logs.</p>
+      <figure>
+        <img src="screenshots/g1-05-site-detail.png" alt="Site Master detail page for Cedar Point - Riverdale Campus, showing Site Type CBO, Borough Bronx, District 10, and Closure Information section" />
+        <figcaption>Cedar Point - Riverdale Campus &mdash; the saved Site Master record.</figcaption>
+      </figure>
+      <div class="callout">
+        <b>Closed sites are restricted automatically.</b> If a site's <strong>Site Closure Status</strong> is
+        ever changed to closed (temporary or permanent), ECMS blocks new enrollments at that site &mdash; so
+        this field is worth checking first whenever an enrollment attempt unexpectedly fails.
+      </div>
+    </div>
+
+    <div class="step" id="step-6">
+      <h3><span class="stepnum">6</span>Add a site contact</h3>
+      <p><span class="lbl lbl-do">DO</span> Go to the <strong>Contacts</strong> tab and click <strong>New</strong>,
+      choosing the <strong>Staff</strong> record type. Fill in <strong>First Name</strong>, <strong>Last
+      Name</strong>, <strong>Title</strong> (e.g. "Site Director"), and set <strong>Account Name</strong> to the
+      CBO account.</p>
+      <p><span class="lbl lbl-res">RESULT</span> A "New Contact: Staff" form opens with staff-specific fields
+      (Qualification Attributes, Employee ID) in addition to standard contact fields.</p>
+      <figure>
+        <img src="screenshots/g1-06-new-contact-form.png" alt="New Contact: Staff form being filled out for Damien Ortiz, Site Director, linked to the Cedar Point Early Childhood Academy account" />
+        <figcaption>New Contact: Staff form for the site's main contact.</figcaption>
+      </figure>
+    </div>
+
+    <div class="step" id="step-7">
+      <h3><span class="stepnum">7</span>Save the contact</h3>
+      <p><span class="lbl lbl-do">DO</span> Click <strong>Save</strong>.</p>
+      <p><span class="lbl lbl-res">RESULT</span> The Contact record is created. Notice the extra action
+      buttons that now appear: <strong>Provision Contact</strong> and <strong>Log in to Experience as
+      User</strong> &mdash; both used in the next step.</p>
+      <figure>
+        <img src="screenshots/g1-07-contact-detail.png" alt="Contact detail page for Damien Ortiz, Site Director at Cedar Point Early Childhood Academy, showing the Provision Contact and Log in to Experience as User buttons" />
+        <figcaption>Damien Ortiz &mdash; the saved site contact record.</figcaption>
+      </figure>
+      <p>Go back and set this contact as the site's official <strong>Site Contact</strong> lookup on the Site
+      Master record from step 5, if you haven't already &mdash; this is what makes them show up as the site's
+      contact throughout ECMS.</p>
+    </div>
+
+    <div class="step" id="step-8">
+      <h3><span class="stepnum">8</span>Provision vendor portal access</h3>
+      <p><span class="lbl lbl-do">DO</span> On the Contact record, click <strong>Provision Contact</strong>.
+      On the first screen, check every ECMS function this person needs (Budget Management, Invoice Management,
+      Enrollment Management, Attendance Management, etc.) and click <strong>Next</strong>. On the second
+      screen, check the box for the site(s) they should have access to, then click <strong>Next</strong>.</p>
+      <p><span class="lbl lbl-res">RESULT</span> The wizard shows the ECMS functions currently assigned to this
+      contact, then the sites they're assigned to. Finishing the wizard is what actually creates their portal
+      login and grants the matching permission sets.</p>
+      <figure>
+        <img src="screenshots/g1-08-provision-functions.png" alt="Provision Contact wizard, ECMS Function Assignment screen, showing checkboxes for Vendor Management, Site Management, Budget Management, Invoice Management, and other functions" />
+        <figcaption>Provision Contact &mdash; ECMS Function Assignment screen.</figcaption>
+      </figure>
+      <figure>
+        <img src="screenshots/g1-09-provision-sites.png" alt="Provision Contact wizard, Select Sites screen, showing the Cedar Point - Riverdale Campus site checked" />
+        <figcaption>Provision Contact &mdash; Select Sites screen.</figcaption>
+      </figure>
+      <div class="note">
+        <b>Note:</b> This wizard &mdash; not a manually-created Permission Set Assignment &mdash; is the real
+        mechanism that grants a vendor portal user their working navigation. A portal user who can log in but
+        only sees a bare-bones menu (Home / Account / Attendance / Report Incident) almost always means this
+        step was skipped or an ECMS function wasn't checked.
+      </div>
+    </div>
+
+    <div class="step" id="step-9">
+      <h3><span class="stepnum">9</span>Confirm the vendor's portal view</h3>
+      <p><span class="lbl lbl-do">DO</span> From the Contact record, click <strong>Log in to Experience as
+      User</strong> to see exactly what this person sees when they log into the vendor portal themselves.</p>
+      <p><span class="lbl lbl-res">RESULT</span> The vendor portal home page loads under the DOE-branded
+      header, showing this user's name and CBO in the top-right corner and quick-action tiles for the
+      functions they were provisioned with (Create Budget, Create Invoice, Create Enrollment, Report
+      Incident).</p>
+      <figure>
+        <img src="screenshots/g1-10-portal-home.png" alt="Vendor portal home page, logged in as Damien Ortiz of Cedar Point Early Childhood Academy, showing quick-action tiles for Create Budget, Create Invoice, Create Enrollment, and Report Incident" />
+        <figcaption>Vendor portal home &mdash; logged in as the newly-provisioned site contact.</figcaption>
+      </figure>
+      <p>Clicking <strong>Sites</strong> in the portal's top navigation confirms the site from step 5 is
+      visible to this user, exactly as scoped in the Provision Contact wizard.</p>
+      <figure>
+        <img src="screenshots/g1-11-portal-sites.png" alt="Vendor portal Sites Master list view, showing Cedar Point - Riverdale Campus scoped to this vendor user" />
+        <figcaption>Vendor portal &mdash; Sites Master, scoped to this user's CBO.</figcaption>
+      </figure>
+      <div class="callout">
+        <b>Setup complete.</b> The CBO now has an account, a site, and at least one staff member who can log
+        into the vendor portal and start their own work. From here, the next step in the chain is usually
+        setting up the CBO's <strong>contract and seats</strong> (see the Contracts &amp; Seats guide) before
+        any enrollments can begin.
+      </div>
+    </div>
+
+    <h2 id="closure-heading">Site Closure &amp; Reopen</h2>
+    <p>Sites don't always stay open. A CBO may close a site temporarily (a repair, a licensing lapse) or
+    permanently (the CBO stops operating there). ECMS tracks this on the Site Master record itself, and the
+    closure state actively changes what the site is allowed to do downstream.</p>
+
+    <div class="step" id="step-10">
+      <h3><span class="stepnum">10</span>Open a temporarily closed site</h3>
+      <p><span class="lbl lbl-do">DO</span> Open a Site Master record and scroll to its <strong>Closure
+      Information</strong> section. Look at <strong>Site Closure Status</strong>, <strong>Closure Date</strong>,
+      <strong>Closure Reason</strong>, and <strong>Reopen Date</strong>.</p>
+      <p><span class="lbl lbl-res">RESULT</span> For a site with Site Closure Status <strong>Temporary
+      Closure</strong>, the Closure Date and Closure Reason are populated, a Reopen Date is set (the CBO's
+      expected reopening date), and the record's <strong>Inactive</strong> checkbox is turned on.</p>
+      <figure>
+        <img src="screenshots/g1-12-site-temp-closure.png" alt="Site Master detail page for Meadowbrook - Temporarily Closed Campus, showing Closure Information with Site Closure Status Temporary Closure, Closure Date 8/9/2026, Closure Reason Unexpected Closure, and Reopen Date 10/8/2026" />
+        <figcaption>Meadowbrook - Temporarily Closed Campus &mdash; Temporary Closure, with a Reopen Date already on file.</figcaption>
+      </figure>
+    </div>
+
+    <div class="step" id="step-11">
+      <h3><span class="stepnum">11</span>Contrast a permanently closed site</h3>
+      <p><span class="lbl lbl-do">DO</span> Open a second Site Master record whose Site Closure Status is
+      <strong>Permanent Closure</strong> and compare its Closure Information section to the temporary-closure
+      example above.</p>
+      <p><span class="lbl lbl-res">RESULT</span> Closure Date and Closure Reason are populated the same way,
+      but there is <strong>no Reopen Date</strong> &mdash; a permanent closure isn't expected to come back.</p>
+      <figure>
+        <img src="screenshots/g1-13-site-perm-closure.png" alt="Site Master detail page for Meadowbrook - Permanently Closed Campus, showing Closure Information with Site Closure Status Permanent Closure, Closure Date 8/9/2026, Closure Reason Voluntary Closure, and an empty Reopen Date" />
+        <figcaption>Meadowbrook - Permanently Closed Campus &mdash; Permanent Closure, no Reopen Date.</figcaption>
+      </figure>
+    </div>
+
+    <div class="step" id="step-12">
+      <h3><span class="stepnum">12</span>Confirm a reopened site</h3>
+      <p><span class="lbl lbl-do">DO</span> Open a Site Master record whose Site Closure Status has been moved
+      to <strong>Reopened</strong>.</p>
+      <p><span class="lbl lbl-res">RESULT</span> Closure Date, Closure Reason, and Reopen Date are all cleared,
+      and the <strong>Inactive</strong> checkbox is unchecked again &mdash; visually, a Reopened site looks just
+      like an Active one except for the status word itself.</p>
+      <figure>
+        <img src="screenshots/g1-14-site-reopened.png" alt="Site Master detail page for Meadowbrook - Reopened Campus, showing Closure Information with Site Closure Status Reopened and empty Closure Date, Closure Reason, and Reopen Date fields, with the Inactive checkbox unchecked" />
+        <figcaption>Meadowbrook - Reopened Campus &mdash; back to active, closure fields cleared.</figcaption>
+      </figure>
+    </div>
+
+    <div class="step" id="step-13">
+      <h3><span class="stepnum">13</span>Know what closure blocks downstream</h3>
+      <p><span class="lbl lbl-do">DO</span> Before troubleshooting a vendor's "why can't I submit this" report,
+      check the site's Site Closure Status first.</p>
+      <p><span class="lbl lbl-res">RESULT</span> Per BRD D01 (Site Management), while a site is Temporarily or
+      Permanently Closed, <strong>Budget creation is blocked</strong> for that site and resumes automatically
+      once it's Reopened. For a <strong>Permanently Closed</strong> site, <strong>Invoice submission is also
+      blocked</strong> once the invoice period is past the site's closure month.</p>
+      <div class="callout">
+        <b>Closure blocks Budget and Invoice, not just Enrollment.</b> Guide step 5 already noted that closed
+        sites can't take new enrollments. The same Site Closure Status field also gates <strong>Budget</strong>
+        creation (blocked while closed, resumes on reopen) and, for permanently closed sites past their closure
+        month, <strong>Invoice</strong> submission &mdash; per the signed BRD D01. If a CBO can't create a
+        Budget or submit an Invoice for a site that looks otherwise fine, this is the first field to check.
+      </div>
+    </div>
+
+    <h2 id="staff-heading">Vendor Staff Tracking</h2>
+    <p>Beyond the single site contact created in step 6, a site typically has several <strong>Site Staff</strong>
+    records &mdash; one per person working there, whether hired or a still-open vacancy. These records track
+    each person's qualifications and employment history, and support attaching supporting documents.</p>
+
+    <div class="step" id="step-14">
+      <h3><span class="stepnum">14</span>Open an existing Site Staff record</h3>
+      <p><span class="lbl lbl-do">DO</span> From a Site Master record's <strong>Site Staff</strong> related
+      list, open one of the existing Site Staff records.</p>
+      <p><span class="lbl lbl-res">RESULT</span> The Site Staff detail page loads, showing the staff member's
+      name, linked Vendor Employee contact, Site, Site Staff Number, Staff Type, Designation, and Teacher Type,
+      plus a <strong>Documents</strong> related list and a collapsed <strong>Qualification Attributes</strong>
+      section.</p>
+      <figure>
+        <img src="screenshots/g1-15-site-staff-qualifications.png" alt="Site Staff detail page for SS-00000018 at Rainbow_site, showing Staff Type Instructional Staff, Designation Teacher (Secondary), Teacher Type ECE Certified - Initial (Bachelors), a Documents related list with an Education Certificate, and a collapsed Qualification Attributes section" />
+        <figcaption>Site Staff SS-00000018 &mdash; employment attributes and an already-uploaded document.</figcaption>
+      </figure>
+    </div>
+
+    <div class="step" id="step-15">
+      <h3><span class="stepnum">15</span>Review qualification attributes</h3>
+      <p><span class="lbl lbl-do">DO</span> Click the <strong>Qualification Attributes</strong> section header
+      to expand it.</p>
+      <p><span class="lbl lbl-res">RESULT</span> The section expands to show <strong>Education</strong> (e.g.
+      Associate), whether the person holds a <strong>Child Development Associate (CDA)</strong> credential,
+      <strong>CDA Hours Completed</strong>, <strong>Years of Classroom Experience</strong>, any
+      <strong>Degree/Certification in Progress</strong>, and <strong>Study Plan Start/End Date</strong> for
+      staff working toward a credential.</p>
+      <figure>
+        <img src="screenshots/g1-16-site-staff-qualifications-expanded.png" alt="Expanded Qualification Attributes section on the Site Staff detail page, showing Education Associate, Child Development Associate checked, CDA Hours Completed 20, Years of Classroom Experience 8.0, Degree in Progress Bachelors, and empty Study Plan Start/End Date fields" />
+        <figcaption>Qualification Attributes, expanded &mdash; education, CDA credential, experience, and study plan dates.</figcaption>
+      </figure>
+    </div>
+
+    <div class="step" id="step-16">
+      <h3><span class="stepnum">16</span>Review &amp; edit employment attributes</h3>
+      <p><span class="lbl lbl-do">DO</span> Click <strong>Edit</strong> on a Site Staff record to see its
+      employment attributes &mdash; <strong>Staff Type</strong> (Site Contact, Administrative Staff,
+      Instructional Staff, or Per Diem Staff), <strong>Designation</strong> (job title, including "Vacancy
+      (&hellip;)" placeholder values for an unfilled position), <strong>Teacher Type</strong>, and the
+      per-program <strong>Date of Hire</strong> fields (2K, 3K, 4K, Infant/Toddler classroom).</p>
+      <p><span class="lbl lbl-res">RESULT</span> The edit modal opens with these fields editable alongside
+      Qualification Attributes. <strong>Cancel out without saving</strong> once you've reviewed the layout
+      &mdash; this is just to see what's editable, not to change a real record.</p>
+      <figure>
+        <img src="screenshots/g1-17-site-staff-edit-unsaved.png" alt="Site Staff edit modal for SS-00000085 at Cedar Point - Riverdale Campus, showing Staff Type Administrative Staff, Designation and Teacher Type picklists, per-program Date of Hire fields, and the Qualification Attributes section with Education and Degree in Progress dual-list pickers, not yet saved" />
+        <figcaption>Site Staff edit modal &mdash; employment and qualification attributes together (unsaved).</figcaption>
+      </figure>
+      <div class="note">
+        <b>Note:</b> An unfilled position is tracked as a real Site Staff record with a <strong>Designation</strong>
+        value like "Vacancy (&hellip;)" rather than by deleting or leaving the role out &mdash; this is what
+        lets a Budget Staff Vacancy Report count open positions later (see step 18).
+      </div>
+    </div>
+
+    <div class="step" id="step-17">
+      <h3><span class="stepnum">17</span>Upload a supporting document</h3>
+      <p><span class="lbl lbl-do">DO</span> On the Site Staff record, click <strong>Upload Supporting
+      Document</strong>. Give it a <strong>Title</strong> and choose a <strong>Content Type</strong> (Birth
+      Certificate, Immunization Record, Teaching Certificate, Education Certificate, Study Plan, Certification,
+      and others), then click <strong>Next</strong> to choose the file.</p>
+      <p><span class="lbl lbl-res">RESULT</span> A wizard opens for attaching evidence of the qualifications
+      recorded in step 15 &mdash; e.g. a Teaching Certificate or a Study Plan document. Uploaded files show up
+      in the record's <strong>Documents</strong> related list, as seen on the record opened in step 14.</p>
+      <figure>
+        <img src="screenshots/g1-18-site-staff-upload-document.png" alt="Upload Supporting Document wizard on a Site Staff record, showing a Title field and Content Type radio options including Birth Certificate, Teaching Certificate, Education Certificate, Certification, and Study Plan" />
+        <figcaption>Upload Supporting Document &mdash; attaching evidence for a Site Staff record's qualifications.</figcaption>
+      </figure>
+    </div>
+
+    <div class="step" id="step-18">
+      <h3><span class="stepnum">18</span>Know where staff data rolls up</h3>
+      <p><span class="lbl lbl-do">DO</span> Keep Staff Type, Designation, and the qualification fields current
+      on every Site Staff record &mdash; including vacancy placeholders.</p>
+      <p><span class="lbl lbl-res">RESULT</span> Per BRD D02 (Vendor &amp; Staff), these employment and
+      qualification attributes across all of a site's Site Staff records roll up into the <strong>Budget Staff
+      Vacancy Report</strong>, which is how DOE and the CBO track open positions and staffing qualifications
+      without cross-referencing individual staff records one by one.</p>
+      <div class="note">
+        <b>Note:</b> This guide doesn't screenshot the Budget Staff Vacancy Report itself &mdash; it's generated
+        from this staff data rather than being a field you fill in directly. Keeping Staff Type, Designation
+        (including "Vacancy (&hellip;)" values), and qualification attributes accurate on every Site Staff
+        record is what keeps that report trustworthy.
+      </div>
+      <div class="callout">
+        <b>Setup complete (extended).</b> With closure states understood and Site Staff records tracked with
+        their qualifications, employment attributes, and supporting documents, the site is ready for the
+        Contracts &amp; Seats step referenced at the end of step 9.
+      </div>
+    </div>
+
+    <a class="backhome" href="index.html">&larr; Back to User Guide home</a>
+  </main>
+</div>
+<div class="site-footer">
+  <div class="ft-in">
+    <div class="ft-left"><b>NYC DOE &middot; Division of Early Childhood Education</b><div>Early Childhood Management System (ECMS)</div></div>
+    <nav class="ft-nav"><a href="index.html">User Guide Home</a></nav>
+  </div>
+</div>
+</body></html>

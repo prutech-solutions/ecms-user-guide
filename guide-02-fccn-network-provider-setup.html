@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>FCCN Network &amp; Provider Setup — ECMS User Guide</title><style>
+:root{--ink:#1B2430;--head:#0B2545;--muted:#5B6478;--link:#1657CE;--line:#DCE1EA;--line2:#EAEDF3;--code:#F5F7FB;--navy:#0B2545;--accent:#1657CE;--do:#1657CE;--res:#1E8E5A;--soft:#F5F7FB;--brandA:#0072CE;--brandB:#00A65A;--brandC:#F5A623;--brandD:#D0103A;}
+*{box-sizing:border-box;} html{scroll-behavior:smooth;}
+body{margin:0;color:var(--ink);background:#fff;font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;line-height:1.65;font-size:16px;}
+a{color:var(--link);text-decoration:none;} a:hover{text-decoration:underline;}
+code{font-family:'SFMono-Regular',Consolas,Menlo,monospace;background:var(--code);border:1px solid var(--line);border-radius:4px;padding:1px 6px;font-size:13.5px;color:#0a2a5e;}
+.topbar{position:sticky;top:0;z-index:10;box-shadow:0 1px 0 var(--line);}
+.tb-top{background:#fff;border-bottom:1px solid var(--line);}
+.tb-top .in{max-width:1260px;margin:0 auto;padding:14px 32px;display:flex;align-items:center;gap:12px;}
+.doe-logo{display:flex;align-items:baseline;gap:1px;font-weight:800;font-size:20px;letter-spacing:.2px;}
+.doe-logo b:nth-child(1){color:var(--brandA);} .doe-logo b:nth-child(2){color:var(--brandC);} .doe-logo b:nth-child(3){color:var(--brandB);} .doe-logo b:nth-child(4){color:var(--brandD);}
+.doe-sub{color:var(--muted);font-size:12.5px;padding-left:10px;border-left:1px solid var(--line);}
+.tb-bottom{background:var(--navy);}
+.tb-bottom .in{max-width:1260px;margin:0 auto;padding:10px 32px;display:flex;align-items:center;gap:22px;}
+.ecms-brand{color:#fff;font-weight:700;font-size:15px;letter-spacing:.3px;}
+.topnav{display:flex;gap:24px;margin-left:6px;}
+.topnav a{color:#cfe0fb;font-weight:600;font-size:13.5px;}
+.topnav a.cur{color:#fff;}
+@media (max-width:760px){.topnav{display:none;}}
+.crumbs{max-width:1260px;margin:0 auto;padding:16px 32px 0;font-size:13px;color:var(--muted);}
+.crumbs a{color:var(--muted);} .crumbs span{margin:0 7px;}
+.wrap{max-width:1260px;margin:0 auto;padding:8px 32px 60px;display:grid;grid-template-columns:270px minmax(0,1fr);gap:52px;}
+main{min-width:0;max-width:840px;}
+h1{font-size:32px;line-height:1.2;color:var(--head);margin:14px 0 6px;font-weight:700;}
+.lead{font-size:16.5px;color:var(--ink);margin:10px 0 4px;}
+.subtext{color:var(--muted);font-size:14px;margin:2px 0 0;}
+h2{font-size:22px;color:var(--head);font-weight:700;margin:42px 0 6px;padding-bottom:8px;border-bottom:1px solid var(--line);}
+h3{font-size:17.5px;color:var(--head);font-weight:700;margin:8px 0 2px;}
+p{margin:10px 0;}
+ul.bul{margin:10px 0;padding-left:22px;} ul.bul li{margin:6px 0;}
+table{border-collapse:collapse;width:100%;margin:16px 0;font-size:14.5px;}
+th,td{border:1px solid var(--line);padding:9px 13px;text-align:left;vertical-align:top;}
+th{background:var(--soft);color:var(--head);font-weight:700;}
+.lbl{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;padding:2px 9px;border-radius:4px;margin-right:8px;vertical-align:middle;}
+.lbl-do{background:#E6EFFC;color:var(--do);} .lbl-res{background:#E5F5EC;color:var(--res);}
+.step{scroll-margin-top:118px;border-top:1px solid var(--line2);padding-top:28px;margin-top:28px;}
+.step:first-of-type{border-top:none;margin-top:14px;padding-top:8px;}
+.step .stepnum{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;background:var(--navy);color:#fff;font-weight:700;font-size:14px;margin-right:10px;vertical-align:middle;}
+.step h3{display:inline;}
+h2,h3{scroll-margin-top:118px;}
+figure{margin:14px 0 4px;}
+figure img{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:8px;box-shadow:0 4px 14px rgba(11,37,69,.08);}
+figcaption{font-size:13px;color:var(--muted);margin-top:8px;font-style:italic;}
+.callout{background:var(--soft);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:6px;padding:14px 18px;margin:14px 0;}
+.callout b{color:var(--head);}
+.note{background:#fff8ec;border:1px solid #f3e2bd;border-left:4px solid #e0a127;border-radius:6px;padding:6px 18px;margin:14px 0;}
+.sidenav{position:sticky;top:104px;align-self:start;font-size:14px;max-height:calc(100vh - 120px);overflow:auto;padding-right:6px;}
+.nav-cat{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);font-weight:700;padding:0 0 10px;border-bottom:1px solid var(--line);margin-bottom:8px;}
+ul.nav{list-style:none;margin:0;padding:0;} ul.nav>li{margin:2px 0;}
+a.lvl1{display:block;padding:7px 10px;border-radius:6px;color:var(--head);font-weight:600;font-size:13.6px;}
+a.lvl1:hover{background:var(--soft);text-decoration:none;}
+a.lvl1.cur{color:var(--accent);background:var(--soft);border-left:3px solid var(--accent);padding-left:8px;}
+.backhome{display:inline-block;margin:14px 0 4px;font-weight:700;font-size:13.5px;}
+.meta-row{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 6px;}
+.chip{font-size:11.5px;font-weight:600;color:var(--navy);background:var(--soft);border:1px solid var(--line);border-radius:20px;padding:3px 10px;}
+.site-footer{background:var(--navy);color:#fff;margin-top:48px;}
+.site-footer .ft-in{max-width:1260px;margin:0 auto;padding:22px 32px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px;}
+.ft-left b{font-size:14px;} .ft-left div{color:#B9C7E3;font-size:12.5px;margin-top:4px;}
+.ft-nav a{color:#fff;font-size:13px;}
+@media (max-width:900px){.wrap{grid-template-columns:1fr;}.sidenav{position:static;max-height:none;}}
+</style></head>
+<body>
+<div class="topbar">
+  <div class="tb-top"><div class="in">
+    <span class="doe-logo"><b>N</b><b>Y</b><b>C</b></span>
+    <span class="doe-sub">Department of Education &middot; Division of Early Childhood Education</span>
+  </div></div>
+  <div class="tb-bottom"><div class="in">
+    <span class="ecms-brand">ECMS User Guide</span>
+    <nav class="topnav"><a href="index.html">Home</a></nav>
+  </div></div>
+</div>
+<div class="crumbs"><a href="index.html">ECMS User Guide</a><span>/</span>FCCN Network &amp; Provider Setup</div>
+<div class="wrap">
+
+  <nav class="sidenav">
+    <div class="nav-cat">On this page</div>
+    <ul class="nav">
+      <li><a class="lvl1" href="#overview">Overview</a></li>
+      <li><a class="lvl1" href="#step-1">1. Open the Accounts list</a></li>
+      <li><a class="lvl1" href="#step-2">2. Start a new FCCN account</a></li>
+      <li><a class="lvl1" href="#step-3">3. Save the FCCN account</a></li>
+      <li><a class="lvl1" href="#step-4">4. Create the affiliated FCC Provider account</a></li>
+      <li><a class="lvl1" href="#step-5">5. Save the Provider account</a></li>
+      <li><a class="lvl1" href="#step-6">6. Confirm the affiliation on the network</a></li>
+      <li><a class="lvl1" href="#step-7">7. Add the network's staff contact</a></li>
+      <li><a class="lvl1" href="#step-8">8. Save the contact</a></li>
+      <li><a class="lvl1" href="#step-9">9. Provision vendor portal access</a></li>
+      <li><a class="lvl1" href="#step-10">10. Confirm the network staffer's portal view</a></li>
+    </ul>
+    <a class="backhome" href="index.html">&larr; Back to User Guide home</a>
+  </nav>
+
+  <main id="top">
+    <h1>FCCN Network &amp; Provider Setup</h1>
+    <p class="lead">How to bring a new Family Child Care Network (FCCN) into ECMS, affiliate an individual
+    home-based FCC Provider with it, and give the network's own staff a working vendor portal login.</p>
+    <div class="meta-row">
+      <span class="chip">10 steps</span><span class="chip">~10 min read</span><span class="chip">Persona: Operations Analyst / ECMS Admin</span>
+    </div>
+
+    <h2 id="overview">Overview</h2>
+    <p>An FCCN doesn't run its own childcare site directly the way a CBO does &mdash; instead, it
+    <strong>oversees a network of independent, home-based FCC (Family Child Care) Providers</strong>, each one
+    a small licensed daycare business run out of someone's own home. In ECMS, both the FCCN and each Provider
+    it oversees are <strong>Account</strong> records, just with different record types (<strong>Family Childcare
+    Network</strong> and <strong>Family Childcare Provider</strong>). A Provider is linked back to its network
+    through a single lookup field on the Account &mdash; <code>ECMS_Affiliated_Network__c</code> &mdash; not a
+    separate junction object. This guide walks through creating both accounts, wiring up that affiliation, and
+    provisioning portal access for a member of the <strong>FCCN's own staff</strong> (for example, an
+    <strong>Affiliation Manager</strong>). As with Guide 1, this is internal, DOE-side setup work normally done
+    by an <strong>Operations Analyst (OA)</strong> or the <strong>ECMS Admin</strong>, working in the internal
+    Salesforce app.</p>
+    <div class="callout">
+      <b>CBO vs. FCCN &mdash; why this guide is different from Guide 1.</b> A <strong>CBO</strong> has a direct
+      contract with DOE to run its own site(s), and its own staff use ECMS to manage that site directly. An
+      <strong>FCCN</strong> has no site of its own to run &mdash; its "site," in effect, is the roster of
+      affiliated home Providers it recruits, vets, and supervises (this oversight relationship is called an
+      <strong>affiliation</strong>). So where Guide 1 creates one Account and one Site Master, this guide
+      creates <strong>two</strong> Account records (the network, and at least one affiliated Provider) connected
+      by a lookup field, and the network's own staff &mdash; not the individual home Providers &mdash; are
+      the ones who typically get provisioned with portal logins.
+    </div>
+
+    <h2>Steps</h2>
+
+    <div class="step" id="step-1">
+      <h3><span class="stepnum">1</span>Open the Accounts list</h3>
+      <p><span class="lbl lbl-do">DO</span> Click the <strong>Accounts</strong> tab in the top navigation bar,
+      then switch the list view to <strong>All Accounts</strong> so you can see every existing CBO, FCCN,
+      Provider, and household account in the org.</p>
+      <p><span class="lbl lbl-res">RESULT</span> The Accounts list view loads, showing every account with its
+      billing city, phone, and type &mdash; CBOs, FCCNs, and FCC Providers all live in the same object, just
+      with different record types.</p>
+      <figure>
+        <img src="screenshots/g2-01-accounts-list.png" alt="Accounts tab showing the All Accounts list view with existing CBO, FCCN, and household accounts" />
+        <figcaption>Accounts &rarr; All Accounts list view.</figcaption>
+      </figure>
+    </div>
+
+    <div class="step" id="step-2">
+      <h3><span class="stepnum">2</span>Start a new FCCN account</h3>
+      <p><span class="lbl lbl-do">DO</span> Click <strong>New</strong>. When prompted for a record type, choose
+      <strong>Family Childcare Network</strong> and click <strong>Next</strong>. Fill in the <strong>Account
+      Name</strong> (the network's legal/DBA name) and, in the <strong>Network Information</strong> section,
+      set <strong>Network Status</strong>, <strong>Vendor Tax ID</strong>, and the <strong>Network
+      Boroughs</strong> it serves.</p>
+      <p><span class="lbl lbl-res">RESULT</span> A "New Account: Family Childcare Network" form opens with
+      fields specific to FCCNs (Network Bio, Network Status, Program Number, Network Boroughs, Network
+      Languages) &mdash; noticeably different from a CBO's site-oriented fields, since the network itself
+      doesn't have a borough/district of its own.</p>
+      <figure>
+        <img src="screenshots/g2-02-new-account-form-fccn.png" alt="New Account form with the Family Childcare Network record type, showing Account Name, Network Status, Program Number, Vendor Tax ID, Network Boroughs and Network Languages fields" />
+        <figcaption>New Account form, Family Childcare Network record type.</figcaption>
+      </figure>
+    </div>
+
+    <div class="step" id="step-3">
+      <h3><span class="stepnum">3</span>Save the FCCN account</h3>
+      <p><span class="lbl lbl-do">DO</span> Click <strong>Save</strong>.</p>
+      <p><span class="lbl lbl-res">RESULT</span> The Account record is created and you land on its detail
+      page, with a <strong>Providers</strong> tab (in addition to Details, Activity, and Documents) and
+      related-list quick links for Contacts, Affiliations (Affiliated Network), Calendars, and Files.</p>
+      <figure>
+        <img src="screenshots/g2-03-fccn-account-detail.png" alt="Account detail page for Riverbend Family Childcare Network, showing Account Record Type Family Childcare Network, Network Status Active, Network Boroughs Bronx, and the Providers tab" />
+        <figcaption>Riverbend Family Childcare Network &mdash; the saved FCCN account record.</figcaption>
+      </figure>
+      <div class="note">
+        <b>Note:</b> There's no Site Master step here the way there is for a CBO &mdash; an FCCN account has no
+        site of its own. The <strong>Providers</strong> tab and the <strong>Affiliations (Affiliated
+        Network)</strong> related list are where its roster of home Providers will show up once they're
+        affiliated in the next steps.
+      </div>
+    </div>
+
+    <div class="step" id="step-4">
+      <h3><span class="stepnum">4</span>Create the affiliated FCC Provider account</h3>
+      <p><span class="lbl lbl-do">DO</span> Go back to the <strong>Accounts</strong> tab and click
+      <strong>New</strong>. Choose the <strong>Family Childcare Provider</strong> record type and click
+      <strong>Next</strong>. Fill in the <strong>Account Name</strong> (the individual home Provider's business
+      name) and set the <strong>Affiliated Network</strong> lookup to the FCCN account you just created.</p>
+      <p><span class="lbl lbl-res">RESULT</span> A "New Account: Family Childcare Provider" form opens with
+      Provider-specific fields (License Type, Meals, and the <strong>Affiliated Network</strong> lookup) plus
+      the standard address fields for the home's physical location.</p>
+      <figure>
+        <img src="screenshots/g2-04-new-account-form-provider.png" alt="New Account form with the Family Childcare Provider record type, showing Account Name Riverbend FCC Provider - Woodlawn and the Affiliated Network lookup field" />
+        <figcaption>New Account form, Family Childcare Provider record type &mdash; note the Affiliated Network lookup.</figcaption>
+      </figure>
+      <div class="callout">
+        <b>The affiliation is just a lookup field.</b> Setting <strong>Affiliated Network</strong> on the
+        Provider account (<code>ECMS_Affiliated_Network__c</code>) is the entire mechanism &mdash; there's no
+        separate junction/relationship object to create. Once it's set, the Provider automatically shows up in
+        the FCCN's <strong>Providers</strong> tab and <strong>Affiliations</strong> related list.
+      </div>
+    </div>
+
+    <div class="step" id="step-5">
+      <h3><span class="stepnum">5</span>Save the Provider account</h3>
+      <p><span class="lbl lbl-do">DO</span> Click <strong>Save</strong>.</p>
+      <p><span class="lbl lbl-res">RESULT</span> The Provider's Account record is created, showing
+      <strong>Affiliated Network</strong> linked back to the FCCN, plus related lists for Contacts, Sites
+      Master, Incident Cases, Enrollments (Provider Name), Affiliations, and Family Childcare Applications.</p>
+      <figure>
+        <img src="screenshots/g2-05-provider-account-detail.png" alt="Account detail page for Riverbend FCC Provider - Woodlawn, showing Account Record Type Family Childcare Provider, Affiliated Network Riverbend Family Childcare Network, and Sites Master related list" />
+        <figcaption>Riverbend FCC Provider - Woodlawn &mdash; the saved Provider account, affiliated back to Riverbend FCCN.</figcaption>
+      </figure>
+      <div class="note">
+        <b>Note:</b> Notice the Provider account still has its own <strong>Sites Master (1)</strong> related
+        list &mdash; the home itself is recorded as a site record, exactly like a CBO's site, but it's owned by
+        the Provider account rather than by the network. The network account itself never gets a Site Master
+        of its own.
+      </div>
+    </div>
+
+    <div class="step" id="step-6">
+      <h3><span class="stepnum">6</span>Confirm the affiliation on the network</h3>
+      <p><span class="lbl lbl-do">DO</span> Go back to the FCCN's Account record and click the
+      <strong>Providers</strong> tab.</p>
+      <p><span class="lbl lbl-res">RESULT</span> The <strong>Affiliations</strong> related list shows the
+      newly-created Provider, with its <strong>Affiliation Status</strong> (Active) and <strong>Affiliation
+      Start Date</strong>.</p>
+      <figure>
+        <img src="screenshots/g2-06-fccn-providers-related-list.png" alt="Riverbend Family Childcare Network account, Providers tab, showing the Affiliations related list with Riverbend FCC Provider - Woodlawn, Affiliation Status Active, Affiliation Start Date 4/1/2025" />
+        <figcaption>Riverbend Family Childcare Network &mdash; Providers tab, confirming the affiliation.</figcaption>
+      </figure>
+    </div>
+
+    <div class="step" id="step-7">
+      <h3><span class="stepnum">7</span>Add the network's staff contact</h3>
+      <p><span class="lbl lbl-do">DO</span> Go to the <strong>Contacts</strong> tab and click <strong>New</strong>,
+      choosing the <strong>Staff</strong> record type. Fill in <strong>First Name</strong>, <strong>Last
+      Name</strong>, <strong>Title</strong> (e.g. "Affiliation Manager"), and set <strong>Account Name</strong>
+      to the FCCN account &mdash; <em>not</em> to the individual Provider account.</p>
+      <p><span class="lbl lbl-res">RESULT</span> A "New Contact: Staff" form opens, linked to the FCCN.</p>
+      <figure>
+        <img src="screenshots/g2-07-new-contact-form.png" alt="New Contact: Staff form being filled out for Renata Okafor, Affiliation Manager, linked to the Riverbend Family Childcare Network account" />
+        <figcaption>New Contact: Staff form for the network's own staff member.</figcaption>
+      </figure>
+      <div class="note">
+        <b>Note:</b> Per ECMS's persona model, FCCN-specific staff roles include an <strong>Affiliation
+        Manager</strong> (onboards new home Providers into the network), an <strong>Education Specialist</strong>
+        and <strong>Education Director</strong> (coach individual home Providers &mdash; the FCCN equivalents
+        of a CBO's Instructional Coordinator / Leadership Coach), and a <strong>Family Worker</strong> (the
+        FCCN equivalent of a Social Worker). All of these are Contacts on the <strong>network</strong> account.
+      </div>
+    </div>
+
+    <div class="step" id="step-8">
+      <h3><span class="stepnum">8</span>Save the contact</h3>
+      <p><span class="lbl lbl-do">DO</span> Click <strong>Save</strong>.</p>
+      <p><span class="lbl lbl-res">RESULT</span> The Contact record is created on the FCCN account. Notice the
+      same extra action buttons as Guide 1: <strong>Provision Contact</strong> and <strong>Log in to
+      Experience as User</strong>, plus <strong>View Partner User</strong>.</p>
+      <figure>
+        <img src="screenshots/g2-08-fccn-contact-detail.png" alt="Contact detail page for FCCN Network 1787783618716, Network Director, Account Name Riverbend Family Childcare Network, showing the Provision Contact and Log in to Experience as User buttons" />
+        <figcaption>The network's saved staff contact record, on the Riverbend Family Childcare Network account.</figcaption>
+      </figure>
+    </div>
+
+    <div class="step" id="step-9">
+      <h3><span class="stepnum">9</span>Provision vendor portal access</h3>
+      <p><span class="lbl lbl-do">DO</span> On the Contact record, click <strong>Provision Contact</strong>.
+      On the first screen, check the ECMS functions this network staffer needs and click <strong>Next</strong>.
+      On the second screen, check the box for the affiliated Provider site(s) they should have access to, then
+      click <strong>Next</strong>.</p>
+      <p><span class="lbl lbl-res">RESULT</span> The functions screen shows FCCN-specific options alongside
+      the CBO ones &mdash; <strong>Network Management</strong> (create/provision other users for this
+      network), <strong>Provider Management</strong> (manage onboarding for affiliated Providers),
+      <strong>Education Specialist</strong>, <strong>Family Worker</strong>, <strong>Education Director</strong>,
+      and <strong>FCC Provider Accounts</strong> (access to Provider accounts related to this network). The
+      second screen's "Select Sites" list is scoped to the <strong>affiliated Provider's site</strong>, since
+      the FCCN itself has no site of its own.</p>
+      <figure>
+        <img src="screenshots/g2-09-provision-functions.png" alt="Provision Contact wizard, ECMS Function Assignment screen, showing checkboxes for Site Management, Network Management, Classroom Management, Enrollment Management, Provider Management, Education Specialist, Family Worker, Education Director, and FCC Provider Accounts" />
+        <figcaption>Provision Contact &mdash; ECMS Function Assignment screen, with FCCN-specific functions.</figcaption>
+      </figure>
+      <figure>
+        <img src="screenshots/g2-10-provision-step2.png" alt="Provision Contact wizard, Select Sites screen, showing the Riverbend FCC Provider - Woodlawn Site checked" />
+        <figcaption>Provision Contact &mdash; Select Sites screen, scoped to the affiliated Provider's site.</figcaption>
+      </figure>
+      <div class="note">
+        <b>Note:</b> Individual home Providers themselves are generally <em>not</em> the ones logging into
+        ECMS day-to-day &mdash; it's the FCCN's own staff (Network Director, Affiliation Manager, Education
+        Specialist/Director, Family Worker) who use the portal to manage the network's oversight
+        responsibilities. Don't expect to see a separate "provision the Provider's own login" step in this
+        workflow.
+      </div>
+    </div>
+
+    <div class="step" id="step-10">
+      <h3><span class="stepnum">10</span>Confirm the network staffer's portal view</h3>
+      <p><span class="lbl lbl-do">DO</span> From the Contact record, click <strong>Log in to Experience as
+      User</strong> to see exactly what this person sees when they log into the vendor portal themselves.</p>
+      <p><span class="lbl lbl-res">RESULT</span> The vendor portal home page loads under the DOE-branded
+      header, showing this user's name and network in the top-right corner and quick-action tiles for the
+      functions they were provisioned with (Create Enrollment, Report Incident).</p>
+      <figure>
+        <img src="screenshots/g2-11-portal-home.png" alt="Vendor portal home page, logged in as FCCN Network 1787783618716 of Riverbend Family Childcare Network, showing quick-action tiles for Create Enrollment and Report Incident" />
+        <figcaption>Vendor portal home &mdash; logged in as the newly-provisioned FCCN staff contact.</figcaption>
+      </figure>
+      <p>Clicking <strong>Sites</strong> in the portal's top navigation confirms the affiliated Provider's home
+      site from step 5 is visible to this user, with Site Type <strong>FCC</strong> and the
+      <strong>School/CBO</strong> column pointing to the Provider account &mdash; not the network.</p>
+      <figure>
+        <img src="screenshots/g2-12-portal-sites.png" alt="Vendor portal Sites Master list view, showing Riverbend FCC Provider - Woodlawn Site with Site Type FCC and School/CBO linked to Riverbend FCC Provider - Woodlawn" />
+        <figcaption>Vendor portal &mdash; Sites Master, scoped to the FCCN staffer's affiliated Provider.</figcaption>
+      </figure>
+      <div class="callout">
+        <b>Setup complete.</b> The FCCN now has an account, at least one affiliated FCC Provider, and a
+        network staff member who can log into the vendor portal to manage that oversight relationship. From
+        here, the next step in the chain is usually setting up the FCCN's <strong>contract and seats</strong>
+        (see the Contracts &amp; Seats guide) before any enrollments can begin under the affiliated Provider.
+      </div>
+    </div>
+
+    <a class="backhome" href="index.html">&larr; Back to User Guide home</a>
+  </main>
+</div>
+<div class="site-footer">
+  <div class="ft-in">
+    <div class="ft-left"><b>NYC DOE &middot; Division of Early Childhood Education</b><div>Early Childhood Management System (ECMS)</div></div>
+    <nav class="ft-nav"><a href="index.html">User Guide Home</a></nav>
+  </div>
+</div>
+</body></html>

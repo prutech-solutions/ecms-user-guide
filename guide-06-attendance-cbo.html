@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Attendance — CBO — ECMS User Guide</title><style>
+:root{--ink:#1B2430;--head:#0B2545;--muted:#5B6478;--link:#1657CE;--line:#DCE1EA;--line2:#EAEDF3;--code:#F5F7FB;--navy:#0B2545;--accent:#1657CE;--do:#1657CE;--res:#1E8E5A;--soft:#F5F7FB;--brandA:#0072CE;--brandB:#00A65A;--brandC:#F5A623;--brandD:#D0103A;}
+*{box-sizing:border-box;} html{scroll-behavior:smooth;}
+body{margin:0;color:var(--ink);background:#fff;font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;line-height:1.65;font-size:16px;}
+a{color:var(--link);text-decoration:none;} a:hover{text-decoration:underline;}
+code{font-family:'SFMono-Regular',Consolas,Menlo,monospace;background:var(--code);border:1px solid var(--line);border-radius:4px;padding:1px 6px;font-size:13.5px;color:#0a2a5e;}
+.topbar{position:sticky;top:0;z-index:10;box-shadow:0 1px 0 var(--line);}
+.tb-top{background:#fff;border-bottom:1px solid var(--line);}
+.tb-top .in{max-width:1260px;margin:0 auto;padding:14px 32px;display:flex;align-items:center;gap:12px;}
+.doe-logo{display:flex;align-items:baseline;gap:1px;font-weight:800;font-size:20px;letter-spacing:.2px;}
+.doe-logo b:nth-child(1){color:var(--brandA);} .doe-logo b:nth-child(2){color:var(--brandC);} .doe-logo b:nth-child(3){color:var(--brandB);} .doe-logo b:nth-child(4){color:var(--brandD);}
+.doe-sub{color:var(--muted);font-size:12.5px;padding-left:10px;border-left:1px solid var(--line);}
+.tb-bottom{background:var(--navy);}
+.tb-bottom .in{max-width:1260px;margin:0 auto;padding:10px 32px;display:flex;align-items:center;gap:22px;}
+.ecms-brand{color:#fff;font-weight:700;font-size:15px;letter-spacing:.3px;}
+.topnav{display:flex;gap:24px;margin-left:6px;}
+.topnav a{color:#cfe0fb;font-weight:600;font-size:13.5px;}
+.topnav a.cur{color:#fff;}
+@media (max-width:760px){.topnav{display:none;}}
+.crumbs{max-width:1260px;margin:0 auto;padding:16px 32px 0;font-size:13px;color:var(--muted);}
+.crumbs a{color:var(--muted);} .crumbs span{margin:0 7px;}
+.wrap{max-width:1260px;margin:0 auto;padding:8px 32px 60px;display:grid;grid-template-columns:270px minmax(0,1fr);gap:52px;}
+main{min-width:0;max-width:840px;}
+h1{font-size:32px;line-height:1.2;color:var(--head);margin:14px 0 6px;font-weight:700;}
+.lead{font-size:16.5px;color:var(--ink);margin:10px 0 4px;}
+.subtext{color:var(--muted);font-size:14px;margin:2px 0 0;}
+h2{font-size:22px;color:var(--head);font-weight:700;margin:42px 0 6px;padding-bottom:8px;border-bottom:1px solid var(--line);}
+h3{font-size:17.5px;color:var(--head);font-weight:700;margin:8px 0 2px;}
+p{margin:10px 0;}
+ul.bul{margin:10px 0;padding-left:22px;} ul.bul li{margin:6px 0;}
+table{border-collapse:collapse;width:100%;margin:16px 0;font-size:14.5px;}
+th,td{border:1px solid var(--line);padding:9px 13px;text-align:left;vertical-align:top;}
+th{background:var(--soft);color:var(--head);font-weight:700;}
+.lbl{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;padding:2px 9px;border-radius:4px;margin-right:8px;vertical-align:middle;}
+.lbl-do{background:#E6EFFC;color:var(--do);} .lbl-res{background:#E5F5EC;color:var(--res);}
+.step{scroll-margin-top:118px;border-top:1px solid var(--line2);padding-top:28px;margin-top:28px;}
+.step:first-of-type{border-top:none;margin-top:14px;padding-top:8px;}
+.step .stepnum{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;background:var(--navy);color:#fff;font-weight:700;font-size:14px;margin-right:10px;vertical-align:middle;}
+.step h3{display:inline;}
+h2,h3{scroll-margin-top:118px;}
+figure{margin:14px 0 4px;}
+figure img{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:8px;box-shadow:0 4px 14px rgba(11,37,69,.08);}
+figcaption{font-size:13px;color:var(--muted);margin-top:8px;font-style:italic;}
+.callout{background:var(--soft);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:6px;padding:14px 18px;margin:14px 0;}
+.callout b{color:var(--head);}
+.note{background:#fff8ec;border:1px solid #f3e2bd;border-left:4px solid #e0a127;border-radius:6px;padding:6px 18px;margin:14px 0;}
+.sidenav{position:sticky;top:104px;align-self:start;font-size:14px;max-height:calc(100vh - 120px);overflow:auto;padding-right:6px;}
+.nav-cat{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);font-weight:700;padding:0 0 10px;border-bottom:1px solid var(--line);margin-bottom:8px;}
+ul.nav{list-style:none;margin:0;padding:0;} ul.nav>li{margin:2px 0;}
+a.lvl1{display:block;padding:7px 10px;border-radius:6px;color:var(--head);font-weight:600;font-size:13.6px;}
+a.lvl1:hover{background:var(--soft);text-decoration:none;}
+a.lvl1.cur{color:var(--accent);background:var(--soft);border-left:3px solid var(--accent);padding-left:8px;}
+.backhome{display:inline-block;margin:14px 0 4px;font-weight:700;font-size:13.5px;}
+.meta-row{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 6px;}
+.chip{font-size:11.5px;font-weight:600;color:var(--navy);background:var(--soft);border:1px solid var(--line);border-radius:20px;padding:3px 10px;}
+.site-footer{background:var(--navy);color:#fff;margin-top:48px;}
+.site-footer .ft-in{max-width:1260px;margin:0 auto;padding:22px 32px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px;}
+.ft-left b{font-size:14px;} .ft-left div{color:#B9C7E3;font-size:12.5px;margin-top:4px;}
+.ft-nav a{color:#fff;font-size:13px;}
+@media (max-width:900px){.wrap{grid-template-columns:1fr;}.sidenav{position:static;max-height:none;}}
+</style></head>
+<body>
+<div class="topbar">
+  <div class="tb-top"><div class="in">
+    <span class="doe-logo"><b>N</b><b>Y</b><b>C</b></span>
+    <span class="doe-sub">Department of Education &middot; Division of Early Childhood Education</span>
+  </div></div>
+  <div class="tb-bottom"><div class="in">
+    <span class="ecms-brand">ECMS User Guide</span>
+    <nav class="topnav"><a href="index.html">Home</a></nav>
+  </div></div>
+</div>
+<div class="crumbs"><a href="index.html">ECMS User Guide</a><span>/</span>Attendance (CBO)</div>
+<div class="wrap">
+
+  <nav class="sidenav">
+    <div class="nav-cat">On this page</div>
+    <ul class="nav">
+      <li><a class="lvl1" href="#overview">Overview</a></li>
+      <li><a class="lvl1" href="#step-1">1. Open the Attendance menu</a></li>
+      <li><a class="lvl1" href="#step-2">2. Choose the site</a></li>
+      <li><a class="lvl1" href="#step-3">3. Choose the class</a></li>
+      <li><a class="lvl1" href="#step-4">4. Pick the student</a></li>
+      <li><a class="lvl1" href="#step-5">5. Record the week's daily attendance</a></li>
+      <li><a class="lvl1" href="#step-6">6. Review an already-recorded week</a></li>
+      <li><a class="lvl1" href="#step-7">7. Open Monthly Review to certify</a></li>
+      <li><a class="lvl1" href="#step-8">8. Select the month and class to certify</a></li>
+      <li><a class="lvl1" href="#step-9">9. Confirm the record behind the scenes</a></li>
+    </ul>
+    <a class="backhome" href="index.html">&larr; Back to User Guide home</a>
+  </nav>
+
+  <main id="top">
+    <h1>Attendance (CBO)</h1>
+    <p class="lead">How a CBO's <strong>Attendance Taker</strong> records daily attendance for enrolled students
+    in the vendor portal, and how the CBO formally certifies a full month of attendance once it's complete.</p>
+    <div class="meta-row">
+      <span class="chip">9 steps</span><span class="chip">~9 min read</span><span class="chip">Persona: CBO Attendance Taker</span>
+    </div>
+
+    <h2 id="overview">Overview</h2>
+    <p>Once a child is <strong>actively enrolled</strong> at a site (see the Enrollment guide), the CBO is
+    responsible for recording that child's attendance every day they're in care. This is done from the CBO's
+    own <strong>vendor portal</strong> login &mdash; typically by a site-level staff member with the
+    <strong>Attendance Taker</strong> function, the same portal login used throughout this guide (Damien Ortiz
+    at Cedar Point &ndash; Riverdale Campus). Attendance is entered day by day through the portal's
+    <strong>Weekly Attendance</strong> screen, then at the end of each month the CBO reviews the whole month
+    and formally <strong>certifies</strong> it &mdash; a sign-off that the recorded attendance is accurate.</p>
+    <div class="callout">
+      <b>Where this fits &mdash; and why certification is a hard gate.</b> Per the ECMS onboarding overview:
+      <em>&ldquo;At the end of each month, the vendor certifies that month's attendance (a formal sign-off that
+      it's accurate) &mdash; and that certification is a hard requirement: you cannot submit an invoice for a
+      month until that month's attendance has been certified.&rdquo;</em> In the workflow chain
+      &mdash; <strong>Enrollment &rarr; Attendance &rarr; Budget &rarr; Invoice</strong> &mdash; this
+      certification step is the precondition that unlocks invoicing for that month.
+    </div>
+
+    <h2>Steps</h2>
+
+    <div class="step" id="step-1">
+      <h3><span class="stepnum">1</span>Open the Attendance menu</h3>
+      <p><span class="lbl lbl-do">DO</span> From the vendor portal's top navigation bar, click
+      <strong>Attendance</strong>.</p>
+      <p><span class="lbl lbl-res">RESULT</span> A dropdown opens with three options: <strong>Weekly
+      Attendance</strong> (day-by-day entry for one student's week), <strong>Daily Attendance</strong> (a
+      single day across a whole class), and <strong>Monthly Review</strong> (the certification screen used in
+      later steps).</p>
+      <figure>
+        <img src="screenshots/g6-01-attendance-menu.png" alt="Vendor portal top navigation with the Attendance dropdown open, showing Weekly Attendance, Daily Attendance, and Monthly Review options" />
+        <figcaption>Vendor portal &mdash; Attendance menu, logged in as Damien Ortiz.</figcaption>
+      </figure>
+    </div>
+
+    <div class="step" id="step-2">
+      <h3><span class="stepnum">2</span>Choose the site</h3>
+      <p><span class="lbl lbl-do">DO</span> Click <strong>Weekly Attendance</strong>, then click the site you
+      want to record attendance for.</p>
+      <p><span class="lbl lbl-res">RESULT</span> A <strong>Sites</strong> list loads, scoped to only the
+      site(s) this portal user was provisioned for &mdash; here, just <strong>Cedar Point - Riverdale
+      Campus</strong>.</p>
+      <figure>
+        <img src="screenshots/g6-02-weekly-sites.png" alt="Weekly Attendance Sites list showing Cedar Point - Riverdale Campus scoped to this vendor user, with an ECMS Attendance for Vendors dashboard above it" />
+        <figcaption>Weekly Attendance &mdash; Sites list, scoped to this user's CBO.</figcaption>
+      </figure>
+    </div>
+
+    <div class="step" id="step-3">
+      <h3><span class="stepnum">3</span>Choose the class</h3>
+      <p><span class="lbl lbl-do">DO</span> Click the site name, then click the class whose students you want
+      to take attendance for.</p>
+      <p><span class="lbl lbl-res">RESULT</span> A <strong>Classes</strong> list loads for the selected site
+      &mdash; here, <strong>Toddler Room - Head Start</strong>, a Birth-To-Five (BTF) Head Start CTL class.</p>
+      <figure>
+        <img src="screenshots/g6-03-weekly-classes.png" alt="Weekly Attendance Classes list for Cedar Point - Riverdale Campus, showing Toddler Room - Head Start with Contract Type Birth-To-Five and Seat Type Head Start CTL" />
+        <figcaption>Weekly Attendance &mdash; Classes list for the selected site.</figcaption>
+      </figure>
+    </div>
+
+    <div class="step" id="step-4">
+      <h3><span class="stepnum">4</span>Pick the student</h3>
+      <p><span class="lbl lbl-do">DO</span> Click the class name, then click the specific student you're
+      recording attendance for.</p>
+      <p><span class="lbl lbl-res">RESULT</span> A <strong>Students</strong> roster loads for the class,
+      listing every actively enrolled student &mdash; including <strong>Camila Vasquez</strong>, whose
+      enrollment (<code>ENROL-0000000520</code>) is used for the rest of this guide.</p>
+      <figure>
+        <img src="screenshots/g6-04-class-roster.png" alt="Students roster for Toddler Room - Head Start, listing Camila Vasquez, Jamal Brooks, Yuki Tanaka, and Leilani Kekoa with admission dates, gender identity, and birthdate" />
+        <figcaption>Toddler Room - Head Start &mdash; enrolled student roster.</figcaption>
+      </figure>
+    </div>
+
+    <div class="step" id="step-5">
+      <h3><span class="stepnum">5</span>Record the week's daily attendance</h3>
+      <p><span class="lbl lbl-do">DO</span> Click the student's name. For each day of the displayed week, use
+      the <strong>Status</strong> dropdown to mark the student Present, Absent, or another applicable status,
+      then click <strong>Save</strong>.</p>
+      <p><span class="lbl lbl-res">RESULT</span> A weekly grid opens for the student, defaulted to the
+      current week (Mon 09/14/2026 &ndash; Fri 09/18/2026), with a <strong>Status</strong> dropdown for each
+      day. This is the day-by-day entry that builds up the month's attendance record.</p>
+      <figure>
+        <img src="screenshots/g6-05-weekly-grid-current.png" alt="Weekly attendance entry grid for Camila Vasquez, week of Sep 14-18 2026, showing an unset Select Status dropdown for each weekday" />
+        <figcaption>Weekly attendance entry grid for Camila Vasquez &mdash; current week, not yet recorded.</figcaption>
+      </figure>
+      <div class="note">
+        <b>Note:</b> The grid also has <strong>Check In</strong> / <strong>Check Out</strong> rows plus a
+        <strong>Show 2nd Check In</strong> toggle. That second check-in/check-out pair is the <strong>TITO</strong>
+        (time-in/time-out) mechanism used for extended-day (EDY) seats, and isn't required for this class's
+        standard Head Start seat type &mdash; see the Attendance (FCCN) / TITO guide for that workflow.
+      </div>
+    </div>
+
+    <div class="step" id="step-6">
+      <h3><span class="stepnum">6</span>Review an already-recorded week</h3>
+      <p><span class="lbl lbl-do">DO</span> Use the <strong>Week</strong> date field to jump back to a past
+      week &mdash; for example, <strong>Jul 13, 2026</strong>.</p>
+      <p><span class="lbl lbl-res">RESULT</span> The grid reloads showing that week's already-recorded
+      statuses (<strong>Present</strong> for every weekday, Mon 07/13 &ndash; Fri 07/17), and a banner appears:
+      <em>&ldquo;Attendance for the month July 2026 is certified by on Jul 31, 2026.&rdquo;</em> Because July has
+      already been certified, <strong>Save</strong> is disabled &mdash; certified months are locked from
+      further attendance edits.</p>
+      <figure>
+        <img src="screenshots/g6-06-weekly-grid-certified.png" alt="Weekly attendance grid for Camila Vasquez, week of Jul 13-17 2026, showing Status Present for every day and a banner stating attendance for July 2026 is certified, with Save disabled" />
+        <figcaption>Weekly attendance grid, week of Jul 13&ndash;17, 2026 &mdash; already recorded and the month already certified.</figcaption>
+      </figure>
+    </div>
+
+    <div class="step" id="step-7">
+      <h3><span class="stepnum">7</span>Open Monthly Review to certify</h3>
+      <p><span class="lbl lbl-do">DO</span> Click <strong>Attendance</strong> in the top navigation again, then
+      click <strong>Monthly Review</strong>, then click the site.</p>
+      <p><span class="lbl lbl-res">RESULT</span> The same site-scoped <strong>Sites</strong> list loads, this
+      time leading into the certification workflow rather than day-by-day entry.</p>
+      <figure>
+        <img src="screenshots/g6-07-monthly-review-sites.png" alt="Monthly Review Sites list showing Cedar Point - Riverdale Campus" />
+        <figcaption>Monthly Review &mdash; Sites list.</figcaption>
+      </figure>
+    </div>
+
+    <div class="step" id="step-8">
+      <h3><span class="stepnum">8</span>Select the month and class to certify</h3>
+      <p><span class="lbl lbl-do">DO</span> Click the site, then set <strong>Attendance Month</strong> to
+      <strong>07/2026</strong> and <strong>Attendance Class</strong> to <strong>Toddler Room - Head Start</strong>.</p>
+      <p><span class="lbl lbl-res">RESULT</span> A roster table loads listing every student in the class for
+      that service month, each with a <strong>Status</strong> column &mdash; here, all four students
+      (Jamal Brooks, Camila Vasquez, Yuki Tanaka, Leilani Kekoa) already show <strong>Certified</strong>. Below
+      the table is the certification checkbox: <em>&ldquo;I Certify that the attendance Information reported on
+      this Electronic Attendance form EAF is Correct&rdquo;</em>, followed by <strong>Submit</strong>. Because
+      this month is already certified, both the checkbox and Submit are disabled.</p>
+      <figure>
+        <img src="screenshots/g6-08-monthly-review-certified.png" alt="Monthly Review roster for Toddler Room - Head Start, July 2026, listing four students all with Status Certified, plus a disabled certification checkbox and Submit button" />
+        <figcaption>Monthly Review &mdash; July 2026, Toddler Room - Head Start, already certified.</figcaption>
+      </figure>
+      <div class="callout">
+        <b>What certifying actually does.</b> For a month that is <em>not</em> yet certified, this same screen
+        lets the Attendance Taker check the certification box and click <strong>Submit</strong> &mdash; but only
+        once every enrollment and every attendance day for that month is complete. Per the Attendance BRD (D07),
+        if any enrollments or days are still outstanding, ECMS blocks certification and displays a message that
+        all enrollments and days must be completed first; once certification succeeds, it's what flips this
+        student-month's status to Certified and unlocks that month for invoicing.
+      </div>
+      <div class="note">
+        <b>Note:</b> Until a month is certified, ECMS sends the CBO/FCCN user a weekly reminder (every 7th day)
+        naming the specific month still owed, and stops sending it as soon as that month is certified.
+      </div>
+    </div>
+
+    <div class="step" id="step-9">
+      <h3><span class="stepnum">9</span>Confirm the record behind the scenes</h3>
+      <p><span class="lbl lbl-do">DO</span> (Optional, internal admin view.) On the ECMS internal Salesforce
+      app, open one of the individual daily <strong>Attendance</strong> records that rolled up into the
+      certified month, e.g. <code>ATTEND-0000002256</code> for Camila Vasquez, 7/1/2026.</p>
+      <p><span class="lbl lbl-res">RESULT</span> The Attendance record detail shows the fields entered from the
+      portal's weekly grid &mdash; Student, Enrollment, Class, Attendance Date, and Status (here,
+      <strong>Submitted</strong>) &mdash; plus the empty Check-In/Check-Out and second Check-In/Check-Out pairs
+      used only for TITO seats. Every one of these daily records for a student and month is what the Monthly
+      Attendance certification in step 8 rolls up and locks.</p>
+      <figure>
+        <img src="screenshots/g6-09-attendance-record-detail.png" alt="Internal Salesforce Attendance record detail page for ATTEND-0000002256, showing Student Camila Vasquez, Enrollment ENROL-0000000520, Status Submitted, Class Toddler Room - Head Start, Attendance Date 7/1/2026, and empty Check-In/Check-Out fields" />
+        <figcaption>Internal view &mdash; a single daily Attendance record (ATTEND-0000002256) behind the certified month.</figcaption>
+      </figure>
+      <div class="callout">
+        <b>Setup complete.</b> With daily attendance recorded and the month certified, this enrollment's July
+        2026 attendance can now support an invoice for that month. From here, the next step in the chain is
+        <strong>Budget approval</strong> and then <strong>Invoicing</strong> (see the Budgets &amp; Invoicing
+        guide) &mdash; both of which will check back against this certification.
+      </div>
+    </div>
+
+    <a class="backhome" href="index.html">&larr; Back to User Guide home</a>
+  </main>
+</div>
+<div class="site-footer">
+  <div class="ft-in">
+    <div class="ft-left"><b>NYC DOE &middot; Division of Early Childhood Education</b><div>Early Childhood Management System (ECMS)</div></div>
+    <nav class="ft-nav"><a href="index.html">User Guide Home</a></nav>
+  </div>
+</div>
+</body></html>

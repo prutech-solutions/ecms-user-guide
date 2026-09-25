@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Budget Creation &amp; OA &rarr; OD Approval — ECMS User Guide</title><style>
+:root{--ink:#1B2430;--head:#0B2545;--muted:#5B6478;--link:#1657CE;--line:#DCE1EA;--line2:#EAEDF3;--code:#F5F7FB;--navy:#0B2545;--accent:#1657CE;--do:#1657CE;--res:#1E8E5A;--soft:#F5F7FB;--brandA:#0072CE;--brandB:#00A65A;--brandC:#F5A623;--brandD:#D0103A;}
+*{box-sizing:border-box;} html{scroll-behavior:smooth;}
+body{margin:0;color:var(--ink);background:#fff;font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;line-height:1.65;font-size:16px;}
+a{color:var(--link);text-decoration:none;} a:hover{text-decoration:underline;}
+code{font-family:'SFMono-Regular',Consolas,Menlo,monospace;background:var(--code);border:1px solid var(--line);border-radius:4px;padding:1px 6px;font-size:13.5px;color:#0a2a5e;}
+.topbar{position:sticky;top:0;z-index:10;box-shadow:0 1px 0 var(--line);}
+.tb-top{background:#fff;border-bottom:1px solid var(--line);}
+.tb-top .in{max-width:1260px;margin:0 auto;padding:14px 32px;display:flex;align-items:center;gap:12px;}
+.doe-logo{display:flex;align-items:baseline;gap:1px;font-weight:800;font-size:20px;letter-spacing:.2px;}
+.doe-logo b:nth-child(1){color:var(--brandA);} .doe-logo b:nth-child(2){color:var(--brandC);} .doe-logo b:nth-child(3){color:var(--brandB);} .doe-logo b:nth-child(4){color:var(--brandD);}
+.doe-sub{color:var(--muted);font-size:12.5px;padding-left:10px;border-left:1px solid var(--line);}
+.tb-bottom{background:var(--navy);}
+.tb-bottom .in{max-width:1260px;margin:0 auto;padding:10px 32px;display:flex;align-items:center;gap:22px;}
+.ecms-brand{color:#fff;font-weight:700;font-size:15px;letter-spacing:.3px;}
+.topnav{display:flex;gap:24px;margin-left:6px;}
+.topnav a{color:#cfe0fb;font-weight:600;font-size:13.5px;}
+.topnav a.cur{color:#fff;}
+@media (max-width:760px){.topnav{display:none;}}
+.crumbs{max-width:1260px;margin:0 auto;padding:16px 32px 0;font-size:13px;color:var(--muted);}
+.crumbs a{color:var(--muted);} .crumbs span{margin:0 7px;}
+.wrap{max-width:1260px;margin:0 auto;padding:8px 32px 60px;display:grid;grid-template-columns:270px minmax(0,1fr);gap:52px;}
+main{min-width:0;max-width:840px;}
+h1{font-size:32px;line-height:1.2;color:var(--head);margin:14px 0 6px;font-weight:700;}
+.lead{font-size:16.5px;color:var(--ink);margin:10px 0 4px;}
+.subtext{color:var(--muted);font-size:14px;margin:2px 0 0;}
+h2{font-size:22px;color:var(--head);font-weight:700;margin:42px 0 6px;padding-bottom:8px;border-bottom:1px solid var(--line);}
+h3{font-size:17.5px;color:var(--head);font-weight:700;margin:8px 0 2px;}
+p{margin:10px 0;}
+ul.bul{margin:10px 0;padding-left:22px;} ul.bul li{margin:6px 0;}
+table{border-collapse:collapse;width:100%;margin:16px 0;font-size:14.5px;}
+th,td{border:1px solid var(--line);padding:9px 13px;text-align:left;vertical-align:top;}
+th{background:var(--soft);color:var(--head);font-weight:700;}
+.lbl{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;padding:2px 9px;border-radius:4px;margin-right:8px;vertical-align:middle;}
+.lbl-do{background:#E6EFFC;color:var(--do);} .lbl-res{background:#E5F5EC;color:var(--res);}
+.step{scroll-margin-top:118px;border-top:1px solid var(--line2);padding-top:28px;margin-top:28px;}
+.step:first-of-type{border-top:none;margin-top:14px;padding-top:8px;}
+.step .stepnum{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;background:var(--navy);color:#fff;font-weight:700;font-size:14px;margin-right:10px;vertical-align:middle;}
+.step h3{display:inline;}
+h2,h3{scroll-margin-top:118px;}
+figure{margin:14px 0 4px;}
+figure img{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:8px;box-shadow:0 4px 14px rgba(11,37,69,.08);}
+figcaption{font-size:13px;color:var(--muted);margin-top:8px;font-style:italic;}
+.callout{background:var(--soft);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:6px;padding:14px 18px;margin:14px 0;}
+.callout b{color:var(--head);}
+.note{background:#fff8ec;border:1px solid #f3e2bd;border-left:4px solid #e0a127;border-radius:6px;padding:6px 18px;margin:14px 0;}
+.sidenav{position:sticky;top:104px;align-self:start;font-size:14px;max-height:calc(100vh - 120px);overflow:auto;padding-right:6px;}
+.nav-cat{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);font-weight:700;padding:0 0 10px;border-bottom:1px solid var(--line);margin-bottom:8px;}
+ul.nav{list-style:none;margin:0;padding:0;} ul.nav>li{margin:2px 0;}
+a.lvl1{display:block;padding:7px 10px;border-radius:6px;color:var(--head);font-weight:600;font-size:13.6px;}
+a.lvl1:hover{background:var(--soft);text-decoration:none;}
+a.lvl1.cur{color:var(--accent);background:var(--soft);border-left:3px solid var(--accent);padding-left:8px;}
+.backhome{display:inline-block;margin:14px 0 4px;font-weight:700;font-size:13.5px;}
+.meta-row{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 6px;}
+.chip{font-size:11.5px;font-weight:600;color:var(--navy);background:var(--soft);border:1px solid var(--line);border-radius:20px;padding:3px 10px;}
+.site-footer{background:var(--navy);color:#fff;margin-top:48px;}
+.site-footer .ft-in{max-width:1260px;margin:0 auto;padding:22px 32px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px;}
+.ft-left b{font-size:14px;} .ft-left div{color:#B9C7E3;font-size:12.5px;margin-top:4px;}
+.ft-nav a{color:#fff;font-size:13px;}
+@media (max-width:900px){.wrap{grid-template-columns:1fr;}.sidenav{position:static;max-height:none;}}
+</style></head>
+<body>
+<div class="topbar">
+  <div class="tb-top"><div class="in">
+    <span class="doe-logo"><b>N</b><b>Y</b><b>C</b></span>
+    <span class="doe-sub">Department of Education &middot; Division of Early Childhood Education</span>
+  </div></div>
+  <div class="tb-bottom"><div class="in">
+    <span class="ecms-brand">ECMS User Guide</span>
+    <nav class="topnav"><a href="index.html">Home</a></nav>
+  </div></div>
+</div>
+<div class="crumbs"><a href="index.html">ECMS User Guide</a><span>/</span>Budget Creation &amp; OA &rarr; OD Approval</div>
+<div class="wrap">
+
+  <nav class="sidenav">
+    <div class="nav-cat">On this page</div>
+    <ul class="nav">
+      <li><a class="lvl1" href="#overview">Overview</a></li>
+      <li><a class="lvl1" href="#step-1">1. Open the vendor portal home page</a></li>
+      <li><a class="lvl1" href="#step-2">2. Go to the Budgets list</a></li>
+      <li><a class="lvl1" href="#step-3">3. Start a new budget and pick the site</a></li>
+      <li><a class="lvl1" href="#step-4">4. Fill in the budget's spending plan</a></li>
+      <li><a class="lvl1" href="#step-5">5. Submit the budget for DOE approval</a></li>
+      <li><a class="lvl1" href="#step-6">6. Operations Analyst (OA) review</a></li>
+      <li><a class="lvl1" href="#step-7">7. Check progress mid-review</a></li>
+      <li><a class="lvl1" href="#step-8">8. Operations Director (OD) final sign-off</a></li>
+      <li><a class="lvl1" href="#step-9">9. Central/Portfolio check (larger budgets only)</a></li>
+      <li><a class="lvl1" href="#step-10">10. Confirm the approved budget</a></li>
+    </ul>
+    <a class="backhome" href="index.html">&larr; Back to User Guide home</a>
+  </nav>
+
+  <main id="top">
+    <h1>Budget Creation &amp; OA &rarr; OD Approval</h1>
+    <p class="lead">How a CBO's <strong>Budget Creator</strong> builds a site's yearly spending plan in the
+    vendor portal and submits it, and how that budget then moves through DOE's two-stage internal review
+    &mdash; an <strong>Operations Analyst (OA)</strong> first, then an <strong>Operations Director (OD)</strong>
+    for final sign-off, with an optional <strong>Central/Portfolio</strong> check for larger or more
+    sensitive budgets &mdash; before it's usable for invoicing.</p>
+    <div class="meta-row">
+      <span class="chip">10 steps</span><span class="chip">~11 min read</span>
+      <span class="chip">Persona: CBO Budget Creator / Operations Analyst / Operations Director</span>
+    </div>
+
+    <h2 id="overview">Overview</h2>
+    <p>Each site has a <strong>budget</strong> for the fiscal year &mdash; a spending plan showing what the
+    CBO/FCCN expects to spend on staff, supplies, rent, and other costs for that site and contract. A
+    <strong>Budget Creator</strong> at the CBO builds this in the vendor portal and submits it; internally
+    it's stored as an <code>ECMS_Budget__c</code> record, tied back to the site's <strong>Contract</strong> and
+    <strong>Contract Period</strong>. From there, the budget goes through DOE approval: an
+    <strong>Operations Analyst (OA)</strong> reviews it first, then it moves to an <strong>Operations
+    Director (OD)</strong> for final sign-off &mdash; this is the "two-stage" or "OA &rarr; OD" approval chain
+    &mdash; and for some larger or more sensitive budgets there's an additional <strong>Central/Portfolio</strong>
+    level check on top of that.</p>
+    <div class="callout">
+      <b>Where this fits.</b> Budget approval sits right before invoicing in the ECMS chain:
+      <strong>Enrollment &rarr; Attendance &rarr; Budget approval &rarr; Invoice &rarr; Payment</strong>. Per
+      the ECMS onboarding notes: <em>"Only after a budget is approved can the vendor submit monthly invoices
+      against it."</em> Invoices then go through this same OA &rarr; OD review chain a second time.
+    </div>
+
+    <h2>Steps</h2>
+
+    <div class="step" id="step-1">
+      <h3><span class="stepnum">1</span>Open the vendor portal home page</h3>
+      <p><span class="lbl lbl-do">DO</span> Log in to the vendor portal as the CBO's Budget Creator. This
+      example continues with <strong>Damien Ortiz</strong>, site contact for Cedar Point Early Childhood
+      Academy, who was provisioned with Budget Management access back in the Vendor &amp; Site Setup guide.</p>
+      <p><span class="lbl lbl-res">RESULT</span> The portal home page loads with quick-action tiles for the
+      functions this user was provisioned with, including <strong>Create Budget</strong>.</p>
+      <figure>
+        <img src="screenshots/g8-01-portal-home.png" alt="Vendor portal home page, logged in as Damien Ortiz of Cedar Point Early Childhood Academy, showing the Create Budget quick-action tile" />
+        <figcaption>Vendor portal home &mdash; Damien Ortiz, Cedar Point Early Childhood Academy.</figcaption>
+      </figure>
+    </div>
+
+    <div class="step" id="step-2">
+      <h3><span class="stepnum">2</span>Go to the Budgets list</h3>
+      <p><span class="lbl lbl-do">DO</span> Click the <strong>Create Budget</strong> tile from the portal
+      home page.</p>
+      <p><span class="lbl lbl-res">RESULT</span> The Budgets list view opens, scoped to this vendor, showing
+      any existing budgets &mdash; here, Cedar Point's own <strong>B-00000057</strong>, already
+      <strong>Approved by DOE</strong> from a prior fiscal year &mdash; plus a <strong>New</strong> button to
+      start another one.</p>
+      <figure>
+        <img src="screenshots/g8-02-budgets-list.png" alt="Vendor portal Budgets list view, scoped to Cedar Point Early Childhood Academy, showing budget B-00000057 with status Approved by DOE and a New button" />
+        <figcaption>Vendor portal &mdash; Budgets list, scoped to this CBO.</figcaption>
+      </figure>
+    </div>
+
+    <div class="step" id="step-3">
+      <h3><span class="stepnum">3</span>Start a new budget and pick the site</h3>
+      <p><span class="lbl lbl-do">DO</span> Click <strong>New</strong>. In the "New Budget" dialog, select the
+      site to create a budget for from the <strong>Active Sites</strong> list &mdash; each row already shows
+      the site's contract type and fiscal year, pulled from the underlying contract and contract period &mdash;
+      then click <strong>Next</strong>.</p>
+      <p><span class="lbl lbl-res">RESULT</span> A wizard opens listing every active site this vendor has a
+      contract for. Sites with a permanent closure are broken out separately and can't be budgeted for, which
+      is why the dialog calls out contacting DOE administration if an expected site or contract is missing.</p>
+      <figure>
+        <img src="screenshots/g8-03-new-budget-wizard.png" alt="New Budget wizard dialog in the vendor portal, showing Cedar Point - Riverdale Campus as the selectable Active Site with contract type Birth-To-Five (BTF) and fiscal year 2027" />
+        <figcaption>New Budget wizard &mdash; Select a Site step (Cedar Point &ndash; Riverdale Campus, BTF, FY2027).</figcaption>
+      </figure>
+      <div class="note">
+        <b>Note:</b> A budget can only be created for a site/contract/fiscal-year combination that already
+        exists as a contract period &mdash; the same rule that limits budgets and invoices to seat types the
+        underlying contract actually covers.
+      </div>
+    </div>
+
+    <div class="step" id="step-4">
+      <h3><span class="stepnum">4</span>Fill in the budget's spending plan</h3>
+      <p><span class="lbl lbl-do">DO</span> Continue through the wizard, entering the site's planned spending
+      &mdash; staff wages and fringe benefits, OTPS (other-than-personal-service costs like supplies and
+      rent), and any budget classes/line items for the classrooms this budget covers. Total Budgeted Amount is
+      calculated from these figures against the site's Total Funding for the fiscal year.</p>
+      <p><span class="lbl lbl-res">RESULT</span> As figures are entered, the wizard totals them against the
+      contract's funding ceiling for that fiscal year (Total Budget Limit) so the Budget Creator can see
+      whether the plan is within the funded amount before submitting.</p>
+      <div class="note">
+        <b>Note:</b> This step is a live vendor-portal wizard against a real contract, so it isn't saved or
+        submitted here to avoid creating a duplicate budget record. The saved <strong>Funding
+        Information</strong> section shown later in Step 10 (Total Funding, Total Budgeted, Total OTPS, Staff
+        Wages and Fringe Benefits) reflects exactly what this step produces once completed.
+      </div>
+    </div>
+
+    <div class="step" id="step-5">
+      <h3><span class="stepnum">5</span>Submit the budget for DOE approval</h3>
+      <p><span class="lbl lbl-do">DO</span> Once the spending plan is complete, the Budget Creator clicks
+      <strong>Submit</strong> (or saves as a draft first and submits later). Submitting locks the budget as an
+      "Approval Request Submitted" event and routes it to the DOE Operations Analyst queue.</p>
+      <p><span class="lbl lbl-res">RESULT</span> The budget's <strong>Status</strong> changes from "Saved
+      Budget" to <strong>"Pending Approval"</strong>, and its Approval History logs a "Submitted" step with
+      the submitter's name and timestamp &mdash; this is the same event visible later in Steps 6&ndash;8.</p>
+      <div class="callout">
+        <b>Two review chains, same shape.</b> A budget's OA &rarr; OD chain is identical in structure to an
+        invoice's approval chain &mdash; only invoices can't start until a budget clears this chain first.
+      </div>
+    </div>
+
+    <div class="step" id="step-6">
+      <h3><span class="stepnum">6</span>Operations Analyst (OA) review</h3>
+      <p><span class="lbl lbl-do">DO</span> Internally, an <strong>Operations Analyst</strong> opens the
+      submitted budget and reviews the spending plan against the contract's funding, then approves, rejects,
+      or requests more information (Status can move to "Information Requested" if something's missing).</p>
+      <p><span class="lbl lbl-res">RESULT</span> Once approved, the OA step is recorded on the budget's
+      <strong>Approval History</strong> tab. For Cedar Point's <strong>B-00000057</strong>, that step shows
+      <strong>Oscar Adams</strong> as the OA who approved it, followed immediately by the OD step.</p>
+      <figure>
+        <img src="screenshots/g8-04-cedarpoint-budget-approved.png" alt="Cedar Point budget B-00000057 detail page in the internal ECMS app, showing Status Approved by DOE, Total Budgeted Amount $500.00, and the approval-stage progress bar ending in Approved by DOE" />
+        <figcaption>Cedar Point Early Childhood Academy &mdash; Budget B-00000057, fully approved, showing the fiscal-year funding summary and approval progress bar.</figcaption>
+      </figure>
+      <figure>
+        <img src="screenshots/g8-05-cedarpoint-approval-history.png" alt="Approval History tab on Cedar Point's Budget B-00000057, listing Approval Request Submitted by Damien Ortiz, OA Approval approved by Oscar Adams, and OD Approval approved by Olivia Dean" />
+        <figcaption>Budget B-00000057 &mdash; Approval History: submission (Damien Ortiz) &rarr; OA Approval (Oscar Adams) &rarr; OD Approval (Olivia Dean).</figcaption>
+      </figure>
+    </div>
+
+    <div class="step" id="step-7">
+      <h3><span class="stepnum">7</span>Check progress mid-review</h3>
+      <p><span class="lbl lbl-do">DO</span> Since Cedar Point's own budget is already fully approved, use a
+      different budget still in progress to see what a mid-review record looks like: <strong>B-00000042</strong>
+      (Riverstone Early Learning Center) is currently sitting between OA and OD review.</p>
+      <p><span class="lbl lbl-res">RESULT</span> This budget's Status reads <strong>"Pending Approval"</strong>,
+      and its progress bar shows "Approved by OA" reached but "Approved by D&hellip;" (DOE/OD) not yet
+      complete &mdash; the OA step is done, and the record is now waiting on the Operations Director.</p>
+      <figure>
+        <img src="screenshots/g8-06-pending-budget-detail.png" alt="Budget B-00000042 for Riverstone Early Learning Center, a different example budget mid-review, showing Status Pending Approval and the approval-stage progress bar with Approved by OA reached but OD approval not yet complete" />
+        <figcaption>A different example budget mid-review &mdash; B-00000042, Riverstone Early Learning Center (not Cedar Point), Status "Pending Approval."</figcaption>
+      </figure>
+      <div class="note">
+        <b>Note:</b> This example intentionally uses Riverstone Early Learning Center, not Cedar Point &mdash;
+        Cedar Point's budget had already cleared both approval stages, so a separate real UAT record was
+        needed to show the in-progress OA-done/OD-pending state.
+      </div>
+    </div>
+
+    <div class="step" id="step-8">
+      <h3><span class="stepnum">8</span>Operations Director (OD) final sign-off</h3>
+      <p><span class="lbl lbl-do">DO</span> On that same in-progress budget, open the <strong>Approval
+      History</strong> tab to see the chain so far, including the pending OD step waiting to be actioned by an
+      Operations Director (with <strong>Approve</strong>/<strong>Reject</strong> buttons available to whoever
+      is assigned).</p>
+      <p><span class="lbl lbl-res">RESULT</span> The history shows <strong>OA Approval</strong> already
+      <strong>Approved</strong> by Oscar Adams, and two <strong>OD Approval</strong> rows &mdash; one still
+      routed to the "Operations Directors" queue, one directly assigned to <strong>Olivia Dean</strong> and
+      showing <strong>Pending</strong>. Once an OD approves, Status advances to "Approved by DOE" (as seen on
+      Cedar Point's B-00000057 in Step 6), and the budget becomes usable for invoicing.</p>
+      <figure>
+        <img src="screenshots/g8-07-pending-budget-approval-history.png" alt="Approval History tab on Budget B-00000042, showing Approval Request Submitted, OA Approval approved by Oscar Adams, and two OD Approval rows pending, one assigned to the Operations Directors queue and one assigned directly to Olivia Dean, with Approve and Reject buttons visible" />
+        <figcaption>B-00000042 &mdash; Approval History mid-review: OA Approval done (Oscar Adams), OD Approval still pending (Olivia Dean).</figcaption>
+      </figure>
+    </div>
+
+    <div class="step" id="step-9">
+      <h3><span class="stepnum">9</span>Central/Portfolio check (larger budgets only)</h3>
+      <p><span class="lbl lbl-do">DO</span> For larger or more sensitive budgets, a further
+      <strong>Central/Portfolio-level</strong> reviewer checks the budget in addition to the standard OA
+      &rarr; OD chain, before it's considered fully approved.</p>
+      <p><span class="lbl lbl-res">RESULT</span> This additional check adds another review step beyond OD
+      sign-off for the budgets it applies to; it isn't triggered for every budget, so a routine, modestly-sized
+      site budget like the two examples above typically completes at the OD stage.</p>
+      <div class="note">
+        <b>Note:</b> No real UAT example budget currently sitting at this Central/Portfolio stage was found
+        for a screenshot &mdash; this step is documented from the onboarding overview's description rather
+        than a live record. If a Central/Portfolio review shows up on a future budget, add its Approval
+        History screenshot here.
+      </div>
+    </div>
+
+    <div class="step" id="step-10">
+      <h3><span class="stepnum">10</span>Confirm the approved budget</h3>
+      <p><span class="lbl lbl-do">DO</span> Once every required stage has approved, revisit the budget's
+      detail page to confirm its final state before telling the vendor they can begin invoicing.</p>
+      <p><span class="lbl lbl-res">RESULT</span> Status reads <strong>"Approved by DOE,"</strong> the
+      approval-stage progress bar is complete, and a <strong>Create Invoice</strong> action button is now
+      available directly on the record &mdash; Cedar Point's B-00000057 shows exactly this state, with Total
+      Budgeted Amount $500.00 against $1,500.00 of Total Funding, and one invoice (INV-00021) already created
+      against it.</p>
+      <figure>
+        <img src="screenshots/g8-04-cedarpoint-budget-approved.png" alt="Cedar Point budget B-00000057 detail page showing Status Approved by DOE, the Create Invoice action button, and the Guidance for Success message: The budget has been approved by the Department of Education team. Invoices may now be submitted for this budget." />
+        <figcaption>B-00000057 &mdash; fully approved; the <strong>Create Invoice</strong> button is now enabled.</figcaption>
+      </figure>
+      <div class="callout">
+        <b>Hard precondition on invoicing.</b> Per the ECMS onboarding notes: <em>"Only after a budget is
+        approved can the vendor submit monthly invoices against it, requesting actual payment based on that
+        month's certified attendance."</em> Invoices then go through this same OA &rarr; OD review chain
+        again &mdash; see the Invoices guide for that workflow, and the Attendance guide for the monthly
+        certification invoicing also depends on.
+      </div>
+    </div>
+
+    <a class="backhome" href="index.html">&larr; Back to User Guide home</a>
+  </main>
+</div>
+<div class="site-footer">
+  <div class="ft-in">
+    <div class="ft-left"><b>NYC DOE &middot; Division of Early Childhood Education</b><div>Early Childhood Management System (ECMS)</div></div>
+    <nav class="ft-nav"><a href="index.html">User Guide Home</a></nav>
+  </div>
+</div>
+</body></html>
