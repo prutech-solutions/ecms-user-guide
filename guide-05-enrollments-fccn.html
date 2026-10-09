@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Enrollments — FCCN — ECMS User Guide</title><style>
+:root{--ink:#1B2430;--head:#0B2545;--muted:#5B6478;--link:#1657CE;--line:#DCE1EA;--line2:#EAEDF3;--code:#F5F7FB;--navy:#0B2545;--accent:#1657CE;--do:#1657CE;--res:#1E8E5A;--soft:#F5F7FB;--brandA:#0072CE;--brandB:#00A65A;--brandC:#F5A623;--brandD:#D0103A;}
+*{box-sizing:border-box;} html{scroll-behavior:smooth;}
+body{margin:0;color:var(--ink);background:#fff;font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;line-height:1.65;font-size:16px;}
+a{color:var(--link);text-decoration:none;} a:hover{text-decoration:underline;}
+code{font-family:'SFMono-Regular',Consolas,Menlo,monospace;background:var(--code);border:1px solid var(--line);border-radius:4px;padding:1px 6px;font-size:13.5px;color:#0a2a5e;}
+.topbar{position:sticky;top:0;z-index:10;box-shadow:0 1px 0 var(--line);}
+.tb-top{background:#fff;border-bottom:1px solid var(--line);}
+.tb-top .in{max-width:1260px;margin:0 auto;padding:14px 32px;display:flex;align-items:center;gap:12px;}
+.doe-logo{display:flex;align-items:baseline;gap:1px;font-weight:800;font-size:20px;letter-spacing:.2px;}
+.doe-logo b:nth-child(1){color:var(--brandA);} .doe-logo b:nth-child(2){color:var(--brandC);} .doe-logo b:nth-child(3){color:var(--brandB);} .doe-logo b:nth-child(4){color:var(--brandD);}
+.doe-sub{color:var(--muted);font-size:12.5px;padding-left:10px;border-left:1px solid var(--line);}
+.tb-bottom{background:var(--navy);}
+.tb-bottom .in{max-width:1260px;margin:0 auto;padding:10px 32px;display:flex;align-items:center;gap:22px;}
+.ecms-brand{color:#fff;font-weight:700;font-size:15px;letter-spacing:.3px;}
+.topnav{display:flex;gap:24px;margin-left:6px;}
+.topnav a{color:#cfe0fb;font-weight:600;font-size:13.5px;}
+.topnav a.cur{color:#fff;}
+@media (max-width:760px){.topnav{display:none;}}
+.crumbs{max-width:1260px;margin:0 auto;padding:16px 32px 0;font-size:13px;color:var(--muted);}
+.crumbs a{color:var(--muted);} .crumbs span{margin:0 7px;}
+.wrap{max-width:1260px;margin:0 auto;padding:8px 32px 60px;display:grid;grid-template-columns:270px minmax(0,1fr);gap:52px;}
+main{min-width:0;max-width:840px;}
+h1{font-size:32px;line-height:1.2;color:var(--head);margin:14px 0 6px;font-weight:700;}
+.lead{font-size:16.5px;color:var(--ink);margin:10px 0 4px;}
+.subtext{color:var(--muted);font-size:14px;margin:2px 0 0;}
+h2{font-size:22px;color:var(--head);font-weight:700;margin:42px 0 6px;padding-bottom:8px;border-bottom:1px solid var(--line);}
+h3{font-size:17.5px;color:var(--head);font-weight:700;margin:8px 0 2px;}
+p{margin:10px 0;}
+ul.bul{margin:10px 0;padding-left:22px;} ul.bul li{margin:6px 0;}
+table{border-collapse:collapse;width:100%;margin:16px 0;font-size:14.5px;}
+th,td{border:1px solid var(--line);padding:9px 13px;text-align:left;vertical-align:top;}
+th{background:var(--soft);color:var(--head);font-weight:700;}
+.lbl{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;padding:2px 9px;border-radius:4px;margin-right:8px;vertical-align:middle;}
+.lbl-do{background:#E6EFFC;color:var(--do);} .lbl-res{background:#E5F5EC;color:var(--res);}
+.step{scroll-margin-top:118px;border-top:1px solid var(--line2);padding-top:28px;margin-top:28px;}
+.step:first-of-type{border-top:none;margin-top:14px;padding-top:8px;}
+.step .stepnum{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;background:var(--navy);color:#fff;font-weight:700;font-size:14px;margin-right:10px;vertical-align:middle;}
+.step h3{display:inline;}
+h2,h3{scroll-margin-top:118px;}
+figure{margin:14px 0 4px;}
+figure img{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:8px;box-shadow:0 4px 14px rgba(11,37,69,.08);}
+figcaption{font-size:13px;color:var(--muted);margin-top:8px;font-style:italic;}
+.callout{background:var(--soft);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:6px;padding:14px 18px;margin:14px 0;}
+.callout b{color:var(--head);}
+.note{background:#fff8ec;border:1px solid #f3e2bd;border-left:4px solid #e0a127;border-radius:6px;padding:6px 18px;margin:14px 0;}
+.sidenav{position:sticky;top:104px;align-self:start;font-size:14px;max-height:calc(100vh - 120px);overflow:auto;padding-right:6px;}
+.nav-cat{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);font-weight:700;padding:0 0 10px;border-bottom:1px solid var(--line);margin-bottom:8px;}
+ul.nav{list-style:none;margin:0;padding:0;} ul.nav>li{margin:2px 0;}
+a.lvl1{display:block;padding:7px 10px;border-radius:6px;color:var(--head);font-weight:600;font-size:13.6px;}
+a.lvl1:hover{background:var(--soft);text-decoration:none;}
+a.lvl1.cur{color:var(--accent);background:var(--soft);border-left:3px solid var(--accent);padding-left:8px;}
+.backhome{display:inline-block;margin:14px 0 4px;font-weight:700;font-size:13.5px;}
+.meta-row{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 6px;}
+.chip{font-size:11.5px;font-weight:600;color:var(--navy);background:var(--soft);border:1px solid var(--line);border-radius:20px;padding:3px 10px;}
+.site-footer{background:var(--navy);color:#fff;margin-top:48px;}
+.site-footer .ft-in{max-width:1260px;margin:0 auto;padding:22px 32px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px;}
+.ft-left b{font-size:14px;} .ft-left div{color:#B9C7E3;font-size:12.5px;margin-top:4px;}
+.ft-nav a{color:#fff;font-size:13px;}
+@media (max-width:900px){.wrap{grid-template-columns:1fr;}.sidenav{position:static;max-height:none;}}
+</style></head>
+<body>
+<div class="topbar">
+  <div class="tb-top"><div class="in">
+    <span class="doe-logo"><b>N</b><b>Y</b><b>C</b></span>
+    <span class="doe-sub">Department of Education &middot; Division of Early Childhood Education</span>
+  </div></div>
+  <div class="tb-bottom"><div class="in">
+    <span class="ecms-brand">ECMS User Guide</span>
+    <nav class="topnav"><a href="index.html">Home</a></nav>
+  </div></div>
+</div>
+<div class="crumbs"><a href="index.html">ECMS User Guide</a><span>/</span>Enrollments (FCCN)</div>
+<div class="wrap">
+
+  <nav class="sidenav">
+    <div class="nav-cat">On this page</div>
+    <ul class="nav">
+      <li><a class="lvl1" href="#overview">Overview</a></li>
+      <li><a class="lvl1" href="#classes">What's a Class?</a></li>
+      <li><a class="lvl1" href="#status-lifecycle">Enrollment status lifecycle</a></li>
+      <li><a class="lvl1" href="#step-1">1. Open the Enrollments list</a></li>
+      <li><a class="lvl1" href="#step-2">2. Open the MySchools draft enrollment</a></li>
+      <li><a class="lvl1" href="#step-3">3. Confirm the affiliated FCC Provider account</a></li>
+      <li><a class="lvl1" href="#step-4">4. Confirm the parent FCCN account</a></li>
+      <li><a class="lvl1" href="#step-5">5. Find the Network Contact who works the portal</a></li>
+      <li><a class="lvl1" href="#step-6">6. View the vendor portal as the Network Director</a></li>
+      <li><a class="lvl1" href="#step-7">7. Review enrollments scoped to the network</a></li>
+      <li><a class="lvl1" href="#step-8">8. DOE Enrollment Specialist review (Submitted)</a></li>
+      <li><a class="lvl1" href="#step-9">9. Confirm the Active enrollment</a></li>
+    </ul>
+    <a class="backhome" href="index.html">&larr; Back to User Guide home</a>
+  </nav>
+
+  <main id="top">
+    <h1>Enrollments — FCCN</h1>
+    <p class="lead">How to move a student's enrollment from a MySchools placement offer to an <strong>Active</strong>
+    record when the child is placed with an individual <strong>Family Child Care (FCC) Provider</strong> —
+    a home-based daycare business overseen by a <strong>Family Child Care Network (FCCN)</strong> — instead of
+    at a CBO-run site.</p>
+    <div class="meta-row">
+      <span class="chip">9 steps</span><span class="chip">~14 min read</span><span class="chip">Persona: FCCN Affiliation Manager / DOE Enrollment Specialist</span>
+    </div>
+
+    <h2 id="overview">Overview</h2>
+    <p>The FCCN enrollment lifecycle takes the same shape as the CBO flow: a parent accepts a placement offer in
+    <strong>MySchools</strong>, which creates an <strong>Draft</strong> Enrollment record in ECMS; the vendor
+    finishes filling it out and submits it; and a <strong>DOE Enrollment Specialist</strong> reviews and approves
+    it. Only then does the child officially count as enrolled and the record becomes
+    <strong>Active</strong>. <p>What's different on the FCCN side is <em>who</em> the enrollment is placed with and
+    <em>who</em> actually does the work in the portal. A CBO runs its own sites directly and its own staff log
+    in and submit their own enrollments. An FCCN doesn't run classrooms itself &mdash; it oversees a network of
+    small, independent home daycare businesses (FCC Providers), and the
+    individual home providers themselves are generally not the ones logging into ECMS day-to-day. Instead,
+    the FCCN's own staff (an <strong>Affiliation Manager</strong>, an <strong>Education Specialist</strong>, or the account's <strong>Network Director</strong>) work the enrollment in the portal on the Provider's
+    behalf.</p> This guide walks that same Draft &rarr; Submitted &rarr; Active lifecycle, but from that FCCN vantage
+    point, calling out each concrete place the data model and the workflow diverge from the CBO version of this
+    same guide.</p>
+    <div class="callout">
+      <b>Where this fits.</b> Enrollments sit in the same place in the workflow chain as they do for a CBO:
+      <strong>Site/Vendor setup &rarr; Contracts &amp; Seats &rarr; Enrollment &rarr; Attendance &rarr; Budget
+      &rarr; Invoice</strong>. The FCCN branch of that chain looks different further downstream, too &mdash;
+      FCCNs have no Budget/Contract Seat model of their own and instead use a network Calendar concept &mdash;
+      but Enrollment and Attendance work the same way across both branches.
+    </div>
+
+    <h2 id="classes">What's a "Class," in the FCCN context?</h2>
+    <p>A <strong>Class</strong> is the record ECMS uses to group students enrolled in the same program and
+    seat type, and to track how many of its seats are occupied. For a CBO, this maps onto something real and
+    literal &mdash; an actual physical classroom. For an FCCN, there's no literal "classroom" &mdash; a home
+    daycare doesn't have separate rooms the way a CBO site does. Instead, each <strong>Class</strong> on an FCC
+    Provider's site represents one <strong>age group and seat type</strong> that provider serves.</p>
+    <p>For example, a home daycare that serves 3-year-olds on a School Day Year (SDY) schedule would have a
+    single <strong>"3K SDY" Class</strong>. When a child is enrolled into that provider's program, they're
+    enrolled into that Class. If the same home daycare also takes Infant, Toddler, or 2K children, each of
+    <em>those</em> age groups gets its own separate Class &mdash; one Class per age-group-and-seat-type
+    combination the provider actually offers, each with its own Capacity and Seats Occupied count.</p>
+    <figure>
+      <img src="screenshots/g5-01b-riverbend-3k-class.png" alt="Class detail page for FCC-3K-Riverbend FCC Provider - Woodlawn Site, showing Site Riverbend FCC Provider - Woodlawn Site, School/Network Riverbend FCC Provider - Woodlawn, Program Type 3-K, Seat Type SDY, Capacity 15, Seats Occupied 2" />
+      <figcaption>Riverbend FCC Provider's own 3K/SDY Class &mdash; Capacity 15, 2 seats currently occupied.</figcaption>
+    </figure>
+    <div class="note">
+      <b>Note:</b> The Class lives on the Provider's <strong>Site</strong> record (not directly on the Account)
+      &mdash; exactly the same place a CBO's classroom-based Class record would live. The difference is purely
+      conceptual: what a Class <em>represents</em> for an FCC Provider (an age-group/seat-type combination,
+      not a physical room).
+    </div>
+
+    <h3>Creating a new Class in the portal</h3>
+    <p>An FCCN's network staff (Network Director, Affiliation Manager) can add a new Class for one of its
+    affiliated Providers directly from the portal &mdash; for example, if Riverbend's home daycare starts
+    taking Toddler-age children in addition to its existing 3K group.</p>
+    <p><span class="lbl lbl-do">DO</span> From the portal, go to <strong>Sites</strong>, open the Provider's
+    site record, click the <strong>Related</strong> tab, and click <strong>New</strong> on the
+    <strong>Classes</strong> related list.</p>
+    <p><span class="lbl lbl-res">RESULT</span> The Provider's Site record already shows its existing Classes
+    related list &mdash; Riverbend's one existing 3K Class &mdash; with a <strong>New</strong> button to add
+    another.</p>
+    <figure>
+      <img src="screenshots/g5-01c-classes-related-list.png" alt="Related tab on Riverbend FCC Provider's Site record, showing the Classes related list with one existing class (FCC-3K-Riverbend FCC Provider - Woodlawn Site, Day Length 3_K) and a New button" />
+      <figcaption>The Provider's Site record &mdash; Classes related list, with New available to add another age group.</figcaption>
+    </figure>
+    <p><span class="lbl lbl-do">DO</span> Fill in <strong>Class Code - Name</strong>, confirm <strong>Site</strong>
+    (pre-filled), and set <strong>Contract Type</strong>, <strong>Program Type</strong>, <strong>Seat
+    Type</strong>, and <strong>Capacity</strong> for the new age group, then choose a matching
+    <strong>Seat Master</strong> entry.</p>
+    <p><span class="lbl lbl-res">RESULT</span> A "New Class" form opens, pre-linked to the Provider's site,
+    ready to define this second age group as its own, separate Class.</p>
+    <figure>
+      <img src="screenshots/g5-01d-new-class-form.png" alt="New Class form for Riverbend FCC Provider - Woodlawn Site, showing Class Code - Name FCC-Toddler-Riverbend FCC Provider - Woodlawn Site, Contract Type Birth-To-Five (BTF), Program Type Toddler, Seat Type SDY, Capacity 8, and a Seat Master selection list" />
+      <figcaption>New Class form &mdash; illustration only, not saved. A second, separate Toddler/SDY Class for the same Provider that already has a 3K Class.</figcaption>
+    </figure>
+    <div class="note">
+      <b>Note:</b> Each Class needs its own compatible <strong>Seat Master</strong> entry &mdash; the dual-list
+      picker only offers Seat Master codes that match the Program Type/Seat Type combination just selected.
+    </div>
+
+    <h2 id="status-lifecycle">Enrollment status lifecycle at a glance</h2>
+    <p>Every enrollment &mdash; CBO or FCCN &mdash; moves through the same set of statuses, regardless of
+    which program or vendor type it belongs to:</p>
+    <ul class="bul">
+      <li><strong>Draft</strong> &mdash; the default status every enrollment starts in, whether created
+      directly or landed from MySchools.</li>
+      <li><strong>Submitted</strong> &mdash; the vendor has finished filling it out and sent it for DOE
+      review.</li>
+      <li><strong>Information Requested</strong> &mdash; the Enrollment Specialist needs something more before
+      deciding.</li>
+      <li><strong>Approved</strong> &mdash; the Enrollment Specialist has signed off.</li>
+      <li><strong>Active</strong> &mdash; once approved <em>and</em> not waiting on an ACCIS posting
+      confirmation, the enrollment automatically advances here and the child officially counts as enrolled.</li>
+      <li><strong>Rejected</strong> &mdash; always requires a reason; it's not optional on this status.</li>
+      <li><strong>Discharged</strong> &mdash; the child has left the program (transfer, school change, or
+      end of the school/summer period); Discharge Date and a status reason are both required.</li>
+    </ul>
+    <p>This is a deliberately short, fixed list &mdash; older statuses like "New" and "Inactive" were removed
+    from the lifecycle entirely so every enrollment, across every program type, moves
+    through the same predictable chain.</p>
+
+    <h2>Steps</h2>
+
+    <div class="step" id="step-1">
+      <h3><span class="stepnum">1</span>Open the Enrollments list</h3>
+      <p><span class="lbl lbl-do">DO</span> Click the <strong>Enrollments</strong> tab in the top navigation
+      bar and switch to a list view that shows every enrollment across CBOs and FCCNs together.</p>
+      <p><span class="lbl lbl-res">RESULT</span> The Enrollments list loads with columns for
+      <strong>Network/School Name</strong>, <strong>FCC Provider Name</strong>, and <strong>Site</strong> shown
+      side by side &mdash; on a CBO-side row, Network/School Name and Site both point to the CBO and its site;
+      on an FCCN-side row, Network/School Name is the FCCN, and the FCC Provider Name column is populated
+      with the individual home Provider.</p>
+      <figure>
+        <img src="screenshots/g5-01-enrollments-list.png" alt="Enrollments list view showing Network/School Name, FCC Provider Name, and Site columns, with rows for both CBO sites (e.g. Queensview) and FCC Providers (e.g. Cedar Hollow FCC Provider)" />
+        <figcaption>Enrollments &mdash; list view with FCC Provider Name alongside Network/School Name.</figcaption>
+      </figure>
+      <div class="callout">
+        <b>CBO vs. FCCN, field by field.</b> On an FCCN-side enrollment, the Provider Name
+        lookup points to the individual FCC Provider <strong>Account</strong> (record type "Family Childcare
+        Provider") &mdash; not directly to a CBO Account the way a CBO enrollment's site/vendor fields do.
+        The Provider is the home-based business the child actually attends; the FCCN is the network that
+        oversees that Provider.
+      </div>
+    </div>
+
+    <div class="step" id="step-2">
+      <h3><span class="stepnum">2</span>Open the MySchools draft enrollment</h3>
+      <p><span class="lbl lbl-do">DO</span> Click into a Draft-status enrollment record that was created from a
+      MySchools placement offer at an FCC Provider. </p>
+      <p><span class="lbl lbl-res">RESULT</span> The Enrollment record opens showing the same lifecycle status
+      bar as the CBO flow (Draft &rarr; Submitted &rarr; Information Requested &rarr; Rejected &rarr; Approved
+      &rarr; Active &rarr; Discharged), currently sitting at <strong>Draft</strong>. Notice the record's
+      <strong>Owner</strong> is already an FCCN Network user, not a CBO staff member and not the individual
+      Provider.</p>
+      <figure>
+        <img src="screenshots/g5-02-draft-enrollment-detail.png" alt="Draft enrollment record ENROL-0000000755 for Cassius Reed, showing the Draft stage highlighted on the lifecycle status bar and the record Owner set to an FCCN Network user" />
+        <figcaption>ENROL-0000000755 &mdash; Draft enrollment, owned by the FCCN's Network Contact.</figcaption>
+      </figure>
+    </div>
+
+    <div class="step" id="step-3">
+      <h3><span class="stepnum">3</span>Confirm the affiliated FCC Provider account</h3>
+      <p><span class="lbl lbl-do">DO</span> From the enrollment, open the FCC Provider account it's linked to
+      &mdash; here, <strong>Cedar Hollow FCC Provider - Morris Park</strong>.</p>
+      <p><span class="lbl lbl-res">RESULT</span> The Account record loads with <strong>Account Record
+      Type: Family Childcare Provider</strong> and an <strong>Affiliated Network</strong> lookup back to
+      the parent FCCN (Cedar Hollow Family Childcare Network). The Related List Quick Links include
+      <strong>Enrollments (Provider Name)</strong> &mdash; the FCC-side equivalent of a CBO site's Enrollments
+      related list.</p>
+      <figure>
+        <img src="screenshots/g5-03-provider-account-detail.png" alt="Account detail page for Cedar Hollow FCC Provider - Morris Park, showing Account Record Type Family Childcare Provider, the Affiliated Network lookup to Cedar Hollow Family Childcare Network, and the Enrollments (Provider Name) related list" />
+        <figcaption>Cedar Hollow FCC Provider - Morris Park &mdash; the individual home Provider account.</figcaption>
+      </figure>
+      <div class="callout">
+        <b>CBO vs. FCCN, field by field.</b> A CBO's site (Site Master) is its own record, owned directly by
+        the CBO Account. An FCC Provider is a full <strong>Account</strong> in its own right, distinct from
+        the FCCN Account, linked to it by the <strong>Affiliated Network</strong> field. There's no separate
+        Site Master record standing between the Provider and its enrollments the way there is for a CBO.
+      </div>
+    </div>
+
+    <div class="step" id="step-4">
+      <h3><span class="stepnum">4</span>Confirm the parent FCCN account</h3>
+      <p><span class="lbl lbl-do">DO</span> Follow the Affiliated Network lookup up to the FCCN account itself
+      &mdash; <strong>Riverbend Family Childcare Network</strong>.</p>
+      <p><span class="lbl lbl-res">RESULT</span> The Account loads with <strong>Account Record Type: Family
+      Childcare Network</strong>, a dedicated <strong>Providers</strong> tab (in place of a CBO's Sites Master
+      list), and an <strong>Affiliations (Affiliated Network)</strong> related list showing every home Provider
+      the network oversees.</p>
+      <figure>
+        <img src="screenshots/g5-04-network-account-detail.png" alt="Account detail page for Riverbend Family Childcare Network, showing Account Record Type Family Childcare Network, a Providers tab, and the Affiliations (Affiliated Network) related list" />
+        <figcaption>Riverbend Family Childcare Network &mdash; the FCCN account, one level up from the Provider.</figcaption>
+      </figure>
+      <div class="note">
+        <b>Note:</b> An FCCN doesn't run classrooms itself. Instead, it
+        oversees a network of small, individual home daycare businesses. The FCCN's job is to recruit,
+        vet, support, and supervise a whole roster of these home-based providers (this relationship is called
+        an affiliation). This account is that oversight layer &mdash; it never itself appears as the
+        physical location a child attends.
+      </div>
+    </div>
+
+    <div class="step" id="step-5">
+      <h3><span class="stepnum">5</span>Find the Network Contact who works the portal</h3>
+      <p><span class="lbl lbl-do">DO</span> From the FCCN account's Contacts related list, open its
+      <strong>Network Director</strong> contact.</p>
+      <p><span class="lbl lbl-res">RESULT</span> The Contact record loads with <strong>Log in to Experience as
+      User</strong>, <strong>Provision Contact</strong>, and <strong>View Partner User</strong> buttons &mdash;
+      the same provisioning mechanism used for a CBO's staff, but here it's granted to the network's own staff
+      rather than to the individual home Provider.</p>
+      <figure>
+        <img src="screenshots/g5-05-network-contact-detail.png" alt="Contact detail page for FCCN Network 1787783618716, Title Network Director, Account Name Riverbend Family Childcare Network, showing the Log in to Experience as User button" />
+        <figcaption>The FCCN's Network Director &mdash; the portal user who actually works enrollments for this network's Providers.</figcaption>
+      </figure>
+      <div class="callout">
+        <b>Who logs in?</b> The individual home providers themselves are
+        generally not the ones logging into ECMS day-to-day. The FCCN's own roles &mdash; an
+        <strong>Affiliation Manager</strong> (onboards new home Providers), an <strong>Education Specialist /
+        Education Director</strong> (coaches Providers), a <strong>Family Worker</strong>, or here the
+        <strong>Network Director</strong> &mdash; are the ones with portal logins who create, finish, and
+        submit enrollments on behalf of an affiliated Provider's families.
+      </div>
+    </div>
+
+    <div class="step" id="step-6">
+      <h3><span class="stepnum">6</span>View the vendor portal as the Network Director</h3>
+      <p><span class="lbl lbl-do">DO</span> Click <strong>Log in to Experience as User</strong> on the Network
+      Director's Contact record.</p>
+      <p><span class="lbl lbl-res">RESULT</span> The vendor portal home page loads under the DOE-branded
+      header, showing the Network Director's name and the FCCN account in the top-right corner. This FCCN user's quick-action tiles are <strong>Create
+      Enrollment</strong> and <strong>Report Incident</strong> only &mdash; there is no Create Budget or Create
+      Invoice tile, because FCCNs have no Budget/Invoice model in ECMS.</p>
+      <figure>
+        <img src="screenshots/g5-06-portal-home-network-director.png" alt="Vendor portal home page, logged in as the FCCN Network Director for Riverbend Family Childcare Network, showing Sites and Student Enrollments navigation and quick-action tiles for Create Enrollment and Report Incident, with no Budget or Invoice tiles" />
+        <figcaption>Vendor portal home &mdash; logged in as the FCCN's Network Director.</figcaption>
+      </figure>
+    </div>
+
+    <div class="step" id="step-7">
+      <h3><span class="stepnum">7</span>Review enrollments scoped to the network</h3>
+      <p><span class="lbl lbl-do">DO</span> Click <strong>Student Enrollments</strong> in the portal's top
+      navigation.</p>
+      <p><span class="lbl lbl-res">RESULT</span> The Enrollments list loads scoped to this network, with a
+      <strong>FCC Provider Name</strong> column identifying which affiliated home Provider each enrollment
+      belongs to &mdash; the Network Director sees enrollments across every Provider in the network, not just
+      one site.</p>
+      <figure>
+        <img src="screenshots/g5-07-portal-enrollments-list.png" alt="Vendor portal Student Enrollments list, scoped to Riverbend Family Childcare Network, showing the FCC Provider Name column with Riverbend FCC Provider entries" />
+        <figcaption>Vendor portal &mdash; Student Enrollments, scoped to the FCCN and its affiliated Providers.</figcaption>
+      </figure>
+      <div class="note">
+        <b>Note:</b> This is the direct portal-side of Step 1's admin list view: the same
+        Provider-vs-network distinction shows up wherever enrollments are listed, internal or external.
+      </div>
+    </div>
+
+    <div class="step" id="step-8">
+      <h3><span class="stepnum">8</span>DOE Enrollment Specialist review (Submitted)</h3>
+      <p><span class="lbl lbl-do">DO</span> Back in the internal admin view, open a <strong>Submitted</strong>
+      enrollment awaiting review &mdash; for example <strong>ENROL-0000000071</strong>.</p>
+      <p><span class="lbl lbl-res">RESULT</span> The lifecycle bar now shows <strong>Submitted</strong>, and
+      the <strong>Approval History</strong> related list shows an <strong>Enrollment Specialist Approval</strong>
+      step with Status <strong>Pending</strong>, assigned to the Enrollment Specialists queue. This works
+      identically regardless of whether the enrollment came from a CBO site or an FCC Provider.</p>
+      <figure>
+        <img src="screenshots/g5-08-submitted-enrollment-review.png" alt="Submitted enrollment ENROL-0000000071 showing the Submitted stage on the lifecycle bar and a pending Enrolment Specialist Approval entry in the Approval History related list" />
+        <figcaption>ENROL-0000000071 &mdash; Submitted, awaiting Enrollment Specialist review.</figcaption>
+      </figure>
+      <p><span class="lbl lbl-do">DO</span> Click <strong>View Approval Request</strong> at the top of the
+      record, then click <strong>Approve</strong> (or <strong>Reject</strong>, or <strong>Request Additional
+      Information</strong> if something's missing) and add a comment.</p>
+      <p><span class="lbl lbl-res">RESULT</span> A separate <strong>Approval Request</strong> record opens,
+      showing the Submitter, Date Submitted, and who it's assigned to, with <strong>Approve</strong>,
+      <strong>Reject</strong>, and <strong>Reassign</strong> actions available right at the top.</p>
+      <figure>
+        <img src="screenshots/g5-08b-approval-request-view.png" alt="Approval Request record for ENROL-0000000071, Status Pending, Submitter John Williams, Assigned To Enrollment Specialists, with Approve, Reject, and Reassign buttons" />
+        <figcaption>The Approval Request record &mdash; this is where the Enrollment Specialist actually responds.</figcaption>
+      </figure>
+      <figure>
+        <img src="screenshots/g5-08c-approve-dialog.png" alt="Approve Enrollment dialog with a Comments text box and an Approve button" />
+        <figcaption>Clicking Approve opens a simple comment box before confirming.</figcaption>
+      </figure>
+      <p>Once approved, the enrollment itself updates immediately &mdash; the lifecycle bar advances straight
+      to <strong>Active</strong> (not just "Approved"), and the Approval History entry now shows
+      <strong>Approved</strong>, with the comment and the approver's name on file.</p>
+      <figure>
+        <img src="screenshots/g5-08d-approved-active.png" alt="Enrollment ENROL-0000000071 after approval, showing Status Active on the lifecycle bar and an Approval History entry for Enrolment Specialist Approval, Status Approved, Comments Documentation and eligibility confirmed, Actual Approver Moeiz Malik" />
+        <figcaption>ENROL-0000000071 &mdash; Active immediately after the Enrollment Specialist approves.</figcaption>
+      </figure>
+    </div>
+
+    <div class="step" id="step-9">
+      <h3><span class="stepnum">9</span>Confirm the Active enrollment</h3>
+      <p><span class="lbl lbl-do">DO</span> Open an enrollment that has already cleared review &mdash;
+      <strong>ENROL-0000000541</strong> for student Naomi Ferreira, tied to the Riverbend FCC Provider -
+      Woodlawn.</p>
+      <p><span class="lbl lbl-res">RESULT</span> The lifecycle bar shows <strong>Active</strong>, and the
+      Approval History confirms an approved <strong>Enrollment Specialist Approval</strong> entry. Look closely
+      at <strong>Owner</strong> and <strong>Submitted by</strong>: both are the FCCN's Network Contact, not the
+      student's FCC Provider and not a CBO staff member &mdash; concrete confirmation that the network's own
+      staff, not the home Provider, drove this enrollment through the portal end to end.</p>
+      <figure>
+        <img src="screenshots/g5-09-active-enrollment-detail.png" alt="Active enrollment ENROL-0000000541 for Naomi Ferreira, showing the Active stage on the lifecycle bar, an approved Enrolment Specialist Approval entry, and Owner/Submitted by both set to the FCCN Network Contact" />
+        <figcaption>ENROL-0000000541 &mdash; Active, owned and submitted by the FCCN's Network Contact on the Provider's behalf.</figcaption>
+      </figure>
+      <div class="callout">
+        <b>Lifecycle complete.</b> The enrollment reached <strong>Active</strong> through the identical
+        Draft &rarr; Submitted &rarr; Enrollment Specialist review &rarr; Active path used for a CBO enrollment.
+        The only differences are structural: the child is tied to an FCC Provider Account (via
+        the Provider Name that is itself affiliated with an FCCN, and the portal work throughout
+        was performed by the FCCN's own staff rather than the individual home Provider or a CBO's site staff.
+      </div>
+    </div>
+
+    <div class="callout">
+      <b>Additional Features &mdash; see <a href="guide-04-enrollments-cbo.html">Guide 4</a>.</b> Six additional enrollment-submission features
+      &mdash; the required Registration Packet upload, auto-assigned Admit Code, ACCIS eligibility verification,
+      auto-approval for returning students, the all-status vendor Edit button, and the general Enrollment
+      Change Request mechanism (Class/Seat Type/Program Type/Discharge) &mdash; are documented in detail in the
+      <a href="guide-04-enrollments-cbo.html#new-mechanics">Enrollments &mdash; CBO guide</a>. They apply to both CBO and FCCN enrollments.
+    </div>
+
+    <a class="backhome" href="index.html">&larr; Back to User Guide home</a>
+  </main>
+</div>
+<div class="site-footer">
+  <div class="ft-in">
+    <div class="ft-left"><b>NYC DOE &middot; Division of Early Childhood Education</b><div>Early Childhood Management System (ECMS)</div></div>
+    <nav class="ft-nav"><a href="index.html">User Guide Home</a></nav>
+  </div>
+</div>
+<style>
+.askq-fab{position:fixed;bottom:24px;right:24px;z-index:1000;background:var(--navy);color:#fff;border:none;border-radius:999px;padding:14px 22px;font-weight:700;font-size:14px;font-family:inherit;box-shadow:0 6px 20px rgba(11,37,69,.35);cursor:pointer;display:flex;align-items:center;gap:8px;transition:background .15s,transform .15s;}
+.askq-fab:hover{background:var(--accent);transform:translateY(-1px);}
+.askq-fab svg{width:18px;height:18px;flex-shrink:0;}
+.askq-overlay{position:fixed;inset:0;background:rgba(11,37,69,.55);z-index:1001;display:none;align-items:center;justify-content:center;padding:20px;}
+.askq-overlay.askq-open{display:flex;}
+.askq-modal{background:#fff;border-radius:12px;max-width:480px;width:100%;padding:28px;box-shadow:0 20px 60px rgba(0,0,0,.35);max-height:90vh;overflow:auto;}
+.askq-modal h3{margin:0 0 6px;color:var(--navy);font-size:20px;font-weight:700;}
+.askq-modal .askq-sub{font-size:13.5px;color:var(--muted);margin:0 0 16px;}
+.askq-ctx{font-size:12.5px;color:var(--navy);margin:0 0 18px;padding:9px 12px;background:var(--soft);border:1px solid var(--line);border-radius:6px;}
+.askq-modal label{display:block;font-size:13px;font-weight:700;color:var(--navy);margin:14px 0 6px;}
+.askq-modal textarea,.askq-modal input{width:100%;border:1px solid var(--line);border-radius:6px;padding:10px 12px;font-size:14px;font-family:inherit;box-sizing:border-box;}
+.askq-modal textarea{min-height:90px;resize:vertical;}
+.askq-modal textarea:focus,.askq-modal input:focus{outline:2px solid var(--accent);outline-offset:1px;}
+.askq-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:20px;}
+.askq-btn-cancel{background:#fff;border:1px solid var(--line);color:var(--ink);padding:10px 18px;border-radius:6px;cursor:pointer;font-weight:700;font-size:14px;font-family:inherit;}
+.askq-btn-cancel:hover{background:var(--soft);}
+.askq-btn-submit{background:var(--accent);border:none;color:#fff;padding:10px 20px;border-radius:6px;cursor:pointer;font-weight:700;font-size:14px;font-family:inherit;}
+.askq-btn-submit:hover{background:var(--navy);}
+.askq-btn-submit:disabled{opacity:.6;cursor:default;}
+.askq-success{color:var(--res);font-weight:700;margin-top:14px;font-size:14px;display:none;}
+.askq-error{color:#C0392B;font-weight:700;margin-top:14px;font-size:14px;display:none;}
+@media (max-width:600px){.askq-fab{bottom:16px;right:16px;padding:12px 16px;font-size:13px;}.askq-fab span{display:none;}}
+</style>
+
+<button class="askq-fab" id="askqFab" type="button" aria-haspopup="dialog">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+  <span>Ask a question</span>
+</button>
+
+<div class="askq-overlay" id="askqOverlay" role="dialog" aria-modal="true" aria-labelledby="askqTitle">
+  <div class="askq-modal">
+    <h3 id="askqTitle">Ask a question</h3>
+    <p class="askq-sub">Need more information about what you're reading? Send a question to the ECMS team.</p>
+    <p class="askq-ctx" id="askqContext"></p>
+    <form id="askqForm">
+      <label for="askqMessage">Your question</label>
+      <textarea id="askqMessage" name="message" required placeholder="What would you like to know more about?"></textarea>
+      <label for="askqName">Your name (optional)</label>
+      <input type="text" id="askqName" name="name" placeholder="Jane Doe" autocomplete="name" />
+      <label for="askqEmail">Your email (optional, so we can reply)</label>
+      <input type="email" id="askqEmail" name="_replyto" placeholder="jane@agency.gov" autocomplete="email" />
+      <input type="hidden" name="page" id="askqPageField" />
+      <input type="hidden" name="section" id="askqSectionField" />
+      <input type="hidden" name="_subject" id="askqSubjectField" />
+      <div class="askq-actions">
+        <button type="button" class="askq-btn-cancel" id="askqCancel">Cancel</button>
+        <button type="submit" class="askq-btn-submit" id="askqSubmit">Send question</button>
+      </div>
+      <div class="askq-success" id="askqSuccess">&#10003; Thanks! Your question has been sent to the ECMS team.</div>
+      <div class="askq-error" id="askqErrorMsg">Something went wrong sending your question. Please try again, or email the team directly.</div>
+    </form>
+  </div>
+</div>
+
+<script>
+(function(){
+  var fab = document.getElementById('askqFab');
+  var overlay = document.getElementById('askqOverlay');
+  var cancel = document.getElementById('askqCancel');
+  var form = document.getElementById('askqForm');
+  var ctx = document.getElementById('askqContext');
+  var pageField = document.getElementById('askqPageField');
+  var sectionField = document.getElementById('askqSectionField');
+  var subjectField = document.getElementById('askqSubjectField');
+  var submitBtn = document.getElementById('askqSubmit');
+  var success = document.getElementById('askqSuccess');
+  var errorEl = document.getElementById('askqErrorMsg');
+  if (!fab || !overlay) return;
+
+  function currentSection(){
+    var marks = document.querySelectorAll('main h2, main .step');
+    var best = null;
+    var scrollPos = window.scrollY + 160;
+    marks.forEach(function(el){
+      if (el.offsetTop <= scrollPos) best = el;
+    });
+    if (!best) return 'Overview';
+    if (best.classList && best.classList.contains('step')) {
+      var h3 = best.querySelector('h3');
+      if (h3) {
+        var numEl = h3.querySelector('.stepnum');
+        var num = numEl ? numEl.textContent.trim() : '';
+        var clone = h3.cloneNode(true);
+        var cloneNum = clone.querySelector('.stepnum');
+        if (cloneNum) cloneNum.parentNode.removeChild(cloneNum);
+        var label = clone.textContent.replace(/\s+/g, ' ').trim();
+        return (num ? 'Step ' + num + ': ' : '') + label;
+      }
+    }
+    return best.textContent.replace(/\s+/g, ' ').trim();
+  }
+
+  function openModal(){
+    var pageTitle = document.querySelector('h1') ? document.querySelector('h1').textContent.trim() : document.title;
+    var section = currentSection();
+    ctx.textContent = 'Page: ' + pageTitle + '  \u2014  Section: ' + section;
+    pageField.value = pageTitle;
+    sectionField.value = section;
+    subjectField.value = 'ECMS User Guide question \u2014 ' + pageTitle;
+    overlay.classList.add('askq-open');
+    success.style.display = 'none';
+    errorEl.style.display = 'none';
+    document.getElementById('askqMessage').focus();
+  }
+  function closeModal(){ overlay.classList.remove('askq-open'); }
+
+  fab.addEventListener('click', openModal);
+  cancel.addEventListener('click', closeModal);
+  overlay.addEventListener('click', function(e){ if (e.target === overlay) closeModal(); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeModal(); });
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending\u2026';
+    fetch('https://formspree.io/f/mnpjnqqk', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: new FormData(form)
+    }).then(function(res){
+      if (res.ok) {
+        success.style.display = 'block';
+        errorEl.style.display = 'none';
+        form.reset();
+        setTimeout(closeModal, 2200);
+      } else {
+        errorEl.style.display = 'block';
+      }
+    }).catch(function(){
+      errorEl.style.display = 'block';
+    }).finally(function(){
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send question';
+    });
+  });
+})();
+</script>
+
+</body></html>

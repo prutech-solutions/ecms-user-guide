@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Enrollments — CBO — ECMS User Guide</title><style>
+:root{--ink:#1B2430;--head:#0B2545;--muted:#5B6478;--link:#1657CE;--line:#DCE1EA;--line2:#EAEDF3;--code:#F5F7FB;--navy:#0B2545;--accent:#1657CE;--do:#1657CE;--res:#1E8E5A;--soft:#F5F7FB;--brandA:#0072CE;--brandB:#00A65A;--brandC:#F5A623;--brandD:#D0103A;}
+*{box-sizing:border-box;} html{scroll-behavior:smooth;}
+body{margin:0;color:var(--ink);background:#fff;font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;line-height:1.65;font-size:16px;}
+a{color:var(--link);text-decoration:none;} a:hover{text-decoration:underline;}
+code{font-family:'SFMono-Regular',Consolas,Menlo,monospace;background:var(--code);border:1px solid var(--line);border-radius:4px;padding:1px 6px;font-size:13.5px;color:#0a2a5e;}
+.topbar{position:sticky;top:0;z-index:10;box-shadow:0 1px 0 var(--line);}
+.tb-top{background:#fff;border-bottom:1px solid var(--line);}
+.tb-top .in{max-width:1260px;margin:0 auto;padding:14px 32px;display:flex;align-items:center;gap:12px;}
+.doe-logo{display:flex;align-items:baseline;gap:1px;font-weight:800;font-size:20px;letter-spacing:.2px;}
+.doe-logo b:nth-child(1){color:var(--brandA);} .doe-logo b:nth-child(2){color:var(--brandC);} .doe-logo b:nth-child(3){color:var(--brandB);} .doe-logo b:nth-child(4){color:var(--brandD);}
+.doe-sub{color:var(--muted);font-size:12.5px;padding-left:10px;border-left:1px solid var(--line);}
+.tb-bottom{background:var(--navy);}
+.tb-bottom .in{max-width:1260px;margin:0 auto;padding:10px 32px;display:flex;align-items:center;gap:22px;}
+.ecms-brand{color:#fff;font-weight:700;font-size:15px;letter-spacing:.3px;}
+.topnav{display:flex;gap:24px;margin-left:6px;}
+.topnav a{color:#cfe0fb;font-weight:600;font-size:13.5px;}
+.topnav a.cur{color:#fff;}
+@media (max-width:760px){.topnav{display:none;}}
+.crumbs{max-width:1260px;margin:0 auto;padding:16px 32px 0;font-size:13px;color:var(--muted);}
+.crumbs a{color:var(--muted);} .crumbs span{margin:0 7px;}
+.wrap{max-width:1260px;margin:0 auto;padding:8px 32px 60px;display:grid;grid-template-columns:270px minmax(0,1fr);gap:52px;}
+main{min-width:0;max-width:840px;}
+h1{font-size:32px;line-height:1.2;color:var(--head);margin:14px 0 6px;font-weight:700;}
+.lead{font-size:16.5px;color:var(--ink);margin:10px 0 4px;}
+.subtext{color:var(--muted);font-size:14px;margin:2px 0 0;}
+h2{font-size:22px;color:var(--head);font-weight:700;margin:42px 0 6px;padding-bottom:8px;border-bottom:1px solid var(--line);}
+h3{font-size:17.5px;color:var(--head);font-weight:700;margin:8px 0 2px;}
+p{margin:10px 0;}
+ul.bul{margin:10px 0;padding-left:22px;} ul.bul li{margin:6px 0;}
+table{border-collapse:collapse;width:100%;margin:16px 0;font-size:14.5px;}
+th,td{border:1px solid var(--line);padding:9px 13px;text-align:left;vertical-align:top;}
+th{background:var(--soft);color:var(--head);font-weight:700;}
+.lbl{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;padding:2px 9px;border-radius:4px;margin-right:8px;vertical-align:middle;}
+.lbl-do{background:#E6EFFC;color:var(--do);} .lbl-res{background:#E5F5EC;color:var(--res);}
+.step{scroll-margin-top:118px;border-top:1px solid var(--line2);padding-top:28px;margin-top:28px;}
+.step:first-of-type{border-top:none;margin-top:14px;padding-top:8px;}
+.step .stepnum{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;background:var(--navy);color:#fff;font-weight:700;font-size:14px;margin-right:10px;vertical-align:middle;}
+.step h3{display:inline;}
+h2,h3{scroll-margin-top:118px;}
+figure{margin:14px 0 4px;}
+figure img{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:8px;box-shadow:0 4px 14px rgba(11,37,69,.08);}
+figcaption{font-size:13px;color:var(--muted);margin-top:8px;font-style:italic;}
+.callout{background:var(--soft);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:6px;padding:14px 18px;margin:14px 0;}
+.callout b{color:var(--head);}
+.note{background:#fff8ec;border:1px solid #f3e2bd;border-left:4px solid #e0a127;border-radius:6px;padding:6px 18px;margin:14px 0;}
+.sidenav{position:sticky;top:104px;align-self:start;font-size:14px;max-height:calc(100vh - 120px);overflow:auto;padding-right:6px;}
+.nav-cat{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);font-weight:700;padding:0 0 10px;border-bottom:1px solid var(--line);margin-bottom:8px;}
+ul.nav{list-style:none;margin:0;padding:0;} ul.nav>li{margin:2px 0;}
+a.lvl1{display:block;padding:7px 10px;border-radius:6px;color:var(--head);font-weight:600;font-size:13.6px;}
+a.lvl1:hover{background:var(--soft);text-decoration:none;}
+a.lvl1.cur{color:var(--accent);background:var(--soft);border-left:3px solid var(--accent);padding-left:8px;}
+.backhome{display:inline-block;margin:14px 0 4px;font-weight:700;font-size:13.5px;}
+.meta-row{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 6px;}
+.chip{font-size:11.5px;font-weight:600;color:var(--navy);background:var(--soft);border:1px solid var(--line);border-radius:20px;padding:3px 10px;}
+.site-footer{background:var(--navy);color:#fff;margin-top:48px;}
+.site-footer .ft-in{max-width:1260px;margin:0 auto;padding:22px 32px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px;}
+.ft-left b{font-size:14px;} .ft-left div{color:#B9C7E3;font-size:12.5px;margin-top:4px;}
+.ft-nav a{color:#fff;font-size:13px;}
+@media (max-width:900px){.wrap{grid-template-columns:1fr;}.sidenav{position:static;max-height:none;}}
+</style></head>
+<body>
+<div class="topbar">
+  <div class="tb-top"><div class="in">
+    <span class="doe-logo"><b>N</b><b>Y</b><b>C</b></span>
+    <span class="doe-sub">Department of Education &middot; Division of Early Childhood Education</span>
+  </div></div>
+  <div class="tb-bottom"><div class="in">
+    <span class="ecms-brand">ECMS User Guide</span>
+    <nav class="topnav"><a href="index.html">Home</a></nav>
+  </div></div>
+</div>
+<div class="crumbs"><a href="index.html">ECMS User Guide</a><span>/</span>Enrollments &mdash; CBO</div>
+<div class="wrap">
+
+  <nav class="sidenav">
+    <div class="nav-cat">On this page</div>
+    <ul class="nav">
+      <li><a class="lvl1" href="#overview">Overview</a></li>
+      <li><a class="lvl1" href="#step-1">1. A parent accepts a placement in MySchools</a></li>
+      <li><a class="lvl1" href="#step-2">2. CBO reviews the portal's Enrollments list</a></li>
+      <li><a class="lvl1" href="#step-3">3. Finish the remaining enrollment details</a></li>
+      <li><a class="lvl1" href="#step-4">4. Registration Packet required before submission</a></li>
+      <li><a class="lvl1" href="#step-5">5. Submit the enrollment for DOE review</a></li>
+      <li><a class="lvl1" href="#step-6">6. ACCIS eligibility check on submission</a></li>
+      <li><a class="lvl1" href="#step-7">7. Admit Code is auto-assigned, not entered</a></li>
+      <li><a class="lvl1" href="#step-8">8. DOE Enrollment Specialist opens the Submitted queue</a></li>
+      <li><a class="lvl1" href="#step-9">9. Review the enrollment before deciding</a></li>
+      <li><a class="lvl1" href="#step-10">10. Approve the enrollment</a></li>
+      <li><a class="lvl1" href="#step-11">11. CBO confirms Active status in the portal</a></li>
+      <li><a class="lvl1" href="#step-12">12. What happens next</a></li>
+      <li><a class="lvl1" href="#step-13">13. Returning students can auto-approve</a></li>
+      <li><a class="lvl1" href="#step-14">14. 2K enrollments can be submitted with a Pending Admit Date</a></li>
+      <li><a class="lvl1" href="#step-15">15. Edit is available on every status &mdash; with limits</a></li>
+      <li><a class="lvl1" href="#step-16">16. Change requests: one mechanism, four record types</a></li>
+    </ul>
+    <a class="backhome" href="index.html">&larr; Back to User Guide home</a>
+  </nav>
+
+  <main id="top">
+    <h1>Enrollments &mdash; CBO</h1>
+    <p class="lead">How to finish a MySchools-originated enrollment, submit it for review, and track it through DOE approval, 
+    registration packet requirements, Admit Code assignment, ACCIS eligibility,and auto-approval.</p>
+    <div class="meta-row">
+      <span class="chip">16 steps</span><span class="chip">~20 min read</span>
+      <span class="chip">Persona: CBO Enrollment Manager / DOE Enrollment Specialist</span>
+    </div>
+   
+    <h2 id="overview">Overview</h2>
+    <p>Most enrollments don't start in ECMS at all &mdash; they start when a parent accepts a placement offer in
+    <strong>MySchools</strong>, the public-facing site where NYC families browse and apply for early childhood
+    placements. That acceptance flows straight into ECMS as a <strong>Draft</strong> enrollment. From there, the CBO's <strong>Enrollment Manager</strong> (a vendor-portal persona,
+    provisioned with the Enrollment Management function &mdash; see the <a href="guide-01-vendor-site-setup-cbo.html">Vendor &amp; Site Setup guide</a>) finishes
+    filling out whatever fields MySchools didn't supply and submits it. A <strong>DOE Enrollment Specialist</strong>
+    then reviews the submission internally and either approves it, rejects it, or sends it back requesting more
+    information. Only once it's approved does the enrollment become <strong>Active</strong> and the child
+    officially counts as enrolled.</p>
+
+    <div class="step" id="step-1">
+      <h3><span class="stepnum">1</span>A parent accepts a placement in MySchools</h3>
+      <p><span class="lbl lbl-do">DO</span> Nothing &mdash; this step happens outside ECMS entirely. A parent
+      accepts an offered seat on the MySchools website.</p>
+      <p><span class="lbl lbl-res">RESULT</span> That acceptance flows into ECMS automatically as a new
+      <strong>Enrollment</strong> record with <strong>Status</strong> = <em>Draft</em>. Notice the status path
+      bar at the top of the record: Draft is the very first stage, ahead of Submitted, Information Requested,
+      Rejected, Approved, Active, and Discharged.</p>
+      <figure>
+        <img src="screenshots/g4-01-draft-enrollment-detail.png" alt="Internal Enrollment detail page for ENROL-0000000024, student Karl Max, Status Draft, with the lifecycle path bar showing Draft as the current stage" />
+        <figcaption>A Draft enrollment as it first lands in ECMS from MySchools (internal admin view).</figcaption>
+      </figure>
+      <div class="note">
+        <b>Note:</b> Several fields are already populated straight from MySchools &mdash; student name,
+        birthdate, address, and (usually) the assigned site &mdash; but others, like the <strong>Myschools
+        Id</strong>, proof-of-birth documentation, or seat-specific details, are commonly left for the CBO to
+        finish before it can be submitted.
+      </div>
+    </div>
+
+    <div class="step" id="step-2">
+      <h3><span class="stepnum">2</span>CBO reviews the portal's Enrollments list</h3>
+      <p><span class="lbl lbl-do">DO</span> The CBO's Enrollment Manager logs into the vendor portal and clicks
+      <strong>Student Enrollments</strong> in the top navigation.</p>
+      <p><span class="lbl lbl-res">RESULT</span> The Enrollments list shows every enrollment associated with this
+      user's site(s).</p>
+      <figure>
+        <img src="screenshots/g4-02-portal-enrollments-list.png" alt="Vendor portal Enrollments list, logged in as Damien Ortiz of Cedar Point Early Childhood Academy, showing four enrollments at Cedar Point - Riverdale Campus including Jamal Brooks" />
+        <figcaption>Vendor portal &mdash; Enrollments list, scoped to Cedar Point &ndash; Riverdale Campus.</figcaption>
+      </figure>
+    </div>
+
+    <div class="step" id="step-3">
+      <h3><span class="stepnum">3</span>Finish the remaining enrollment details</h3>
+      <p><span class="lbl lbl-do">DO</span> Click <strong>Create New Enrollment</strong> and fill in the student's basic
+      details &mdash; First Name, Last Name, Birthdate, Gender &mdash; then continue through the remaining
+      sections MySchools didn't already supply.</p>
+      <p><span class="lbl lbl-res">RESULT</span> The wizard walks you through the fields
+      needed before the record can move out of Draft. Continue clicking <strong>Next</strong> to proceed through the steps. </p>
+      <figure>
+        <img src="screenshots/g4-03-portal-create-enrollment-form.png" alt="Vendor portal Create New Enrollment modal, Enter Basic Student Details screen, filled with First Name Mateo, Last Name Delgado, Birthdate April 12 2022, Gender Male, not yet saved" />
+        <figcaption>Vendor portal &mdash; Create/finish Enrollment form.</figcaption>
+      </figure>
+    </div>
+
+    <div class="step" id="step-4">
+      <h3><span class="stepnum">4</span>Registration Packet required before submission</h3>
+      <p><span class="lbl lbl-do">DO</span> On a Draft enrollment, click <strong>Upload Document</strong> in the
+      record's action bar.</p>
+      <p><span class="lbl lbl-res">RESULT</span> The Upload Document feature asks for a <strong>Content Type</strong>
+      with four choices: <strong>Registration Packet</strong>, <strong>Proof of Birth</strong>,
+      <strong>Proof of Residency</strong>, and <strong>Other Document</strong>. Only the Registration Packet is required. Note: the
+      system checks only for file presence, not document contents.</p>
+      <figure>
+        <img src="screenshots/g4-13-draft-documents-upload.png" alt="Upload Document modal on Draft enrollment ENROL-0000000024, with a required Title field and a Content Type radio group listing Registration Packet, Proof of Birth, Proof of Residency, and Other Document" />
+        <figcaption>Upload Document modal on a Draft enrollment &mdash; Registration Packet is the one required content type.</figcaption>
+      </figure>
+      <div class="note">
+        <b>Blocked-submission error message:</b> If you attempt to submit an enrollment without uploading a registration packet, you will see the error message: "A registration packet must be
+        uploaded before the registration can be submitted."
+      </div>
+      <div class="callout">
+        <b>Adding additional documents later.</b> Additional (optional) documents can still be attached after submission from
+        the same action or the record's <strong>Documents</strong> tab.
+      </div>
+    </div>
+
+    <div class="step" id="step-5">
+      <h3><span class="stepnum">5</span>Submit the enrollment for DOE review</h3>
+      <p><span class="lbl lbl-do">DO</span> Once every required field is complete, the Enrollment Manager clicks
+      <strong>Submit Enrollment</strong>.</p>
+      <p><span class="lbl lbl-res">RESULT</span> <strong>Status</strong> flips from <em>Draft</em> to
+      <em>Submitted</em>; <strong>Submitted Date/Time</strong> and <strong>Submitted by (Vendor)</strong> are
+      stamped on the record, and an approval request is automatically created and assigned to the DOE
+      Enrollment Specialist's queue.</p>
+      <figure>
+        <img src="screenshots/g4-04-submitted-enrollment-detail.png" alt="Internal Enrollment detail page for ENROL-0000000016, student Sofia Martinez, Status Submitted, with an Approval History related list showing an Enrolment Specialist Approval step with Status Pending" />
+        <figcaption>A Submitted enrollment, awaiting DOE review &mdash; note the pending Approval History entry.</figcaption>
+      </figure>
+      <div class="callout">
+        <b>ACCIS eligibility check.</b> If the enrollment's seat type is one of the "Extended Day" types, ECMS
+        checks childcare subsidy eligibility with <strong>ACCIS</strong> (a system run by NYC's Social Services
+        agency, not DOE) before the enrollment can be finalized &mdash; and later sends ACCIS the child's monthly
+        attendance so ACCIS can activate the subsidy payment the program has earned. If an Extended Day
+        enrollment stalls in review, ACCIS eligibility is one of the first things worth checking.
+      </div>
+    </div>
+
+    <div class="step" id="step-6">
+      <h3><span class="stepnum">6</span>ACCIS eligibility check on submission</h3>
+      <p><span class="lbl lbl-do">DO</span> Submit an EDY (Extended Day) enrollment for the first time.</p>
+      <p><span class="lbl lbl-res">RESULT</span> The vendor is required to send an eligibility
+      verification request to <strong>ACCIS</strong> using the enrollment workflow, providing a case number and child
+      number. A non-eligible response blocks the submission and shows
+      the reason with a visual indicator on the record. An authorized internal Enrollment Specialist can
+      override it. When ACCIS itself rejects the sync &mdash; as opposed to an eligibility determination &mdash; it will be assigned a distinct status (e.g. "Pending ACCIS Posting for
+      School Year" / "...for Summer") so the rejection can be triaged.</p>
+      
+      <figure>
+        <img src="screenshots/g4-10-accis-message-field.png" alt="Enrollment detail page for ENROL-0000000732, Status Approved, showing ACCIS Status Error and an ACCIS Message reading ACCIS UpdateChildEnrollment rejected: record validation failed (DOEECMS-2293 automation)" />
+        <figcaption>ENROL-0000000732 &mdash; an ACCIS sync rejection.</figcaption>
+      </figure>
+      <div class="note">
+        <b>Note:</b> This record shows the ACCIS <em>posting</em> rejection path, not the
+        pre-submission <em>eligibility</em> check.
+      </div>
+    </div>
+
+    <div class="step" id="step-7">
+      <h3><span class="stepnum">7</span>Admit Code is auto-assigned, not entered</h3>
+      <p><span class="lbl lbl-do">DO</span> Open any enrollment that has been submitted at least once and look
+      for the <strong>Admit Code</strong> field.</p>
+      <p><span class="lbl lbl-res">RESULT</span> ECMS
+      auto-populates a non-editable Admit Code field the
+      first time the enrollment is submitted &mdash; the user does not set it manually:</p>
+      <ul class="bul">
+        <li><strong>58</strong> &mdash; new child (no OSIS number)</li>
+        <li><strong>56</strong> &mdash; returning child from a prior school year (has an OSIS number)</li>
+        <li><strong>54</strong> &mdash; same-year transfer (has an OSIS number and another enrollment for the
+        same year); a transfer enrollment can't be submitted while another enrollment is still active</li>
+      </ul>
+      <p>ENROL-0000000001, ENROL-0000000002, and ENROL-0000000003 are all records with Admit Code 58.</p>
+      <figure>
+        <img src="screenshots/g4-09-admit-code-field.png" alt="Enrollment detail page for ENROL-0000000001, Status Rejected, showing a non-editable Admit Code field reading 58 - ADM-FIRST TIME ENTRANT INTO NYC PUBLIC SCH" />
+        <figcaption>ENROL-0000000001 &mdash; Admit Code auto-populated to 58.</figcaption>
+      </figure>
+    </div>
+
+    <div class="step" id="step-8">
+      <h3><span class="stepnum">8</span>DOE Enrollment Specialist opens the Submitted queue</h3>
+      <p><span class="lbl lbl-do">DO</span> The Enrollment Specialist clicks the
+      <strong>Enrollments</strong> tab, then changes the list view to <strong>All Enrollments</strong>, and searches or sorts by
+      <strong>Status</strong> to find everything currently sitting at <em>Submitted</em>.</p>
+      <p><span class="lbl lbl-res">RESULT</span> Every enrollment awaiting DOE action across every CBO/FCCN
+      site appears together, regardless of which site or vendor submitted it &mdash; this is effectively the
+      Enrollment Specialist's daily review queue.</p>
+      <figure>
+        <img src="screenshots/g4-05-internal-submitted-queue.png" alt="Internal Enrollments list view filtered to Status equals Submitted, showing 35 items across many CBO and FCCN sites" />
+        <figcaption>Internal Enrollments list, filtered to Status = Submitted &mdash; the DOE review queue.</figcaption>
+      </figure>
+    </div>
+
+    <div class="step" id="step-9">
+      <h3><span class="stepnum">9</span>Review the enrollment before deciding</h3>
+      <p><span class="lbl lbl-do">DO</span> The Enrollment Specialist opens one of the queued records and reviews the student information, site,
+      admission date, and seat type against supporting documentation.</p>
+      <p><span class="lbl lbl-res">RESULT</span> The record's <strong>Approval History</strong> related list
+      already shows a pending <em>Enrollment Specialist Approval</em> step, assigned to the Enrollment Specialist's
+      queue &mdash; this is what the Specialist is acting on.</p>
+      <div class="note">
+        <b>Note:</b> ECMS also checks <strong>LCGMS</strong>, the DOE's master directory of every school, site,
+        and building in the city, to confirm the enrollment's site actually exists and is currently open before
+        anyone can enroll a child there &mdash; and uses it to look up accessibility information when a
+        placement needs a fully accessible facility. A site validation failure here is a common reason a
+        submission gets kicked back as Information Requested.
+      </div>
+    </div>
+
+    <div class="step" id="step-10">
+      <h3><span class="stepnum">10</span>Approve the enrollment</h3>
+      <p><span class="lbl lbl-do">DO</span> Once satisfied, the Enrollment Specialist approves the pending
+      approval request (via <strong>View Approval Request</strong> on the record, or the standard approval
+      actions in their queue).</p>
+      <p><span class="lbl lbl-res">RESULT</span> <strong>Status</strong> advances to <em>Active</em> and the
+      child officially counts as enrolled. The example below, ENROL-0000000521 (Jamal Brooks, Cedar Point &ndash;
+      Riverdale Campus), shows exactly this end state: submitted by Damien Ortiz, approved by Enrollment
+      Specialist Emma Scott, with the Approval History recording both steps.</p>
+      <figure>
+        <img src="screenshots/g4-07-active-enrollment-detail.png" alt="Internal Enrollment detail page for ENROL-0000000521, student Jamal Brooks, Status Active, with Approval History showing an Approval Request Submitted step by Damien Ortiz and an Enrolment Specialist Approval step Approved by Emma Scott" />
+        <figcaption>Jamal Brooks' enrollment, now Active &mdash; approved by the DOE Enrollment Specialist.</figcaption>
+      </figure>
+      <div class="callout">
+        <b>OASIS and the OSIS Number.</b> When OASIS (the DOE's master student registration system) accepts an enrollment,it assigns the child an OSIS number, 
+        the child's lifelong DOE student ID. Once OASIS accepts the enrollment and assigns a number, the Enrollment Specialist can 
+        approve the enrollment in ECMS.
+      </div>
+    </div>
+
+    <div class="step" id="step-11">
+      <h3><span class="stepnum">11</span>CBO confirms Active status in the portal</h3>
+      <p><span class="lbl lbl-do">DO</span> Back in the vendor portal, the CBO's Enrollment Manager opens the
+      same enrollment from the Enrollments list.</p>
+      <p><span class="lbl lbl-res">RESULT</span> The portal shows the identical lifecycle path bar as the
+      internal app, now advanced to <em>Active</em>, along with the child's growing Attendances related list and
+      Student Screenings &mdash; confirming from the vendor's own view that the child is fully enrolled and ready
+      for daily attendance to be recorded.</p>
+      <figure>
+        <img src="screenshots/g4-08-portal-active-enrollment-detail.png" alt="Vendor portal Enrollment detail page for ENROL-0000000521, Jamal Brooks, Status Active, showing the lifecycle path bar fully checked through Active and a list of Attendance records" />
+        <figcaption>Vendor portal &mdash; the same enrollment, confirmed Active from the CBO's own view.</figcaption>
+      </figure>
+    </div>
+
+    <div class="step" id="step-12">
+      <h3><span class="stepnum">12</span>What happens next</h3>
+      <p><span class="lbl lbl-do">DO</span> Nothing further is required right now &mdash; the enrollment is
+      live.</p>
+      <p><span class="lbl lbl-res">RESULT</span> From here, the CBO records daily <strong>Attendance</strong> for
+      the child (see the <a href="guide-07-attendance-cbo.html">Attendance guide</a>), and the enrollment itself can still be edited, transferred to a
+      different site, or eventually closed out through a formal <strong>Discharge</strong> &mdash; e.g. the child
+      aging out, moving away, or the family deciding to stop &mdash; which updates attendance and enrollment
+      records and notifies OASIS, ACCIS, and the other outside systems that track this child so everything stays
+      in sync.</p>
+      <div class="callout">
+        <b>Enrollment complete.</b> The child is now Active at their site, with an approval trail, an OSIS
+        Number on the way, and (if applicable) confirmed subsidy eligibility. The next module in the chain is
+        usually <strong>Attendance</strong>, which in turn determines whether a monthly invoice can later be
+        submitted.
+      </div>
+    </div>
+
+    <div class="step" id="step-13">
+      <h3><span class="stepnum">13</span>Returning students can auto-approve</h3>
+      <p><span class="lbl lbl-do">DO</span> Submit a school-year enrollment for a student who was previously
+      enrolled, approved, at the same provider/location, with unchanged key details.</p>
+      <p><span class="lbl lbl-res">RESULT</span> ECMS
+      auto-approves the enrollment without an Enrollment Specialist review &mdash; but only if <em>every</em>
+      one of these holds; any mismatch routes it to the manual review queue instead:</p>
+      <ul class="bul">
+        <li>Same program and provider/location as the student's prior (summer and/or school year) enrollment. Note: a returning student may get enrolled in a different program and is eligible for auto-approval if all other details match.</li>
+        <li>The student's most recent enrollment was approved, with matching First Name, Last Name, DOB, and
+        Gender</li>
+        <li>The address on the new enrollment matches the address on the prior approved Summer School enrollment</li>
+      </ul>
+     
+      <figure>
+        <img src="screenshots/g4-11-auto-approved-indicator.png" alt="Enrollment detail page for ENROL-0000000040, showing a checked (true) non-editable Auto Approved field and an Approval History entry with comments Auto-approved by system, assigned to Enrollment Specialists" />
+        <figcaption>ENROL-0000000040 &mdash; Auto Approved is checked, and Approval History records the automatic approval.</figcaption>
+      </figure>
+    </div>
+
+    <div class="step" id="step-14">
+      <h3><span class="stepnum">14</span>2K enrollments can be submitted with a Pending Admit Date</h3>
+      <p><span class="lbl lbl-do">DO</span> Submit a 2K enrollment (SDY or EDFY seat type only) for a child
+      who is younger than 24 months but will turn 24 months old between September 1 and December 31 of the
+      current calendar year, leaving <strong>First Day of Attendance</strong> blank.</p>
+      <p><span class="lbl lbl-res">RESULT</span> Instead of being blocked, the enrollment submits successfully
+      with Status <strong>"Pending Admit Date"</strong> &mdash; First Day of Attendance stays blank until the
+      CBO comes back and fills it in.</p>
+      <figure>
+        <img src="screenshots/g4-15-pending-admit-date.png" alt="Enrollment detail page for ENROL-0000000943, student Wren PendingAdmitDemo, Program Type Birth-to-Two/2K, Seat Type EDFY, Status Pending Admit Date highlighted on the lifecycle path bar, First Day of Attendance blank" />
+        <figcaption>ENROL-0000000943 &mdash; a real 2K EDFY enrollment submitted with no First Day of Attendance, landing on "Pending Admit Date."</figcaption>
+      </figure>
+      <ul class="bul">
+        <li>This only applies to <strong>CBO 2K SDY/EDFY</strong> enrollments &mdash; not other CBO program
+        types, and not FCCN 2K enrollments (FCCN's 2K minimum age is 18 months, not 24).</li>
+        <li>A child under 24 months who does <strong>not</strong> turn 24 within that Sept&ndash;Dec window is
+        blocked outright, with this exact message: <em>"This child is not yet eligible to start 2-K until
+        their second birthday. You can submit this as a &ldquo;Pending Admit Date&rdquo; record which must be
+        updated directly after the child's planned first date of attendance after the child's second birthday
+        or will be removed from consideration for payment. Email
+        earlychildhoodenrollment@schools.nyc.gov if you have any questions."</em></li>
+        <li>A Pending Admit Date enrollment still <strong>counts toward the class's seat occupancy</strong>
+        &mdash; it isn't "free" capacity just because attendance hasn't started.</li>
+        <li><strong>Attendance cannot be taken</strong> for a Pending Admit Date enrollment until the CBO
+        fills in First Day of Attendance and re-submits.</li>
+        <li>Once First Day of Attendance is filled in and the enrollment is re-submitted, it goes through the
+        <strong>normal</strong> Submitted &rarr; Approved &rarr; Active review process &mdash; there's no
+        separate approval path for these.</li>
+        <li>If First Day of Attendance is never filled in by December 31, the enrollment is rejected and the
+        seat becomes available again.</li>
+      </ul>
+      <div class="note">
+        <b>Note:</b> "Admit Date" and "First Day of Attendance" mean the same thing &mdash; DOE staff use the
+        two terms interchangeably.
+      </div>
+    </div>
+
+    <div class="step" id="step-15">
+      <h3><span class="stepnum">15</span>Edit is available on every status &mdash; with limits</h3>
+      <p><span class="lbl lbl-do">DO</span> From the vendor portal, open <strong>any</strong> enrollment,
+      regardless of status, and click
+      <strong>Edit</strong>.</p>
+      <p><span class="lbl lbl-res">RESULT</span> The
+      Edit button displays for every enrollment status, but only allows users to attach documents for and
+      update the <strong>Student Residence Information</strong> and <strong>Primary Caregiver
+      Information</strong> sections &mdash; key student/parent identity fields synced from OASIS stay locked,
+      except address. If address is changed, it is sent back to OASIS to keep the systems in sync.</p>
+      <figure>
+        <img src="screenshots/g4-14-portal-edit-active-enrollment.png" alt="Vendor portal Active enrollment ENROL-0000000521 with the Edit button clicked, showing a modal that reads Enrollment cannot be updated as it is not in the 'New', 'Draft', 'Information Requested' or 'Pending Admit Date' Status" />
+        <figcaption>Vendor portal &mdash; Edit is visible on this Active enrollment, but clicking it results in an error message.</figcaption>
+      </figure>
+    </div>
+
+    <div class="step" id="step-16">
+      <h3><span class="stepnum">16</span>Change requests: one mechanism, four record types</h3>
+      <p><span class="lbl lbl-do">DO</span> On an <em>Approved</em> or <em>Active</em> enrollment, click
+      <strong>Enrollment Change Request</strong>.</p>
+      <p><span class="lbl lbl-res">RESULT</span> You are allowed to make changes on <strong>four</strong> record types:</p>
+      <ul class="bul">
+        <li><strong>Class Change</strong></li>
+        <li><strong>Discharge Request</strong></li>
+        <li><strong>Seat Type Change</strong></li>
+        <li><strong>Program Type Change</strong></li>
+      </ul>
+      <p>The button only appears on Approved/Active enrollments, and ECMS validates the requested effective
+      date isn't before the admit date, first day of school, or the last effective change date.</p>
+      <figure>
+        <img src="screenshots/g4-12-change-request-seat-type.png" alt="Enrollment Change Request ENROL-CR-00000007, Record Type Seat Type Change, Status Approved, Old Seat Type EDY, New Seat Type SDY, linked to Enrollment ENROL-0000000044" />
+        <figcaption>ENROL-CR-00000007 &mdash; a Seat Type Change request, Approved.</figcaption>
+      </figure>
+      <div class="callout">
+        <b>More on Change Requests.</b> <a href="guide-11-change-requests.html">Guide 11 (Change
+        Requests)</a> walks through the <strong>Discharge
+        Request</strong>, <strong>Change Seat Type</strong>, <strong>Change Class</strong>, and <strong>Change
+        Program Type</strong> scenarios in detail.
+      </div>
+    </div>
+
+    <a class="backhome" href="index.html">&larr; Back to User Guide home</a>
+  </main>
+</div>
+<div class="site-footer">
+  <div class="ft-in">
+    <div class="ft-left"><b>NYC DOE &middot; Division of Early Childhood Education</b><div>Early Childhood Management System (ECMS)</div></div>
+    <nav class="ft-nav"><a href="index.html">User Guide Home</a></nav>
+  </div>
+</div>
+<style>
+.askq-fab{position:fixed;bottom:24px;right:24px;z-index:1000;background:var(--navy);color:#fff;border:none;border-radius:999px;padding:14px 22px;font-weight:700;font-size:14px;font-family:inherit;box-shadow:0 6px 20px rgba(11,37,69,.35);cursor:pointer;display:flex;align-items:center;gap:8px;transition:background .15s,transform .15s;}
+.askq-fab:hover{background:var(--accent);transform:translateY(-1px);}
+.askq-fab svg{width:18px;height:18px;flex-shrink:0;}
+.askq-overlay{position:fixed;inset:0;background:rgba(11,37,69,.55);z-index:1001;display:none;align-items:center;justify-content:center;padding:20px;}
+.askq-overlay.askq-open{display:flex;}
+.askq-modal{background:#fff;border-radius:12px;max-width:480px;width:100%;padding:28px;box-shadow:0 20px 60px rgba(0,0,0,.35);max-height:90vh;overflow:auto;}
+.askq-modal h3{margin:0 0 6px;color:var(--navy);font-size:20px;font-weight:700;}
+.askq-modal .askq-sub{font-size:13.5px;color:var(--muted);margin:0 0 16px;}
+.askq-ctx{font-size:12.5px;color:var(--navy);margin:0 0 18px;padding:9px 12px;background:var(--soft);border:1px solid var(--line);border-radius:6px;}
+.askq-modal label{display:block;font-size:13px;font-weight:700;color:var(--navy);margin:14px 0 6px;}
+.askq-modal textarea,.askq-modal input{width:100%;border:1px solid var(--line);border-radius:6px;padding:10px 12px;font-size:14px;font-family:inherit;box-sizing:border-box;}
+.askq-modal textarea{min-height:90px;resize:vertical;}
+.askq-modal textarea:focus,.askq-modal input:focus{outline:2px solid var(--accent);outline-offset:1px;}
+.askq-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:20px;}
+.askq-btn-cancel{background:#fff;border:1px solid var(--line);color:var(--ink);padding:10px 18px;border-radius:6px;cursor:pointer;font-weight:700;font-size:14px;font-family:inherit;}
+.askq-btn-cancel:hover{background:var(--soft);}
+.askq-btn-submit{background:var(--accent);border:none;color:#fff;padding:10px 20px;border-radius:6px;cursor:pointer;font-weight:700;font-size:14px;font-family:inherit;}
+.askq-btn-submit:hover{background:var(--navy);}
+.askq-btn-submit:disabled{opacity:.6;cursor:default;}
+.askq-success{color:var(--res);font-weight:700;margin-top:14px;font-size:14px;display:none;}
+.askq-error{color:#C0392B;font-weight:700;margin-top:14px;font-size:14px;display:none;}
+@media (max-width:600px){.askq-fab{bottom:16px;right:16px;padding:12px 16px;font-size:13px;}.askq-fab span{display:none;}}
+</style>
+
+<button class="askq-fab" id="askqFab" type="button" aria-haspopup="dialog">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+  <span>Ask a question</span>
+</button>
+
+<div class="askq-overlay" id="askqOverlay" role="dialog" aria-modal="true" aria-labelledby="askqTitle">
+  <div class="askq-modal">
+    <h3 id="askqTitle">Ask a question</h3>
+    <p class="askq-sub">Need more information about what you're reading? Send a question to the ECMS team.</p>
+    <p class="askq-ctx" id="askqContext"></p>
+    <form id="askqForm">
+      <label for="askqMessage">Your question</label>
+      <textarea id="askqMessage" name="message" required placeholder="What would you like to know more about?"></textarea>
+      <label for="askqName">Your name (optional)</label>
+      <input type="text" id="askqName" name="name" placeholder="Jane Doe" autocomplete="name" />
+      <label for="askqEmail">Your email (optional, so we can reply)</label>
+      <input type="email" id="askqEmail" name="_replyto" placeholder="jane@agency.gov" autocomplete="email" />
+      <input type="hidden" name="page" id="askqPageField" />
+      <input type="hidden" name="section" id="askqSectionField" />
+      <input type="hidden" name="_subject" id="askqSubjectField" />
+      <div class="askq-actions">
+        <button type="button" class="askq-btn-cancel" id="askqCancel">Cancel</button>
+        <button type="submit" class="askq-btn-submit" id="askqSubmit">Send question</button>
+      </div>
+      <div class="askq-success" id="askqSuccess">&#10003; Thanks! Your question has been sent to the ECMS team.</div>
+      <div class="askq-error" id="askqErrorMsg">Something went wrong sending your question. Please try again, or email the team directly.</div>
+    </form>
+  </div>
+</div>
+
+<script>
+(function(){
+  var fab = document.getElementById('askqFab');
+  var overlay = document.getElementById('askqOverlay');
+  var cancel = document.getElementById('askqCancel');
+  var form = document.getElementById('askqForm');
+  var ctx = document.getElementById('askqContext');
+  var pageField = document.getElementById('askqPageField');
+  var sectionField = document.getElementById('askqSectionField');
+  var subjectField = document.getElementById('askqSubjectField');
+  var submitBtn = document.getElementById('askqSubmit');
+  var success = document.getElementById('askqSuccess');
+  var errorEl = document.getElementById('askqErrorMsg');
+  if (!fab || !overlay) return;
+
+  function currentSection(){
+    var marks = document.querySelectorAll('main h2, main .step');
+    var best = null;
+    var scrollPos = window.scrollY + 160;
+    marks.forEach(function(el){
+      if (el.offsetTop <= scrollPos) best = el;
+    });
+    if (!best) return 'Overview';
+    if (best.classList && best.classList.contains('step')) {
+      var h3 = best.querySelector('h3');
+      if (h3) {
+        var numEl = h3.querySelector('.stepnum');
+        var num = numEl ? numEl.textContent.trim() : '';
+        var clone = h3.cloneNode(true);
+        var cloneNum = clone.querySelector('.stepnum');
+        if (cloneNum) cloneNum.parentNode.removeChild(cloneNum);
+        var label = clone.textContent.replace(/\s+/g, ' ').trim();
+        return (num ? 'Step ' + num + ': ' : '') + label;
+      }
+    }
+    return best.textContent.replace(/\s+/g, ' ').trim();
+  }
+
+  function openModal(){
+    var pageTitle = document.querySelector('h1') ? document.querySelector('h1').textContent.trim() : document.title;
+    var section = currentSection();
+    ctx.textContent = 'Page: ' + pageTitle + '  \u2014  Section: ' + section;
+    pageField.value = pageTitle;
+    sectionField.value = section;
+    subjectField.value = 'ECMS User Guide question \u2014 ' + pageTitle;
+    overlay.classList.add('askq-open');
+    success.style.display = 'none';
+    errorEl.style.display = 'none';
+    document.getElementById('askqMessage').focus();
+  }
+  function closeModal(){ overlay.classList.remove('askq-open'); }
+
+  fab.addEventListener('click', openModal);
+  cancel.addEventListener('click', closeModal);
+  overlay.addEventListener('click', function(e){ if (e.target === overlay) closeModal(); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeModal(); });
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending\u2026';
+    fetch('https://formspree.io/f/mnpjnqqk', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: new FormData(form)
+    }).then(function(res){
+      if (res.ok) {
+        success.style.display = 'block';
+        errorEl.style.display = 'none';
+        form.reset();
+        setTimeout(closeModal, 2200);
+      } else {
+        errorEl.style.display = 'block';
+      }
+    }).catch(function(){
+      errorEl.style.display = 'block';
+    }).finally(function(){
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send question';
+    });
+  });
+})();
+</script>
+
+</body></html>

@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Reporting &amp; Dashboards — ECMS User Guide</title><style>
+:root{--ink:#1B2430;--head:#0B2545;--muted:#5B6478;--link:#1657CE;--line:#DCE1EA;--line2:#EAEDF3;--code:#F5F7FB;--navy:#0B2545;--accent:#1657CE;--do:#1657CE;--res:#1E8E5A;--soft:#F5F7FB;--brandA:#0072CE;--brandB:#00A65A;--brandC:#F5A623;--brandD:#D0103A;}
+*{box-sizing:border-box;} html{scroll-behavior:smooth;}
+body{margin:0;color:var(--ink);background:#fff;font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;line-height:1.65;font-size:16px;}
+a{color:var(--link);text-decoration:none;} a:hover{text-decoration:underline;}
+code{font-family:'SFMono-Regular',Consolas,Menlo,monospace;background:var(--code);border:1px solid var(--line);border-radius:4px;padding:1px 6px;font-size:13.5px;color:#0a2a5e;}
+.topbar{position:sticky;top:0;z-index:10;box-shadow:0 1px 0 var(--line);}
+.tb-top{background:#fff;border-bottom:1px solid var(--line);}
+.tb-top .in{max-width:1260px;margin:0 auto;padding:14px 32px;display:flex;align-items:center;gap:12px;}
+.doe-logo{display:flex;align-items:baseline;gap:1px;font-weight:800;font-size:20px;letter-spacing:.2px;}
+.doe-logo b:nth-child(1){color:var(--brandA);} .doe-logo b:nth-child(2){color:var(--brandC);} .doe-logo b:nth-child(3){color:var(--brandB);} .doe-logo b:nth-child(4){color:var(--brandD);}
+.doe-sub{color:var(--muted);font-size:12.5px;padding-left:10px;border-left:1px solid var(--line);}
+.tb-bottom{background:var(--navy);}
+.tb-bottom .in{max-width:1260px;margin:0 auto;padding:10px 32px;display:flex;align-items:center;gap:22px;}
+.ecms-brand{color:#fff;font-weight:700;font-size:15px;letter-spacing:.3px;}
+.topnav{display:flex;gap:24px;margin-left:6px;}
+.topnav a{color:#cfe0fb;font-weight:600;font-size:13.5px;}
+.topnav a.cur{color:#fff;}
+@media (max-width:760px){.topnav{display:none;}}
+.crumbs{max-width:1260px;margin:0 auto;padding:16px 32px 0;font-size:13px;color:var(--muted);}
+.crumbs a{color:var(--muted);} .crumbs span{margin:0 7px;}
+.wrap{max-width:1260px;margin:0 auto;padding:8px 32px 60px;display:grid;grid-template-columns:270px minmax(0,1fr);gap:52px;}
+main{min-width:0;max-width:840px;}
+h1{font-size:32px;line-height:1.2;color:var(--head);margin:14px 0 6px;font-weight:700;}
+.lead{font-size:16.5px;color:var(--ink);margin:10px 0 4px;}
+.subtext{color:var(--muted);font-size:14px;margin:2px 0 0;}
+h2{font-size:22px;color:var(--head);font-weight:700;margin:42px 0 6px;padding-bottom:8px;border-bottom:1px solid var(--line);}
+h3{font-size:17.5px;color:var(--head);font-weight:700;margin:8px 0 2px;}
+p{margin:10px 0;}
+ul.bul{margin:10px 0;padding-left:22px;} ul.bul li{margin:6px 0;}
+table{border-collapse:collapse;width:100%;margin:16px 0;font-size:14.5px;}
+th,td{border:1px solid var(--line);padding:9px 13px;text-align:left;vertical-align:top;}
+th{background:var(--soft);color:var(--head);font-weight:700;}
+.lbl{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;padding:2px 9px;border-radius:4px;margin-right:8px;vertical-align:middle;}
+.lbl-do{background:#E6EFFC;color:var(--do);} .lbl-res{background:#E5F5EC;color:var(--res);}
+.step{scroll-margin-top:118px;border-top:1px solid var(--line2);padding-top:28px;margin-top:28px;}
+.step:first-of-type{border-top:none;margin-top:14px;padding-top:8px;}
+.step .stepnum{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;background:var(--navy);color:#fff;font-weight:700;font-size:14px;margin-right:10px;vertical-align:middle;}
+.step h3{display:inline;}
+h2,h3{scroll-margin-top:118px;}
+figure{margin:14px 0 4px;}
+figure img{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:8px;box-shadow:0 4px 14px rgba(11,37,69,.08);}
+figcaption{font-size:13px;color:var(--muted);margin-top:8px;font-style:italic;}
+.callout{background:var(--soft);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:6px;padding:14px 18px;margin:14px 0;}
+.callout b{color:var(--head);}
+.note{background:#fff8ec;border:1px solid #f3e2bd;border-left:4px solid #e0a127;border-radius:6px;padding:6px 18px;margin:14px 0;}
+.sidenav{position:sticky;top:104px;align-self:start;font-size:14px;max-height:calc(100vh - 120px);overflow:auto;padding-right:6px;}
+.nav-cat{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);font-weight:700;padding:0 0 10px;border-bottom:1px solid var(--line);margin-bottom:8px;}
+ul.nav{list-style:none;margin:0;padding:0;} ul.nav>li{margin:2px 0;}
+a.lvl1{display:block;padding:7px 10px;border-radius:6px;color:var(--head);font-weight:600;font-size:13.6px;}
+a.lvl1:hover{background:var(--soft);text-decoration:none;}
+a.lvl1.cur{color:var(--accent);background:var(--soft);border-left:3px solid var(--accent);padding-left:8px;}
+.backhome{display:inline-block;margin:14px 0 4px;font-weight:700;font-size:13.5px;}
+.meta-row{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 6px;}
+.chip{font-size:11.5px;font-weight:600;color:var(--navy);background:var(--soft);border:1px solid var(--line);border-radius:20px;padding:3px 10px;}
+.site-footer{background:var(--navy);color:#fff;margin-top:48px;}
+.site-footer .ft-in{max-width:1260px;margin:0 auto;padding:22px 32px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px;}
+.ft-left b{font-size:14px;} .ft-left div{color:#B9C7E3;font-size:12.5px;margin-top:4px;}
+.ft-nav a{color:#fff;font-size:13px;}
+@media (max-width:900px){.wrap{grid-template-columns:1fr;}.sidenav{position:static;max-height:none;}}
+</style></head>
+<body>
+<div class="topbar">
+  <div class="tb-top"><div class="in">
+    <span class="doe-logo"><b>N</b><b>Y</b><b>C</b></span>
+    <span class="doe-sub">Department of Education &middot; Division of Early Childhood Education</span>
+  </div></div>
+  <div class="tb-bottom"><div class="in">
+    <span class="ecms-brand">ECMS User Guide</span>
+    <nav class="topnav"><a href="index.html">Home</a></nav>
+  </div></div>
+</div>
+<div class="crumbs"><a href="index.html">ECMS User Guide</a><span>/</span>Reporting &amp; Dashboards</div>
+<div class="wrap">
+
+  <nav class="sidenav">
+    <div class="nav-cat">On this page</div>
+    <ul class="nav">
+      <li><a class="lvl1" href="#overview">Overview</a></li>
+      <li><a class="lvl1" href="#step-1">1. Find the Reports tab (internal)</a></li>
+      <li><a class="lvl1" href="#step-2">2. Browse the ECMS Reports folder</a></li>
+      <li><a class="lvl1" href="#step-3">3. Open a report</a></li>
+      <li><a class="lvl1" href="#step-4">4. Budget &amp; Attendance reporting</a></li>
+      <li><a class="lvl1" href="#step-5">5. FCCN multi-level attendance reporting</a></li>
+      <li><a class="lvl1" href="#step-6">6. Open the internal reporting Dashboard</a></li>
+      <li><a class="lvl1" href="#step-7">7. Seat Capacity, Head Start, and EDY reports</a></li>
+      <li><a class="lvl1" href="#step-8">8. Budget and Invoice reports</a></li>
+      <li><a class="lvl1" href="#step-9">9. Refresh a dashboard to see current data</a></li>
+      <li><a class="lvl1" href="#step-10">10. Download, save, or manage a dashboard</a></li>
+      <li><a class="lvl1" href="#step-11">11. Build a new dashboard from scratch</a></li>
+      <li><a class="lvl1" href="#step-12">12. Add Chart/Table, Text, and Image widgets</a></li>
+      <li><a class="lvl1" href="#step-13">13. Subscribing to a dashboard (known gap)</a></li>
+      <li><a class="lvl1" href="#step-14">14. Creating a new report (internal admins only)</a></li>
+      <li><a class="lvl1" href="#step-15">15. Vendor-side reporting (embedded on Home)</a></li>
+      <li><a class="lvl1" href="#step-16">16. Know what controls who sees what</a></li>
+    </ul>
+    <a class="backhome" href="index.html">&larr; Back to User Guide home</a>
+  </nav>
+
+  <main id="top">
+    <h1>Reporting &amp; Dashboards</h1>
+    <p class="lead">How internal DOE staff (OA/OD/Admin/Portfolio Team) and CBO/FCCN vendor users each find and
+    use the reports and dashboards ECMS makes available to them &mdash; and why the two groups see a genuinely
+    different set, in a different place in the UI.</p>
+    <div class="meta-row">
+      <span class="chip">16 steps</span><span class="chip">~18 min read</span>
+      <span class="chip">Persona: Operations Analyst / Operations Director / ECMS Admin / Portfolio Team Member / CBO-FCCN Vendor User</span>
+    </div>
+
+    <h2 id="overview">Overview</h2>
+    <p>ECMS ships with a real set of pre-built <strong>Reports</strong> and <strong>Dashboards</strong> &mdash;
+    not a generic Salesforce reporting sandbox, but a curated set scoped to ECMS's own objects (Enrollments,
+    Attendance, Budgets, Invoices, Incidents). Who sees which reports and dashboards comes down to one thing:
+    which of two permission sets a user was provisioned with. Internal DOE staff get the
+    <strong>"ECMS Reports Permission set,"</strong> which is now assigned automatically during provisioning
+    rather than requiring a manual follow-up step. CBO/FCCN vendor users get a different one,
+    <strong>"ECMS Reporting and Dashboards,"</strong> scoped to a smaller, vendor-appropriate set of the same
+    underlying data.</p>
+    <div class="callout">
+      <b>Two audiences, two different places in the UI.</b> Internal users reach reports and dashboards through
+      dedicated <strong>Reports</strong> and <strong>Dashboards</strong> tabs/apps in the internal Salesforce
+      app. Vendor portal users have no such tab at all &mdash; their reporting experience is a dashboard
+      embedded directly on the portal's <strong>Home</strong> page instead. Both are covered in this guide.
+    </div>
+
+    <h2>Steps</h2>
+
+    <div class="step" id="step-1">
+      <h3><span class="stepnum">1</span>Find the Reports tab (internal)</h3>
+      <p><span class="lbl lbl-do">DO</span> As an Operations Analyst, Operations Director, ECMS Admin, or
+      Portfolio Team Member, open the <strong>Reports</strong> tab from the internal app's nav bar (or the
+      App Launcher if it's not pinned).</p>
+      <p><span class="lbl lbl-res">RESULT</span> The Reports home page opens, defaulting to a <strong>Recent</strong>
+      view. The internal Home page itself (shown here) doesn't embed a dashboard the way the vendor portal
+      does &mdash; instead it surfaces the <strong>Items to Approve</strong> component (covered in the Invoice
+      guide) and a Recent Records panel, with reports and dashboards reached as their own dedicated tabs.</p>
+      <figure>
+        <img src="screenshots/g12-01-oa-home-items-to-approve.png" alt="Internal ECMS Home page for Oscar Adams, Operations Analyst, showing an Items to Approve component, a Recent Records panel linking to ECMS reporting Dashboard and Coaching Log reports, and no embedded dashboard directly on Home" />
+        <figcaption>Internal Home page (Oscar Adams, OA) &mdash; Items to Approve, not an embedded dashboard.</figcaption>
+      </figure>
+    </div>
+
+    <div class="step" id="step-2">
+      <h3><span class="stepnum">2</span>Browse the ECMS Reports folder</h3>
+      <p><span class="lbl lbl-do">DO</span> From the Reports tab, open the <strong>ECMS Reports</strong>
+      folder (internal users also have <strong>Budget Reports</strong> and <strong>ECMS Incident
+      Management</strong> folders available).</p>
+      <p><span class="lbl lbl-res">RESULT</span> A real, curated list of ECMS reports appears &mdash;
+      <strong>Enrollments Awaiting Approval</strong>, <strong>Enrollments by Status and Seat Type</strong>,
+      <strong>Active Enrollments Count by District</strong>, <strong>Current Fiscal Year Attendance
+      Report</strong>, and more &mdash; each one built specifically against ECMS's own data, not a generic
+      Salesforce starter report.</p>
+      <figure>
+        <img src="screenshots/g12-02-ecms-reports-folder.png" alt="Reports list showing 9 items in the ECMS Reports folder, including Total Submitted enrollments by School, Total Active enrollments by School type, Incident Cases Report, Enrollments by Status and Seat Type, Enrollments Awaiting Approval, Enrollments - Additional Info. Needed, Active Enrollments Count by District, and Current Fiscal Year Attendance Report, all created by ECMS Automation" />
+        <figcaption>The ECMS Reports folder &mdash; real, pre-built reports, created by the ECMS Automation deployment user.</figcaption>
+      </figure>
+    </div>
+
+    <div class="step" id="step-3">
+      <h3><span class="stepnum">3</span>Open a report</h3>
+      <p><span class="lbl lbl-do">DO</span> Click into <strong>Enrollments Awaiting Approval</strong>.</p>
+      <p><span class="lbl lbl-res">RESULT</span> The report runs live against current data &mdash; in this
+      org, <strong>34</strong> enrollments currently sitting in Submitted status, with a chart grouped by
+      Status. Like any Salesforce report, it can be filtered, grouped differently, or exported from here.</p>
+      <figure>
+        <img src="screenshots/g12-03-enrollments-awaiting-report.png" alt="Enrollments Awaiting Approval report, Total Records 34, Unique Count of Enrollment 34, a chart grouped by Status showing Submitted" />
+        <figcaption>Enrollments Awaiting Approval &mdash; 34 enrollments currently Submitted, run live.</figcaption>
+      </figure>
+    </div>
+
+    <div class="step" id="step-4">
+      <h3><span class="stepnum">4</span>Budget &amp; Attendance reporting</h3>
+      <p><span class="lbl lbl-do">DO</span> Open <strong>Current Fiscal Year Attendance Report</strong> from
+      the same folder.</p>
+      <p><span class="lbl lbl-res">RESULT</span> The report returns real attendance-by-budget data &mdash;
+      184 records in this org, broken out by site (92 at Cedarwood - Flushing Campus, 92 at Willowbrook -
+      Astoria Campus in this example).</p>
+      <figure>
+        <img src="screenshots/g12-04-current-fy-attendance-report.png" alt="Current Fiscal Year Attendance Report, Total Records 184, a bar chart grouped by Budget: Site showing 92 records for Cedarwood - Flushing Campus and 92 for Willowbrook - Astoria Campus" />
+        <figcaption>Current Fiscal Year Attendance Report &mdash; 184 attendance records, grouped by site.</figcaption>
+      </figure>
+      <div class="note">
+        <b>Note:</b> This specific report was previously reported as inaccessible to OA/OD/Internal Admin
+        users in UAT. Confirmed live, logged in as Oscar Adams (an OA), that it opens correctly &mdash; this
+        access issue has since been resolved.
+      </div>
+    </div>
+
+    <div class="step" id="step-5">
+      <h3><span class="stepnum">5</span>FCCN multi-level attendance reporting</h3>
+      <p>The <strong>ECMS Reports</strong> folder also includes a set of reports purpose-built for FCCN
+      oversight, supporting the full Network &rarr; Provider &rarr; Seat Type &rarr; Child reporting hierarchy
+      OA/OD/Internal Admin users need for monthly attendance verification:</p>
+      <ul class="bul">
+        <li><strong>FCC SDY Certified vs Non-Certified</strong> &mdash; monthly certified/non-certified SDY
+        attendance, grouped by Network and FCC Provider.</li>
+        <li><strong>FCC Incomplete Attendance Monitoring</strong> &mdash; incomplete attendance tracking.</li>
+        <li><strong>Network Roster &mdash; Classes &amp; Seat Types</strong> &mdash; Network-level data:
+        affiliated Providers, their Classes, and Seat Types.</li>
+        <li><strong>FCC Seat Types by Student &amp; Provider</strong> &mdash; Seat Type, Student, and Provider
+        detail together.</li>
+        <li><strong>FCC EDY Attendance Status (ACCIS)</strong> &mdash; EDY attendance status as received from
+        ACCIS, since EDY attendance itself is tracked in CAPS Online, not ECMS (see the
+        <a href="guide-08-attendance-fccn-sdy-tito.html">Attendance (FCCN) / TITO guide</a>).</li>
+      </ul>
+      <div class="callout">
+        <b>Why so many separate reports, instead of one.</b> Salesforce's own reporting/platform limits make a
+        single report covering every level of this hierarchy impractical. The intent instead is multiple
+        reports, each covering as much depth as the platform allows, together satisfying the full
+        Network/Provider/Seat Type/Child reporting requirement.
+      </div>
+    </div>
+
+    <div class="step" id="step-6">
+      <h3><span class="stepnum">6</span>Open the internal reporting Dashboard</h3>
+      <p><span class="lbl lbl-do">DO</span> From the <strong>Dashboards</strong> tab, open the <strong>ECMS
+      Dashboards</strong> folder and click into <strong>ECMS reporting Dashboard</strong> (the folder also
+      has <strong>FCC Attendance Dashboard</strong>, <strong>Seat Capacity Planning Dashboard</strong>, and
+      <strong>ECMS Incident Dashboard</strong>).</p>
+      <p><span class="lbl lbl-res">RESULT</span> A live dashboard loads with several real components at once
+      &mdash; <strong>Total Active/Approved enrollments by School type</strong> (166 total, split
+      Community-Based/Family Childcare), <strong>Total Submitted enrollments by School Type</strong>,
+      <strong>Incident Cases Report</strong>, plus (scrolled further) <strong>Enrollments by Status and Seat
+      Type</strong> and <strong>Active/Approved Enrollments Count by District</strong> &mdash; each with a
+      <strong>View Report</strong> link to drill into the underlying report directly.</p>
+      <figure>
+        <img src="screenshots/g12-05-ecms-reporting-dashboard.png" alt="ECMS reporting Dashboard with an Enrollment Type filter, showing components Total Active/Approved enrollments by School type (166 total), Total Submitted enrollments by School Type (32 total), and Incident Cases Report, each with a View Report link" />
+        <figcaption>ECMS reporting Dashboard &mdash; multiple live components, each with its own View Report drill-through.</figcaption>
+      </figure>
+      <div class="note">
+        <b>Note:</b> Dashboard components run as a specific "running user" (shown as "Viewing as&hellip;" under
+        the dashboard title) rather than as the viewer themselves &mdash; this is how every viewer sees the
+        same aggregate numbers regardless of their own individual record access.
+      </div>
+    </div>
+
+    <div class="step" id="step-7">
+      <h3><span class="stepnum">7</span>Seat Capacity, Head Start, and EDY reports</h3>
+      <p><span class="lbl lbl-do">DO</span> From the <strong>Dashboards</strong> tab, open
+      <strong>Seat Capacity Planning Dashboard</strong>.</p>
+      <p><span class="lbl lbl-res">RESULT</span> Two live components load side by side: <strong>Total Seats by
+      Seat Type</strong> (a horizontal bar chart &mdash; SDY, EDY, Head Start, Head Start CTL, CTL, and EDFY each
+      with a real seat count) and <strong>Capacity vs Occupancy by School Type</strong> (grouped bars comparing
+      Sum of Capacity against Sum of Seats Occupied for Community-Based and Family Childcare providers).</p>
+      <figure>
+        <img src="screenshots/g12-09-seat-capacity-dashboard-detail.png" alt="Seat Capacity Planning Dashboard showing Total Seats by Seat Type (SDY 633, EDY 210, Head Start 98, Head Start CTL 1.1k, CTL 20, EDFY 60) and Capacity vs Occupancy by School Type bar charts" />
+        <figcaption>Seat Capacity Planning Dashboard &mdash; real seat counts by type, and capacity vs. occupancy by school type.</figcaption>
+      </figure>
+      <p><span class="lbl lbl-do">DO</span> Separately, from the <strong>Reports</strong> tab's <strong>ECMS
+      Reports</strong> folder, open <strong>Head Start Active Enrollments By School</strong> or
+      <strong>EDY Active Enrollments by School Type</strong>.</p>
+      <p><span class="lbl lbl-res">RESULT</span> Each report runs live &mdash; Head Start Active Enrollments By
+      School returned 5 records (Family Childcare Network) and EDY Active Enrollments by School Type returned 8
+      records (Community Based Organization) in this org, each with a donut chart grouped by Account Record Type.</p>
+      <figure>
+        <img src="screenshots/g12-11-head-start-report.png" alt="Head Start Active Enrollments By School report, Total Records 5, donut chart grouped by Account Record Type showing Family Childcare Network" />
+        <figcaption>Head Start Active Enrollments By School &mdash; 5 live records.</figcaption>
+      </figure>
+      <figure>
+        <img src="screenshots/g12-12-edy-report.png" alt="EDY Active Enrollments by School Type report, Total Records 8, donut chart grouped by Account Record Type showing Community Based Organization" />
+        <figcaption>EDY Active Enrollments by School Type &mdash; 8 live records.</figcaption>
+      </figure>
+      <div class="note">
+        <b>A real access gap, found while writing this guide.</b> The <strong>Seats and Seat type reports</strong>
+        folder (home to reports like <strong>Total Seats by Seat Type</strong>) doesn't appear at all in the ECMS
+        Admin's own <strong>All Folders</strong> list, and opening one of its reports directly by link returns
+        "The data you're trying to access is unavailable" &mdash; the same failure mode step 16 describes for a
+        different folder. The <strong>Seat Capacity Planning Dashboard</strong> itself still works fine (dashboards
+        run under their own "running user," independent of the viewer's own folder access), so use the dashboard
+        for this data today and treat direct report access to that specific folder as unconfirmed.
+      </div>
+      <figure>
+        <img src="screenshots/g12-10-total-seats-by-seat-type-report.png" alt="Error page reading Looks like something went wrong, Error Details: The data you're trying to access is unavailable, when opening the Total Seats by Seat Type report directly" />
+        <figcaption>Opening the "Total Seats by Seat Type" report directly &mdash; a genuine access gap found while writing this guide, not a typo.</figcaption>
+      </figure>
+    </div>
+
+    <div class="step" id="step-8">
+      <h3><span class="stepnum">8</span>Budget and Invoice reports</h3>
+      <p><span class="lbl lbl-do">DO</span> From the <strong>Reports</strong> tab, open <strong>All
+      Folders</strong> and click into <strong>Budget Reports</strong>.</p>
+      <p><span class="lbl lbl-res">RESULT</span> Seven real, pre-built reports appear &mdash; <strong>Budget
+      Details Report</strong>, <strong>Budget Status History Report</strong>, <strong>Budget by Status, Borough,
+      Types</strong>, <strong>Budget Contract Report for Fiscal Year</strong>, <strong>Budget Report with OA
+      Name</strong>, <strong>Budget Status &amp; Status History Report</strong>, and <strong>Budget Staff
+      Vacancy</strong>, each with its own description.</p>
+      <figure>
+        <img src="screenshots/g12-13-budget-reports-folder.png" alt="Budget Reports folder listing 7 items: Budget Report with OA Name, Budget Contract Report for Fiscal Year, Budget Details Report, Budget Status History Report, Budget by Status Borough Types, Budget Status and Status History Report, and Budget Staff Vacancy, each with a description" />
+        <figcaption>Budget Reports folder &mdash; 7 real, pre-built budget reports.</figcaption>
+      </figure>
+      <p><span class="lbl lbl-do">DO</span> Open the <strong>Invoice Reports</strong> folder's <strong>Invoice
+      Status Report</strong>.</p>
+      <p><span class="lbl lbl-res">RESULT</span> The report runs live &mdash; 34 records, 38 total service
+      months, $102,051.00 total invoice amount in this org &mdash; as a table with Fiscal Year, Budget, Invoice
+      ID, Budget Number/Site, Tax ID, and Vendor Name columns.</p>
+      <figure>
+        <img src="screenshots/g12-14-invoice-status-report.png" alt="Invoice Status Report, Total Records 34, Total Service Month 38, Total Invoice Total Amount $102,051.00, table with Fiscal Year, Budget, Invoices ID, Budget Number/Site, Tax ID, and Vendor Name columns" />
+        <figcaption>Invoice Status Report &mdash; 34 real invoice records, $102,051.00 total.</figcaption>
+      </figure>
+    </div>
+
+    <div class="step" id="step-9">
+      <h3><span class="stepnum">9</span>Refresh a dashboard to see current data</h3>
+      <p><span class="lbl lbl-do">DO</span> On any dashboard (e.g. <strong>ECMS reporting Dashboard</strong>),
+      click <strong>Refresh</strong> in the top right.</p>
+      <p><span class="lbl lbl-res">RESULT</span> The dashboard re-runs its underlying reports and the "As
+      of&hellip;" timestamp under the dashboard title updates to the current date/time &mdash; components no
+      longer reflect a cached snapshot.</p>
+      <figure>
+        <img src="screenshots/g12-15-dashboard-refreshed.png" alt="ECMS reporting Dashboard showing Refresh button and an updated As of timestamp reading As of Oct 6, 2026, 4:00 PM, Viewing as ECMS Automation" />
+        <figcaption>ECMS reporting Dashboard, right after clicking Refresh &mdash; the "As of" timestamp updates.</figcaption>
+      </figure>
+    </div>
+
+    <div class="step" id="step-10">
+      <h3><span class="stepnum">10</span>Download, save, or manage a dashboard</h3>
+      <p><span class="lbl lbl-do">DO</span> Click the small dropdown arrow next to <strong>Refresh</strong>
+      (labeled "More Dashboard Actions").</p>
+      <p><span class="lbl lbl-res">RESULT</span> A menu opens with <strong>Download</strong>, <strong>Save
+      As</strong>, and <strong>New Dashboard</strong> &mdash; this used to show only Download until
+      DOEECMS-2125 (closed) granted the "Customize Dashboard" permission the rest of these actions needed.</p>
+      <figure>
+        <img src="screenshots/g12-16-dashboard-dropdown-menu.png" alt="ECMS reporting Dashboard with the More Dashboard Actions dropdown open, showing Download, Save As, and New Dashboard options" />
+        <figcaption>More Dashboard Actions dropdown &mdash; Download, Save As, and New Dashboard.</figcaption>
+      </figure>
+      <p><span class="lbl lbl-do">DO</span> Click <strong>Save As</strong>.</p>
+      <p><span class="lbl lbl-res">RESULT</span> A dialog opens pre-filled with a "Copy of&hellip;" name and the
+      dashboard's current folder, letting you save an independent copy without affecting the original.</p>
+      <figure>
+        <img src="screenshots/g12-17-dashboard-save-as-dialog.png" alt="Save As dialog for ECMS reporting Dashboard, pre-filled Name field reading Copy of ECMS reporting Dashboard, Folder field reading ECMS Dashboards, Cancel and Create buttons" />
+        <figcaption>Save As &mdash; saves an independent copy of the dashboard into a chosen folder.</figcaption>
+      </figure>
+      <div class="note">
+        <b>Note:</b> <strong>Download</strong> saves a PNG screenshot of the dashboard as currently displayed,
+        for sharing outside ECMS. The Phase 1 training material also describes <strong>Delete</strong> and
+        <strong>Change Owner</strong> options on this same menu; those weren't shown here for a dashboard owned
+        by the ECMS Automation deployment user &mdash; they likely only appear for a dashboard you personally own.
+      </div>
+    </div>
+
+    <div class="step" id="step-11">
+      <h3><span class="stepnum">11</span>Build a new dashboard from scratch</h3>
+      <p><span class="lbl lbl-do">DO</span> From the <strong>Dashboards</strong> tab, click <strong>New
+      Dashboard</strong>, then enter a Name, optional Description, and Folder.</p>
+      <p><span class="lbl lbl-res">RESULT</span> A naming dialog opens with Name (required), Description, and
+      Folder fields (defaulting to Private Dashboards, with a Select Folder option) and Cancel/Create
+      buttons.</p>
+      <figure>
+        <img src="screenshots/g12-18-new-dashboard-dialog.png" alt="New Dashboard dialog with required Name field, Description field, Folder field defaulting to Private Dashboards with a Select Folder button, and Cancel/Create buttons" />
+        <figcaption>New Dashboard &mdash; name it, optionally describe it, and choose a folder.</figcaption>
+      </figure>
+      <p><span class="lbl lbl-do">DO</span> Click <strong>Create</strong>, then click <strong>+ Widget</strong>
+      in the empty builder that opens.</p>
+      <p><span class="lbl lbl-res">RESULT</span> A new, empty dashboard canvas opens with Save/Done actions, and
+      the widget gallery lists three widget types: <strong>Chart or Table</strong>, <strong>Text</strong>, and
+      <strong>Image</strong>.</p>
+      <figure>
+        <img src="screenshots/g12-19-widget-gallery.png" alt="New dashboard builder titled DRY RUN - guide screenshot - do not save, with the + Widget gallery open showing Chart or Table, Text, and Image options" />
+        <figcaption>The + Widget gallery &mdash; Chart or Table, Text, and Image.</figcaption>
+      </figure>
+    </div>
+
+    <div class="step" id="step-12">
+      <h3><span class="stepnum">12</span>Add Chart/Table, Text, and Image widgets</h3>
+      <p><span class="lbl lbl-do">DO</span> Click <strong>Chart or Table</strong>, pick an existing report as
+      its data source (e.g. <strong>Total Active enrollments by School type</strong>), and review the Add
+      Widget panel.</p>
+      <p><span class="lbl lbl-res">RESULT</span> A live preview renders immediately using the real data behind
+      the chosen report (127 Community-Based, 40 Family Childcare, in this example), alongside a
+      <strong>Display As</strong> icon picker for chart/table type (bar, donut, line, table, and more &mdash;
+      covering the "Horizontal Bar Chart," "Donut Chart," and "Lightning Table" styles described in Phase 1
+      training material) and chart-specific options like Y-Axis below.</p>
+      <figure>
+        <img src="screenshots/g12-20-widget-chart-config.png" alt="Add Widget panel for report Total Active enrollments by School type, with a Display As icon picker for chart/table styles and a live preview bar chart showing Community Based Organization 127 and Family Childcare Network 40" />
+        <figcaption>Add Widget &mdash; live preview updates as soon as a report and chart style are chosen.</figcaption>
+      </figure>
+      <p><span class="lbl lbl-do">DO</span> Click <strong>+ Widget</strong> again and choose <strong>Text</strong>.</p>
+      <p><span class="lbl lbl-res">RESULT</span> An Add Text dialog opens with a rich-text toolbar (font size,
+      color, alignment, bold/italic/underline/strikethrough, link) and a free-text entry area.</p>
+      <figure>
+        <img src="screenshots/g12-21-widget-text.png" alt="Add Text widget dialog with a rich-text formatting toolbar and an empty Enter text... entry area, plus Cancel/Add buttons" />
+        <figcaption>Add Text widget &mdash; a formatted note or instructions block for the dashboard.</figcaption>
+      </figure>
+      <p><span class="lbl lbl-do">DO</span> Click <strong>+ Widget</strong> a third time and choose
+      <strong>Image</strong>.</p>
+      <p><span class="lbl lbl-res">RESULT</span> A Select Image dialog opens with <strong>Upload</strong> and
+      <strong>Gallery</strong> tabs, and a drag-and-drop/Browse Files area for adding a logo or illustration to
+      the dashboard.</p>
+      <figure>
+        <img src="screenshots/g12-22-widget-image.png" alt="Select Image dialog with Upload and Gallery tabs and a Drag an image here or Browse Files area, plus Cancel/Add buttons" />
+        <figcaption>Add Image widget &mdash; upload a file or pick one from the org's existing image gallery.</figcaption>
+      </figure>
+      <div class="note">
+        <b>Note:</b> This is a dry run &mdash; navigating away from the builder without clicking Save discards
+        the whole draft dashboard, so none of the widgets shown here were actually persisted.
+      </div>
+    </div>
+
+    <div class="step" id="step-13">
+      <h3><span class="stepnum">13</span>Subscribing to a dashboard (known gap)</h3>
+      <p><span class="lbl lbl-do">DO</span> Phase 1 training material describes a <strong>Subscribe</strong>
+      action that lets a user schedule a dashboard to refresh daily, weekly, or monthly and email the results.
+      Look for it on a live dashboard today.</p>
+      <p><span class="lbl lbl-res">RESULT</span> As of this writing, no <strong>Subscribe</strong> button could
+      be found on any dashboard &mdash; the only sharing-related action present is <strong>Share &gt; Get
+      URL</strong>, which generates a link for someone who already has access to the dashboard, not a scheduled
+      refresh/email subscription.</p>
+      <div class="note">
+        <b>Confirm before relying on this.</b> This may mean the scheduled-refresh subscription feature was
+        retired when dashboards moved to their current rendering engine, or that it requires a different
+        permission or entry point not found while writing this guide. Treat "Subscribe" as unavailable until
+        someone confirms otherwise directly in a live org.
+      </div>
+    </div>
+
+    <div class="step" id="step-14">
+      <h3><span class="stepnum">14</span>Creating a new report (internal admins only)</h3>
+      <p><span class="lbl lbl-do">DO</span> Per <strong>HLR-R-009</strong> ("System shall not allow users to
+      create their own reports"), the ability to build a new report from scratch is meant to be restricted to
+      internal administrators. Phase 1 training material describes the flow as: Reports tab &gt; New Report
+      &gt; choose a Report Type &gt; Start Report &gt; add/remove/reorder Groups and Columns with a live preview
+      &gt; Save with a Name, Description, and Folder.</p>
+      <p><span class="lbl lbl-res">RESULT</span> As of this writing, no <strong>New Report</strong> button could
+      be found anywhere on the Reports tab (Recent or All Reports views) under the ECMS Admin login used for
+      this guide &mdash; consistent with HLR-R-009's intent, though it's worth confirming whether a different
+      internal persona (or a specific "Create and Customize Reports" permission) is what actually unlocks this
+      button, since the Phase 1 material describes it as available to internal administrators generally.</p>
+      <div class="note">
+        <b>Confirm before relying on this.</b> If you need to build a genuinely new report, check with an ECMS
+        Admin who has recently done so, since this guide could not independently verify the entry point in the
+        current UAT sandbox.
+      </div>
+    </div>
+
+    <div class="step" id="step-15">
+      <h3><span class="stepnum">15</span>Vendor-side reporting (embedded on Home)</h3>
+      <p><span class="lbl lbl-do">DO</span> As a CBO/FCCN vendor user, check the portal's top nav bar and
+      <strong>More</strong> menu for a Reports or Dashboards entry.</p>
+      <p><span class="lbl lbl-res">RESULT</span> There isn't one &mdash; the vendor portal has no standalone
+      Reports or Dashboards tab at all. The <strong>More</strong> menu only has Contracts, Budgets, Invoices,
+      Report Incident, and CheckList.</p>
+      <figure>
+        <img src="screenshots/g12-06-vendor-more-menu.png" alt="Vendor portal More menu for Damien Ortiz, Cedar Point Early Childhood Academy, showing Contracts, Budgets, Invoices, Report Incident, and CheckList, with no Reports or Dashboards entry" />
+        <figcaption>Vendor portal's More menu &mdash; no separate Reports/Dashboards entry.</figcaption>
+      </figure>
+      <p><span class="lbl lbl-do">DO</span> Instead, scroll down the vendor portal's own <strong>Home</strong>
+      page, past the quick-action tiles.</p>
+      <p><span class="lbl lbl-res">RESULT</span> A dashboard titled <strong>"ECMS reporting Dashboard
+      External"</strong> is embedded directly on Home, with components like <strong>List of Active
+      Budgets</strong> and <strong>Drafted Student Screenings</strong> &mdash; each sourced from the
+      <strong>ECMS External Reports</strong> folder (which also includes Current Month Attendance by Class/
+      Seat Type/Site, Open Incident Cases, and Sites List), scoped to this vendor's own data.</p>
+      <figure>
+        <img src="screenshots/g12-07-vendor-dashboard-title.png" alt="ECMS reporting Dashboard External, embedded on the vendor portal Home page below the quick-action tiles, with a List of Active Budgets component and a Drafted Student Screenings component" />
+        <figcaption>ECMS reporting Dashboard External &mdash; embedded on the vendor portal's own Home page.</figcaption>
+      </figure>
+      <figure>
+        <img src="screenshots/g12-08-vendor-dashboard-components.png" alt="Further components of the vendor Home page dashboard: List of Active Budgets table with real budget rows, and a My Accounts component listing household accounts" />
+        <figcaption>Further down the same Home page &mdash; more dashboard components, scoped to this vendor's own accounts and budgets.</figcaption>
+      </figure>
+    </div>
+
+    <div class="step" id="step-16">
+      <h3><span class="stepnum">16</span>Know what controls who sees what</h3>
+      <p><span class="lbl lbl-do">DO</span> If a user reports they can't see an expected report, dashboard, or
+      Homepage component, check which of the two reporting permission sets they have &mdash; not just their
+      profile or persona.</p>
+      <p><span class="lbl lbl-res">RESULT</span> <strong>Internal</strong> users (OA, OD, ECMS Admin,
+      Portfolio Team Member, Intake Team Administrator, and others) need the <strong>"ECMS Reports Permission
+      set."</strong> <strong>External</strong> CBO/FCCN vendor users need <strong>"ECMS Reporting and
+      Dashboards"</strong> instead. Both are now assigned automatically during user provisioning, rather than
+      requiring a manual follow-up after someone hits a missing-report error.</p>
+      <div class="callout">
+        <b>A real example of this exact failure mode, now fixed.</b> Enrollment Specialists could previously
+        view the ECMS reporting Dashboard's enrollment components (data and all) but got "The data you're
+        trying to access is unavailable" when clicking into the underlying report itself &mdash; the
+        dashboard ran under a different user's access than the viewer's own. The fix was granting that
+        persona explicit access to the <strong>ECMS Reports</strong> folder directly, confirming that folder
+        access (not just the permission set) is what ultimately gates whether "View Report" actually works
+        for a given user.
+      </div>
+    </div>
+
+    <a class="backhome" href="index.html">&larr; Back to User Guide home</a>
+  </main>
+</div>
+<div class="site-footer">
+  <div class="ft-in">
+    <div class="ft-left"><b>NYC DOE &middot; Division of Early Childhood Education</b><div>Early Childhood Management System (ECMS)</div></div>
+    <nav class="ft-nav"><a href="index.html">User Guide Home</a></nav>
+  </div>
+</div>
+<style>
+.askq-fab{position:fixed;bottom:24px;right:24px;z-index:1000;background:var(--navy);color:#fff;border:none;border-radius:999px;padding:14px 22px;font-weight:700;font-size:14px;font-family:inherit;box-shadow:0 6px 20px rgba(11,37,69,.35);cursor:pointer;display:flex;align-items:center;gap:8px;transition:background .15s,transform .15s;}
+.askq-fab:hover{background:var(--accent);transform:translateY(-1px);}
+.askq-fab svg{width:18px;height:18px;flex-shrink:0;}
+.askq-overlay{position:fixed;inset:0;background:rgba(11,37,69,.55);z-index:1001;display:none;align-items:center;justify-content:center;padding:20px;}
+.askq-overlay.askq-open{display:flex;}
+.askq-modal{background:#fff;border-radius:12px;max-width:480px;width:100%;padding:28px;box-shadow:0 20px 60px rgba(0,0,0,.35);max-height:90vh;overflow:auto;}
+.askq-modal h3{margin:0 0 6px;color:var(--navy);font-size:20px;font-weight:700;}
+.askq-modal .askq-sub{font-size:13.5px;color:var(--muted);margin:0 0 16px;}
+.askq-ctx{font-size:12.5px;color:var(--navy);margin:0 0 18px;padding:9px 12px;background:var(--soft);border:1px solid var(--line);border-radius:6px;}
+.askq-modal label{display:block;font-size:13px;font-weight:700;color:var(--navy);margin:14px 0 6px;}
+.askq-modal textarea,.askq-modal input{width:100%;border:1px solid var(--line);border-radius:6px;padding:10px 12px;font-size:14px;font-family:inherit;box-sizing:border-box;}
+.askq-modal textarea{min-height:90px;resize:vertical;}
+.askq-modal textarea:focus,.askq-modal input:focus{outline:2px solid var(--accent);outline-offset:1px;}
+.askq-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:20px;}
+.askq-btn-cancel{background:#fff;border:1px solid var(--line);color:var(--ink);padding:10px 18px;border-radius:6px;cursor:pointer;font-weight:700;font-size:14px;font-family:inherit;}
+.askq-btn-cancel:hover{background:var(--soft);}
+.askq-btn-submit{background:var(--accent);border:none;color:#fff;padding:10px 20px;border-radius:6px;cursor:pointer;font-weight:700;font-size:14px;font-family:inherit;}
+.askq-btn-submit:hover{background:var(--navy);}
+.askq-btn-submit:disabled{opacity:.6;cursor:default;}
+.askq-success{color:var(--res);font-weight:700;margin-top:14px;font-size:14px;display:none;}
+.askq-error{color:#C0392B;font-weight:700;margin-top:14px;font-size:14px;display:none;}
+@media (max-width:600px){.askq-fab{bottom:16px;right:16px;padding:12px 16px;font-size:13px;}.askq-fab span{display:none;}}
+</style>
+
+<button class="askq-fab" id="askqFab" type="button" aria-haspopup="dialog">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+  <span>Ask a question</span>
+</button>
+
+<div class="askq-overlay" id="askqOverlay" role="dialog" aria-modal="true" aria-labelledby="askqTitle">
+  <div class="askq-modal">
+    <h3 id="askqTitle">Ask a question</h3>
+    <p class="askq-sub">Need more information about what you're reading? Send a question to the ECMS team.</p>
+    <p class="askq-ctx" id="askqContext"></p>
+    <form id="askqForm">
+      <label for="askqMessage">Your question</label>
+      <textarea id="askqMessage" name="message" required placeholder="What would you like to know more about?"></textarea>
+      <label for="askqName">Your name (optional)</label>
+      <input type="text" id="askqName" name="name" placeholder="Jane Doe" autocomplete="name" />
+      <label for="askqEmail">Your email (optional, so we can reply)</label>
+      <input type="email" id="askqEmail" name="_replyto" placeholder="jane@agency.gov" autocomplete="email" />
+      <input type="hidden" name="page" id="askqPageField" />
+      <input type="hidden" name="section" id="askqSectionField" />
+      <input type="hidden" name="_subject" id="askqSubjectField" />
+      <div class="askq-actions">
+        <button type="button" class="askq-btn-cancel" id="askqCancel">Cancel</button>
+        <button type="submit" class="askq-btn-submit" id="askqSubmit">Send question</button>
+      </div>
+      <div class="askq-success" id="askqSuccess">&#10003; Thanks! Your question has been sent to the ECMS team.</div>
+      <div class="askq-error" id="askqErrorMsg">Something went wrong sending your question. Please try again, or email the team directly.</div>
+    </form>
+  </div>
+</div>
+
+<script>
+(function(){
+  var fab = document.getElementById('askqFab');
+  var overlay = document.getElementById('askqOverlay');
+  var cancel = document.getElementById('askqCancel');
+  var form = document.getElementById('askqForm');
+  var ctx = document.getElementById('askqContext');
+  var pageField = document.getElementById('askqPageField');
+  var sectionField = document.getElementById('askqSectionField');
+  var subjectField = document.getElementById('askqSubjectField');
+  var submitBtn = document.getElementById('askqSubmit');
+  var success = document.getElementById('askqSuccess');
+  var errorEl = document.getElementById('askqErrorMsg');
+  if (!fab || !overlay) return;
+
+  function currentSection(){
+    var marks = document.querySelectorAll('main h2, main .step');
+    var best = null;
+    var scrollPos = window.scrollY + 160;
+    marks.forEach(function(el){
+      if (el.offsetTop <= scrollPos) best = el;
+    });
+    if (!best) return 'Overview';
+    if (best.classList && best.classList.contains('step')) {
+      var h3 = best.querySelector('h3');
+      if (h3) {
+        var numEl = h3.querySelector('.stepnum');
+        var num = numEl ? numEl.textContent.trim() : '';
+        var clone = h3.cloneNode(true);
+        var cloneNum = clone.querySelector('.stepnum');
+        if (cloneNum) cloneNum.parentNode.removeChild(cloneNum);
+        var label = clone.textContent.replace(/\s+/g, ' ').trim();
+        return (num ? 'Step ' + num + ': ' : '') + label;
+      }
+    }
+    return best.textContent.replace(/\s+/g, ' ').trim();
+  }
+
+  function openModal(){
+    var pageTitle = document.querySelector('h1') ? document.querySelector('h1').textContent.trim() : document.title;
+    var section = currentSection();
+    ctx.textContent = 'Page: ' + pageTitle + '  \u2014  Section: ' + section;
+    pageField.value = pageTitle;
+    sectionField.value = section;
+    subjectField.value = 'ECMS User Guide question \u2014 ' + pageTitle;
+    overlay.classList.add('askq-open');
+    success.style.display = 'none';
+    errorEl.style.display = 'none';
+    document.getElementById('askqMessage').focus();
+  }
+  function closeModal(){ overlay.classList.remove('askq-open'); }
+
+  fab.addEventListener('click', openModal);
+  cancel.addEventListener('click', closeModal);
+  overlay.addEventListener('click', function(e){ if (e.target === overlay) closeModal(); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeModal(); });
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending\u2026';
+    fetch('https://formspree.io/f/mnpjnqqk', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: new FormData(form)
+    }).then(function(res){
+      if (res.ok) {
+        success.style.display = 'block';
+        errorEl.style.display = 'none';
+        form.reset();
+        setTimeout(closeModal, 2200);
+      } else {
+        errorEl.style.display = 'block';
+      }
+    }).catch(function(){
+      errorEl.style.display = 'block';
+    }).finally(function(){
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send question';
+    });
+  });
+})();
+</script>
+
+</body></html>

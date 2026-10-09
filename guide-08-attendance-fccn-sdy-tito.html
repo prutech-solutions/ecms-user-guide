@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Attendance — FCCN / SDY (TITO) — ECMS User Guide</title><style>
+:root{--ink:#1B2430;--head:#0B2545;--muted:#5B6478;--link:#1657CE;--line:#DCE1EA;--line2:#EAEDF3;--code:#F5F7FB;--navy:#0B2545;--accent:#1657CE;--do:#1657CE;--res:#1E8E5A;--soft:#F5F7FB;--brandA:#0072CE;--brandB:#00A65A;--brandC:#F5A623;--brandD:#D0103A;}
+*{box-sizing:border-box;} html{scroll-behavior:smooth;}
+body{margin:0;color:var(--ink);background:#fff;font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;line-height:1.65;font-size:16px;}
+a{color:var(--link);text-decoration:none;} a:hover{text-decoration:underline;}
+code{font-family:'SFMono-Regular',Consolas,Menlo,monospace;background:var(--code);border:1px solid var(--line);border-radius:4px;padding:1px 6px;font-size:13.5px;color:#0a2a5e;}
+.topbar{position:sticky;top:0;z-index:10;box-shadow:0 1px 0 var(--line);}
+.tb-top{background:#fff;border-bottom:1px solid var(--line);}
+.tb-top .in{max-width:1260px;margin:0 auto;padding:14px 32px;display:flex;align-items:center;gap:12px;}
+.doe-logo{display:flex;align-items:baseline;gap:1px;font-weight:800;font-size:20px;letter-spacing:.2px;}
+.doe-logo b:nth-child(1){color:var(--brandA);} .doe-logo b:nth-child(2){color:var(--brandC);} .doe-logo b:nth-child(3){color:var(--brandB);} .doe-logo b:nth-child(4){color:var(--brandD);}
+.doe-sub{color:var(--muted);font-size:12.5px;padding-left:10px;border-left:1px solid var(--line);}
+.tb-bottom{background:var(--navy);}
+.tb-bottom .in{max-width:1260px;margin:0 auto;padding:10px 32px;display:flex;align-items:center;gap:22px;}
+.ecms-brand{color:#fff;font-weight:700;font-size:15px;letter-spacing:.3px;}
+.topnav{display:flex;gap:24px;margin-left:6px;}
+.topnav a{color:#cfe0fb;font-weight:600;font-size:13.5px;}
+.topnav a.cur{color:#fff;}
+@media (max-width:760px){.topnav{display:none;}}
+.crumbs{max-width:1260px;margin:0 auto;padding:16px 32px 0;font-size:13px;color:var(--muted);}
+.crumbs a{color:var(--muted);} .crumbs span{margin:0 7px;}
+.wrap{max-width:1260px;margin:0 auto;padding:8px 32px 60px;display:grid;grid-template-columns:270px minmax(0,1fr);gap:52px;}
+main{min-width:0;max-width:840px;}
+h1{font-size:32px;line-height:1.2;color:var(--head);margin:14px 0 6px;font-weight:700;}
+.lead{font-size:16.5px;color:var(--ink);margin:10px 0 4px;}
+.subtext{color:var(--muted);font-size:14px;margin:2px 0 0;}
+h2{font-size:22px;color:var(--head);font-weight:700;margin:42px 0 6px;padding-bottom:8px;border-bottom:1px solid var(--line);}
+h3{font-size:17.5px;color:var(--head);font-weight:700;margin:8px 0 2px;}
+p{margin:10px 0;}
+ul.bul{margin:10px 0;padding-left:22px;} ul.bul li{margin:6px 0;}
+table{border-collapse:collapse;width:100%;margin:16px 0;font-size:14.5px;}
+th,td{border:1px solid var(--line);padding:9px 13px;text-align:left;vertical-align:top;}
+th{background:var(--soft);color:var(--head);font-weight:700;}
+.lbl{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;padding:2px 9px;border-radius:4px;margin-right:8px;vertical-align:middle;}
+.lbl-do{background:#E6EFFC;color:var(--do);} .lbl-res{background:#E5F5EC;color:var(--res);}
+.step{scroll-margin-top:118px;border-top:1px solid var(--line2);padding-top:28px;margin-top:28px;}
+.step:first-of-type{border-top:none;margin-top:14px;padding-top:8px;}
+.step .stepnum{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;background:var(--navy);color:#fff;font-weight:700;font-size:14px;margin-right:10px;vertical-align:middle;}
+.step h3{display:inline;}
+h2,h3{scroll-margin-top:118px;}
+figure{margin:14px 0 4px;}
+figure img{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:8px;box-shadow:0 4px 14px rgba(11,37,69,.08);}
+figcaption{font-size:13px;color:var(--muted);margin-top:8px;font-style:italic;}
+.callout{background:var(--soft);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:6px;padding:14px 18px;margin:14px 0;}
+.callout b{color:var(--head);}
+.note{background:#fff8ec;border:1px solid #f3e2bd;border-left:4px solid #e0a127;border-radius:6px;padding:6px 18px;margin:14px 0;}
+.sidenav{position:sticky;top:104px;align-self:start;font-size:14px;max-height:calc(100vh - 120px);overflow:auto;padding-right:6px;}
+.nav-cat{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);font-weight:700;padding:0 0 10px;border-bottom:1px solid var(--line);margin-bottom:8px;}
+ul.nav{list-style:none;margin:0;padding:0;} ul.nav>li{margin:2px 0;}
+a.lvl1{display:block;padding:7px 10px;border-radius:6px;color:var(--head);font-weight:600;font-size:13.6px;}
+a.lvl1:hover{background:var(--soft);text-decoration:none;}
+a.lvl1.cur{color:var(--accent);background:var(--soft);border-left:3px solid var(--accent);padding-left:8px;}
+.backhome{display:inline-block;margin:14px 0 4px;font-weight:700;font-size:13.5px;}
+.meta-row{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 6px;}
+.chip{font-size:11.5px;font-weight:600;color:var(--navy);background:var(--soft);border:1px solid var(--line);border-radius:20px;padding:3px 10px;}
+.site-footer{background:var(--navy);color:#fff;margin-top:48px;}
+.site-footer .ft-in{max-width:1260px;margin:0 auto;padding:22px 32px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px;}
+.ft-left b{font-size:14px;} .ft-left div{color:#B9C7E3;font-size:12.5px;margin-top:4px;}
+.ft-nav a{color:#fff;font-size:13px;}
+@media (max-width:900px){.wrap{grid-template-columns:1fr;}.sidenav{position:static;max-height:none;}}
+</style></head>
+<body>
+<div class="topbar">
+  <div class="tb-top"><div class="in">
+    <span class="doe-logo"><b>N</b><b>Y</b><b>C</b></span>
+    <span class="doe-sub">Department of Education &middot; Division of Early Childhood Education</span>
+  </div></div>
+  <div class="tb-bottom"><div class="in">
+    <span class="ecms-brand">ECMS User Guide</span>
+    <nav class="topnav"><a href="index.html">Home</a></nav>
+  </div></div>
+</div>
+<div class="crumbs"><a href="index.html">ECMS User Guide</a><span>/</span>Attendance &mdash; FCCN / SDY (TITO)</div>
+<div class="wrap">
+
+  <nav class="sidenav">
+    <div class="nav-cat">On this page</div>
+    <ul class="nav">
+      <li><a class="lvl1" href="#overview">Overview</a></li>
+      <li><a class="lvl1" href="#step-1">1. Open Daily Attendance for an SDY site</a></li>
+      <li><a class="lvl1" href="#step-2">2. Pick the Class, then see the TITO message</a></li>
+      <li><a class="lvl1" href="#step-3">3. Set Status and save</a></li>
+      <li><a class="lvl1" href="#step-4">4. Submit and certify, same as standard attendance</a></li>
+      <li><a class="lvl1" href="#step-5">5. Check the SDY+ indicator on an Enrollment</a></li>
+      <li><a class="lvl1" href="#step-6">6. Run the SDY+ Active Enrollment Report</a></li>
+      <li><a class="lvl1" href="#step-7">7. Watch for the infant-to-toddler age validation alert</a></li>
+      <li><a class="lvl1" href="#step-8">8. Understand the 176-day SDY attendance limit</a></li>
+      <li><a class="lvl1" href="#step-9">9. Understand the monthly certification reminder</a></li>
+      <li><a class="lvl1" href="#step-10">10. FCCN Calendar Management</a></li>
+    </ul>
+    <a class="backhome" href="index.html">&larr; Back to User Guide home</a>
+  </nav>
+
+  <main id="top">
+    <h1>Attendance &mdash; FCCN / SDY &amp; TITO</h1>
+    <p class="lead">How daily attendance works for FCCN/FCC Provider SDY seats, and why <strong>TITO</strong>
+    (Time In / Time Out &mdash; a clock-in/clock-out record instead of a simple present/absent flag) does
+    <strong>not</strong> apply to them &mdash; TITO is strictly an EDY (Extended Day/Year) concern, tracked in
+    an entirely separate external system, not in ECMS.</p>
+    <div class="meta-row">
+      <span class="chip">10 steps</span><span class="chip">~11 min read</span><span class="chip">Persona: FCCN / SDY Attendance Taker</span>
+    </div>
+
+    <h2 id="overview">Overview</h2>
+    <p>Standard attendance in ECMS (covered in the companion <em>Attendance (CBO)</em> guide) is a simple
+    daily record: was the child present or absent on a given date, tied back to their Enrollment and Class.
+    <strong>SDY seats &mdash; the type an FCC Provider's children are normally enrolled under &mdash; use
+    exactly this same simple present/absent model.</strong> TITO (an actual clock-in/clock-out record, with a
+    Check-in Time, a Check-out Time, and a second pair for a child who leaves and returns the same day) is a
+    separate concept that only applies to <strong>EDY</strong> seats &mdash; and EDY attendance isn't entered
+    in ECMS at all. It's tracked entirely in <strong>CAPS Online</strong>, a different system outside ECMS,
+    with only EDY's attendance <em>status</em> (not the clock-in/out detail itself) imported back into ECMS
+    afterward.</p>
+    <p>The Attendance record object does technically carry four time fields (Check-in Time, Check-out Time,
+    Check-in Time 2, Check-out Time 2) in its data model, and they're visible on an SDY attendance record
+    &mdash; but for SDY and EDFY seats, ECMS disables them and shows a message pointing to CAPS instead. This
+    guide walks through what an FCCN <strong>Attendance Taker</strong> actually sees and does for a real SDY
+    seat, and calls out why those fields exist but stay empty.</p>
+    <div class="callout">
+      <b>Where this fits.</b> Attendance sits in the same place in the workflow chain regardless of seat type:
+      <strong>Enrollment &rarr; Attendance &rarr; Budget approval &rarr; Invoice</strong>. For SDY/EDFY seats,
+      that attendance step works identically to the standard CBO version &mdash; present/absent, Draft &rarr;
+      Submitted &rarr; Certified. The only genuinely different piece, TITO, lives outside this flow entirely
+      for EDY seats specifically.
+    </div>
+    <div class="note">
+      <b>A note on seat-type naming.</b> <strong>EDY (Extended Day/Year)</strong> is the seat type that
+      requires time-in/time-out tracking &mdash; done in CAPS Online, not ECMS. <strong>SDY (Standard
+      Day/Year)</strong> and <strong>EDFY</strong> do not require or allow TITO in ECMS; attendance for these
+      seat types is present/absent only, exactly like a CBO seat. The real, current UAT
+      behavior is: TITO fields are shown but disabled for SDY, with an on-screen message reading
+      <em>"TITO required only for EDY seats in CAPS Online."</em>
+    </div>
+
+    <h2>Steps</h2>
+
+    <div class="step" id="step-1">
+      <h3><span class="stepnum">1</span>Open Daily Attendance for an SDY site</h3>
+      <p><span class="lbl lbl-do">DO</span> From the vendor portal, go to <strong>Attendance &rarr; Daily
+      Attendance</strong>, then pick the affiliated Provider's site.</p>
+      <p><span class="lbl lbl-res">RESULT</span> The Sites list is scoped to this FCCN's own affiliated
+      Providers &mdash; only sites actually affiliated with this network appear here.</p>
+      <figure>
+        <img src="screenshots/g7-02b-daily-attendance-site-picker.png" alt="Daily Attendance Sites picker in the vendor portal, logged in as an FCCN Network user, showing one affiliated site: 2800SeatType FCC Provider SDY - Main Site Site, Borough Bronx, District 9" />
+        <figcaption>Daily Attendance &mdash; Sites list, scoped to this FCCN's affiliated Providers.</figcaption>
+      </figure>
+    </div>
+
+    <div class="step" id="step-2">
+      <h3><span class="stepnum">2</span>Pick the Class, then see the TITO message</h3>
+      <p><span class="lbl lbl-do">DO</span> Click into the site, then click into its Class (here, an SDY
+      3K class) to reach the day's student attendance grid.</p>
+      <p><span class="lbl lbl-res">RESULT</span> Right above the student grid, ECMS shows a message:
+      <strong>"TITO required only for EDY seats in CAPS Online."</strong> The grid's four time columns
+      (<strong>1st Check In</strong>, <strong>1st Check Out</strong>, <strong>2nd Check In</strong>,
+      <strong>2nd Check Out</strong>) are visible but <strong>greyed out and disabled</strong> &mdash; only
+      <strong>Status</strong> can actually be set for an SDY seat.</p>
+      <figure>
+        <img src="screenshots/g7-02c-daily-attendance-tito-banner.png" alt="Daily Attendance student grid for an SDY class, showing the message TITO required only for EDY seats in CAPS Online, and a student row with an active Status dropdown but disabled (greyed out) 1st Check In, 1st Check Out, 2nd Check In, and 2nd Check Out dropdowns" />
+        <figcaption>Daily Attendance &mdash; the real SDY experience: TITO message shown, time columns disabled, only Status is settable.</figcaption>
+      </figure>
+      <div class="callout">
+        <b>This is deliberate, not a bug.</b> TITO was explicitly made read-only for SDY
+        (and EDFY) seats &mdash; these fields exist in the data model (so they're visible), but SDY/EDFY
+        attendance in ECMS is present/absent only, same as a CBO seat. If a seat genuinely needs time-in/out
+        tracking (an EDY seat), that happens in <strong>CAPS Online</strong> instead, outside ECMS.
+      </div>
+    </div>
+
+    <div class="step" id="step-3">
+      <h3><span class="stepnum">3</span>Set Status and save</h3>
+      <p><span class="lbl lbl-do">DO</span> For each student, set <strong>Status</strong> (Present or
+      Absent) and click <strong>Save</strong>.</p>
+      <p><span class="lbl lbl-res">RESULT</span> The day's attendance is recorded &mdash; exactly the same
+      single field a CBO Attendance Taker would set for a standard seat. Nothing else is required or
+      possible to enter for an SDY seat.</p>
+    </div>
+
+    <div class="step" id="step-4">
+      <h3><span class="stepnum">4</span>Submit and certify, same as standard attendance</h3>
+      <p><span class="lbl lbl-do">DO</span> Submit and certify the month's attendance the same way you
+      would for a standard (CBO) record &mdash; the <strong>Status</strong> field (Draft &rarr; Submitted
+      &rarr; Certified) and the certification step work identically regardless of seat type.</p>
+      <p><span class="lbl lbl-res">RESULT</span> The record's Status advances exactly as it would for a
+      standard CBO attendance record. There's no separate approval chain for SDY, and no TITO data involved
+      &mdash; present/absent is all that feeds into the site's Budget and Invoice downstream.</p>
+      <div class="callout">
+        <b>Compared to standard CBO attendance.</b> If you've worked through the standard <em>Attendance
+        (CBO)</em> guide, everything here &mdash; the Draft &rarr; Submitted &rarr; Certified lifecycle, the
+        monthly certification requirement &mdash; is the same. The only FCCN-specific wrinkle is scope: an
+        FCCN Attendance Taker only sees enrollments at their network's affiliated Providers, and only SDY
+        seats are enterable in ECMS at all (EDY lives entirely in CAPS Online).
+      </div>
+    </div>
+
+    <div class="step" id="step-5">
+      <h3><span class="stepnum">5</span>Check the SDY+ indicator on an Enrollment</h3>
+      <p><span class="lbl lbl-do">DO</span> Open a live SDY-seat Enrollment record and look for an
+      <strong>SDY+ Information</strong> section.</p>
+      <p><span class="lbl lbl-res">RESULT</span> The record shows a checked <strong>SDY+</strong> indicator,
+      plus a related <strong>SDY+ Enrollments</strong> list containing a child <strong>SDY+ Enrollment</strong>
+      record that tracks its own Start Date and who started it.</p>
+      <figure>
+        <img src="screenshots/g7-06-enrollment-sdy-plus-checked.png" alt="ENROL-0000000543 detail page showing a checked SDY+ indicator under SDY+ Information, and a related SDY+ Enrollments list with one SDY-PLUS-ENROL child record" />
+        <figcaption>ENROL-0000000543 &mdash; live UAT record with SDY+ checked and a related SDY+ Enrollment tracking record (start date 8/31/2026).</figcaption>
+      </figure>
+      <div class="callout">
+        <b>Add SDY+ Checkbox Indicator to Student Enrollment Record.</b> This field is only applicable and editable when <strong>Seat Type = SDY</strong>, and is meant to
+        flag students attending the SDY+ program so downstream processes and reporting can identify them.
+      </div>
+    </div>
+
+    <div class="step" id="step-6">
+      <h3><span class="stepnum">6</span>Run the SDY+ Active Enrollment Report</h3>
+      <p><span class="lbl lbl-do">DO</span> From the app's <strong>Reports</strong> tab, search
+      <strong>All Reports</strong> for <code>SDY+</code>.</p>
+      <p><span class="lbl lbl-res">RESULT</span> A report titled <strong>SDY+ Active Enrollment
+      Report</strong> is returned, living in the Public Reports folder.</p>
+      <figure>
+        <img src="screenshots/g7-08-sdy-plus-report-search.png" alt="Reports tab, All Reports, search box containing SDY+, showing one result: SDY+ Active Enrollment Report in the Public Reports folder" />
+        <figcaption>Searching All Reports for "SDY+" &mdash; the report exists in the live UAT org, in Public Reports.</figcaption>
+      </figure>
+      <p><span class="lbl lbl-do">DO</span> Open the report.</p>
+      <p><span class="lbl lbl-res">RESULT</span> It returns only <strong>Approved</strong> or
+      <strong>Active</strong> enrollments, grouped by Site, with Enrollment # and Status columns, matching the enrollments seen in Step 9.</p>
+      <figure>
+        <img src="screenshots/g7-09-sdy-plus-report-open.png" alt="SDY+ Active Enrollment Report open, showing Total Records 6, a donut chart grouped by Site: Site Master Name, and a details table listing ENROL-0000000481, 499, 543, 544, 545, 546 with Approved/Active statuses" />
+        <figcaption>SDY+ Active Enrollment Report, run live &mdash; grouped by Site, filtered to Approved/Active + SDY+ enrollments.</figcaption>
+      </figure>
+      <div class="callout">
+        <b>Create SDY+ Active Enrollment Report by Site, Class, and Student.</b> The report groups by Site
+        and shows Enrollment # and Status; whether Class/Student-level grouping and a Student Name column are
+        also present depends on the report's format (summary vs. matrix) and column configuration, which
+        wasn't fully explored here &mdash; treat the detailed column/grouping spec as still subject to the
+        draft BRD, not fully confirmed against this screenshot.
+      </div>
+    </div>
+
+    <div class="step" id="step-7">
+      <h3><span class="stepnum">7</span>Watch for the infant-to-toddler age validation alert</h3>
+      <p><span class="lbl lbl-do">DO</span> Be aware that when attendance is taken for a student who is
+      past their <strong>1st birthday (CBO/GFDC)</strong> or <strong>2nd birthday (FCC)</strong> while still
+      assigned to an infant seat/program, the system will evaluate the child's age and class
+      assignment at the point of attendance entry.</p>
+      <p><span class="lbl lbl-res">RESULT</span> This should display a
+      non-blocking warning alert (banner, inline warning, or modal) stating the student is past the relevant
+      birthday and should be moved to a toddler seat/program via an Enrollment Change Request. No alert is
+      expected if the student is under or exactly one year old. Age is meant to be calculated using the
+      facility's local time zone.</p>
+      <div class="callout">
+        <b>Related change-request flow.</b> The vendor should be able to submit an
+        <strong>Enrollment Change Request</strong> (Discharge, Change Seat Type, Change Class, or Program
+        Type) to act on this alert. SDY+ start/end dates are tracked automatically
+        off the checkbox value.
+      </div>
+    </div>
+
+    <div class="step" id="step-8">
+      <h3><span class="stepnum">8</span>Understand the 176-day SDY attendance limit</h3>
+      <p><span class="lbl lbl-do">DO</span> Know that for <strong>FCCN users on SDY seats</strong>, ECMS
+      enforces a cap on total attendance days per enrollment year.</p>
+      <p><span class="lbl lbl-res">RESULT</span> The config record shows <strong>Operating Day Limit
+      Enabled</strong> checked, an <strong>Operating Day Limit Max</strong> of <strong>176</strong>, and an
+      <strong>Operating Day Limit Error Message</strong> reading exactly: <em>&ldquo;SDY attendance is limited
+      to 176 days per year, accounting for 4 professional learning days for a total of 180 paid days.&rdquo;</em></p>
+      <figure>
+        <img src="screenshots/g7-07-attendance-config-176-limit.png" alt="ECMS Attendance Config Detail page for the FCCN SDY custom metadata record, showing Operating Day Limit Enabled checked, Operating Day Limit Max 176, and the Operating Day Limit Error Message about 176 days" />
+        <figcaption>Setup &rarr; Custom Metadata Types &rarr; ECMS Attendance Config &rarr; FCCN SDY &mdash; the live 176-day limit configuration, not the point-of-entry error banner itself.</figcaption>
+      </figure>
+      <div class="callout">
+        <b>Enforce 176-Day Attendance Limit for SDY Seats.</b> The system
+        blocks attendance entry on <strong>Save/Submit</strong> once a SDY-seat enrollment's recorded
+        attendance (Present/Absent) for the enrollment year would exceed 176 total days, and this validation
+        applies only to <strong>SDY seat types and FCCN users</strong> (not CBOs). This screenshot shows the
+        configuration that drives the rule (including the counter field), not the actual
+        error banner a user sees when Saving the 177th day &mdash; that in-the-moment validation banner was
+        not independently reproduced for this guide.
+      </div>
+    </div>
+
+    <div class="step" id="step-9">
+      <h3><span class="stepnum">9</span>Understand the monthly certification reminder</h3>
+      
+      <p><span class="lbl lbl-do">DO</span> Know that after the 1st of
+      each month, FCCN and CBO users with attendance still awaiting certification for a prior month receive a
+      reminder, and that reminder repeats <strong>weekly (every 7th day)</strong> until certification is
+      complete. The reminder scope: for CBOs it covers
+      all enrollments' attendance, and for FCCNs it covers SDY attendance from ECMS plus EDY attendance status
+      imported from CAPS Online.</p>
+      <p><span class="lbl lbl-res">RESULT</span> If you (as an FCCN Network Director/Education Director, or
+      a CBO Executive/Education/Fiscal Director with an active Salesforce user) attempt to certify a month
+      before all of that month's enrollments and attendance days are complete, the system blocks certification
+      and shows a message indicating all enrollments and days must be completed first &mdash; this
+      completeness check is existing system functionality already implemented for CBO users.</p>
+      <div class="callout">
+        <b>Recipients.</b> CBO reminders go to the Executive Director, Education
+        Director, and Fiscal Director contacts on the organization; FCCN reminders go to the Network Director
+        and Education Director contacts &mdash; in both cases only if that contact has an active Salesforce
+        user account.
+      </div>
+    </div>
+
+    <div class="step" id="step-10">
+      <h3><span class="stepnum">10</span>FCCN Calendar Management</h3>
+      <p>Unlike CBOs, FCCNs have no Budget/Contract Seat model of their own; instead, the network's
+      <strong>Calendar</strong> record is what tells ECMS which days count as service days for attendance and
+      the 176-day limit covered in Step 8. This is FCCN-specific &mdash; it has no CBO equivalent in this
+      guide.</p>
+      <p><span class="lbl lbl-do">DO</span> As a Network Director or External Admin, create or open a
+      <strong>Calendar</strong> record (Record Type <strong>Network</strong>) for the network and the fiscal
+      year, and submit it for approval. By default only Network Director and External Admin personas can
+      submit a calendar; an External Admin can extend that ability to other FCCN user personas.</p>
+      <p><span class="lbl lbl-res">RESULT</span> The Calendar record shows a real monthly grid (not just a
+      form) and its <strong>Approval History</strong> related list records the submission: an <em>Approval
+      Request Submitted</em> row (assigned to the submitting FCCN Network user) and a <em>Step 1</em> row,
+      <strong>Pending</strong>, assigned to the <strong>FCCN Support Team</strong> &mdash; DOE's internal
+      approver group for calendars.</p>
+      <figure>
+        <img src="screenshots/g7-10-calendar-submitted-approval-history.png" alt="Master Network calendar record, Status Submitted, Related tab showing Approval History with two rows: Approval Request Submitted (assigned to FCCN Network user) and Step 1 Pending (assigned to FCCN Support Team)" />
+        <figcaption>A Submitted network calendar &mdash; Approval History shows it pending with the FCCN Support Team.</figcaption>
+      </figure>
+      <p><span class="lbl lbl-do">DO</span> Once the FCCN Support Team approves it, open the calendar again.</p>
+      <p><span class="lbl lbl-res">RESULT</span> Status reads <strong>Approved</strong>, and this calendar
+      becomes the default that every FCC Provider affiliated with this network inherits for that fiscal year
+      &mdash; unless an approved Site-level calendar exists for a specific provider instead (Calendar also has
+      a <strong>Site</strong> record type for exactly that override case, alongside a <strong>Master</strong>
+      record type).</p>
+      <figure>
+        <img src="screenshots/g7-11-calendar-approved.png" alt="Netwrok schedule calendar record for Queensview Family Childcare Network, Fiscal Year 2027, Status Approved, Owner Tylan Mitchell, showing a real October 2026 monthly grid" />
+        <figcaption>An Approved network calendar &mdash; now the default calendar inherited by its affiliated FCC Providers.</figcaption>
+      </figure>
+      <div class="note">
+        <b>Note:</b> A provider's calendar (whichever one applies to it &mdash; network default or a Site-level
+        override) is what feeds the service-day math behind the 176-day SDY attendance limit in Step 8, and
+        the certification reminder in Step 9. If a Site's attendance looks off against the expected number of
+        service days for a month, check which calendar is actually governing that site before assuming an
+        attendance data-entry error.
+      </div>
+    </div>
+
+    <a class="backhome" href="index.html">&larr; Back to User Guide home</a>
+  </main>
+</div>
+<div class="site-footer">
+  <div class="ft-in">
+    <div class="ft-left"><b>NYC DOE &middot; Division of Early Childhood Education</b><div>Early Childhood Management System (ECMS)</div></div>
+    <nav class="ft-nav"><a href="index.html">User Guide Home</a></nav>
+  </div>
+</div>
+<style>
+.askq-fab{position:fixed;bottom:24px;right:24px;z-index:1000;background:var(--navy);color:#fff;border:none;border-radius:999px;padding:14px 22px;font-weight:700;font-size:14px;font-family:inherit;box-shadow:0 6px 20px rgba(11,37,69,.35);cursor:pointer;display:flex;align-items:center;gap:8px;transition:background .15s,transform .15s;}
+.askq-fab:hover{background:var(--accent);transform:translateY(-1px);}
+.askq-fab svg{width:18px;height:18px;flex-shrink:0;}
+.askq-overlay{position:fixed;inset:0;background:rgba(11,37,69,.55);z-index:1001;display:none;align-items:center;justify-content:center;padding:20px;}
+.askq-overlay.askq-open{display:flex;}
+.askq-modal{background:#fff;border-radius:12px;max-width:480px;width:100%;padding:28px;box-shadow:0 20px 60px rgba(0,0,0,.35);max-height:90vh;overflow:auto;}
+.askq-modal h3{margin:0 0 6px;color:var(--navy);font-size:20px;font-weight:700;}
+.askq-modal .askq-sub{font-size:13.5px;color:var(--muted);margin:0 0 16px;}
+.askq-ctx{font-size:12.5px;color:var(--navy);margin:0 0 18px;padding:9px 12px;background:var(--soft);border:1px solid var(--line);border-radius:6px;}
+.askq-modal label{display:block;font-size:13px;font-weight:700;color:var(--navy);margin:14px 0 6px;}
+.askq-modal textarea,.askq-modal input{width:100%;border:1px solid var(--line);border-radius:6px;padding:10px 12px;font-size:14px;font-family:inherit;box-sizing:border-box;}
+.askq-modal textarea{min-height:90px;resize:vertical;}
+.askq-modal textarea:focus,.askq-modal input:focus{outline:2px solid var(--accent);outline-offset:1px;}
+.askq-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:20px;}
+.askq-btn-cancel{background:#fff;border:1px solid var(--line);color:var(--ink);padding:10px 18px;border-radius:6px;cursor:pointer;font-weight:700;font-size:14px;font-family:inherit;}
+.askq-btn-cancel:hover{background:var(--soft);}
+.askq-btn-submit{background:var(--accent);border:none;color:#fff;padding:10px 20px;border-radius:6px;cursor:pointer;font-weight:700;font-size:14px;font-family:inherit;}
+.askq-btn-submit:hover{background:var(--navy);}
+.askq-btn-submit:disabled{opacity:.6;cursor:default;}
+.askq-success{color:var(--res);font-weight:700;margin-top:14px;font-size:14px;display:none;}
+.askq-error{color:#C0392B;font-weight:700;margin-top:14px;font-size:14px;display:none;}
+@media (max-width:600px){.askq-fab{bottom:16px;right:16px;padding:12px 16px;font-size:13px;}.askq-fab span{display:none;}}
+</style>
+
+<button class="askq-fab" id="askqFab" type="button" aria-haspopup="dialog">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+  <span>Ask a question</span>
+</button>
+
+<div class="askq-overlay" id="askqOverlay" role="dialog" aria-modal="true" aria-labelledby="askqTitle">
+  <div class="askq-modal">
+    <h3 id="askqTitle">Ask a question</h3>
+    <p class="askq-sub">Need more information about what you're reading? Send a question to the ECMS team.</p>
+    <p class="askq-ctx" id="askqContext"></p>
+    <form id="askqForm">
+      <label for="askqMessage">Your question</label>
+      <textarea id="askqMessage" name="message" required placeholder="What would you like to know more about?"></textarea>
+      <label for="askqName">Your name (optional)</label>
+      <input type="text" id="askqName" name="name" placeholder="Jane Doe" autocomplete="name" />
+      <label for="askqEmail">Your email (optional, so we can reply)</label>
+      <input type="email" id="askqEmail" name="_replyto" placeholder="jane@agency.gov" autocomplete="email" />
+      <input type="hidden" name="page" id="askqPageField" />
+      <input type="hidden" name="section" id="askqSectionField" />
+      <input type="hidden" name="_subject" id="askqSubjectField" />
+      <div class="askq-actions">
+        <button type="button" class="askq-btn-cancel" id="askqCancel">Cancel</button>
+        <button type="submit" class="askq-btn-submit" id="askqSubmit">Send question</button>
+      </div>
+      <div class="askq-success" id="askqSuccess">&#10003; Thanks! Your question has been sent to the ECMS team.</div>
+      <div class="askq-error" id="askqErrorMsg">Something went wrong sending your question. Please try again, or email the team directly.</div>
+    </form>
+  </div>
+</div>
+
+<script>
+(function(){
+  var fab = document.getElementById('askqFab');
+  var overlay = document.getElementById('askqOverlay');
+  var cancel = document.getElementById('askqCancel');
+  var form = document.getElementById('askqForm');
+  var ctx = document.getElementById('askqContext');
+  var pageField = document.getElementById('askqPageField');
+  var sectionField = document.getElementById('askqSectionField');
+  var subjectField = document.getElementById('askqSubjectField');
+  var submitBtn = document.getElementById('askqSubmit');
+  var success = document.getElementById('askqSuccess');
+  var errorEl = document.getElementById('askqErrorMsg');
+  if (!fab || !overlay) return;
+
+  function currentSection(){
+    var marks = document.querySelectorAll('main h2, main .step');
+    var best = null;
+    var scrollPos = window.scrollY + 160;
+    marks.forEach(function(el){
+      if (el.offsetTop <= scrollPos) best = el;
+    });
+    if (!best) return 'Overview';
+    if (best.classList && best.classList.contains('step')) {
+      var h3 = best.querySelector('h3');
+      if (h3) {
+        var numEl = h3.querySelector('.stepnum');
+        var num = numEl ? numEl.textContent.trim() : '';
+        var clone = h3.cloneNode(true);
+        var cloneNum = clone.querySelector('.stepnum');
+        if (cloneNum) cloneNum.parentNode.removeChild(cloneNum);
+        var label = clone.textContent.replace(/\s+/g, ' ').trim();
+        return (num ? 'Step ' + num + ': ' : '') + label;
+      }
+    }
+    return best.textContent.replace(/\s+/g, ' ').trim();
+  }
+
+  function openModal(){
+    var pageTitle = document.querySelector('h1') ? document.querySelector('h1').textContent.trim() : document.title;
+    var section = currentSection();
+    ctx.textContent = 'Page: ' + pageTitle + '  \u2014  Section: ' + section;
+    pageField.value = pageTitle;
+    sectionField.value = section;
+    subjectField.value = 'ECMS User Guide question \u2014 ' + pageTitle;
+    overlay.classList.add('askq-open');
+    success.style.display = 'none';
+    errorEl.style.display = 'none';
+    document.getElementById('askqMessage').focus();
+  }
+  function closeModal(){ overlay.classList.remove('askq-open'); }
+
+  fab.addEventListener('click', openModal);
+  cancel.addEventListener('click', closeModal);
+  overlay.addEventListener('click', function(e){ if (e.target === overlay) closeModal(); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeModal(); });
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending\u2026';
+    fetch('https://formspree.io/f/mnpjnqqk', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: new FormData(form)
+    }).then(function(res){
+      if (res.ok) {
+        success.style.display = 'block';
+        errorEl.style.display = 'none';
+        form.reset();
+        setTimeout(closeModal, 2200);
+      } else {
+        errorEl.style.display = 'block';
+      }
+    }).catch(function(){
+      errorEl.style.display = 'block';
+    }).finally(function(){
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send question';
+    });
+  });
+})();
+</script>
+
+</body></html>
