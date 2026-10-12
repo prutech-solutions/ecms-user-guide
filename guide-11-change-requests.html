@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Change Requests — ECMS User Guide</title><style>
+:root{--ink:#1B2430;--head:#0B2545;--muted:#5B6478;--link:#1657CE;--line:#DCE1EA;--line2:#EAEDF3;--code:#F5F7FB;--navy:#0B2545;--accent:#1657CE;--do:#1657CE;--res:#1E8E5A;--soft:#F5F7FB;--brandA:#0072CE;--brandB:#00A65A;--brandC:#F5A623;--brandD:#D0103A;}
+*{box-sizing:border-box;} html{scroll-behavior:smooth;}
+body{margin:0;color:var(--ink);background:#fff;font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;line-height:1.65;font-size:16px;}
+a{color:var(--link);text-decoration:none;} a:hover{text-decoration:underline;}
+code{font-family:'SFMono-Regular',Consolas,Menlo,monospace;background:var(--code);border:1px solid var(--line);border-radius:4px;padding:1px 6px;font-size:13.5px;color:#0a2a5e;}
+.topbar{position:sticky;top:0;z-index:10;box-shadow:0 1px 0 var(--line);}
+.tb-top{background:#fff;border-bottom:1px solid var(--line);}
+.tb-top .in{max-width:1260px;margin:0 auto;padding:14px 32px;display:flex;align-items:center;gap:12px;}
+.doe-logo{display:flex;align-items:baseline;gap:1px;font-weight:800;font-size:20px;letter-spacing:.2px;}
+.doe-logo b:nth-child(1){color:var(--brandA);} .doe-logo b:nth-child(2){color:var(--brandC);} .doe-logo b:nth-child(3){color:var(--brandB);} .doe-logo b:nth-child(4){color:var(--brandD);}
+.doe-sub{color:var(--muted);font-size:12.5px;padding-left:10px;border-left:1px solid var(--line);}
+.tb-bottom{background:var(--navy);}
+.tb-bottom .in{max-width:1260px;margin:0 auto;padding:10px 32px;display:flex;align-items:center;gap:22px;}
+.ecms-brand{color:#fff;font-weight:700;font-size:15px;letter-spacing:.3px;}
+.topnav{display:flex;gap:24px;margin-left:6px;}
+.topnav a{color:#cfe0fb;font-weight:600;font-size:13.5px;}
+.topnav a.cur{color:#fff;}
+@media (max-width:760px){.topnav{display:none;}}
+.crumbs{max-width:1260px;margin:0 auto;padding:16px 32px 0;font-size:13px;color:var(--muted);}
+.crumbs a{color:var(--muted);} .crumbs span{margin:0 7px;}
+.wrap{max-width:1260px;margin:0 auto;padding:8px 32px 60px;display:grid;grid-template-columns:270px minmax(0,1fr);gap:52px;}
+main{min-width:0;max-width:840px;}
+h1{font-size:32px;line-height:1.2;color:var(--head);margin:14px 0 6px;font-weight:700;}
+.lead{font-size:16.5px;color:var(--ink);margin:10px 0 4px;}
+.subtext{color:var(--muted);font-size:14px;margin:2px 0 0;}
+h2{font-size:22px;color:var(--head);font-weight:700;margin:42px 0 6px;padding-bottom:8px;border-bottom:1px solid var(--line);}
+h3{font-size:17.5px;color:var(--head);font-weight:700;margin:8px 0 2px;}
+p{margin:10px 0;}
+ul.bul{margin:10px 0;padding-left:22px;} ul.bul li{margin:6px 0;}
+table{border-collapse:collapse;width:100%;margin:16px 0;font-size:14.5px;}
+th,td{border:1px solid var(--line);padding:9px 13px;text-align:left;vertical-align:top;}
+th{background:var(--soft);color:var(--head);font-weight:700;}
+.lbl{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;padding:2px 9px;border-radius:4px;margin-right:8px;vertical-align:middle;}
+.lbl-do{background:#E6EFFC;color:var(--do);} .lbl-res{background:#E5F5EC;color:var(--res);}
+.step{scroll-margin-top:118px;border-top:1px solid var(--line2);padding-top:28px;margin-top:28px;}
+.step:first-of-type{border-top:none;margin-top:14px;padding-top:8px;}
+.step .stepnum{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;background:var(--navy);color:#fff;font-weight:700;font-size:14px;margin-right:10px;vertical-align:middle;}
+.step h3{display:inline;}
+h2,h3{scroll-margin-top:118px;}
+figure{margin:14px 0 4px;}
+figure img{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:8px;box-shadow:0 4px 14px rgba(11,37,69,.08);}
+figcaption{font-size:13px;color:var(--muted);margin-top:8px;font-style:italic;}
+.callout{background:var(--soft);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:6px;padding:14px 18px;margin:14px 0;}
+.callout b{color:var(--head);}
+.note{background:#fff8ec;border:1px solid #f3e2bd;border-left:4px solid #e0a127;border-radius:6px;padding:6px 18px;margin:14px 0;}
+.sidenav{position:sticky;top:104px;align-self:start;font-size:14px;max-height:calc(100vh - 120px);overflow:auto;padding-right:6px;}
+.nav-cat{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);font-weight:700;padding:0 0 10px;border-bottom:1px solid var(--line);margin-bottom:8px;}
+ul.nav{list-style:none;margin:0;padding:0;} ul.nav>li{margin:2px 0;}
+a.lvl1{display:block;padding:7px 10px;border-radius:6px;color:var(--head);font-weight:600;font-size:13.6px;}
+a.lvl1:hover{background:var(--soft);text-decoration:none;}
+a.lvl1.cur{color:var(--accent);background:var(--soft);border-left:3px solid var(--accent);padding-left:8px;}
+.backhome{display:inline-block;margin:14px 0 4px;font-weight:700;font-size:13.5px;}
+.meta-row{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 6px;}
+.chip{font-size:11.5px;font-weight:600;color:var(--navy);background:var(--soft);border:1px solid var(--line);border-radius:20px;padding:3px 10px;}
+.site-footer{background:var(--navy);color:#fff;margin-top:48px;}
+.site-footer .ft-in{max-width:1260px;margin:0 auto;padding:22px 32px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px;}
+.ft-left b{font-size:14px;} .ft-left div{color:#B9C7E3;font-size:12.5px;margin-top:4px;}
+.ft-nav a{color:#fff;font-size:13px;}
+@media (max-width:900px){.wrap{grid-template-columns:1fr;}.sidenav{position:static;max-height:none;}}
+</style></head>
+<body>
+<div class="topbar">
+  <div class="tb-top"><div class="in">
+    <span class="doe-logo"><b>N</b><b>Y</b><b>C</b></span>
+    <span class="doe-sub">Department of Education &middot; Division of Early Childhood Education</span>
+  </div></div>
+  <div class="tb-bottom"><div class="in">
+    <span class="ecms-brand">ECMS User Guide</span>
+    <nav class="topnav"><a href="index.html">Home</a></nav>
+  </div></div>
+</div>
+<div class="crumbs"><a href="index.html">ECMS User Guide</a><span>/</span>Change Requests</div>
+<div class="wrap">
+
+  <nav class="sidenav">
+    <div class="nav-cat">On this page</div>
+    <ul class="nav">
+      <li><a class="lvl1" href="#overview">Overview</a></li>
+      <li><a class="lvl1" href="#step-1">1. Open the enrollment to change</a></li>
+      <li><a class="lvl1" href="#step-2">2. Review the active enrollment</a></li>
+      <li><a class="lvl1" href="#step-3">3. Start an Enrollment Change Request</a></li>
+      <li><a class="lvl1" href="#step-4">4. Choose the type of change</a></li>
+      <li><a class="lvl1" href="#step-5">5. Change Seat Type</a></li>
+      <li><a class="lvl1" href="#step-6">6. Change Class</a></li>
+      <li><a class="lvl1" href="#step-7">7. Change Program Type</a></li>
+      <li><a class="lvl1" href="#step-8">8. Discharge Request</a></li>
+      <li><a class="lvl1" href="#step-9">9. DOE reviews the submitted request</a></li>
+      <li><a class="lvl1" href="#step-10">10. DOE approves the change</a></li>
+      <li><a class="lvl1" href="#step-11">11. Confirm the result on the Enrollment</a></li>
+    </ul>
+    <a class="backhome" href="index.html">&larr; Back to User Guide home</a>
+  </nav>
+
+  <main id="top">
+    <h1>Change Requests</h1>
+    <p class="lead">How a CBO/FCCN vendor requests a change to a currently-enrolled child's placement &mdash;
+    a different seat type, a different class, aging up from Infant to Toddler, or ending the placement
+    entirely &mdash; and how DOE reviews and approves that request through the same
+    <strong>Enrollment Change Request</strong> mechanism for all four.</p>
+    <div class="meta-row">
+      <span class="chip">11 steps</span><span class="chip">~13 min read</span><span class="chip">Persona: CBO/FCCN Enrollment Manager / DOE Enrollment Specialist</span>
+    </div>
+
+    <h2 id="overview">Overview</h2>
+    <p>A <strong>Change Request</strong> is how a CBO/FCCN vendor asks DOE to update something about a
+    currently-enrolled child's placement, without having to re-enroll them from scratch. It's initiated by the
+    vendor &mdash; usually the <strong>Enrollment Manager</strong> &mdash; from the child's active or approved
+    <strong>Enrollment</strong> record, through the same <strong>Enrollment Change Request</strong> wizard for
+    all four scenarios this guide covers:</p>
+    <ul class="bul">
+      <li><strong>Change Seat Type</strong> &mdash; e.g. moving a student from an SDY seat to an EDY seat.</li>
+      <li><strong>Change Class</strong> &mdash; moving a student to a different class/classroom.</li>
+      <li><strong>Change Program Type</strong> &mdash; aging up from Infant to Toddler, once the child is past
+      the vendor-specific age threshold.</li>
+      <li><strong>Discharge Request</strong> &mdash; formally ending the placement (the child ages out of the
+      program, the family moves away, or a parent decides to stop).</li>
+    </ul>
+    <p>A DOE <strong>Enrollment Specialist</strong> reviews and approves every type of request before the
+    change actually takes effect on the enrollment.</p>
+    <div class="callout">
+      <b>Where this fits.</b> Change Requests sit alongside the enrollment lifecycle covered in the Enrollment
+      guides: <strong>Draft &rarr; Submitted &rarr; Approved &rarr; Active &rarr; &hellip; &rarr;
+      Discharged</strong>. A Discharge Request is what finally moves an enrollment to that last
+      <strong>Discharged</strong> stage &mdash; the other three request types (Seat Type, Class, Program Type)
+      update an Active/Approved enrollment in place without changing its lifecycle stage. Discharge is also
+      the last link in the overall workflow chain &mdash; Site/Contract setup &rarr; Enrollment &rarr;
+      Attendance &rarr; Budget &rarr; Invoice &rarr; Payment &rarr; Discharge.
+    </div>
+
+    <h2>Steps</h2>
+
+    <div class="step" id="step-1">
+      <h3><span class="stepnum">1</span>Open the enrollment to change</h3>
+      <p><span class="lbl lbl-do">DO</span> In the vendor portal, go to <strong>Student Enrollments</strong>
+      and locate the child whose enrollment needs a change. This example uses Camila Vasquez, an actively
+      enrolled child at Cedar Point &ndash; Riverdale Campus.</p>
+      <p><span class="lbl lbl-res">RESULT</span> The Enrollments list shows every child currently enrolled at
+      the sites this vendor user has access to, each linked through to its enrollment record.</p>
+      <figure>
+        <img src="screenshots/g10-01-portal-enrollments-list.png" alt="Vendor portal Student Enrollments list showing four Cedar Point enrollments including Camila Vasquez, Leilani Kekoa, Yuki Tanaka, and Jamal Brooks" />
+        <figcaption>Vendor portal &mdash; Student Enrollments list.</figcaption>
+      </figure>
+    </div>
+
+    <div class="step" id="step-2">
+      <h3><span class="stepnum">2</span>Review the active enrollment</h3>
+      <p><span class="lbl lbl-do">DO</span> Click into the enrollment record. Confirm it's the right child and
+      that its lifecycle status bar currently shows <strong>Active</strong> (or <strong>Approved</strong>)
+      &mdash; a Change Request is only available from those two statuses.</p>
+      <p><span class="lbl lbl-res">RESULT</span> The enrollment detail page loads with its full lifecycle
+      status bar, student and parent/guardian information, and related lists for attendance, approval history,
+      and enrollment change requests.</p>
+      <figure>
+        <img src="screenshots/g10-02-enrollment-active-detail.png" alt="Enrollment detail page for Camila Vasquez showing lifecycle status bar at Active, with empty Reason for Discharge Request and Discharge Date fields" />
+        <figcaption>ENROL-0000000520 &mdash; Camila Vasquez, still Active.</figcaption>
+      </figure>
+    </div>
+
+    <div class="step" id="step-3">
+      <h3><span class="stepnum">3</span>Start an Enrollment Change Request</h3>
+      <p><span class="lbl lbl-do">DO</span> Click <strong>Show more actions</strong> on the enrollment, then
+      choose <strong>Enrollment Change Request</strong> from the dropdown.</p>
+      <p><span class="lbl lbl-res">RESULT</span> An "Enrollment Change Request" wizard opens as a modal, ready
+      to select what kind of change is being requested.</p>
+      <figure>
+        <img src="screenshots/g10-03-enrollment-change-request-menu.png" alt="Show more actions dropdown menu on the enrollment record, with Enrollment Change Request highlighted at the bottom" />
+        <figcaption>Show more actions &rarr; Enrollment Change Request.</figcaption>
+      </figure>
+    </div>
+
+    <div class="step" id="step-4">
+      <h3><span class="stepnum">4</span>Choose the type of change</h3>
+      <p><span class="lbl lbl-do">DO</span> On the first wizard screen, review the enrollment's current
+      <strong>Class</strong>, <strong>Program Type</strong>, <strong>Seat Type</strong>, and <strong>First Day
+      of Attendance</strong>, then select the type of change being requested.</p>
+      <p><span class="lbl lbl-res">RESULT</span> The wizard offers up to four change types: <strong>Discharge
+      Request</strong>, <strong>Change Seat Type</strong>, <strong>Change Class</strong>, and <strong>Change
+      Program Type</strong>.</p>
+      <figure>
+        <img src="screenshots/g10-04-change-type-selection.png" alt="Enrollment Change Request wizard first screen showing current Class, Program Type, Seat Type, and First Day of Attendance, with four radio options: Discharge Request, Change Seat Type, Change Class, and Change Program Type" />
+        <figcaption>Selecting the type of change &mdash; all four options shown for this enrollment.</figcaption>
+      </figure>
+      <div class="note">
+        <b>Note:</b> <strong>Change Program Type</strong> is always listed as an option, but it only actually
+        succeeds for an <strong>Infant</strong>-program enrollment that has aged past the vendor-specific
+        threshold (1st birthday for CBO/GFDC, 2nd birthday for FCC) &mdash; see Step 7 for what happens either
+        way. The other three options work the same regardless of program type.
+      </div>
+    </div>
+
+    <div class="step" id="step-5">
+      <h3><span class="stepnum">5</span>Change Seat Type</h3>
+      <p><span class="lbl lbl-do">DO</span> Select <strong>Change Seat Type</strong> and click
+      <strong>Next</strong>.</p>
+      <p><span class="lbl lbl-res">RESULT</span> A <strong>"Change Seat Type &mdash; Step 1 of 2"</strong>
+      screen opens, carrying forward the enrollment's Current Class, Program Type, Current Seat Type, and
+      First Day of Attendance, with a <strong>New Seat Type</strong> picklist to choose from (e.g. moving a
+      student from an SDY seat to an EDY seat).</p>
+      <figure>
+        <img src="screenshots/g10-09-change-seat-type-form.png" alt="Change Seat Type - Step 1 of 2 screen showing Current Class Infant Room - 2800 Verify, Program Type Infant, Current Seat Type Head Start CTL, First Day of Attendance September 1 2026, and a New Seat Type picklist" />
+        <figcaption>Change Seat Type &mdash; Step 1 of 2, picking the new seat type.</figcaption>
+      </figure>
+    </div>
+
+    <div class="step" id="step-6">
+      <h3><span class="stepnum">6</span>Change Class</h3>
+      <p><span class="lbl lbl-do">DO</span> Select <strong>Change Class</strong> and click
+      <strong>Next</strong>.</p>
+      <p><span class="lbl lbl-res">RESULT</span> A <strong>"Change Class"</strong> screen opens with the same
+      current-enrollment context, plus a <strong>New Class</strong> picklist, a required <strong>Effective
+      Date</strong>, and an optional <strong>Comments</strong> box.</p>
+      <figure>
+        <img src="screenshots/g10-10-change-class-form.png" alt="Change Class screen showing Current Class Infant Room - 2800 Verify, Program Type Infant, Seat Type Head Start CTL, a New Class picklist, Effective Date, and Comments fields" />
+        <figcaption>Change Class &mdash; New Class, Effective Date, and Comments.</figcaption>
+      </figure>
+    </div>
+
+    <div class="step" id="step-7">
+      <h3><span class="stepnum">7</span>Change Program Type</h3>
+      <p><span class="lbl lbl-do">DO</span> Select <strong>Change Program Type</strong> and click
+      <strong>Next</strong>, on an <strong>Infant</strong>-program enrollment whose child has aged past the
+      1st (CBO/GFDC) or 2nd (FCC) birthday threshold.</p>
+      <p><span class="lbl lbl-res">RESULT</span> The wizard auto-detects the eligible transition &mdash;
+      <strong>"Changing Program Type from: Infant to: Toddler"</strong> &mdash; and asks for a <strong>New
+      Toddler Class</strong>, an <strong>Effective Date</strong>, and optional <strong>Comments</strong>.</p>
+      <figure>
+        <img src="screenshots/g10-11-change-program-type-form.png" alt="Change Program Type screen showing Current Class Infant Room - 2800 Verify, Changing Program Type from Infant to Toddler, Seat Type Head Start CTL, a New Toddler Class picklist, Effective Date, and Comments fields" />
+        <figcaption>Change Program Type &mdash; eligible case: Infant to Toddler, with a class picker.</figcaption>
+      </figure>
+      <p><span class="lbl lbl-do">DO</span> Try the same option on an Infant enrollment whose child is still
+      <strong>under</strong> that age threshold.</p>
+      <p><span class="lbl lbl-res">RESULT</span> Instead of a class picker, the wizard immediately blocks with
+      <strong>"Program Type Change Not Allowed &mdash; This student is not currently eligible to change from
+      Infant to Toddler for the vendor type associated with this enrollment."</strong></p>
+      <figure>
+        <img src="screenshots/g10-12-program-type-not-allowed.png" alt="Program Type Change Not Allowed message: This student is not currently eligible to change from Infant to Toddler for the vendor type associated with this enrollment" />
+        <figcaption>Change Program Type &mdash; blocked for a student still under the age threshold.</figcaption>
+      </figure>
+    </div>
+
+    <div class="step" id="step-8">
+      <h3><span class="stepnum">8</span>Discharge Request</h3>
+      <p><span class="lbl lbl-do">DO</span> Select <strong>Discharge Request</strong> and click
+      <strong>Next</strong>, when the child is leaving the program entirely (aging out, moving away, or a
+      parent deciding to stop).</p>
+      <p><span class="lbl lbl-res">RESULT</span> The wizard advances to the discharge-specific details screen,
+      carrying forward the enrollment's current class, program type, seat type, and first day of attendance for
+      context.</p>
+      <p><span class="lbl lbl-do">DO</span> Confirm the child is no longer attending the site, then fill in the
+      required <strong>Discharge Date</strong>, upload the <strong>Parental Letter of Release</strong> under
+      Upload Files, choose a <strong>Reason for Discharge</strong> (e.g. Parent Request), and add any
+      <strong>Comments</strong>. Do not click Submit unless you intend to actually file the request.</p>
+      <p><span class="lbl lbl-res">RESULT</span> The form confirms the discharge complies with the Division's
+      policy on student discharges and chronic absenteeism, and warns that once discharged, the child will no
+      longer appear on the site's attendance roster after the effective discharge date.</p>
+      <figure>
+        <img src="screenshots/g10-05-discharge-request-form-filled.png" alt="Request Discharge form filled in with Discharge Date Jun 30 2026, Reason for Discharge set to Parent Request, and comments about the family relocating" />
+        <figcaption>Discharge Request details &mdash; date, supporting document, reason, and comments.</figcaption>
+      </figure>
+      <div class="note">
+        <b>Note &mdash; supporting paperwork and date rules.</b> A discharge requires supporting paperwork (like a parental release letter) and must have date-validation rules (e.g.,
+        it has to line up with the school calendar). Have the release letter ready to attach before you start
+        the wizard, and expect the Discharge Date to be checked against the school calendar rather than
+        accepted as any arbitrary date.
+      </div>
+    </div>
+
+    <div class="step" id="step-9">
+      <h3><span class="stepnum">9</span>DOE reviews the submitted request</h3>
+      <p><span class="lbl lbl-do">DO</span> Once the vendor submits any of the four request types, it lands
+      with a DOE Enrollment Specialist for review. Internally, they open the Enrollment Change Request record
+      to check its <strong>Record Type</strong> (Discharge Request, Seat Type Change, Class Change, or Program
+      Type Change), Status, linked Enrollment, and the old/new values being requested.</p>
+      <p><span class="lbl lbl-res">RESULT</span> The record shows <strong>Status: Submitted</strong>, awaiting
+      DOE action, linked back to its Enrollment &mdash; the same pattern regardless of which of the four
+      Record Types it is. Here's a <strong>Seat Type Change</strong> example alongside the Discharge one, to
+      show they're genuinely the same mechanism: Old Seat Type <strong>SDY</strong>, New Seat Type
+      <strong>EDY</strong>.</p>
+      <figure>
+        <img src="screenshots/g10-06-admin-cr-submitted.png" alt="Internal Salesforce view of Enrollment Change Request ENROL-CR-00000006, Discharge Request record type, Status Submitted, linked to Enrollment ENROL-0000000027" />
+        <figcaption>ENROL-CR-00000006 &mdash; a Discharge Request awaiting DOE review.</figcaption>
+      </figure>
+      <figure>
+        <img src="screenshots/g10-13-admin-seattype-submitted.png" alt="Internal Salesforce view of Enrollment Change Request ENROL-CR-00000002, Seat Type Change record type, Status Submitted, Old Seat Type SDY, New Seat Type EDY" />
+        <figcaption>ENROL-CR-00000002 &mdash; a Seat Type Change, Status Submitted, same record pattern as a Discharge Request.</figcaption>
+      </figure>
+    </div>
+
+    <div class="step" id="step-10">
+      <h3><span class="stepnum">10</span>DOE approves the change</h3>
+      <p><span class="lbl lbl-do">DO</span> After confirming the request is in order (paperwork and dates for a
+      Discharge; capacity on the new Class/Seat Type for the other three), the DOE Enrollment Specialist
+      approves the request.</p>
+      <p><span class="lbl lbl-res">RESULT</span> The Enrollment Change Request record's Status moves to
+      <strong>Approved</strong> &mdash; a fully processed, closed-out example of the same record type.</p>
+      <figure>
+        <img src="screenshots/g10-07-admin-cr-approved.png" alt="Internal Salesforce view of Enrollment Change Request ENROL-CR-00000005, Discharge Request record type, Status Approved, linked to Enrollment ENROL-0000000005" />
+        <figcaption>ENROL-CR-00000005 &mdash; an approved, fully processed Discharge Request.</figcaption>
+      </figure>
+    </div>
+
+    <div class="step" id="step-11">
+      <h3><span class="stepnum">11</span>Confirm the result on the Enrollment</h3>
+      <p><span class="lbl lbl-do">DO</span> Once approved, open the underlying Enrollment record and check its
+      lifecycle status bar and Key Fields.</p>
+      <p><span class="lbl lbl-res">RESULT</span> For a <strong>Discharge Request</strong>, the status bar now
+      shows <strong>Discharged</strong> as the current stage, with the Discharge Date and Status Reason
+      populated in Key Fields. For a <strong>Seat Type</strong>, <strong>Class</strong>, or <strong>Program
+      Type</strong> change, the enrollment's lifecycle stage doesn't move &mdash; it stays Active/Approved,
+      with just the relevant field (Seat Type, Class, or Program Type) updated to the new value as of the
+      request's Effective Date.</p>
+      <figure>
+        <img src="screenshots/g10-08-enrollment-discharged-status.png" alt="Enrollment record for Kai Nakamura with lifecycle status bar at Discharged, Key Fields showing Discharge Date 7/31/2026 and Status Reason End of School Period, and Student OSIS number populated" />
+        <figcaption>ENROL-0000000226 &mdash; Kai Nakamura's enrollment, now Discharged.</figcaption>
+      </figure>
+      <div class="callout">
+        <b>Downstream sync.</b> Per the onboarding overview, approving a discharge "updates attendance and
+        enrollment records and notifies the outside systems that track this child... so everything stays in
+        sync." In practice that means OASIS (the DOE's master student registration system, which assigned this
+        child's OSIS Number when the enrollment was first approved) and, for Extended Day/subsidy-eligible
+        seats, ACCIS are both kept current so the child no longer shows as actively enrolled once the discharge
+        date passes. A Seat Type change similarly triggers an ACCIS eligibility re-check, and a Class change
+        sends an updated class code to OASIS.
+      </div>
+      <p>A Discharge closes out the enrollment lifecycle for this child &mdash; if the family re-enrolls at a
+      later date, a brand-new Enrollment record is created rather than reopening this one. The other three
+      request types simply update the existing, still-active enrollment in place.</p>
+    </div>
+
+    <a class="backhome" href="index.html">&larr; Back to User Guide home</a>
+  </main>
+</div>
+<div class="site-footer">
+  <div class="ft-in">
+    <div class="ft-left"><b>NYC DOE &middot; Division of Early Childhood Education</b><div>Early Childhood Management System (ECMS)</div></div>
+    <nav class="ft-nav"><a href="index.html">User Guide Home</a></nav>
+  </div>
+</div>
+<style>
+.askq-fab{position:fixed;bottom:24px;right:24px;z-index:1000;background:var(--navy);color:#fff;border:none;border-radius:999px;padding:14px 22px;font-weight:700;font-size:14px;font-family:inherit;box-shadow:0 6px 20px rgba(11,37,69,.35);cursor:pointer;display:flex;align-items:center;gap:8px;transition:background .15s,transform .15s;}
+.askq-fab:hover{background:var(--accent);transform:translateY(-1px);}
+.askq-fab svg{width:18px;height:18px;flex-shrink:0;}
+.askq-overlay{position:fixed;inset:0;background:rgba(11,37,69,.55);z-index:1001;display:none;align-items:center;justify-content:center;padding:20px;}
+.askq-overlay.askq-open{display:flex;}
+.askq-modal{background:#fff;border-radius:12px;max-width:480px;width:100%;padding:28px;box-shadow:0 20px 60px rgba(0,0,0,.35);max-height:90vh;overflow:auto;}
+.askq-modal h3{margin:0 0 6px;color:var(--navy);font-size:20px;font-weight:700;}
+.askq-modal .askq-sub{font-size:13.5px;color:var(--muted);margin:0 0 16px;}
+.askq-ctx{font-size:12.5px;color:var(--navy);margin:0 0 18px;padding:9px 12px;background:var(--soft);border:1px solid var(--line);border-radius:6px;}
+.askq-modal label{display:block;font-size:13px;font-weight:700;color:var(--navy);margin:14px 0 6px;}
+.askq-modal textarea,.askq-modal input{width:100%;border:1px solid var(--line);border-radius:6px;padding:10px 12px;font-size:14px;font-family:inherit;box-sizing:border-box;}
+.askq-modal textarea{min-height:90px;resize:vertical;}
+.askq-modal textarea:focus,.askq-modal input:focus{outline:2px solid var(--accent);outline-offset:1px;}
+.askq-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:20px;}
+.askq-btn-cancel{background:#fff;border:1px solid var(--line);color:var(--ink);padding:10px 18px;border-radius:6px;cursor:pointer;font-weight:700;font-size:14px;font-family:inherit;}
+.askq-btn-cancel:hover{background:var(--soft);}
+.askq-btn-submit{background:var(--accent);border:none;color:#fff;padding:10px 20px;border-radius:6px;cursor:pointer;font-weight:700;font-size:14px;font-family:inherit;}
+.askq-btn-submit:hover{background:var(--navy);}
+.askq-btn-submit:disabled{opacity:.6;cursor:default;}
+.askq-success{color:var(--res);font-weight:700;margin-top:14px;font-size:14px;display:none;}
+.askq-error{color:#C0392B;font-weight:700;margin-top:14px;font-size:14px;display:none;}
+@media (max-width:600px){.askq-fab{bottom:16px;right:16px;padding:12px 16px;font-size:13px;}.askq-fab span{display:none;}}
+</style>
+
+<button class="askq-fab" id="askqFab" type="button" aria-haspopup="dialog">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+  <span>Ask a question</span>
+</button>
+
+<div class="askq-overlay" id="askqOverlay" role="dialog" aria-modal="true" aria-labelledby="askqTitle">
+  <div class="askq-modal">
+    <h3 id="askqTitle">Ask a question</h3>
+    <p class="askq-sub">Need more information about what you're reading? Send a question to the ECMS team.</p>
+    <p class="askq-ctx" id="askqContext"></p>
+    <form id="askqForm">
+      <label for="askqMessage">Your question</label>
+      <textarea id="askqMessage" name="message" required placeholder="What would you like to know more about?"></textarea>
+      <label for="askqName">Your name (optional)</label>
+      <input type="text" id="askqName" name="name" placeholder="Jane Doe" autocomplete="name" />
+      <label for="askqEmail">Your email (optional, so we can reply)</label>
+      <input type="email" id="askqEmail" name="_replyto" placeholder="jane@agency.gov" autocomplete="email" />
+      <input type="hidden" name="page" id="askqPageField" />
+      <input type="hidden" name="section" id="askqSectionField" />
+      <input type="hidden" name="_subject" id="askqSubjectField" />
+      <div class="askq-actions">
+        <button type="button" class="askq-btn-cancel" id="askqCancel">Cancel</button>
+        <button type="submit" class="askq-btn-submit" id="askqSubmit">Send question</button>
+      </div>
+      <div class="askq-success" id="askqSuccess">&#10003; Thanks! Your question has been sent to the ECMS team.</div>
+      <div class="askq-error" id="askqErrorMsg">Something went wrong sending your question. Please try again, or email the team directly.</div>
+    </form>
+  </div>
+</div>
+
+<script>
+(function(){
+  var fab = document.getElementById('askqFab');
+  var overlay = document.getElementById('askqOverlay');
+  var cancel = document.getElementById('askqCancel');
+  var form = document.getElementById('askqForm');
+  var ctx = document.getElementById('askqContext');
+  var pageField = document.getElementById('askqPageField');
+  var sectionField = document.getElementById('askqSectionField');
+  var subjectField = document.getElementById('askqSubjectField');
+  var submitBtn = document.getElementById('askqSubmit');
+  var success = document.getElementById('askqSuccess');
+  var errorEl = document.getElementById('askqErrorMsg');
+  if (!fab || !overlay) return;
+
+  function currentSection(){
+    var marks = document.querySelectorAll('main h2, main .step');
+    var best = null;
+    var scrollPos = window.scrollY + 160;
+    marks.forEach(function(el){
+      if (el.offsetTop <= scrollPos) best = el;
+    });
+    if (!best) return 'Overview';
+    if (best.classList && best.classList.contains('step')) {
+      var h3 = best.querySelector('h3');
+      if (h3) {
+        var numEl = h3.querySelector('.stepnum');
+        var num = numEl ? numEl.textContent.trim() : '';
+        var clone = h3.cloneNode(true);
+        var cloneNum = clone.querySelector('.stepnum');
+        if (cloneNum) cloneNum.parentNode.removeChild(cloneNum);
+        var label = clone.textContent.replace(/\s+/g, ' ').trim();
+        return (num ? 'Step ' + num + ': ' : '') + label;
+      }
+    }
+    return best.textContent.replace(/\s+/g, ' ').trim();
+  }
+
+  function openModal(){
+    var pageTitle = document.querySelector('h1') ? document.querySelector('h1').textContent.trim() : document.title;
+    var section = currentSection();
+    ctx.textContent = 'Page: ' + pageTitle + '  \u2014  Section: ' + section;
+    pageField.value = pageTitle;
+    sectionField.value = section;
+    subjectField.value = 'ECMS User Guide question \u2014 ' + pageTitle;
+    overlay.classList.add('askq-open');
+    success.style.display = 'none';
+    errorEl.style.display = 'none';
+    document.getElementById('askqMessage').focus();
+  }
+  function closeModal(){ overlay.classList.remove('askq-open'); }
+
+  fab.addEventListener('click', openModal);
+  cancel.addEventListener('click', closeModal);
+  overlay.addEventListener('click', function(e){ if (e.target === overlay) closeModal(); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeModal(); });
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending\u2026';
+    fetch('https://formspree.io/f/mnpjnqqk', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: new FormData(form)
+    }).then(function(res){
+      if (res.ok) {
+        success.style.display = 'block';
+        errorEl.style.display = 'none';
+        form.reset();
+        setTimeout(closeModal, 2200);
+      } else {
+        errorEl.style.display = 'block';
+      }
+    }).catch(function(){
+      errorEl.style.display = 'block';
+    }).finally(function(){
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send question';
+    });
+  });
+})();
+</script>
+
+</body></html>

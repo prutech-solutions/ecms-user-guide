@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Summer Enrollments — ECMS User Guide</title><style>
+:root{--ink:#1B2430;--head:#0B2545;--muted:#5B6478;--link:#1657CE;--line:#DCE1EA;--line2:#EAEDF3;--code:#F5F7FB;--navy:#0B2545;--accent:#1657CE;--do:#1657CE;--res:#1E8E5A;--soft:#F5F7FB;--brandA:#0072CE;--brandB:#00A65A;--brandC:#F5A623;--brandD:#D0103A;}
+*{box-sizing:border-box;} html{scroll-behavior:smooth;}
+body{margin:0;color:var(--ink);background:#fff;font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;line-height:1.65;font-size:16px;}
+a{color:var(--link);text-decoration:none;} a:hover{text-decoration:underline;}
+code{font-family:'SFMono-Regular',Consolas,Menlo,monospace;background:var(--code);border:1px solid var(--line);border-radius:4px;padding:1px 6px;font-size:13.5px;color:#0a2a5e;}
+.topbar{position:sticky;top:0;z-index:10;box-shadow:0 1px 0 var(--line);}
+.tb-top{background:#fff;border-bottom:1px solid var(--line);}
+.tb-top .in{max-width:1260px;margin:0 auto;padding:14px 32px;display:flex;align-items:center;gap:12px;}
+.doe-logo{display:flex;align-items:baseline;gap:1px;font-weight:800;font-size:20px;letter-spacing:.2px;}
+.doe-logo b:nth-child(1){color:var(--brandA);} .doe-logo b:nth-child(2){color:var(--brandC);} .doe-logo b:nth-child(3){color:var(--brandB);} .doe-logo b:nth-child(4){color:var(--brandD);}
+.doe-sub{color:var(--muted);font-size:12.5px;padding-left:10px;border-left:1px solid var(--line);}
+.tb-bottom{background:var(--navy);}
+.tb-bottom .in{max-width:1260px;margin:0 auto;padding:10px 32px;display:flex;align-items:center;gap:22px;}
+.ecms-brand{color:#fff;font-weight:700;font-size:15px;letter-spacing:.3px;}
+.topnav{display:flex;gap:24px;margin-left:6px;}
+.topnav a{color:#cfe0fb;font-weight:600;font-size:13.5px;}
+.topnav a.cur{color:#fff;}
+@media (max-width:760px){.topnav{display:none;}}
+.crumbs{max-width:1260px;margin:0 auto;padding:16px 32px 0;font-size:13px;color:var(--muted);}
+.crumbs a{color:var(--muted);} .crumbs span{margin:0 7px;}
+.wrap{max-width:1260px;margin:0 auto;padding:8px 32px 60px;display:grid;grid-template-columns:270px minmax(0,1fr);gap:52px;}
+main{min-width:0;max-width:840px;}
+h1{font-size:32px;line-height:1.2;color:var(--head);margin:14px 0 6px;font-weight:700;}
+.lead{font-size:16.5px;color:var(--ink);margin:10px 0 4px;}
+.subtext{color:var(--muted);font-size:14px;margin:2px 0 0;}
+h2{font-size:22px;color:var(--head);font-weight:700;margin:42px 0 6px;padding-bottom:8px;border-bottom:1px solid var(--line);}
+h3{font-size:17.5px;color:var(--head);font-weight:700;margin:8px 0 2px;}
+p{margin:10px 0;}
+ul.bul{margin:10px 0;padding-left:22px;} ul.bul li{margin:6px 0;}
+table{border-collapse:collapse;width:100%;margin:16px 0;font-size:14.5px;}
+th,td{border:1px solid var(--line);padding:9px 13px;text-align:left;vertical-align:top;}
+th{background:var(--soft);color:var(--head);font-weight:700;}
+.lbl{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;padding:2px 9px;border-radius:4px;margin-right:8px;vertical-align:middle;}
+.lbl-do{background:#E6EFFC;color:var(--do);} .lbl-res{background:#E5F5EC;color:var(--res);}
+.step{scroll-margin-top:118px;border-top:1px solid var(--line2);padding-top:28px;margin-top:28px;}
+.step:first-of-type{border-top:none;margin-top:14px;padding-top:8px;}
+.step .stepnum{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;background:var(--navy);color:#fff;font-weight:700;font-size:14px;margin-right:10px;vertical-align:middle;}
+.step h3{display:inline;}
+h2,h3{scroll-margin-top:118px;}
+figure{margin:14px 0 4px;}
+figure img{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:8px;box-shadow:0 4px 14px rgba(11,37,69,.08);}
+figcaption{font-size:13px;color:var(--muted);margin-top:8px;font-style:italic;}
+.callout{background:var(--soft);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:6px;padding:14px 18px;margin:14px 0;}
+.callout b{color:var(--head);}
+.note{background:#fff8ec;border:1px solid #f3e2bd;border-left:4px solid #e0a127;border-radius:6px;padding:6px 18px;margin:14px 0;}
+.sidenav{position:sticky;top:104px;align-self:start;font-size:14px;max-height:calc(100vh - 120px);overflow:auto;padding-right:6px;}
+.nav-cat{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);font-weight:700;padding:0 0 10px;border-bottom:1px solid var(--line);margin-bottom:8px;}
+ul.nav{list-style:none;margin:0;padding:0;} ul.nav>li{margin:2px 0;}
+a.lvl1{display:block;padding:7px 10px;border-radius:6px;color:var(--head);font-weight:600;font-size:13.6px;}
+a.lvl1:hover{background:var(--soft);text-decoration:none;}
+a.lvl1.cur{color:var(--accent);background:var(--soft);border-left:3px solid var(--accent);padding-left:8px;}
+.backhome{display:inline-block;margin:14px 0 4px;font-weight:700;font-size:13.5px;}
+.meta-row{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 6px;}
+.chip{font-size:11.5px;font-weight:600;color:var(--navy);background:var(--soft);border:1px solid var(--line);border-radius:20px;padding:3px 10px;}
+.site-footer{background:var(--navy);color:#fff;margin-top:48px;}
+.site-footer .ft-in{max-width:1260px;margin:0 auto;padding:22px 32px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px;}
+.ft-left b{font-size:14px;} .ft-left div{color:#B9C7E3;font-size:12.5px;margin-top:4px;}
+.ft-nav a{color:#fff;font-size:13px;}
+@media (max-width:900px){.wrap{grid-template-columns:1fr;}.sidenav{position:static;max-height:none;}}
+</style></head>
+<body>
+<div class="topbar">
+  <div class="tb-top"><div class="in">
+    <span class="doe-logo"><b>N</b><b>Y</b><b>C</b></span>
+    <span class="doe-sub">Department of Education &middot; Division of Early Childhood Education</span>
+  </div></div>
+  <div class="tb-bottom"><div class="in">
+    <span class="ecms-brand">ECMS User Guide</span>
+    <nav class="topnav"><a href="index.html">Home</a></nav>
+  </div></div>
+</div>
+<div class="crumbs"><a href="index.html">ECMS User Guide</a><span>/</span>Summer Enrollments</div>
+<div class="wrap">
+
+  <nav class="sidenav">
+    <div class="nav-cat">On this page</div>
+    <ul class="nav">
+      <li><a class="lvl1" href="#overview">Overview</a></li>
+      <li><a class="lvl1" href="#step-1">1. ECMS auto-creates a Draft summer enrollment</a></li>
+      <li><a class="lvl1" href="#step-2">2. It appears on the student's Contact record</a></li>
+      <li><a class="lvl1" href="#step-3">3. The vendor sees it in the portal</a></li>
+      <li><a class="lvl1" href="#step-4">4. Vendor reviews and edits before submitting</a></li>
+      <li><a class="lvl1" href="#step-5">5. Vendor submits the summer enrollment</a></li>
+      <li><a class="lvl1" href="#step-6">6. ECMS auto-approves it on submission</a></li>
+      <li><a class="lvl1" href="#step-7">7. Exception: an address change routes to review</a></li>
+      <li><a class="lvl1" href="#step-8">8. No student screening record is created</a></li>
+      <li><a class="lvl1" href="#step-9">9. Late submissions still resolve automatically</a></li>
+      <li><a class="lvl1" href="#step-10">10. Summer enrollments in the reporting dashboard</a></li>
+      <li><a class="lvl1" href="#step-11">11. End of the summer session</a></li>
+      <li><a class="lvl1" href="#step-12">12. The manual fallback for late-approved regular enrollments</a></li>
+    </ul>
+    <a class="backhome" href="index.html">&larr; Back to User Guide home</a>
+  </nav>
+
+  <main id="top">
+    <h1>Summer Enrollments</h1>
+    <p class="lead">A separate, mostly-automated enrollment lifecycle that runs alongside the regular school-year
+    enrollment lifecycle every summer. ECMS itself is the primary actor for most of this guide &mdash; it
+    creates the records, and (in almost every case) it approves them too &mdash; with the CBO/FCCN vendor's
+    <strong>Enrollment Manager</strong> reviewing, editing, and submitting each one, and a <strong>DOE Enrollment
+    Specialist</strong> only entering the picture for one specific exception.</p>
+    <div class="meta-row">
+      <span class="chip">12 steps</span><span class="chip">~13 min read</span>
+      <span class="chip">Persona: ECMS (automated) / CBO&ndash;FCCN Enrollment Manager / DOE Enrollment Specialist (exception path only)</span>
+    </div>
+
+    <h2 id="overview">Overview</h2>
+    <p>This guide is the summer-specific variant of the enrollment lifecycle already covered in
+    <a href="guide-04-enrollments-cbo.html">Guide 4 (Enrollments &mdash; CBO)</a> and
+    <a href="guide-05-enrollments-fccn.html">Guide 5 (Enrollments &mdash; FCCN)</a>. It does not re-explain
+    the basic Draft &rarr; Submitted &rarr; Approved &rarr; Active &rarr; Discharged status path, MySchools, OASIS,
+    or ACCIS, all of which work the same way here. <p> What's different about summer is <em>who (or what) does each
+    step</em>. </p> At the end of the school year, ECMS itself &mdash; not a person
+    &mdash; automatically clones every eligible school-year enrollment into a new Draft summer enrollment. The
+    vendor then reviews, edits, and submits it from the portal exactly as they would any other enrollment. From
+    there, ECMS again acts on its own: it automatically approves the submission, without a DOE Enrollment
+    Specialist in the loop at all &mdash; unless the student's address changed, which is the one case that still
+    routes to a human reviewer. <p> There's also a narrow manual fallback, covered at the end of this guide, for
+    school-year enrollments that get approved <em>after</em> the automation has already run for the year.
+    On the object model, a summer enrollment is not a separate record type: it's distinguished only by the type of <em>Summer</em> instead
+    of <em>Regular</em>.</p> 
+    
+
+    <div class="step" id="step-1">
+      <h3><span class="stepnum">1</span>ECMS auto-creates a Draft summer enrollment</h3>
+      <p><span class="lbl lbl-do">DO</span> Nothing &mdash; this step happens entirely inside ECMS, with no
+      vendor or DOE action. Once the last day of the regular school year has
+      passed (the automation runs the night of June 30th, tenant time, provided an active/published vendor site
+      mapping exists for the new fiscal year), the system scans every school-year enrollment in <em>Approved</em>
+      or <em>Information Requested</em> status for the eligible seat types &mdash; HS-CTL, Toddler CTL, Infant
+      CTL, and EDY, across all program types &mdash; and clones one summer enrollment per eligible record.</p>
+      <p><span class="lbl lbl-res">RESULT</span> A brand-new Enrollment record appears with its own unique
+      enrollment number, <strong>Type</strong> = <em>Summer</em>, and <strong>Status</strong> = <em>Draft</em> by
+      default. Almost every field is copied as-is from the school-year enrollment &mdash; except
+      <strong>First Day of Attendance</strong>, which is reset to the first day of summer school. Per the BRD's
+      data-cloning acceptance criteria, <strong>Attendance</strong> records, <strong>Approval History</strong>,
+      and eligibility results are deliberately <em>not</em> copied over (only the underlying student IDs &mdash;
+      Case Number, Child Number, Student ID &mdash; carry across). </p>
+      <figure>
+        <img src="screenshots/g11-01-draft-summer-enrollment-detail.png" alt="Internal Enrollment detail page for ENROL-0000000025, student Raj sing, Type Summer, Status Draft, First Day of Attendance 6/23/2026, at CBO site" />
+        <figcaption>ENROL-0000000025 &mdash; auto-created Draft summer enrollment for Raj sing.</figcaption>
+      </figure>
+    </div>
+
+    <div class="step" id="step-2">
+      <h3><span class="stepnum">2</span>It appears on the student's Contact record</h3>
+      <p><span class="lbl lbl-do">DO</span> Nothing further &mdash; navigate to the Contact record to
+      confirm this.</p>
+      <p><span class="lbl lbl-res">RESULT</span> The
+      new summer enrollment shows up immediately in the <strong>Enrollments</strong> related list on the
+      student's Contact record, alongside the prior school-year enrollment it was cloned from &mdash; here,
+      the Contact shows both ENROL-0000000007 (Discharged, Regular, the closed-out school-year record)
+      and ENROL-0000000025 (Draft, Summer, the new one). Internal ECMS users with enrollment access can see the
+      new record right away, regardless of its status &mdash; there's no waiting period.</p>
+      <figure>
+        <img src="screenshots/g11-02-contact-enrollments-related-list.png" alt="Contact detail page for Raj sing showing an Enrollments related list with two records: ENROL-0000000007 Discharged Regular and ENROL-0000000025 Draft Summer" />
+        <figcaption>Raj sing's Contact record &mdash; the new summer enrollment appears in the Enrollments related list right away.</figcaption>
+      </figure>
+    </div>
+
+    <div class="step" id="step-3">
+      <h3><span class="stepnum">3</span>The vendor sees it in the portal</h3>
+      <p><span class="lbl lbl-do">DO</span> Logged into the vendor portal, open <strong>Student Enrollments</strong>.</p>
+      <p><span class="lbl lbl-res">RESULT</span> Once a summer enrollment has been
+      auto-created, it's immediately visible to the vendor in the portal's Enrollments list, mixed in with
+      enrollments at every other stage of the lifecycle.</p>
+      <figure>
+        <img src="screenshots/g11-03-portal-enrollments-list.png" alt="Vendor portal Student Enrollments list, logged in as Sunny Sing of CBO Acoount, showing 12 enrollments at CBO site in a mix of Draft, Submitted, Approved and Discharged statuses" />
+        <figcaption>Vendor portal &mdash; Enrollments list, scoped to CBO site, showing summer enrollments at multiple stages.</figcaption>
+      </figure>
+    </div>
+
+    <div class="step" id="step-4">
+      <h3><span class="stepnum">4</span>Vendor reviews and edits before submitting</h3>
+      <p><span class="lbl lbl-do">DO</span> The Enrollment Manager opens the Draft summer enrollment and reviews it, correcting the <strong>First Day of Attendance</strong> or
+      other permitted enrollment details as needed.</p>
+      <p><span class="lbl lbl-res">RESULT</span> The vendor can update editable fields
+      like First Day of Attendance and other enrollment details, and the system saves whatever they enter.
+      Key student identity fields &mdash; <strong>First Name, Last Name, Date of Birth, and Gender</strong>
+      &mdash; remain non-editable for the vendor on a Draft summer enrollment record. The portal view below shows
+      exactly this record mid-review: Status still Draft, an <strong>Edit</strong> action available, and a
+      <strong>Submit Enrollment</strong> button ready for the next step.</p>
+      <figure>
+        <img src="screenshots/g11-04-portal-draft-summer-enrollment-review.png" alt="Vendor portal Enrollment detail page for ENROL-0000000025, Raj sing, Type Summer, Status Draft, with Edit and Submit Enrollment buttons visible" />
+        <figcaption>Vendor portal &mdash; reviewing the Draft summer enrollment before submission.</figcaption>
+      </figure>
+    </div>
+
+    <div class="step" id="step-5">
+      <h3><span class="stepnum">5</span>Vendor submits the summer enrollment</h3>
+      <p><span class="lbl lbl-do">DO</span> Once satisfied, the Enrollment Manager clicks
+      <strong>Submit Enrollment</strong>.</p>
+      <p><span class="lbl lbl-res">RESULT</span> The enrollment is submitted following the
+      existing validation and flow rules, and <strong>Status</strong> advances to <em>Submitted</em>, with an <strong>Enrollment Specialist Approval</strong> step already sitting Pending in
+      Approval History &mdash; the trigger for what happens automatically in the next step.</p>
+      <figure>
+        <img src="screenshots/g11-05-portal-submitted-summer-enrollment.png" alt="Vendor portal Enrollment detail page for ENROL-0000000069, Toofu Dairy, Type Summer, Status Submitted, with an Approval History showing a Pending Enrolment Specialist Approval step" />
+        <figcaption>ENROL-0000000069, submitted &mdash; the auto-approve automation now picks this up.</figcaption>
+      </figure>
+    </div>
+
+    <div class="step" id="step-6">
+      <h3><span class="stepnum">6</span>ECMS auto-approves it on submission</h3>
+      <p><span class="lbl lbl-do">DO</span> Nothing &mdash; this is the headline automation. Unlike a regular school-year enrollment, a summer enrollment does not wait
+      in the Enrollment Specialists' review queue.</p>
+      <p><span class="lbl lbl-res">RESULT</span> The moment the vendor submits, ECMS immediately approves the
+      record itself: <strong>Status</strong> flips to <em>Approved</em>, the <strong>Auto Approved</strong>
+      checkbox is set, and both the portal and internal path bars reflect Approved. An
+      <strong>Approval History</strong> entry is written with the note
+      &ldquo;<em>Auto-approved vendor-submitted summer enrollment.</em>&rdquo; After submission, the
+      record is read-only to the vendor again, same as before.</p>
+      <figure>
+        <img src="screenshots/g11-06-auto-approved-summer-enrollment.png" alt="Internal Enrollment detail page for ENROL-0000000373, Agoda Jio, Type Summer, Status Approved, Auto Approved checked, with an Approval History entry commented Auto-approved vendor-submitted summer enrollment" />
+        <figcaption>ENROL-0000000373 &mdash; auto-approved the instant it was submitted, no Enrollment Specialist involved.</figcaption>
+      </figure>
+      
+    </div>
+
+    <div class="step" id="step-7">
+      <h3><span class="stepnum">7</span>Exception: an address change routes to review</h3>
+      <p><span class="lbl lbl-do">DO</span> Nothing extra from the vendor's side &mdash; but if the student's
+      address was modified as part of the vendor's edits before submission, be aware the outcome is different
+      from Step 6.</p>
+      <p><span class="lbl lbl-res">RESULT</span> If the student's address
+      was changed, the enrollment does <em>not</em> auto-approve. Instead it requires review by a DOE
+      <strong>Enrollment Specialist</strong> through the existing review flow, and <strong>Status</strong> stays
+      at <em>Submitted</em> until that review completes &mdash; this is the one path in the whole summer
+      lifecycle where a person, not the system, makes the approval decision. The system still stores the updated
+      address on the student's Contact record, overwriting the previous one. Internally, this is the same
+      Enrollments list every other queued record shows up in &mdash; there's no separate "address exception"
+      queue; an Enrollment Specialist simply finds it the same way they'd find any Submitted record.</p>
+      <figure>
+        <img src="screenshots/g11-07-internal-enrollments-list-context.png" alt="Internal Enrollments list view showing enrollment records across Draft, Submitted, Approved, and Discharged statuses at multiple sites, including the CBO site summer enrollments" />
+        <figcaption>Internal Enrollments list &mdash; where an address-changed summer submission would sit, same as any other queued record.</figcaption>
+      </figure>
+    </div>
+
+    <div class="step" id="step-8">
+      <h3><span class="stepnum">8</span>No student screening record is created</h3>
+      <p><span class="lbl lbl-do">DO</span> Nothing to do here &mdash; this is a deliberate gap worth knowing
+      about so you don't go looking for something that isn't there.</p>
+      <p><span class="lbl lbl-res">RESULT</span> Submitting a summer enrollment does
+      <em>not</em> automatically create a corresponding <strong>Student Screening</strong> record, unlike a
+      regular school-year enrollment submission, which still does. Look back at the Related List Quick Links on
+      ENROL-0000000373 in Step 6 &mdash; <strong>Student Screenings (0)</strong> &mdash; even though the record
+      is fully Approved. If you're used to seeing a screening appear automatically after a regular enrollment is
+      submitted, don't expect the same behavior here.</p>
+      <div class="callout">
+        <b>Regular enrollments are unaffected.</b> Student screening
+        auto-creation continues to work normally for regular (non-summer) enrollment records.
+      </div>
+    </div>
+
+    <div class="step" id="step-9">
+      <h3><span class="stepnum">9</span>Late submissions still resolve automatically</h3>
+      <p><span class="lbl lbl-do">DO</span> Nothing &mdash; this covers what happens if a summer enrollment is
+      still sitting in Draft, or gets submitted, after the summer session has already ended.</p>
+      <p><span class="lbl lbl-res">RESULT</span> A summer enrollment that is
+      submitted and approved (whether by an Enrollment Specialist or by the automation in Step 6) after the
+      summer period has ended is still resolved consistently: the system automatically updates its status to
+      reflect <em>Approved for the Summer Program</em>, in both the portal and internal path, with no manual
+      status override required or available.</em>&rdquo;</p>
+      <figure>
+        <img src="screenshots/g11-08-late-summer-enrollment-approved.png" alt="Internal Enrollment detail page for ENROL-0000000056, Martin Hook, Type Summer, Status Approved, with an Approval History entry commented Summer school has ended. This enrollment has been automatically approved." />
+        <figcaption>ENROL-0000000056 &mdash; resolved automatically even though summer school had already ended.</figcaption>
+      </figure>
+    </div>
+
+    <div class="step" id="step-10">
+      <h3><span class="stepnum">10</span>Summer enrollments in the reporting dashboard</h3>
+      <p><span class="lbl lbl-do">DO</span> As DOE internal staff with reporting access, open the
+      <strong>ECMS reporting Dashboard</strong> from Home and set its <strong>Enrollment Type</strong> filter to
+      <em>contains Summer</em>.</p>
+      <p><span class="lbl lbl-res">RESULT</span> The existing dashboard
+      components &mdash; not a separate summer-only dashboard &mdash; simply re-render against summer data: Total
+      Active/Approved Enrollments, Total Submitted Enrollments, Enrollments by Status and Seat Type,
+      Enrollments Awaiting Approval, and Enrollments &ndash; Additional Info Needed. The dashboard below is
+      filtered exactly this way and shows real counts (20 Active/Approved, 6 Submitted, 6 Awaiting Approval)
+      across the summer enrollment population. This same report can be run, refreshed, and exported
+      at any time, regardless of enrollment status, and once summer ends the same components simply reflect
+      regular school-year data again &mdash; no components are removed or hidden.</p>
+      <figure>
+        <img src="screenshots/g11-09-reporting-dashboard-summer.png" alt="ECMS reporting Dashboard filtered by Enrollment Type contains Summer, showing widgets for Total Active/Approved enrollments (20), Total Submitted enrollments (6), Enrollments by Status and Seat Type, Enrollments Awaiting Approval (6), and Enrollments - additional info needed (0)" />
+        <figcaption>ECMS reporting Dashboard, filtered to Summer enrollments &mdash; the same existing components DOE staff already use.</figcaption>
+      </figure>
+    </div>
+
+    <div class="step" id="step-11">
+      <h3><span class="stepnum">11</span>End of the summer session</h3>
+      <p><span class="lbl lbl-do">DO</span> Nothing &mdash; a formal Discharge closes out the summer enrollment
+      the same way it would close out any enrollment (see the <a href="guide-11-change-requests.html">Change Requests guide</a> for the general
+      mechanics).</p>
+      <p><span class="lbl lbl-res">RESULT</span> <strong>Status</strong> moves to <em>Discharged</em> with a
+      mandatory <strong>Discharge Date</strong>.The system will not save a
+      Discharge without one, on summer or regular enrollments alike.</p>
+      <figure>
+        <img src="screenshots/g11-10-discharged-summer-enrollment.png" alt="Internal Enrollment detail page for ENROL-0000000041, Rakul sing, Type Summer, Status Discharged, Discharge Date 7/6/2026, Status Reason Parent Request" />
+        <figcaption>ENROL-0000000041 &mdash; a summer enrollment closed out through Discharge, same rules as any other enrollment.</figcaption>
+      </figure>
+    </div>
+
+    <div class="step" id="step-12">
+      <h3><span class="stepnum">12</span>The manual fallback for late-approved regular enrollments</h3>
+      <p><span class="lbl lbl-do">DO</span> As a vendor (CBO/FCCN) or Enrollment Specialist, if a
+      <em>regular school-year</em> enrollment gets submitted and approved <strong>after</strong> the June 30th
+      rollover automation has already run &mdash; but summer school hasn't ended yet &mdash; open that Approved
+      (or Discharged, for valid return scenarios) regular enrollment record and click
+      <strong>Create Summer Enrollment</strong>.</p>
+      <p><span class="lbl lbl-res">RESULT</span> ECMS deliberately does
+      <em>not</em> auto-roll a late-approved or late-discharged regular enrollment into summer &mdash; the
+      automation in Step 1 already ran once for the year. Instead, the record's page displays a
+      <strong>Create Summer Enrollment</strong> action so the vendor or Enrollment Specialist can trigger it
+      intentionally. Clicking it clones the school-year enrollment into a new Draft summer enrollment with a new
+      unique enrollment number, using the same cloning behavior as the automatic path in Step 1, and the new
+      record then follows the standard summer submission/auto-approval workflow described in Steps 4&ndash;6.
+     The <strong>Create Summer Enrollment</strong> button sits right alongside Edit and
+      Enrollment Change Request on the record's action bar.</p>
+      <figure>
+        <img src="screenshots/g11-11-manual-create-summer-enrollment-action.png" alt="Internal Enrollment detail page for ENROL-0000000937, Type Regular, Status Approved, First Day of Attendance 7/1/2026, with a Create Summer Enrollment button in the action bar" />
+        <figcaption>ENROL-0000000937 &mdash; a late-approved regular enrollment with the manual Create Summer Enrollment fallback available.</figcaption>
+      </figure>
+      <div class="callout">
+        <b>Summer enrollments, end to end.</b> That's the full lifecycle: an automatic Draft at year-end, a
+        vendor review/submit step identical in spirit to Guides 4/5, an automatic approval with only one
+        human-review exception, consistent handling of late submissions, full reporting visibility alongside
+        regular enrollments, and a deliberate manual fallback for the one case the automation is designed to
+        skip. See Guides 4 and 5 for how the underlying status path, MySchools handoff, and OASIS/ACCIS
+        integrations behave day to day.
+      </div>
+    </div>
+
+    <a class="backhome" href="index.html">&larr; Back to User Guide home</a>
+  </main>
+</div>
+<div class="site-footer">
+  <div class="ft-in">
+    <div class="ft-left"><b>NYC DOE &middot; Division of Early Childhood Education</b><div>Early Childhood Management System (ECMS)</div></div>
+    <nav class="ft-nav"><a href="index.html">User Guide Home</a></nav>
+  </div>
+</div>
+<style>
+.askq-fab{position:fixed;bottom:24px;right:24px;z-index:1000;background:var(--navy);color:#fff;border:none;border-radius:999px;padding:14px 22px;font-weight:700;font-size:14px;font-family:inherit;box-shadow:0 6px 20px rgba(11,37,69,.35);cursor:pointer;display:flex;align-items:center;gap:8px;transition:background .15s,transform .15s;}
+.askq-fab:hover{background:var(--accent);transform:translateY(-1px);}
+.askq-fab svg{width:18px;height:18px;flex-shrink:0;}
+.askq-overlay{position:fixed;inset:0;background:rgba(11,37,69,.55);z-index:1001;display:none;align-items:center;justify-content:center;padding:20px;}
+.askq-overlay.askq-open{display:flex;}
+.askq-modal{background:#fff;border-radius:12px;max-width:480px;width:100%;padding:28px;box-shadow:0 20px 60px rgba(0,0,0,.35);max-height:90vh;overflow:auto;}
+.askq-modal h3{margin:0 0 6px;color:var(--navy);font-size:20px;font-weight:700;}
+.askq-modal .askq-sub{font-size:13.5px;color:var(--muted);margin:0 0 16px;}
+.askq-ctx{font-size:12.5px;color:var(--navy);margin:0 0 18px;padding:9px 12px;background:var(--soft);border:1px solid var(--line);border-radius:6px;}
+.askq-modal label{display:block;font-size:13px;font-weight:700;color:var(--navy);margin:14px 0 6px;}
+.askq-modal textarea,.askq-modal input{width:100%;border:1px solid var(--line);border-radius:6px;padding:10px 12px;font-size:14px;font-family:inherit;box-sizing:border-box;}
+.askq-modal textarea{min-height:90px;resize:vertical;}
+.askq-modal textarea:focus,.askq-modal input:focus{outline:2px solid var(--accent);outline-offset:1px;}
+.askq-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:20px;}
+.askq-btn-cancel{background:#fff;border:1px solid var(--line);color:var(--ink);padding:10px 18px;border-radius:6px;cursor:pointer;font-weight:700;font-size:14px;font-family:inherit;}
+.askq-btn-cancel:hover{background:var(--soft);}
+.askq-btn-submit{background:var(--accent);border:none;color:#fff;padding:10px 20px;border-radius:6px;cursor:pointer;font-weight:700;font-size:14px;font-family:inherit;}
+.askq-btn-submit:hover{background:var(--navy);}
+.askq-btn-submit:disabled{opacity:.6;cursor:default;}
+.askq-success{color:var(--res);font-weight:700;margin-top:14px;font-size:14px;display:none;}
+.askq-error{color:#C0392B;font-weight:700;margin-top:14px;font-size:14px;display:none;}
+@media (max-width:600px){.askq-fab{bottom:16px;right:16px;padding:12px 16px;font-size:13px;}.askq-fab span{display:none;}}
+</style>
+
+<button class="askq-fab" id="askqFab" type="button" aria-haspopup="dialog">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+  <span>Ask a question</span>
+</button>
+
+<div class="askq-overlay" id="askqOverlay" role="dialog" aria-modal="true" aria-labelledby="askqTitle">
+  <div class="askq-modal">
+    <h3 id="askqTitle">Ask a question</h3>
+    <p class="askq-sub">Need more information about what you're reading? Send a question to the ECMS team.</p>
+    <p class="askq-ctx" id="askqContext"></p>
+    <form id="askqForm">
+      <label for="askqMessage">Your question</label>
+      <textarea id="askqMessage" name="message" required placeholder="What would you like to know more about?"></textarea>
+      <label for="askqName">Your name (optional)</label>
+      <input type="text" id="askqName" name="name" placeholder="Jane Doe" autocomplete="name" />
+      <label for="askqEmail">Your email (optional, so we can reply)</label>
+      <input type="email" id="askqEmail" name="_replyto" placeholder="jane@agency.gov" autocomplete="email" />
+      <input type="hidden" name="page" id="askqPageField" />
+      <input type="hidden" name="section" id="askqSectionField" />
+      <input type="hidden" name="_subject" id="askqSubjectField" />
+      <div class="askq-actions">
+        <button type="button" class="askq-btn-cancel" id="askqCancel">Cancel</button>
+        <button type="submit" class="askq-btn-submit" id="askqSubmit">Send question</button>
+      </div>
+      <div class="askq-success" id="askqSuccess">&#10003; Thanks! Your question has been sent to the ECMS team.</div>
+      <div class="askq-error" id="askqErrorMsg">Something went wrong sending your question. Please try again, or email the team directly.</div>
+    </form>
+  </div>
+</div>
+
+<script>
+(function(){
+  var fab = document.getElementById('askqFab');
+  var overlay = document.getElementById('askqOverlay');
+  var cancel = document.getElementById('askqCancel');
+  var form = document.getElementById('askqForm');
+  var ctx = document.getElementById('askqContext');
+  var pageField = document.getElementById('askqPageField');
+  var sectionField = document.getElementById('askqSectionField');
+  var subjectField = document.getElementById('askqSubjectField');
+  var submitBtn = document.getElementById('askqSubmit');
+  var success = document.getElementById('askqSuccess');
+  var errorEl = document.getElementById('askqErrorMsg');
+  if (!fab || !overlay) return;
+
+  function currentSection(){
+    var marks = document.querySelectorAll('main h2, main .step');
+    var best = null;
+    var scrollPos = window.scrollY + 160;
+    marks.forEach(function(el){
+      if (el.offsetTop <= scrollPos) best = el;
+    });
+    if (!best) return 'Overview';
+    if (best.classList && best.classList.contains('step')) {
+      var h3 = best.querySelector('h3');
+      if (h3) {
+        var numEl = h3.querySelector('.stepnum');
+        var num = numEl ? numEl.textContent.trim() : '';
+        var clone = h3.cloneNode(true);
+        var cloneNum = clone.querySelector('.stepnum');
+        if (cloneNum) cloneNum.parentNode.removeChild(cloneNum);
+        var label = clone.textContent.replace(/\s+/g, ' ').trim();
+        return (num ? 'Step ' + num + ': ' : '') + label;
+      }
+    }
+    return best.textContent.replace(/\s+/g, ' ').trim();
+  }
+
+  function openModal(){
+    var pageTitle = document.querySelector('h1') ? document.querySelector('h1').textContent.trim() : document.title;
+    var section = currentSection();
+    ctx.textContent = 'Page: ' + pageTitle + '  \u2014  Section: ' + section;
+    pageField.value = pageTitle;
+    sectionField.value = section;
+    subjectField.value = 'ECMS User Guide question \u2014 ' + pageTitle;
+    overlay.classList.add('askq-open');
+    success.style.display = 'none';
+    errorEl.style.display = 'none';
+    document.getElementById('askqMessage').focus();
+  }
+  function closeModal(){ overlay.classList.remove('askq-open'); }
+
+  fab.addEventListener('click', openModal);
+  cancel.addEventListener('click', closeModal);
+  overlay.addEventListener('click', function(e){ if (e.target === overlay) closeModal(); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeModal(); });
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending\u2026';
+    fetch('https://formspree.io/f/mnpjnqqk', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: new FormData(form)
+    }).then(function(res){
+      if (res.ok) {
+        success.style.display = 'block';
+        errorEl.style.display = 'none';
+        form.reset();
+        setTimeout(closeModal, 2200);
+      } else {
+        errorEl.style.display = 'block';
+      }
+    }).catch(function(){
+      errorEl.style.display = 'block';
+    }).finally(function(){
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send question';
+    });
+  });
+})();
+</script>
+
+</body></html>
