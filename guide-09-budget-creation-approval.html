@@ -84,10 +84,11 @@ a.lvl1.cur{color:var(--accent);background:var(--soft);border-left:3px solid var(
       <li><a class="lvl1" href="#step-4">4. Fill in the budget's spending plan</a></li>
       <li><a class="lvl1" href="#step-5">5. Submit the budget for DOE approval</a></li>
       <li><a class="lvl1" href="#step-6">6. Operations Analyst (OA) review</a></li>
-      <li><a class="lvl1" href="#step-7">7. Check progress mid-review</a></li>
-      <li><a class="lvl1" href="#step-8">8. Budgets without a FAMIS Contract ID (pre-approval)</a></li>
-      <li><a class="lvl1" href="#step-9">9. Operations Director (OD) final sign-off</a></li>
-      <li><a class="lvl1" href="#step-10">10. Confirm the approved budget</a></li>
+      <li><a class="lvl1" href="#step-7">7. When OA rejects: the Hierarchical Rejection Workflow</a></li>
+      <li><a class="lvl1" href="#step-8">8. Check progress mid-review</a></li>
+      <li><a class="lvl1" href="#step-9">9. Budgets without a FAMIS Contract ID (pre-approval)</a></li>
+      <li><a class="lvl1" href="#step-10">10. Operations Director (OD) final sign-off</a></li>
+      <li><a class="lvl1" href="#step-11">11. Confirm the approved budget</a></li>
     </ul>
     <a class="backhome" href="index.html">&larr; Back to User Guide home</a>
   </nav>
@@ -99,7 +100,7 @@ a.lvl1.cur{color:var(--accent);background:var(--soft);border-left:3px solid var(
     &mdash; an <strong>Operations Analyst (OA)</strong> first, then an <strong>Operations Director (OD)</strong>
     for final sign-off.</p>
     <div class="meta-row">
-      <span class="chip">10 steps</span><span class="chip">~13 min read</span>
+      <span class="chip">11 steps</span><span class="chip">~15 min read</span>
       <span class="chip">Persona: CBO Budget Creator / Operations Analyst / Operations Director</span>
     </div>
 
@@ -162,6 +163,14 @@ a.lvl1.cur{color:var(--accent);background:var(--soft);border-left:3px solid var(
         exists as a contract period &mdash; the same rule that limits budgets and invoices to seat types the
         underlying contract actually covers.
       </div>
+      <div class="note">
+        <b>Legacy budgets.</b> A site whose contract type is <strong>Legacy Payment Terms (LPT)</strong>
+        creates and submits a budget exactly the same way described in this guide. What's different is
+        entirely on the invoice side &mdash; Legacy budgets follow a fixed September/October advance plus
+        monthly schedule instead of the standard monthly invoice process. See the
+        <a href="guide-10-invoice-creation-payment.html#step-15">Invoice Creation &amp; Payment guide</a> for
+        the Legacy invoicing schedule.
+      </div>
     </div>
 
     <div class="step" id="step-4">
@@ -176,7 +185,7 @@ a.lvl1.cur{color:var(--accent);background:var(--soft);border-left:3px solid var(
       <div class="note">
         <b>Note:</b> This step is a live vendor-portal wizard against a real contract, so it isn't saved or
         submitted here to avoid creating a duplicate budget record. The saved <strong>Funding
-        Information</strong> section shown later in Step 10 (Total Funding, Total Budgeted, Total OTPS, Staff
+        Information</strong> section shown later in Step 11 (Total Funding, Total Budgeted, Total OTPS, Staff
         Wages and Fringe Benefits) reflects exactly what this step produces once completed.
       </div>
     </div>
@@ -231,7 +240,42 @@ a.lvl1.cur{color:var(--accent);background:var(--soft);border-left:3px solid var(
     </div>
 
     <div class="step" id="step-7">
-      <h3><span class="stepnum">7</span>Check progress mid-review</h3>
+      <h3><span class="stepnum">7</span>When OA rejects: the Hierarchical Rejection Workflow</h3>
+      <p>Clicking <strong>Reject</strong> doesn't dead-end the budget &mdash; per
+      <strong>DOEECMS-2500 (&ldquo;Enable Hierarchical Rejection Workflow&rdquo;)</strong>, a rejection sends the
+      record back exactly <em>one level</em> in the approval hierarchy for correction and resubmission, rather
+      than ending the workflow outright. For Budgets the hierarchy is <strong>Vendor &rarr; OA &rarr; OD</strong>
+      &mdash; there is no third-level Central Approval for Budgets (that only applies to certain Invoices, see
+      the <a href="guide-10-invoice-creation-payment.html#step-14">Invoice guide</a>).</p>
+      <p><span class="lbl lbl-do">DO</span> When an OA rejects a budget still at the OA Approval step (like
+      <strong>B-00000082</strong>), the record goes back to the <strong>vendor</strong>, not to any internal
+      queue.</p>
+      <p><span class="lbl lbl-res">RESULT</span> <strong>Status</strong> becomes <strong>Rejected</strong> with
+      <strong>Sub Status &ldquo;Rejected by OA&rdquo;</strong> &mdash; confirmed live on B-00000082, both
+      internally and, critically, from the <strong>vendor's own portal view</strong>: the Sub Status is visible
+      there too, and <strong>Submit Budget</strong> and <strong>Add Classes</strong> buttons are available so
+      the vendor can actually fix the numbers and resend it &mdash; not just view a dead-end rejection.</p>
+      <figure>
+        <img src="screenshots/g8-20-vendor-rejected-budget-resubmit.png" alt="Vendor portal view of Budget B-00000082, Status Rejected, Sub Status Rejected by OA, with Submit Budget and Add Classes buttons available in the page header, and the approval-stage stepper showing Rejected as the current stage" />
+        <figcaption>B-00000082 &mdash; the vendor's own view of a rejected budget: Sub Status visible, Submit Budget/Add Classes available to fix and resend it.</figcaption>
+      </figure>
+      <div class="note">
+        <b>Confirmed fix, not assumed behavior.</b> This exact vendor-facing view was broken in UAT as recently
+        as September 2026 &mdash; <strong>DOEECMS-2825</strong> found the vendor saw only &ldquo;Budget
+        Summary&rdquo; and &ldquo;Upload Supporting Document,&rdquo; with no way to fix or resend a rejected
+        budget, and <strong>DOEECMS-2752</strong> found Sub Status wasn't visible to the vendor at all. Both are
+        now Closed and confirmed fixed live for this guide &mdash; don't assume a rejected budget is a dead end
+        if you've seen the older, broken behavior before.
+      </div>
+      <p>An <strong>OD</strong> rejection follows the same one-level-back rule: it sends the budget to the
+      <strong>OA</strong> (not the vendor), with Sub Status <strong>&ldquo;Rejected by OD&rdquo;</strong>, and
+      resubmission advances it to <strong>&ldquo;Pre-Approved by OA&rdquo;</strong> or <strong>&ldquo;Approved
+      by OA&rdquo;</strong> depending on whether a contract is attached &mdash; it does not restart the whole
+      approval chain from the vendor.</p>
+    </div>
+
+    <div class="step" id="step-8">
+      <h3><span class="stepnum">8</span>Check progress mid-review</h3>
       <p><span class="lbl lbl-do">DO</span> Since Cedar Point's own budget is already fully approved, use a
       different budget still in progress to see what a mid-review record looks like: <strong>B-00000054</strong>
       (Brookside Early Learning Center) is currently sitting between OA and OD review.</p>
@@ -245,8 +289,8 @@ a.lvl1.cur{color:var(--accent);background:var(--soft);border-left:3px solid var(
       </figure>
     </div>
 
-    <div class="step" id="step-8">
-      <h3><span class="stepnum">8</span>Budgets without a FAMIS Contract ID (pre-approval)</h3>
+    <div class="step" id="step-9">
+      <h3><span class="stepnum">9</span>Budgets without a FAMIS Contract ID (pre-approval)</h3>
       <p><span class="lbl lbl-do">DO</span> A budget can be submitted even before its contract has a
       <strong>FAMIS Contract ID</strong> &mdash; the field DOE's finance system uses to track the contract
       once it's fully executed. Open a contract that's still missing this field.</p>
@@ -312,8 +356,8 @@ a.lvl1.cur{color:var(--accent);background:var(--soft);border-left:3px solid var(
       </div>
     </div>
 
-    <div class="step" id="step-9">
-      <h3><span class="stepnum">9</span>Operations Director (OD) final sign-off</h3>
+    <div class="step" id="step-10">
+      <h3><span class="stepnum">10</span>Operations Director (OD) final sign-off</h3>
       <p><span class="lbl lbl-do">DO</span> On that same in-progress budget, open the <strong>Approval
       History</strong> tab to see the chain so far, including the pending OD step waiting to be actioned by an
       Operations Director (with <strong>Approve</strong>/<strong>Reject</strong> buttons available to whoever
@@ -329,8 +373,8 @@ a.lvl1.cur{color:var(--accent);background:var(--soft);border-left:3px solid var(
       </figure>
     </div>
 
-    <div class="step" id="step-10">
-      <h3><span class="stepnum">10</span>Confirm the approved budget</h3>
+    <div class="step" id="step-11">
+      <h3><span class="stepnum">11</span>Confirm the approved budget</h3>
       <p><span class="lbl lbl-do">DO</span> Once every required stage has approved, revisit the budget's
       detail page and its <strong>Approval History</strong> tab to confirm its final state.</p>
       <p><span class="lbl lbl-res">RESULT</span> Status reads <strong>"Approved by DOE,"</strong> the

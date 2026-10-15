@@ -92,6 +92,7 @@ a.lvl1.cur{color:var(--accent);background:var(--soft);border-left:3px solid var(
       <li><a class="lvl1" href="#step-12">12. Open the Seat Plan record and check its Status</a></li>
       <li><a class="lvl1" href="#step-13">13. Track Finalized and Published datasets</a></li>
       <li><a class="lvl1" href="#step-14">14. What "drafting" the dataset covers</a></li>
+      <li><a class="lvl1" href="#step-15">15. Seat Capacity: viewing and editing capacity at a single site</a></li>
     </ul>
     <a class="backhome" href="index.html">&larr; Back to User Guide home</a>
   </nav>
@@ -102,7 +103,7 @@ a.lvl1.cur{color:var(--accent);background:var(--soft);border-left:3px solid var(
     <strong>Contract</strong>, break it into a <strong>Contract Period</strong> (typically a fiscal year), and
     define the funded <strong>Contract Seats</strong> within that period.</p>
     <div class="meta-row">
-      <span class="chip">14 steps</span><span class="chip">~14 min read</span><span class="chip">Persona: Operations Analyst / Portfolio Team Member</span>
+      <span class="chip">15 steps</span><span class="chip">~16 min read</span><span class="chip">Persona: Operations Analyst / Portfolio Team Member</span>
     </div>
 
     <h2 id="overview">Overview</h2>
@@ -139,13 +140,13 @@ a.lvl1.cur{color:var(--accent);background:var(--soft);border-left:3px solid var(
     <div class="step" id="step-2">
       <h3><span class="stepnum">2</span>Start a new contract</h3>
       <p><span class="lbl lbl-do">DO</span> Click <strong>New</strong> on the related list. The
-      <strong>Vendor</strong> lookup pre-fills to this account. Fill in <strong>Contract Name</strong>,
+      <strong>Vendor</strong> lookup pre-fills to this account. Fill in <strong>Contract Number</strong>,
       <strong>RFP Number</strong>, <strong>Contract Start/End Date</strong>, <strong>Contract Amount</strong>,
       and optionally <strong>Contract Type</strong>, <strong>Program Name</strong>, and <strong>Site</strong>.</p>
       <p><span class="lbl lbl-res">RESULT</span> A "New ECMS Contract" form opens, already linked to the
       vendor, with fields for the contract's core terms and its FAMIS Contract ID.</p>
       <figure>
-        <img src="screenshots/g3-02-new-contract-form.png" alt="New ECMS Contract form, Vendor pre-filled to Cedar Point Early Childhood Academy, Contract Name HS-BTF-2027-CP-1102, RFP Number, Contract Start Date 7/1/2027, Contract End Date 6/30/2028, Contract Amount $55,000" />
+        <img src="screenshots/g3-02-new-contract-form.png" alt="New ECMS Contract form, Vendor pre-filled to Cedar Point Early Childhood Academy, Contract Number HS-BTF-2027-CP-1102, RFP Number, Contract Start Date 7/1/2027, Contract End Date 6/30/2028, Contract Amount $55,000" />
         <figcaption>New ECMS Contract form, vendor pre-linked from the related list.</figcaption>
       </figure>
       <div class="note">
@@ -378,6 +379,45 @@ a.lvl1.cur{color:var(--accent);background:var(--soft);border-left:3px solid var(
       place the Portfolio team and OA/ODs collaborate on an entire upcoming FY's seats and contracts as one
       dataset, with its own status lifecycle, instead of editing individual Contract Seat records one at a
       time.</p>
+    </div>
+
+    <div class="step" id="step-15">
+      <h3><span class="stepnum">15</span>Seat Capacity: viewing and editing capacity at a single site</h3>
+      <p><strong>Seat Capacity</strong> is a separate, narrower concept from the Seat Planning app covered in
+      Steps 10&ndash;14 &mdash; where Seat Planning works on an entire upcoming fiscal year's seat dataset
+      across every site at once, Seat Capacity is about one <strong>Class</strong> at one site right now:
+      how many children it's built to hold, and how many it currently has.</p>
+      <p><span class="lbl lbl-do">DO</span> Open a <strong>Site Master</strong> record (e.g. Cedar Point -
+      Riverdale Campus) and click into its <strong>Classes</strong> related list.</p>
+      <p><span class="lbl lbl-res">RESULT</span> A list loads of every Class at that site &mdash; this is how
+      to view seat capacity by site, confirmed live (one class, "Toddler Room - Head Start", for this site).</p>
+      <figure>
+        <img src="screenshots/g3-17-site-classes-related-list.png" alt="Classes related list on Site Master Cedar Point - Riverdale Campus, breadcrumb Sites Master > Cedar Point - Riverdale Campus > Classes, showing one record: Toddler Room - Head Start" />
+        <figcaption>Site Master &rarr; Classes related list &mdash; viewing seat capacity by site.</figcaption>
+      </figure>
+      <p><span class="lbl lbl-do">DO</span> Open the class record itself.</p>
+      <p><span class="lbl lbl-res">RESULT</span> The Class detail page shows <strong>Capacity</strong> (20)
+      and <strong>Seats Occupied</strong> (4) as their own fields, alongside Seat Type, Contract Type, and the
+      <strong>Seat Master</strong> link back to the Contract Seat this class draws from.</p>
+      <figure>
+        <img src="screenshots/g3-18-class-detail-capacity.png" alt="Class detail page for Toddler Room - Head Start, Site Cedar Point - Riverdale Campus, showing Capacity 20, Seats Occupied 4, Seat Type Head Start CTL, Contract Type Birth-To-Five (BTF), and Seat Master BTF_EDY_T" />
+        <figcaption>Toddler Room - Head Start &mdash; Capacity and Seats Occupied, confirmed live.</figcaption>
+      </figure>
+      <p><span class="lbl lbl-do">DO</span> Click the pencil icon next to <strong>Capacity</strong> to edit
+      it (cancelled here rather than saved, to avoid changing a class reused as a live example across several
+      other guides).</p>
+      <p><span class="lbl lbl-res">RESULT</span> ECMS opens the same full record-edit panel used by the page's
+      own <strong>Edit</strong> button &mdash; there's no separate lightweight inline-edit popup for this
+      field; editing Capacity means editing the whole Class record.</p>
+      <figure>
+        <img src="screenshots/g3-19-class-capacity-inline-edit.png" alt="Class edit panel for Toddler Room - Head Start opened via the Capacity field's pencil icon, showing the full record form including Capacity set to 20, Seat Master, and Seats Occupied fields, with Cancel and Save buttons" />
+        <figcaption>Editing Capacity opens the Class record's full edit panel, not an isolated quick-edit field.</figcaption>
+      </figure>
+      <div class="callout">
+        <b>For the Seat Capacity dashboards</b>, see the <a href="guide-12-reporting-dashboards.html#step-7">Reporting
+        &amp; Dashboards guide</a>, which already covers the live <strong>Seat Capacity Planning
+        Dashboard</strong> (Total Seats by Seat Type, and Capacity vs. Occupancy by School Type) in detail.
+      </div>
     </div>
 
     <a class="backhome" href="index.html">&larr; Back to User Guide home</a>

@@ -82,13 +82,12 @@ a.lvl1.cur{color:var(--accent);background:var(--soft);border-left:3px solid var(
       <li><a class="lvl1" href="#step-2">2. Pick the Class, then see the TITO message</a></li>
       <li><a class="lvl1" href="#step-3">3. Set Status and save</a></li>
       <li><a class="lvl1" href="#step-4">4. Submit and certify, same as standard attendance</a></li>
-      <li><a class="lvl1" href="#step-5">5. Check the SDY+ indicator on an Enrollment</a></li>
-      <li><a class="lvl1" href="#step-6">6. Run the SDY+ Active Enrollment Report</a></li>
-      <li><a class="lvl1" href="#step-7">7. Watch for the infant-to-toddler age validation alert</a></li>
-      <li><a class="lvl1" href="#step-8">8. Understand the 176-day SDY attendance limit</a></li>
-      <li><a class="lvl1" href="#step-9">9. Understand the monthly certification reminder</a></li>
-      <li><a class="lvl1" href="#step-10">10. FCCN Calendar Management</a></li>
-      <li><a class="lvl1" href="#step-11">11. Add a Scheduling Event to a Draft calendar</a></li>
+      <li><a class="lvl1" href="#step-5">5. Watch for the infant-to-toddler age validation alert</a></li>
+      <li><a class="lvl1" href="#step-6">6. Understand the 176-day SDY attendance limit</a></li>
+      <li><a class="lvl1" href="#step-7">7. Understand the monthly certification reminder</a></li>
+      <li><a class="lvl1" href="#step-8">8. 2K EDFY attendance &mdash; no TITO</a></li>
+      <li><a class="lvl1" href="#step-9">9. FCCN Calendar Management</a></li>
+      <li><a class="lvl1" href="#step-10">10. Add a Scheduling Event to a Draft calendar</a></li>
     </ul>
     <a class="backhome" href="index.html">&larr; Back to User Guide home</a>
   </nav>
@@ -100,7 +99,7 @@ a.lvl1.cur{color:var(--accent);background:var(--soft);border-left:3px solid var(
     <strong>not</strong> apply to them &mdash; TITO is strictly an EDY (Extended Day/Year) concern, tracked in
     an entirely separate external system, not in ECMS.</p>
     <div class="meta-row">
-      <span class="chip">11 steps</span><span class="chip">~12 min read</span><span class="chip">Persona: FCCN / SDY Attendance Taker</span>
+      <span class="chip">10 steps</span><span class="chip">~12 min read</span><span class="chip">Persona: FCCN / SDY Attendance Taker</span>
     </div>
 
     <h2 id="overview">Overview</h2>
@@ -196,50 +195,7 @@ a.lvl1.cur{color:var(--accent);background:var(--soft);border-left:3px solid var(
     </div>
 
     <div class="step" id="step-5">
-      <h3><span class="stepnum">5</span>Check the SDY+ indicator on an Enrollment</h3>
-      <p><span class="lbl lbl-do">DO</span> Open a live SDY-seat Enrollment record and look for an
-      <strong>SDY+ Information</strong> section.</p>
-      <p><span class="lbl lbl-res">RESULT</span> The record shows a checked <strong>SDY+</strong> indicator,
-      plus a related <strong>SDY+ Enrollments</strong> list containing a child <strong>SDY+ Enrollment</strong>
-      record that tracks its own Start Date and who started it.</p>
-      <figure>
-        <img src="screenshots/g7-06-enrollment-sdy-plus-checked.png" alt="ENROL-0000000543 detail page showing a checked SDY+ indicator under SDY+ Information, and a related SDY+ Enrollments list with one SDY-PLUS-ENROL child record" />
-        <figcaption>ENROL-0000000543 &mdash; live UAT record with SDY+ checked and a related SDY+ Enrollment tracking record (start date 8/31/2026).</figcaption>
-      </figure>
-      <div class="callout">
-        <b>Add SDY+ Checkbox Indicator to Student Enrollment Record.</b> This field is only applicable and editable when <strong>Seat Type = SDY</strong>, and is meant to
-        flag students attending the SDY+ program so downstream processes and reporting can identify them.
-      </div>
-    </div>
-
-    <div class="step" id="step-6">
-      <h3><span class="stepnum">6</span>Run the SDY+ Active Enrollment Report</h3>
-      <p><span class="lbl lbl-do">DO</span> From the app's <strong>Reports</strong> tab, search
-      <strong>All Reports</strong> for <code>SDY+</code>.</p>
-      <p><span class="lbl lbl-res">RESULT</span> A report titled <strong>SDY+ Active Enrollment
-      Report</strong> is returned, living in the Public Reports folder.</p>
-      <figure>
-        <img src="screenshots/g7-08-sdy-plus-report-search.png" alt="Reports tab, All Reports, search box containing SDY+, showing one result: SDY+ Active Enrollment Report in the Public Reports folder" />
-        <figcaption>Searching All Reports for "SDY+" &mdash; the report exists in the live UAT org, in Public Reports.</figcaption>
-      </figure>
-      <p><span class="lbl lbl-do">DO</span> Open the report.</p>
-      <p><span class="lbl lbl-res">RESULT</span> It returns only <strong>Approved</strong> or
-      <strong>Active</strong> enrollments, grouped by Site, with Enrollment # and Status columns, matching the enrollments seen in Step 9.</p>
-      <figure>
-        <img src="screenshots/g7-09-sdy-plus-report-open.png" alt="SDY+ Active Enrollment Report open, showing Total Records 6, a donut chart grouped by Site: Site Master Name, and a details table listing ENROL-0000000481, 499, 543, 544, 545, 546 with Approved/Active statuses" />
-        <figcaption>SDY+ Active Enrollment Report, run live &mdash; grouped by Site, filtered to Approved/Active + SDY+ enrollments.</figcaption>
-      </figure>
-      <div class="callout">
-        <b>Create SDY+ Active Enrollment Report by Site, Class, and Student.</b> The report groups by Site
-        and shows Enrollment # and Status; whether Class/Student-level grouping and a Student Name column are
-        also present depends on the report's format (summary vs. matrix) and column configuration, which
-        wasn't fully explored here &mdash; treat the detailed column/grouping spec as still subject to the
-        draft BRD, not fully confirmed against this screenshot.
-      </div>
-    </div>
-
-    <div class="step" id="step-7">
-      <h3><span class="stepnum">7</span>Watch for the infant-to-toddler age validation alert</h3>
+      <h3><span class="stepnum">5</span>Watch for the infant-to-toddler age validation alert</h3>
       <p><span class="lbl lbl-do">DO</span> Be aware that when attendance is taken for a student who is
       past their <strong>1st birthday (CBO/GFDC)</strong> or <strong>2nd birthday (FCC)</strong> while still
       assigned to an infant seat/program, the system will evaluate the child's age and class
@@ -252,13 +208,12 @@ a.lvl1.cur{color:var(--accent);background:var(--soft);border-left:3px solid var(
       <div class="callout">
         <b>Related change-request flow.</b> The vendor should be able to submit an
         <strong>Enrollment Change Request</strong> (Discharge, Change Seat Type, Change Class, or Program
-        Type) to act on this alert. SDY+ start/end dates are tracked automatically
-        off the checkbox value.
+        Type) to act on this alert.
       </div>
     </div>
 
-    <div class="step" id="step-8">
-      <h3><span class="stepnum">8</span>Understand the 176-day SDY attendance limit</h3>
+    <div class="step" id="step-6">
+      <h3><span class="stepnum">6</span>Understand the 176-day SDY attendance limit</h3>
       <p><span class="lbl lbl-do">DO</span> Know that for <strong>FCCN users on SDY seats</strong>, ECMS
       enforces a cap on total attendance days per enrollment year.</p>
       <p><span class="lbl lbl-res">RESULT</span> The config record shows <strong>Operating Day Limit
@@ -280,8 +235,8 @@ a.lvl1.cur{color:var(--accent);background:var(--soft);border-left:3px solid var(
       </div>
     </div>
 
-    <div class="step" id="step-9">
-      <h3><span class="stepnum">9</span>Understand the monthly certification reminder</h3>
+    <div class="step" id="step-7">
+      <h3><span class="stepnum">7</span>Understand the monthly certification reminder</h3>
       
       <p><span class="lbl lbl-do">DO</span> Know that after the 1st of
       each month, FCCN and CBO users with attendance still awaiting certification for a prior month receive a
@@ -302,11 +257,31 @@ a.lvl1.cur{color:var(--accent);background:var(--soft);border-left:3px solid var(
       </div>
     </div>
 
-    <div class="step" id="step-10">
-      <h3><span class="stepnum">10</span>FCCN Calendar Management</h3>
+    <div class="step" id="step-8">
+      <h3><span class="stepnum">8</span>2K EDFY attendance &mdash; no TITO</h3>
+      <p><span class="lbl lbl-do">DO</span> Before taking attendance for a 2K (age-2) EDFY seat at an
+      affiliated FCC Provider, note that it behaves differently from the regular SDY seat covered in steps
+      1&ndash;4, even though both live under the same Daily/Weekly Attendance screens.</p>
+      <p><span class="lbl lbl-res">RESULT</span> For a <strong>2K EDFY</strong> enrollment, the attendance
+      grid shows <strong>no Check-In/Check-Out fields at all</strong> &mdash; TITO is not required or allowed
+      for this seat type, the same as CBO's 2K EDFY/SDY (see the
+      <a href="guide-07-attendance-cbo.html">Attendance (CBO) guide</a>).</p>
+      <div class="note">
+        <b>Note:</b> As of this writing, there's an open issue (Jira DOEECMS-2821) where the <strong>Daily
+        Attendance</strong> screen can show no students at all for 2K EDFY classes, even though
+        <strong>Weekly Attendance</strong> works correctly for the same class/student. If Daily Attendance
+        looks empty for a 2K class, try Weekly Attendance before assuming the enrollment itself is the
+        problem. Whether the 176-day SDY limit from step 8 also applies to 2K EDFY hasn't been independently
+        confirmed for this guide &mdash; check the live Attendance Config record for the class's seat type
+        if this matters for your test.
+      </div>
+    </div>
+
+    <div class="step" id="step-9">
+      <h3><span class="stepnum">9</span>FCCN Calendar Management</h3>
       <p>Unlike CBOs, FCCNs have no Budget/Contract Seat model of their own; instead, the network's
       <strong>Calendar</strong> record is what tells ECMS which days count as service days for attendance and
-      the 176-day limit covered in Step 8. This is FCCN-specific &mdash; it has no CBO equivalent in this
+      the 176-day limit covered in Step 6. This is FCCN-specific &mdash; it has no CBO equivalent in this
       guide.</p>
       <p><span class="lbl lbl-do">DO</span> As a Network Director or External Admin, create or open a
       <strong>Calendar</strong> record (Record Type <strong>Network</strong>) for the network and the fiscal
@@ -333,15 +308,15 @@ a.lvl1.cur{color:var(--accent);background:var(--soft);border-left:3px solid var(
       </figure>
       <div class="note">
         <b>Note:</b> A provider's calendar (whichever one applies to it &mdash; network default or a Site-level
-        override) is what feeds the service-day math behind the 176-day SDY attendance limit in Step 8, and
-        the certification reminder in Step 9. If a Site's attendance looks off against the expected number of
+        override) is what feeds the service-day math behind the 176-day SDY attendance limit in Step 6, and
+        the certification reminder in Step 7. If a Site's attendance looks off against the expected number of
         service days for a month, check which calendar is actually governing that site before assuming an
         attendance data-entry error.
       </div>
     </div>
 
-    <div class="step" id="step-11">
-      <h3><span class="stepnum">11</span>Add a Scheduling Event to a Draft calendar</h3>
+    <div class="step" id="step-10">
+      <h3><span class="stepnum">10</span>Add a Scheduling Event to a Draft calendar</h3>
       <p>Before a calendar is submitted, the FCCN user who owns it can mark individual days on its monthly
       grid as something other than a standard program day &mdash; a Professional Learning day, a holiday, a
       clerical day, and so on. Each of these is its own <strong>Scheduling Event</strong> record, tied to that
@@ -372,7 +347,7 @@ a.lvl1.cur{color:var(--accent);background:var(--soft);border-left:3px solid var(
         <strong>Draft</strong> &mdash; an internal DOE login (including a System Administrator) viewing the
         same calendar sees a read-only grid with no Save option, and an already-<strong>Approved</strong>
         calendar is read-only for everyone. Add any Scheduling Events a calendar needs before submitting it
-        for approval in Step 10.
+        for approval in Step 9.
       </div>
     </div>
 

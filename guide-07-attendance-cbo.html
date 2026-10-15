@@ -87,6 +87,7 @@ a.lvl1.cur{color:var(--accent);background:var(--soft);border-left:3px solid var(
       <li><a class="lvl1" href="#step-7">7. Open Monthly Review to certify</a></li>
       <li><a class="lvl1" href="#step-8">8. Select the month and class to certify</a></li>
       <li><a class="lvl1" href="#step-9">9. Confirm the record behind the scenes</a></li>
+      <li><a class="lvl1" href="#step-10">10. 2K SDY/EDFY attendance &mdash; no TITO, unlike regular SDY</a></li>
     </ul>
     <a class="backhome" href="index.html">&larr; Back to User Guide home</a>
   </nav>
@@ -96,7 +97,7 @@ a.lvl1.cur{color:var(--accent);background:var(--soft);border-left:3px solid var(
     <p class="lead">How to record a CBO's daily attendance records using the <strong>Attendance Taker</strong>
     in the vendor portal, and how the CBO formally certifies a full month of attendance once it's complete.</p>
     <div class="meta-row">
-      <span class="chip">9 steps</span><span class="chip">~9 min read</span><span class="chip">Persona: CBO Attendance Taker</span>
+      <span class="chip">10 steps</span><span class="chip">~10 min read</span><span class="chip">Persona: CBO Attendance Taker</span>
     </div>
 
     <h2 id="overview">Overview</h2>
@@ -259,6 +260,24 @@ a.lvl1.cur{color:var(--accent);background:var(--soft);border-left:3px solid var(
         2026 attendance can now support an invoice for that month. From here, the next step in the chain is
         <strong>Budget approval</strong> and then <strong>Invoicing</strong> (see the Budgets &amp; Invoicing
         guide) &mdash; both of which will check back against this certification.
+      </div>
+    </div>
+
+    <div class="step" id="step-10">
+      <h3><span class="stepnum">10</span>2K SDY/EDFY attendance &mdash; no TITO, unlike regular SDY</h3>
+      <p><span class="lbl lbl-do">DO</span> Before taking attendance for a 2K (age-2) seat, check the
+      enrollment's <strong>Program Type</strong> &mdash; "Birth-to-Two/2K" seats behave differently from a
+      regular (3-K/4-K) CBO seat, even when the Seat Type field says the same thing (SDY or EDFY).</p>
+      <p><span class="lbl lbl-res">RESULT</span> For a <strong>2K SDY or 2K EDFY</strong> enrollment, the
+      attendance grid shows <strong>no Check-In/Check-Out fields at all</strong> &mdash; TITO is not required
+      or allowed for either 2K seat type. A regular (non-2K) CBO SDY seat is different: it still uses the
+      same Check-In/Check-Out TITO mechanism described in step 5.</p>
+      <div class="note">
+        <b>Note:</b> As of this writing, there's an open issue (Jira DOEECMS-2821) where the <strong>Daily
+        Attendance</strong> screen can show no students at all for 2K EDFY/SDY classes, even though
+        <strong>Weekly Attendance</strong> works correctly for the same class/student. If Daily Attendance
+        looks empty for a 2K class, try Weekly Attendance before assuming the enrollment itself is the
+        problem.
       </div>
     </div>
 

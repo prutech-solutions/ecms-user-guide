@@ -89,6 +89,7 @@ a.lvl1.cur{color:var(--accent);background:var(--soft);border-left:3px solid var(
       <li><a class="lvl1" href="#step-7">7. Review enrollments scoped to the network</a></li>
       <li><a class="lvl1" href="#step-8">8. DOE Enrollment Specialist review (Submitted)</a></li>
       <li><a class="lvl1" href="#step-9">9. Confirm the Active enrollment</a></li>
+      <li><a class="lvl1" href="#step-10">10. 2K EDFY enrollments &mdash; FCCN-specific rules</a></li>
     </ul>
     <a class="backhome" href="index.html">&larr; Back to User Guide home</a>
   </nav>
@@ -100,7 +101,7 @@ a.lvl1.cur{color:var(--accent);background:var(--soft);border-left:3px solid var(
     a home-based daycare business overseen by a <strong>Family Child Care Network (FCCN)</strong> — instead of
     at a CBO-run site.</p>
     <div class="meta-row">
-      <span class="chip">9 steps</span><span class="chip">~14 min read</span><span class="chip">Persona: FCCN Affiliation Manager / DOE Enrollment Specialist</span>
+      <span class="chip">10 steps</span><span class="chip">~15 min read</span><span class="chip">Persona: FCCN Affiliation Manager / DOE Enrollment Specialist</span>
     </div>
 
     <h2 id="overview">Overview</h2>
@@ -390,12 +391,41 @@ a.lvl1.cur{color:var(--accent);background:var(--soft);border-left:3px solid var(
       </div>
     </div>
 
+    <div class="step" id="step-10">
+      <h3><span class="stepnum">10</span>2K EDFY enrollments &mdash; FCCN-specific rules</h3>
+      <p><span class="lbl lbl-do">DO</span> Before enrolling a child into a 2K seat at an affiliated FCC
+      Provider, confirm two things that work differently from a CBO 2K enrollment: the <strong>Seat
+      Type</strong> and the child's <strong>age</strong>.</p>
+      <p><span class="lbl lbl-res">RESULT</span> FCCN only offers <strong>EDFY</strong> under the "2K"
+      Program Type &mdash; there is no 2K <strong>SDY</strong> option for FCCN/FCC Provider enrollments
+      (CBOs can offer both). The minimum enrollment age is also different: a child must be at least
+      <strong>18 months old</strong> on or before their First Day of Attendance (CBO's minimum is 24
+      months &mdash; see guide-04 step 14). Submitting a 2K EDFY enrollment for a child younger than 18
+      months is blocked with a validation message.</p>
+      <ul class="bul">
+        <li>EDFY doesn't require an ACCIS eligibility check &mdash; same rule as for CBO (see guide-04 step
+        6 for the general ACCIS check that still applies to other seat types).</li>
+        <li><strong>TITO (check-in/check-out) is not required or allowed</strong> for 2K EDFY attendance,
+        the same as CBO's 2K EDFY/SDY &mdash; see the
+        <a href="guide-08-attendance-fccn-sdy-tito.html">Attendance (FCCN/SDY) guide</a> for how that
+        looks on the attendance screen.</li>
+        <li>FCCN has <strong>no "Pending Admit Date" option</strong> for a child who isn't yet old enough
+        &mdash; unlike CBO 2K (guide-04 step 14), there's no way to submit early and fill in the age/date
+        later. The enrollment simply can't be submitted until the child turns 18 months.</li>
+      </ul>
+      <div class="note">
+        <b>Note:</b> This 18-month age rule was still finishing its testing pass as of this writing (Jira
+        DOEECMS-2719) &mdash; if you see different behavior in practice, treat it as worth re-confirming
+        rather than assuming this guide is wrong.
+      </div>
+    </div>
+
     <div class="callout">
       <b>Additional Features &mdash; see <a href="guide-04-enrollments-cbo.html">Guide 4</a>.</b> Six additional enrollment-submission features
       &mdash; the required Registration Packet upload, auto-assigned Admit Code, ACCIS eligibility verification,
       auto-approval for returning students, the all-status vendor Edit button, and the general Enrollment
       Change Request mechanism (Class/Seat Type/Program Type/Discharge) &mdash; are documented in detail in the
-      <a href="guide-04-enrollments-cbo.html#new-mechanics">Enrollments &mdash; CBO guide</a>. They apply to both CBO and FCCN enrollments.
+      <a href="guide-04-enrollments-cbo.html#overview">Enrollments &mdash; CBO guide</a>. They apply to both CBO and FCCN enrollments.
     </div>
 
     <a class="backhome" href="index.html">&larr; Back to User Guide home</a>

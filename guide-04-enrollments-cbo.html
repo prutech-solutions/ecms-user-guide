@@ -94,6 +94,7 @@ a.lvl1.cur{color:var(--accent);background:var(--soft);border-left:3px solid var(
       <li><a class="lvl1" href="#step-14">14. 2K enrollments can be submitted with a Pending Admit Date</a></li>
       <li><a class="lvl1" href="#step-15">15. Edit is available on every status &mdash; with limits</a></li>
       <li><a class="lvl1" href="#step-16">16. Change requests: one mechanism, four record types</a></li>
+      <li><a class="lvl1" href="#step-17">17. SDY+ Tracker: identifying SDY+ enrollments (CBO only)</a></li>
     </ul>
     <a class="backhome" href="index.html">&larr; Back to User Guide home</a>
   </nav>
@@ -103,7 +104,7 @@ a.lvl1.cur{color:var(--accent);background:var(--soft);border-left:3px solid var(
     <p class="lead">How to finish a MySchools-originated enrollment, submit it for review, and track it through DOE approval, 
     registration packet requirements, Admit Code assignment, ACCIS eligibility,and auto-approval.</p>
     <div class="meta-row">
-      <span class="chip">16 steps</span><span class="chip">~20 min read</span>
+      <span class="chip">17 steps</span><span class="chip">~21 min read</span>
       <span class="chip">Persona: CBO Enrollment Manager / DOE Enrollment Specialist</span>
     </div>
    
@@ -423,6 +424,46 @@ a.lvl1.cur{color:var(--accent);background:var(--soft);border-left:3px solid var(
         Request</strong>, <strong>Change Seat Type</strong>, <strong>Change Class</strong>, and <strong>Change
         Program Type</strong> scenarios in detail.
       </div>
+    </div>
+
+    <div class="step" id="step-17">
+      <h3><span class="stepnum">17</span>SDY+ Tracker: identifying SDY+ enrollments (CBO only)</h3>
+      <p><span class="lbl lbl-do">DO</span> Open a live SDY-seat Enrollment record and look for an
+      <strong>SDY+ Information</strong> section.</p>
+      <p><span class="lbl lbl-res">RESULT</span> The record shows a checked <strong>SDY+</strong> indicator,
+      plus a related <strong>SDY+ Enrollments</strong> list containing a child <strong>SDY+ Enrollment</strong>
+      record that tracks its own Start Date and who started it.</p>
+      <figure>
+        <img src="screenshots/g7-06-enrollment-sdy-plus-checked.png" alt="ENROL-0000000543 detail page showing a checked SDY+ indicator under SDY+ Information, and a related SDY+ Enrollments list with one SDY-PLUS-ENROL child record" />
+        <figcaption>ENROL-0000000543 &mdash; live UAT record with SDY+ checked and a related SDY+ Enrollment tracking record (start date 8/31/2026).</figcaption>
+      </figure>
+      <div class="callout">
+        <b>CBO-only field (DOEECMS-2343).</b> SDY+ is applicable and editable only when <strong>Seat Type =
+        SDY</strong>, and is a <strong>CBO-only</strong> feature &mdash; it flags students attending the
+        SDY+ program (set at the Site level, inherited by every enrollment at that Site) so downstream
+        processes and reporting can identify them. It does not apply to FCCN enrollments or attendance.
+      </div>
+      <p><span class="lbl lbl-do">DO</span> Change an SDY+-flagged enrollment's seat type away from SDY
+      (e.g. via Step 16's Seat Type Change request).</p>
+      <p><span class="lbl lbl-res">RESULT</span> The <strong>Is SDY Plus</strong> checkbox is automatically
+      cleared, and its related SDY+ Enrollment tracking record's <strong>End Date</strong> is automatically
+      set to the change request's effective date &mdash; no manual cleanup is required (confirmed working,
+      per DOEECMS-2625).</p>
+      <p><span class="lbl lbl-do">DO</span> From the app's <strong>Reports</strong> tab, search
+      <strong>All Reports</strong> for <code>SDY+</code>.</p>
+      <p><span class="lbl lbl-res">RESULT</span> A report titled <strong>SDY+ Active Enrollment
+      Report</strong> is returned, living in the Public Reports folder.</p>
+      <figure>
+        <img src="screenshots/g7-08-sdy-plus-report-search.png" alt="Reports tab, All Reports, search box containing SDY+, showing one result: SDY+ Active Enrollment Report in the Public Reports folder" />
+        <figcaption>Searching All Reports for "SDY+" &mdash; the report exists in the live UAT org, in Public Reports.</figcaption>
+      </figure>
+      <p><span class="lbl lbl-do">DO</span> Open the report.</p>
+      <p><span class="lbl lbl-res">RESULT</span> It returns only <strong>Approved</strong> or
+      <strong>Active</strong> enrollments, grouped by Site, with Enrollment # and Status columns.</p>
+      <figure>
+        <img src="screenshots/g7-09-sdy-plus-report-open.png" alt="SDY+ Active Enrollment Report open, showing Total Records 6, a donut chart grouped by Site: Site Master Name, and a details table listing ENROL-0000000481, 499, 543, 544, 545, 546 with Approved/Active statuses" />
+        <figcaption>SDY+ Active Enrollment Report, run live &mdash; grouped by Site, filtered to Approved/Active + SDY+ enrollments.</figcaption>
+      </figure>
     </div>
 
     <a class="backhome" href="index.html">&larr; Back to User Guide home</a>

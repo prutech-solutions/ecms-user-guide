@@ -92,6 +92,7 @@ a.lvl1.cur{color:var(--accent);background:var(--soft);border-left:3px solid var(
       <li><a class="lvl1" href="#step-12">12. Batch-refresh payment status for Open/Non-Paid invoices</a></li>
       <li><a class="lvl1" href="#step-13">13. Advance Payment Invoices (Journals)</a></li>
       <li><a class="lvl1" href="#step-14">14. Third-level Central Approval for EDY/HS-CTL invoices</a></li>
+      <li><a class="lvl1" href="#step-15">15. Legacy Budget invoicing &mdash; a different schedule for LPT contracts</a></li>
     </ul>
     <a class="backhome" href="index.html">&larr; Back to User Guide home</a>
   </nav>
@@ -103,7 +104,7 @@ a.lvl1.cur{color:var(--accent);background:var(--soft);border-left:3px solid var(
     (OD) review chain inside ECMS, and how ECMS finally hands it off to FAMIS so the vendor gets
     paid.</p>
     <div class="meta-row">
-      <span class="chip">14 steps</span><span class="chip">~19 min read</span>
+      <span class="chip">15 steps</span><span class="chip">~20 min read</span>
       <span class="chip">Persona: CBO Invoice Manager / Operations Analyst / Operations Director</span>
     </div>
 
@@ -402,10 +403,69 @@ a.lvl1.cur{color:var(--accent);background:var(--soft);border-left:3px solid var(
         distinctly from an OA/OD rejection.
       </div>
       <div class="callout">
+        <b>The Hierarchical Rejection Workflow applies to invoices too.</b> Per <strong>DOEECMS-2500</strong>
+        (the same story covered in depth in the <a href="guide-09-budget-creation-approval.html#step-7">Budget
+        guide</a>), an invoice rejection sends the record back exactly one level &mdash; <strong>Central
+        Approval rejects to OD</strong> (Sub Status &ldquo;Rejected by Central Approval&rdquo;, invoice Status
+        becomes <em>Partially Approved</em> once OD resubmits), <strong>OD rejects to OA</strong> (&ldquo;Rejected
+        by OD&rdquo;), and <strong>OA rejects to Vendor</strong> (&ldquo;Rejected by OA&rdquo;) &mdash; never a
+        full restart. <strong>Sub Status</strong> is confirmed visible on invoices too, both internally and to
+        the vendor (DOEECMS-2753, Closed) &mdash; this was previously missing entirely for invoices and was
+        fixed alongside the equivalent Budget-side gap.
+      </div>
+      <figure>
+        <img src="screenshots/g9-17-vendor-rejected-invoice-resubmit.png" alt="Vendor portal view of Invoice INV-00034, Status Rejected, Sub Status Rejected by OA, with an Update Line Items button available in the page header, and the approval-stage stepper showing Rejected as the current stage" />
+        <figcaption>INV-00034 &mdash; the vendor's own view of a rejected invoice: Sub Status visible, Update Line Items available to fix and resend it.</figcaption>
+      </figure>
+      <div class="note">
+        <b>One narrower, separate caveat.</b> <strong>Advance Payment Invoices</strong> (a distinct
+        <code>ECMS_Journal__c</code> record tied to a Budget, not the regular Invoice object used in Steps
+        1&ndash;13) had their own version of this bug &mdash; an OA couldn't resubmit after an OD rejection
+        (DOEECMS-2859). That ticket's last update (Oct 2026) says it's fixed, but it was still status
+        &ldquo;Ready for UAT&rdquo; rather than fully Closed as of this writing &mdash; worth a quick live check
+        before relying on it if you're specifically testing Advance Payment Invoices.
+      </div>
+      <div class="callout">
         <b>Invoice lifecycle complete.</b> This closes the ECMS workflow chain: Site/Vendor setup &rarr;
         Contracts &amp; Seats &rarr; Enrollment &rarr; Attendance &rarr; Budget &rarr; Invoice &rarr; FAMIS
         payment. Each subsequent month, the Invoice Manager repeats Steps 3&ndash;5 against that month's newly
         certified attendance.
+      </div>
+    </div>
+
+    <div class="step" id="step-15">
+      <h3><span class="stepnum">15</span>Legacy Budget invoicing &mdash; a different schedule for LPT contracts</h3>
+      <p><span class="lbl lbl-do">DO</span> For a budget tied to a <strong>Legacy Payment Terms (LPT)</strong>
+      contract (see guide-09 step 3), don't follow the standard monthly invoice process in Steps 1&ndash;10
+      above &mdash; Legacy budgets use a fixed advance-plus-monthly schedule instead.</p>
+      <p><span class="lbl lbl-res">RESULT</span> ECMS auto-calculates each Legacy invoice's amount from the
+      approved budget total, but the invoice itself still has to be created manually by the correct persona
+      for that month:</p>
+      <ul class="bul">
+        <li><strong>September (OA only):</strong> the Operations Analyst creates a single invoice defaulted
+        to <strong>20% of the total budget</strong>, which covers both September and October together.
+        Vendors cannot create this invoice, and there is no separate October invoice &mdash; attempting to
+        create one is blocked with an error.</li>
+        <li><strong>November through June (Vendor only):</strong> the vendor creates one invoice per month,
+        each defaulted to <strong>10% of the total budget</strong>. OAs cannot create these. The first of
+        these is the November invoice, and (except for District 84, below) it can't be created until that
+        month's attendance has been certified &mdash; the same attendance-certification gate described in
+        the standard process.</li>
+        <li><strong>District 84 (Charter schools) &mdash; no attendance certification required:</strong>
+        Charter schools don't track Pre-K enrollment or attendance in ECMS, so for a Legacy budget tied to a
+        District 84 site, the November&ndash;June monthly invoices can be created without an
+        attendance-certification gate. The OA's September invoice and its 20%/10% amounts work exactly the
+        same regardless of district.</li>
+      </ul>
+      <div class="note">
+        <b>Note:</b> The invoice's <strong>Total Amount</strong> is locked/non-editable for Legacy invoices
+        &mdash; it's auto-calculated from the budget and can't be changed by whoever creates it. There's also
+        no July or August invoice for Legacy budgets at all.
+      </div>
+      <div class="note">
+        <b>Approval routing for the September invoice.</b> Because the OA creates the September invoice,
+        only the <strong>OD</strong> approves it &mdash; an OA cannot approve an invoice they created
+        themselves, the same self-approval restriction that applies elsewhere in ECMS.
       </div>
     </div>
 
