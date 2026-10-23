@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Monitoring (Checklists) — ECMS User Guide</title><style>
+:root{--ink:#1B2430;--head:#0B2545;--muted:#5B6478;--link:#1657CE;--line:#DCE1EA;--line2:#EAEDF3;--code:#F5F7FB;--navy:#0B2545;--accent:#1657CE;--do:#1657CE;--res:#1E8E5A;--soft:#F5F7FB;--brandA:#0072CE;--brandB:#00A65A;--brandC:#F5A623;--brandD:#D0103A;}
+*{box-sizing:border-box;} html{scroll-behavior:smooth;}
+body{margin:0;color:var(--ink);background:#fff;font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;line-height:1.65;font-size:16px;}
+a{color:var(--link);text-decoration:none;} a:hover{text-decoration:underline;}
+code{font-family:'SFMono-Regular',Consolas,Menlo,monospace;background:var(--code);border:1px solid var(--line);border-radius:4px;padding:1px 6px;font-size:13.5px;color:#0a2a5e;}
+.topbar{position:sticky;top:0;z-index:10;box-shadow:0 1px 0 var(--line);}
+.tb-top{background:#fff;border-bottom:1px solid var(--line);}
+.tb-top .in{max-width:1260px;margin:0 auto;padding:14px 32px;display:flex;align-items:center;gap:12px;}
+.doe-logo{display:flex;align-items:baseline;gap:1px;font-weight:800;font-size:20px;letter-spacing:.2px;}
+.doe-logo b:nth-child(1){color:var(--brandA);} .doe-logo b:nth-child(2){color:var(--brandC);} .doe-logo b:nth-child(3){color:var(--brandB);} .doe-logo b:nth-child(4){color:var(--brandD);}
+.doe-sub{color:var(--muted);font-size:12.5px;padding-left:10px;border-left:1px solid var(--line);}
+.tb-bottom{background:var(--navy);}
+.tb-bottom .in{max-width:1260px;margin:0 auto;padding:10px 32px;display:flex;align-items:center;gap:22px;}
+.ecms-brand{color:#fff;font-weight:700;font-size:15px;letter-spacing:.3px;}
+.topnav{display:flex;gap:24px;margin-left:6px;}
+.topnav a{color:#cfe0fb;font-weight:600;font-size:13.5px;}
+.topnav a.cur{color:#fff;}
+@media (max-width:760px){.topnav{display:none;}}
+.crumbs{max-width:1260px;margin:0 auto;padding:16px 32px 0;font-size:13px;color:var(--muted);}
+.crumbs a{color:var(--muted);} .crumbs span{margin:0 7px;}
+.wrap{max-width:1260px;margin:0 auto;padding:8px 32px 60px;display:grid;grid-template-columns:270px minmax(0,1fr);gap:52px;}
+main{min-width:0;max-width:840px;}
+h1{font-size:32px;line-height:1.2;color:var(--head);margin:14px 0 6px;font-weight:700;}
+.lead{font-size:16.5px;color:var(--ink);margin:10px 0 4px;}
+.subtext{color:var(--muted);font-size:14px;margin:2px 0 0;}
+h2{font-size:22px;color:var(--head);font-weight:700;margin:42px 0 6px;padding-bottom:8px;border-bottom:1px solid var(--line);}
+h3{font-size:17.5px;color:var(--head);font-weight:700;margin:8px 0 2px;}
+p{margin:10px 0;}
+ul.bul{margin:10px 0;padding-left:22px;} ul.bul li{margin:6px 0;}
+table{border-collapse:collapse;width:100%;margin:16px 0;font-size:14.5px;}
+th,td{border:1px solid var(--line);padding:9px 13px;text-align:left;vertical-align:top;}
+th{background:var(--soft);color:var(--head);font-weight:700;}
+.lbl{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;padding:2px 9px;border-radius:4px;margin-right:8px;vertical-align:middle;}
+.lbl-do{background:#E6EFFC;color:var(--do);} .lbl-res{background:#E5F5EC;color:var(--res);}
+.step{scroll-margin-top:118px;border-top:1px solid var(--line2);padding-top:28px;margin-top:28px;}
+.step:first-of-type{border-top:none;margin-top:14px;padding-top:8px;}
+.step .stepnum{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;background:var(--navy);color:#fff;font-weight:700;font-size:14px;margin-right:10px;vertical-align:middle;}
+.step h3{display:inline;}
+h2,h3{scroll-margin-top:118px;}
+figure{margin:14px 0 4px;}
+figure img{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:8px;box-shadow:0 4px 14px rgba(11,37,69,.08);}
+figcaption{font-size:13px;color:var(--muted);margin-top:8px;font-style:italic;}
+.callout{background:var(--soft);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:6px;padding:14px 18px;margin:14px 0;}
+.callout b{color:var(--head);}
+.note{background:#fff8ec;border:1px solid #f3e2bd;border-left:4px solid #e0a127;border-radius:6px;padding:6px 18px;margin:14px 0;}
+.sidenav{position:sticky;top:104px;align-self:start;font-size:14px;max-height:calc(100vh - 120px);overflow:auto;padding-right:6px;}
+.nav-cat{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);font-weight:700;padding:0 0 10px;border-bottom:1px solid var(--line);margin-bottom:8px;}
+ul.nav{list-style:none;margin:0;padding:0;} ul.nav>li{margin:2px 0;}
+a.lvl1{display:block;padding:7px 10px;border-radius:6px;color:var(--head);font-weight:600;font-size:13.6px;}
+a.lvl1:hover{background:var(--soft);text-decoration:none;}
+a.lvl1.cur{color:var(--accent);background:var(--soft);border-left:3px solid var(--accent);padding-left:8px;}
+.backhome{display:inline-block;margin:14px 0 4px;font-weight:700;font-size:13.5px;}
+.meta-row{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 6px;}
+.chip{font-size:11.5px;font-weight:600;color:var(--navy);background:var(--soft);border:1px solid var(--line);border-radius:20px;padding:3px 10px;}
+.chip-phase1{color:var(--warn,#B8860B);background:#FBF3E0;border:1px solid #E8D4A0;}
+.site-footer{background:var(--navy);color:#fff;margin-top:48px;}
+.site-footer .ft-in{max-width:1260px;margin:0 auto;padding:22px 32px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px;}
+.ft-left b{font-size:14px;} .ft-left div{color:#B9C7E3;font-size:12.5px;margin-top:4px;}
+.ft-nav a{color:#fff;font-size:13px;}
+@media (max-width:900px){.wrap{grid-template-columns:1fr;}.sidenav{position:static;max-height:none;}}
+</style></head>
+<body>
+<div class="topbar">
+  <div class="tb-top"><div class="in">
+    <span class="doe-logo"><b>N</b><b>Y</b><b>C</b></span>
+    <span class="doe-sub">Department of Education &middot; Division of Early Childhood Education</span>
+  </div></div>
+  <div class="tb-bottom"><div class="in">
+    <span class="ecms-brand">ECMS User Guide</span>
+    <nav class="topnav"><a href="index.html">Home</a></nav>
+  </div></div>
+</div>
+<div class="crumbs"><a href="index.html">ECMS User Guide</a><span>/</span>Monitoring (Checklists)</div>
+<div class="wrap">
+
+  <nav class="sidenav">
+    <div class="nav-cat">On this page</div>
+    <ul class="nav">
+      <li><a class="lvl1" href="#overview">Overview</a></li>
+      <li><a class="lvl1" href="#step-1">1. Internal: view existing checklists</a></li>
+      <li><a class="lvl1" href="#step-2">2. Internal: create and send a criteria checklist</a></li>
+      <li><a class="lvl1" href="#step-3">3. Vendor: respond to an assigned checklist</a></li>
+      <li><a class="lvl1" href="#step-4">4. Site data and monitoring dashboards</a></li>
+    </ul>
+    <a class="backhome" href="index.html">&larr; Back to User Guide home</a>
+  </nav>
+
+  <main id="top">
+    <h1>Monitoring (Checklists)</h1>
+    <p class="lead">How DOE staff build and send a monitoring <strong>Checklist</strong> to a vendor from a
+    reusable template, and how the vendor responds to it &mdash; confirmed live end to end, from creation
+    through a completed response.</p>
+    <div class="meta-row">
+      <span class="chip">4 steps</span><span class="chip">~6 min read</span><span class="chip chip-phase1">Phase 1</span><span class="chip">Persona: ECMS Internal Admin / CBO Vendor Staff</span>
+    </div>
+
+    <h2 id="overview">Overview</h2>
+    <p>ECMS tracks site-monitoring activity as <strong>Checklist</strong> records (<code>ECMS_Checklist__c</code>),
+    each built from a reusable <strong>Checklist Template</strong> and sent to a <strong>Respondent</strong>
+    &mdash; a specific User, Contact, or Account. A Checklist moves through a fixed <strong>Stage</strong> path:
+    <strong>Draft &rarr; Sent to Respondent &rarr; In Progress &rarr; Completed</strong> (or
+    <strong>Cancelled</strong>) &mdash; confirmed live by creating, sending, and completing a real checklist
+    for this guide.</p>
+
+    <div class="step" id="step-1">
+      <h3><span class="stepnum">1</span>Internal: view existing checklists</h3>
+      <p><span class="lbl lbl-do">DO</span> Open the <strong>Checklists</strong> tab.</p>
+      <p><span class="lbl lbl-res">RESULT</span> A list loads showing <strong>Checklist Name</strong>,
+      <strong>Checklist Template Version</strong>, <strong>Respondent User</strong>, and <strong>Respondent
+      Type</strong> &mdash; every checklist ever sent, regardless of Stage.</p>
+      <figure>
+        <img src="screenshots/g15-01-internal-checklists-list.png" alt="Checklists list view showing CKL-00000000 through CKL-00000003, each with a Checklist Template Version, Respondent User, and Respondent Type" />
+        <figcaption>Checklists list &mdash; every checklist sent to date, across all respondents.</figcaption>
+      </figure>
+    </div>
+
+    <div class="step" id="step-2">
+      <h3><span class="stepnum">2</span>Internal: create and send a criteria checklist</h3>
+      <p><span class="lbl lbl-do">DO</span> Click <strong>New</strong>, choose <strong>From Template</strong>,
+      and select a Checklist Template (e.g. <em>Testing Checklist Template</em>).</p>
+      <p><span class="lbl lbl-res">RESULT</span> A guided flow (<strong>ECMS New Checklist Flow</strong>)
+      opens to its second screen, asking for the <strong>Respondent User</strong>, a required <strong>Expire
+      Date/Time</strong>, and an optional <strong>Notification Frequency</strong> (Hourly/Daily/Weekly/Monthly).</p>
+      <figure>
+        <img src="screenshots/g15-02-internal-new-checklist-form.png" alt="ECMS New Checklist Flow, Information section showing Checklist Name Testing Checklist Template, Envelope section with Respondent User, Expire Date Time, and Notification Frequency fields all blank" />
+        <figcaption>ECMS New Checklist Flow &mdash; after picking a template, before filling in a respondent.</figcaption>
+      </figure>
+      <p><span class="lbl lbl-do">DO</span> Search and select a Respondent User (e.g. Damien Ortiz), set an
+      Expire Date/Time, choose a Notification Frequency, then click <strong>Send</strong> (or <strong>Save as
+      Draft</strong> to hold it back).</p>
+      <p><span class="lbl lbl-res">RESULT</span> ECMS confirms <strong>&ldquo;Checklist Created&rdquo;</strong>
+      with a link to the new record &mdash; confirmed live (CKL-00000004), and re-querying the record shows
+      <strong>Stage</strong> immediately set to <strong>Sent to Respondent</strong> rather than Draft, since
+      Send (not Save as Draft) was used.</p>
+      <figure>
+        <img src="screenshots/g15-03-internal-new-checklist-filled.png" alt="ECMS New Checklist Flow filled in with Respondent User Damien Ortiz, Expire Date Nov 30 2026, Expire Time 5:00 PM, Notification Frequency Weekly" />
+        <figcaption>The flow fully filled in, ready to Send.</figcaption>
+      </figure>
+      <figure>
+        <img src="screenshots/g15-04-internal-checklist-sent.png" alt="Checklist Created confirmation screen showing a link to CKL-00000004 and a Finish button" />
+        <figcaption>Confirmation after Send &mdash; CKL-00000004 created and already Sent to Respondent.</figcaption>
+      </figure>
+    </div>
+
+    <div class="step" id="step-3">
+      <h3><span class="stepnum">3</span>Vendor: respond to an assigned checklist</h3>
+      <p><span class="lbl lbl-do">DO</span> From the vendor portal, click <strong>More &rarr;
+      CheckList</strong>.</p>
+      <p><span class="lbl lbl-res">RESULT</span> A <strong>My Checklists</strong> list loads, scoped to that
+      respondent, showing the new CKL-00000004 with Stage <strong>Sent to Respondent</strong> &mdash; and a
+      notification badge appeared on the bell icon, confirming Send triggers a real in-app notification to the
+      respondent.</p>
+      <figure>
+        <img src="screenshots/g15-05-portal-checklist-list.png" alt="Vendor portal My Checklists list showing CKL-00000004, Stage Sent to Respondent, Expire Date Time 11/30/2026 5:00 PM, with a notification badge showing 1" />
+        <figcaption>My Checklists &mdash; Damien Ortiz's view, with a new notification badge.</figcaption>
+      </figure>
+      <p><span class="lbl lbl-do">DO</span> Open the checklist and fill in its <strong>Checklist Items</strong>
+      section &mdash; the fields here come directly from the Checklist Template (this template's single
+      required item was a text field, <strong>Middle Name</strong>) &mdash; then click <strong>Submit</strong>.</p>
+      <p><span class="lbl lbl-res">RESULT</span> The page reloads with <strong>Stage = Completed</strong> and a
+      populated <strong>Response Received Date/Time</strong>, and the submitted value is now shown read-only
+      &mdash; confirmed live end to end.</p>
+      <figure>
+        <img src="screenshots/g15-06-portal-checklist-respond-before.png" alt="Checklist CKL-00000004 detail page, Stage Sent to Respondent, Checklist Items section with a required Middle Name text field, Save and Submit buttons" />
+        <figcaption>Before responding &mdash; Stage Sent to Respondent, Middle Name still blank.</figcaption>
+      </figure>
+      <figure>
+        <img src="screenshots/g15-07-portal-checklist-after-submit.png" alt="Checklist CKL-00000004 detail page after submitting, Stage Completed, Response Received Date Time populated, Middle Name shows Rafael, Save and Submit buttons now disabled" />
+        <figcaption>After Submit &mdash; Stage Completed, response recorded, form now read-only.</figcaption>
+      </figure>
+    </div>
+
+    <div class="step" id="step-4">
+      <h3><span class="stepnum">4</span>Site data and monitoring dashboards</h3>
+      <p>Two remaining Phase 1 topics for this module &mdash; <strong>View Site Data</strong> and <strong>View
+      Monitoring Dashboards</strong> &mdash; could not be independently confirmed live for this guide:</p>
+      <ul class="bul">
+        <li>The <strong>Checklist</strong> object has no direct Site lookup field (only Respondent
+        Account/Contact/User) &mdash; so &ldquo;View Site Data&rdquo; likely refers to viewing a CBO's Sites
+        more generally (see the <a href="guide-02-vendor-site-setup-cbo.html">Vendor &amp; Site Setup
+        guide</a>) rather than a Monitoring-specific screen. This wasn't confirmed against a live example.</li>
+        <li>No dashboard with &ldquo;Monitoring&rdquo; or &ldquo;Checklist&rdquo; in its title was found in a
+        live search of UAT dashboards (compare to the confirmed <a href="guide-15-incident-reporting.html#step-5">ECMS
+        Incident Dashboard</a> for the Incident Reporting module) &mdash; if one exists under a different name,
+        confirm with the test lead before relying on this guide for it.</li>
+      </ul>
+    </div>
+
+    <a class="backhome" href="index.html">&larr; Back to User Guide home</a>
+  </main>
+</div>
+<div class="site-footer">
+  <div class="ft-in">
+    <div class="ft-left"><b>NYC DOE &middot; Division of Early Childhood Education</b><div>Early Childhood Management System (ECMS)</div></div>
+    <nav class="ft-nav"><a href="index.html">User Guide Home</a></nav>
+  </div>
+</div>
+<style>
+.askq-fab{position:fixed;bottom:24px;right:24px;z-index:1000;background:var(--navy);color:#fff;border:none;border-radius:999px;padding:14px 22px;font-weight:700;font-size:14px;font-family:inherit;box-shadow:0 6px 20px rgba(11,37,69,.35);cursor:pointer;display:flex;align-items:center;gap:8px;transition:background .15s,transform .15s;}
+.askq-fab:hover{background:#163a6b;}
+.askq-fab svg{width:18px;height:18px;flex-shrink:0;}
+.askq-overlay{position:fixed;inset:0;background:rgba(11,37,69,.55);z-index:1001;display:none;align-items:center;justify-content:center;padding:20px;}
+.askq-overlay.askq-open{display:flex;}
+.askq-modal{background:#fff;border-radius:12px;max-width:480px;width:100%;padding:28px;box-shadow:0 20px 60px rgba(0,0,0,.35);max-height:90vh;overflow:auto;}
+.askq-modal h3{margin:0 0 6px;color:var(--navy);font-size:20px;font-weight:700;}
+.askq-modal .askq-sub{font-size:13.5px;color:var(--muted);margin:0 0 16px;}
+.askq-ctx{font-size:12.5px;color:var(--navy);margin:0 0 18px;padding:9px 12px;background:var(--soft);border:1px solid var(--line);border-radius:6px;}
+.askq-modal label{display:block;font-size:13px;font-weight:700;color:var(--navy);margin:14px 0 6px;}
+.askq-modal textarea,.askq-modal input{width:100%;border:1px solid var(--line);border-radius:6px;padding:10px 12px;font-size:14px;font-family:inherit;box-sizing:border-box;}
+.askq-modal textarea{min-height:90px;resize:vertical;}
+.askq-modal textarea:focus,.askq-modal input:focus{outline:2px solid var(--accent);outline-offset:1px;}
+.askq-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:20px;}
+.askq-btn-cancel{background:#fff;border:1px solid var(--line);color:var(--ink);padding:10px 18px;border-radius:6px;cursor:pointer;font-weight:700;font-size:14px;font-family:inherit;}
+.askq-btn-cancel:hover{background:var(--soft);}
+.askq-btn-submit{background:var(--accent);border:none;color:#fff;padding:10px 20px;border-radius:6px;cursor:pointer;font-weight:700;font-size:14px;font-family:inherit;}
+.askq-btn-submit:hover{background:var(--navy);}
+.askq-btn-submit:disabled{opacity:.6;cursor:default;}
+.askq-success{color:var(--res);font-weight:700;margin-top:14px;font-size:14px;display:none;}
+.askq-error{color:#C0392B;font-weight:700;margin-top:14px;font-size:14px;display:none;}
+@media (max-width:600px){.askq-fab{bottom:16px;right:16px;padding:12px 16px;font-size:13px;}.askq-fab span{display:none;}}
+</style>
+
+<button class="askq-fab" id="askqFab" type="button" aria-haspopup="dialog">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+  <span>Ask a question</span>
+</button>
+
+<div class="askq-overlay" id="askqOverlay" role="dialog" aria-modal="true" aria-labelledby="askqTitle">
+  <div class="askq-modal">
+    <h3 id="askqTitle">Ask a question</h3>
+    <p class="askq-sub">Need more information about what you're reading? Send a question to the ECMS team.</p>
+    <p class="askq-ctx" id="askqContext"></p>
+    <form id="askqForm">
+      <label for="askqMessage">Your question</label>
+      <textarea id="askqMessage" name="message" required placeholder="What would you like to know more about?"></textarea>
+      <label for="askqName">Your name (optional)</label>
+      <input type="text" id="askqName" name="name" placeholder="Jane Doe" autocomplete="name" />
+      <label for="askqEmail">Your email (optional, so we can reply)</label>
+      <input type="email" id="askqEmail" name="_replyto" placeholder="jane@agency.gov" autocomplete="email" />
+      <input type="hidden" name="page" id="askqPageField" />
+      <input type="hidden" name="section" id="askqSectionField" />
+      <input type="hidden" name="_subject" id="askqSubjectField" />
+      <div class="askq-actions">
+        <button type="button" class="askq-btn-cancel" id="askqCancel">Cancel</button>
+        <button type="submit" class="askq-btn-submit" id="askqSubmit">Send question</button>
+      </div>
+      <div class="askq-success" id="askqSuccess">&#10003; Thanks! Your question has been sent to the ECMS team.</div>
+      <div class="askq-error" id="askqErrorMsg">Something went wrong sending your question. Please try again, or email the team directly.</div>
+    </form>
+  </div>
+</div>
+
+<script>
+(function(){
+  var fab = document.getElementById('askqFab');
+  var overlay = document.getElementById('askqOverlay');
+  var cancel = document.getElementById('askqCancel');
+  var form = document.getElementById('askqForm');
+  var ctx = document.getElementById('askqContext');
+  var pageField = document.getElementById('askqPageField');
+  var sectionField = document.getElementById('askqSectionField');
+  var subjectField = document.getElementById('askqSubjectField');
+  var submitBtn = document.getElementById('askqSubmit');
+  var success = document.getElementById('askqSuccess');
+  var errorEl = document.getElementById('askqErrorMsg');
+  if (!fab || !overlay) return;
+
+  function currentSection(){
+    var marks = document.querySelectorAll('main h2, main .step');
+    var best = null;
+    var scrollPos = window.scrollY + 160;
+    marks.forEach(function(el){
+      if (el.offsetTop <= scrollPos) best = el;
+    });
+    if (!best) return 'Overview';
+    if (best.classList && best.classList.contains('step')) {
+      var h3 = best.querySelector('h3');
+      if (h3) {
+        var numEl = h3.querySelector('.stepnum');
+        var num = numEl ? numEl.textContent.trim() : '';
+        var clone = h3.cloneNode(true);
+        var cloneNum = clone.querySelector('.stepnum');
+        if (cloneNum) cloneNum.parentNode.removeChild(cloneNum);
+        var label = clone.textContent.replace(/\s+/g, ' ').trim();
+        return (num ? 'Step ' + num + ': ' : '') + label;
+      }
+    }
+    return best.textContent.replace(/\s+/g, ' ').trim();
+  }
+
+  function openModal(){
+    var pageTitle = document.querySelector('h1') ? document.querySelector('h1').textContent.trim() : document.title;
+    var section = currentSection();
+    ctx.textContent = 'Page: ' + pageTitle + '  \u2014  Section: ' + section;
+    pageField.value = pageTitle;
+    sectionField.value = section;
+    subjectField.value = 'ECMS User Guide question \u2014 ' + pageTitle;
+    overlay.classList.add('askq-open');
+    success.style.display = 'none';
+    errorEl.style.display = 'none';
+    document.getElementById('askqMessage').focus();
+  }
+  function closeModal(){ overlay.classList.remove('askq-open'); }
+
+  fab.addEventListener('click', openModal);
+  cancel.addEventListener('click', closeModal);
+  overlay.addEventListener('click', function(e){ if (e.target === overlay) closeModal(); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeModal(); });
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending\u2026';
+    fetch('https://formspree.io/f/mnpjnqqk', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: new FormData(form)
+    }).then(function(res){
+      if (res.ok) {
+        success.style.display = 'block';
+        errorEl.style.display = 'none';
+        form.reset();
+        setTimeout(closeModal, 2200);
+      } else {
+        errorEl.style.display = 'block';
+      }
+    }).catch(function(){
+      errorEl.style.display = 'block';
+    }).finally(function(){
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send question';
+    });
+  });
+})();
+</script>
+
+</body></html>
