@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Administrator Guide — ECMS User Guide</title><style>
+:root{--ink:#1B2430;--head:#0B2545;--muted:#5B6478;--link:#1657CE;--line:#DCE1EA;--line2:#EAEDF3;--code:#F5F7FB;--navy:#0B2545;--accent:#1657CE;--do:#1657CE;--res:#1E8E5A;--soft:#F5F7FB;--brandA:#0072CE;--brandB:#00A65A;--brandC:#F5A623;--brandD:#D0103A;}
+*{box-sizing:border-box;} html{scroll-behavior:smooth;}
+body{margin:0;color:var(--ink);background:#fff;font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;line-height:1.65;font-size:16px;}
+a{color:var(--link);text-decoration:none;} a:hover{text-decoration:underline;}
+code{font-family:'SFMono-Regular',Consolas,Menlo,monospace;background:var(--code);border:1px solid var(--line);border-radius:4px;padding:1px 6px;font-size:13.5px;color:#0a2a5e;}
+.topbar{position:sticky;top:0;z-index:10;box-shadow:0 1px 0 var(--line);}
+.tb-top{background:#fff;border-bottom:1px solid var(--line);}
+.tb-top .in{max-width:1260px;margin:0 auto;padding:14px 32px;display:flex;align-items:center;gap:12px;}
+.doe-logo{display:flex;align-items:baseline;gap:1px;font-weight:800;font-size:20px;letter-spacing:.2px;}
+.doe-logo b:nth-child(1){color:var(--brandA);} .doe-logo b:nth-child(2){color:var(--brandC);} .doe-logo b:nth-child(3){color:var(--brandB);} .doe-logo b:nth-child(4){color:var(--brandD);}
+.doe-sub{color:var(--muted);font-size:12.5px;padding-left:10px;border-left:1px solid var(--line);}
+.tb-bottom{background:var(--navy);}
+.tb-bottom .in{max-width:1260px;margin:0 auto;padding:10px 32px;display:flex;align-items:center;gap:22px;}
+.ecms-brand{color:#fff;font-weight:700;font-size:15px;letter-spacing:.3px;}
+.topnav{display:flex;gap:24px;margin-left:6px;}
+.topnav a{color:#cfe0fb;font-weight:600;font-size:13.5px;}
+.topnav a.cur{color:#fff;}
+@media (max-width:760px){.topnav{display:none;}}
+.crumbs{max-width:1260px;margin:0 auto;padding:16px 32px 0;font-size:13px;color:var(--muted);}
+.crumbs a{color:var(--muted);} .crumbs span{margin:0 7px;}
+.wrap{max-width:1260px;margin:0 auto;padding:8px 32px 60px;display:grid;grid-template-columns:270px minmax(0,1fr);gap:52px;}
+main{min-width:0;max-width:840px;}
+h1{font-size:32px;line-height:1.2;color:var(--head);margin:14px 0 6px;font-weight:700;}
+.lead{font-size:16.5px;color:var(--ink);margin:10px 0 4px;}
+.subtext{color:var(--muted);font-size:14px;margin:2px 0 0;}
+h2{font-size:22px;color:var(--head);font-weight:700;margin:42px 0 6px;padding-bottom:8px;border-bottom:1px solid var(--line);}
+h3{font-size:17.5px;color:var(--head);font-weight:700;margin:8px 0 2px;}
+p{margin:10px 0;}
+ul.bul{margin:10px 0;padding-left:22px;} ul.bul li{margin:6px 0;}
+table{border-collapse:collapse;width:100%;margin:16px 0;font-size:14.5px;}
+th,td{border:1px solid var(--line);padding:9px 13px;text-align:left;vertical-align:top;}
+th{background:var(--soft);color:var(--head);font-weight:700;}
+.lbl{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;padding:2px 9px;border-radius:4px;margin-right:8px;vertical-align:middle;}
+.lbl-do{background:#E6EFFC;color:var(--do);} .lbl-res{background:#E5F5EC;color:var(--res);}
+.step{scroll-margin-top:118px;border-top:1px solid var(--line2);padding-top:28px;margin-top:28px;}
+.step:first-of-type{border-top:none;margin-top:14px;padding-top:8px;}
+.step .stepnum{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;background:var(--navy);color:#fff;font-weight:700;font-size:14px;margin-right:10px;vertical-align:middle;}
+.step h3{display:inline;}
+h2,h3{scroll-margin-top:118px;}
+figure{margin:14px 0 4px;}
+figure img{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:8px;box-shadow:0 4px 14px rgba(11,37,69,.08);}
+figcaption{font-size:13px;color:var(--muted);margin-top:8px;font-style:italic;}
+.callout{background:var(--soft);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:6px;padding:14px 18px;margin:14px 0;}
+.callout b{color:var(--head);}
+.note{background:#fff8ec;border:1px solid #f3e2bd;border-left:4px solid #e0a127;border-radius:6px;padding:6px 18px;margin:14px 0;}
+.sidenav{position:sticky;top:104px;align-self:start;font-size:14px;max-height:calc(100vh - 120px);overflow:auto;padding-right:6px;}
+.nav-cat{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);font-weight:700;padding:0 0 10px;border-bottom:1px solid var(--line);margin-bottom:8px;}
+ul.nav{list-style:none;margin:0;padding:0;} ul.nav>li{margin:2px 0;}
+a.lvl1{display:block;padding:7px 10px;border-radius:6px;color:var(--head);font-weight:600;font-size:13.6px;}
+a.lvl1:hover{background:var(--soft);text-decoration:none;}
+a.lvl1.cur{color:var(--accent);background:var(--soft);border-left:3px solid var(--accent);padding-left:8px;}
+.backhome{display:inline-block;margin:14px 0 4px;font-weight:700;font-size:13.5px;}
+.meta-row{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 6px;}
+.chip{font-size:11.5px;font-weight:600;color:var(--navy);background:var(--soft);border:1px solid var(--line);border-radius:20px;padding:3px 10px;}
+.site-footer{background:var(--navy);color:#fff;margin-top:48px;}
+.site-footer .ft-in{max-width:1260px;margin:0 auto;padding:22px 32px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px;}
+.ft-left b{font-size:14px;} .ft-left div{color:#B9C7E3;font-size:12.5px;margin-top:4px;}
+.ft-nav a{color:#fff;font-size:13px;}
+@media (max-width:900px){.wrap{grid-template-columns:1fr;}.sidenav{position:static;max-height:none;}}
+</style></head>
+<body>
+<div class="topbar">
+  <div class="tb-top"><div class="in">
+    <span class="doe-logo"><b>N</b><b>Y</b><b>C</b></span>
+    <span class="doe-sub">Department of Education &middot; Division of Early Childhood Education</span>
+  </div></div>
+  <div class="tb-bottom"><div class="in">
+    <span class="ecms-brand">ECMS User Guide</span>
+    <nav class="topnav"><a href="index.html">Home</a></nav>
+  </div></div>
+</div>
+<div class="crumbs"><a href="index.html">ECMS User Guide</a><span>/</span>Administrator Guide</div>
+<div class="wrap">
+
+  <nav class="sidenav">
+    <div class="nav-cat">On this page</div>
+    <ul class="nav">
+      <li><a class="lvl1" href="#user-type-quickstart">Which user type am I creating?</a></li>
+      <li><a class="lvl1" href="#overview">Overview</a></li>
+      <li><a class="lvl1" href="#step-1">1. Create a new Internal DOE user</a></li>
+      <li><a class="lvl1" href="#step-2">2. Assign a Permission Set Group</a></li>
+      <li><a class="lvl1" href="#step-3">3. Internal persona &rarr; PSG reference</a></li>
+      <li><a class="lvl1" href="#step-4">4. Enable a CBO vendor Contact for portal access</a></li>
+      <li><a class="lvl1" href="#step-5">5. Provision Contact &mdash; grant modules and Sites in one guided flow</a></li>
+      <li><a class="lvl1" href="#step-6">6. Set ECMS User Functions (CBO only)</a></li>
+      <li><a class="lvl1" href="#step-7">7. CBO User Function &rarr; module reference</a></li>
+      <li><a class="lvl1" href="#step-8">8. Provision an FCCN external user</a></li>
+      <li><a class="lvl1" href="#step-9">9. FCCN persona &rarr; PSG reference</a></li>
+      <li><a class="lvl1" href="#step-10">10. View Queues and what they route</a></li>
+      <li><a class="lvl1" href="#step-11">11. Open a Queue and manage its members</a></li>
+      <li><a class="lvl1" href="#step-12">12. Validate access after provisioning</a></li>
+      <li><a class="lvl1" href="#step-13">13. Deactivate the User record</a></li>
+      <li><a class="lvl1" href="#step-14">14. Remove Permission Set Group assignments</a></li>
+      <li><a class="lvl1" href="#step-15">15. Remove Queue memberships</a></li>
+      <li><a class="lvl1" href="#troubleshooting">Troubleshooting access issues</a></li>
+    </ul>
+    <a class="backhome" href="index.html">&larr; Back to User Guide home</a>
+  </nav>
+
+  <main id="top">
+    <h1>Administrator Guide</h1>
+    <p class="lead">How to provision ECMS users and manage their access &mdash; Profiles, Permission Set
+    Groups, the CBO-specific User Functions picklist, and Queues. This guide is for <strong>DOE/ECMS system
+    administrators</strong> setting up new users and permissions, not for day-to-day ECMS use by Operations
+    staff, vendors, or FCCN network staff &mdash; see the other guides in this collection for that.</p>
+    <div class="meta-row">
+      <span class="chip">15 steps</span><span class="chip">~22 min read</span><span class="chip">Persona: ECMS System Administrator</span>
+    </div>
+
+    <div class="callout" id="user-type-quickstart">
+      <b>Start here: which type of user are you creating?</b>
+      <p style="margin:8px 0 10px;">Answer this first &mdash; it tells you exactly which sections below actually
+      apply to you, so you're not reading all 15 steps for a single new user.</p>
+      <table style="margin:0 0 4px;">
+        <tr><th>User type</th><th>Access mechanism</th><th>Where to go</th></tr>
+        <tr>
+          <td><strong>New User &rarr; Internal DOE User</strong><br/><span style="color:var(--muted);font-size:13px;">Operations staff, Enrollment Specialists, Incident Team, Leadership&hellip;</span></td>
+          <td>Profile = <code>ECMS Internal User</code> + Permission Set Group(s)</td>
+          <td><a href="#step-1">Jump to Steps 1&ndash;3 &rarr;</a></td>
+        </tr>
+        <tr>
+          <td><strong>New User &rarr; CBO Vendor User</strong><br/><span style="color:var(--muted);font-size:13px;">Community-Based Organization staff</span></td>
+          <td>Contact + Portal User + <code>ECMS User Functions</code> picklist &mdash; <strong>no PSG</strong></td>
+          <td><a href="#step-4">Jump to Steps 4&ndash;7 &rarr;</a></td>
+        </tr>
+        <tr>
+          <td><strong>New User &rarr; FCCN Vendor User</strong><br/><span style="color:var(--muted);font-size:13px;">Family Childcare Network staff</span></td>
+          <td>Profile = <code>ECMS Community User</code> + Permission Set Group(s)</td>
+          <td><a href="#step-8">Jump to Steps 8&ndash;9 &rarr;</a></td>
+        </tr>
+      </table>
+      <p style="margin:12px 0 0;font-size:13.5px;"><b>Full Persona Permissions Matrix (all personas, all modules):</b>
+      <em>Link pending &mdash; the master spreadsheet also contains internal sandbox test-user credentials on
+      separate tabs, so a sanitized copy is being prepared with the Dev Team before it can be linked here
+      publicly. Ask your ECMS admin lead for the current location in the meantime.</em></p>
+    </div>
+
+    <h2 id="overview">Overview &mdash; how ECMS access control actually works</h2>
+    <p>Before provisioning anyone, it helps to understand that ECMS splits access control three different
+    ways, and mixing them up is the single most common cause of "why can't this new user see X":</p>
+    <ul class="bul">
+      <li><strong>Profile</strong> &mdash; controls which <em>app</em> and basic platform-level permissions a
+      user gets (internal vs. portal, API access, etc.). In ECMS there are only a handful of real Profiles,
+      and &mdash; this is the part that surprises new admins &mdash; <strong>Profile does NOT differentiate
+      between ECMS personas.</strong> Every internal DOE persona (Operations Director, Operations Analyst,
+      Enrollment Specialist, Incident Management Team Member&hellip;) shares the exact same Profile,
+      <code>ECMS Internal User</code>. Every FCCN external persona shares <code>ECMS Community User</code>.</li>
+      <li><strong>Permission Set Group (PSG)</strong> &mdash; this is what actually differentiates one persona
+      from another, for both internal DOE users and FCCN external users. A user is typically assigned
+      <em>more than one</em> PSG at once (confirmed live &mdash; a single FCCN Network Contact user in this
+      org holds 10+ PSGs simultaneously, one per function they need).</li>
+      <li><strong>ECMS User Functions</strong> (CBO vendor users only) &mdash; CBO vendor personas work
+      differently from everyone else. Instead of PSGs doing the differentiation, a CBO Contact gets a
+      multi-select picklist field, <code>Contact.ECMS_User_Functions__c</code>, with values like
+      <code>Budget Management</code>, <code>Invoice Management</code>, <code>Site Management</code>, etc.
+      &mdash; each one unlocking its own Apex sharing rules for that module. <strong>Do not try to provision a
+      CBO vendor user with a PSG the way you would an internal or FCCN user</strong> &mdash; it's the wrong
+      mechanism for that persona type and won't grant the access you expect.</li>
+    </ul>
+    <div class="callout">
+      <b>Rule of thumb:</b> Internal DOE user or FCCN external user &rarr; think Profile + PSG. CBO vendor
+      user &rarr; think Profile + ECMS User Functions picklist (no PSG involved).
+    </div>
+
+    <h2>Provisioning an Internal DOE user</h2>
+
+    <div class="step" id="step-1">
+      <h3><span class="stepnum">1</span>Create a new Internal DOE user</h3>
+      <p><span class="lbl lbl-do">DO</span> First, open <strong>Setup</strong>: click the <strong>gear icon</strong>
+      in the top-right of any ECMS screen, then click <strong>Setup</strong> at the top of the menu that
+      appears.</p>
+      <figure>
+        <img src="screenshots/gadm-01-setup-gear-menu.png" alt="Gear icon clicked in the top-right of ECMS, showing the Setup Menu with Setup, Service Setup, Salesforce Go, Your Account, and Developer Console options" />
+        <figcaption>The gear icon &mdash; click it, then click <strong>Setup</strong> at the top of the menu.</figcaption>
+      </figure>
+      <p><span class="lbl lbl-do">DO</span> In Setup, go to <strong>Administration &rarr; Users &rarr;
+      Users</strong>, then click <strong>New User</strong>.</p>
+      <p><span class="lbl lbl-res">RESULT</span> A standard Salesforce New User form opens. Fill in the
+      person's name, a unique <strong>Username</strong> (must be email-format and globally unique across all
+      Salesforce orgs, not just this one) and <strong>Email</strong>, set <strong>User License</strong> to
+      <code>Salesforce</code>, and set <strong>Profile</strong> to <code>ECMS Internal User</code>.</p>
+      <figure>
+        <img src="screenshots/gadm-02-new-user-form.png" alt="Salesforce New User form showing General Information fields including Role, User License, Profile, and Active checkbox" />
+        <figcaption>New User form &mdash; Setup &gt; Users &gt; Users &gt; New User.</figcaption>
+      </figure>
+      <div class="note">
+        <b>Note:</b> Leave <strong>Role</strong> as <code>&lt;None Specified&gt;</code> unless you've been
+        told a specific Role hierarchy reason to set one &mdash; ECMS's real persona differentiation happens
+        via PSG assignment (next step), not Role.
+      </div>
+    </div>
+
+    <div class="step" id="step-2">
+      <h3><span class="stepnum">2</span>Assign a Permission Set Group</h3>
+      <p><span class="lbl lbl-do">DO</span> Go to <strong>Setup &gt; Permission Set Groups</strong>, search for
+      the PSG matching the new user's persona (see the reference table below), open it, and click
+      <strong>Manage Assignments &rarr; Add Assignment</strong>.</p>
+      <p><span class="lbl lbl-res">RESULT</span> The PSG's detail page shows its description, its member
+      Permission Sets, and a <strong>Current Assignments</strong> list of every user currently holding it.
+      Adding the new user here grants them everything that PSG bundles together.</p>
+      <figure>
+        <img src="screenshots/gadm-05-psg-detail.png" alt="Permission Set Group detail page for ECMS Admin Internal showing its description and Manage Assignments button" />
+        <figcaption>PSG detail page &mdash; <code>ECMS Admin Internal</code>: "provides the ability to
+        provision internal &amp; external users, load data files and setup fiscal years."</figcaption>
+      </figure>
+      <figure>
+        <img src="screenshots/gadm-06-psg-assignments.png" alt="Current Assignments table for the ECMS Admin Internal permission set group, listing real users with their Role, Profile, and User License" />
+        <figcaption>Current Assignments for <code>ECMS Admin Internal</code> &mdash; confirmed live, every
+        assignee shares Profile <code>ECMS Internal User</code>; the PSG is what actually differs between
+        them.</figcaption>
+      </figure>
+      <div class="note">
+        <b>Note:</b> A user almost always needs more than one PSG. For example, an Operations Director
+        typically also needs <code>ECMS Internal Application User</code>-type base access on top of their
+        role-specific PSG &mdash; check the reference table for the full combination, not just one entry.
+      </div>
+    </div>
+
+    <div class="step" id="step-3">
+      <h3><span class="stepnum">3</span>Internal persona &rarr; Permission Set Group reference</h3>
+      <div class="callout">
+        <b>Common miss:</b> PSG assignment alone is <strong>not enough</strong> for Enrollment Specialists,
+        Operations Analysts, and Incident Management Team members &mdash; these three personas also need
+        explicit <a href="#step-11">Queue membership</a> (Step 11) before they can actually see or act on the
+        records routed to them. This is one of the most frequently missed steps when provisioning these
+        personas specifically &mdash; a user can hold the correct PSG and still appear to have "no access"
+        simply because no one added them to the matching Queue.
+      </div>
+      <table>
+        <tr><th>Persona</th><th>Permission Set Group</th><th>Profile</th><th>Also needs Queue membership?</th></tr>
+        <tr><td>ECMS Admin / System Administrator</td><td><code>ECMS Admin Internal</code></td><td rowspan="9"><code>ECMS Internal User</code></td><td>No</td></tr>
+        <tr><td>Operations Director / Deputy Operations Director</td><td><code>ECMS Operations Director Internal</code></td><td>Yes &mdash; <code>Operations Directors</code> queue</td></tr>
+        <tr><td>Operations Analyst</td><td><code>ECMS Operations Analyst Internal</code></td><td><strong>Yes</strong> &mdash; <code>Operations Analysts</code> queue</td></tr>
+        <tr><td>Enrollment Specialist</td><td><code>ECMS Enrollment Specialists</code></td><td><strong>Yes</strong> &mdash; <code>Enrollment Specialists</code> queue</td></tr>
+        <tr><td>Incident Management Team Member</td><td><code>ECMS Incident Intake Team</code></td><td><strong>Yes</strong> &mdash; the Incident-related queues (e.g. <code>Intake Team</code>)</td></tr>
+        <tr><td>ECMS Leadership (read-only)</td><td><code>ECMS Leadership Internal</code></td><td>No</td></tr>
+        <tr><td>Leadership Coach</td><td><code>ECMS Leadership Coaches</code></td><td>No</td></tr>
+        <tr><td>Instructional Coordinator</td><td><code>ECMS Instructional Coordinators</code></td><td>No</td></tr>
+        <tr><td>Social Worker</td><td><code>ECMS Social Workers</code></td><td>No</td></tr>
+        <tr><td>Portfolio Team Member</td><td><code>ECMS Portfolio Team</code></td><td><code>ECMS Internal User</code></td><td>No</td></tr>
+      </table>
+      <div class="note">
+        <b>Note:</b> This table reflects the PSGs that exist live in UAT today. If a persona you need isn't
+        listed here, search Permission Set Groups in Setup for the closest match before creating a new one
+        &mdash; and confirm with the team, since creating a brand-new PSG is a bigger change than provisioning
+        a user.
+      </div>
+    </div>
+
+    <h2>Provisioning an External CBO vendor user</h2>
+
+    <div class="step" id="step-4">
+      <h3><span class="stepnum">4</span>Enable a CBO vendor Contact for portal access</h3>
+      <p><span class="lbl lbl-do">DO</span> CBO vendor users start life as a <strong>Contact</strong> record
+      under their Account, and a <strong>Site Staff</strong> record for them must already exist. If one
+      doesn't exist yet, create it first: open the relevant <strong>Site Master</strong> record, find its
+      <strong>Site Staff</strong> related list, and click <strong>New</strong>.</p>
+      <figure>
+        <img src="screenshots/gadm-14-site-staff-related-list.png" alt="Site Master record's Site Staff related list showing 3 existing Site Staff records and a New button" />
+        <figcaption>Site Master &rarr; Site Staff related list &rarr; New.</figcaption>
+      </figure>
+      <p><span class="lbl lbl-res">RESULT</span> A record-type choice appears: <strong>ECMS DOE Internal
+      Staff</strong> (an internal DOE resource tracked against a Site) or <strong>ECMS Vendor Staff</strong>
+      (a vendor resource, used for both record-maintenance access and vendor budget staffing). Pick <strong>ECMS
+      Vendor Staff</strong> for a CBO vendor user.</p>
+      <figure>
+        <img src="screenshots/gadm-15-new-site-staff-recordtype.png" alt="New Site Staff record type selector showing ECMS DOE Internal Staff and ECMS Vendor Staff options" />
+        <figcaption>Choose <strong>ECMS Vendor Staff</strong> for a CBO vendor user.</figcaption>
+      </figure>
+      <p><span class="lbl lbl-res">RESULT</span> The New Site Staff form opens with the Site pre-filled. Search
+      for and select the <strong>Vendor Employee</strong> (the Contact), then fill in the required
+      <strong>Staff Type</strong> (and Designation/Teacher Type as applicable), and click <strong>Save</strong>.</p>
+      <figure>
+        <img src="screenshots/gadm-16-new-site-staff-vendor-form.png" alt="New Site Staff: ECMS Vendor Staff form showing Vendor Employee contact lookup, Site pre-filled, required Staff Type, Designation, and Teacher Type fields" />
+        <figcaption>New Site Staff: ECMS Vendor Staff &mdash; link the Contact via Vendor Employee.</figcaption>
+      </figure>
+      <p>Once the Site Staff record exists, open the Contact, and confirm
+      <strong>ECMS Access</strong> is checked.</p>
+      <p><span class="lbl lbl-res">RESULT</span> Once ECMS access is granted and the Contact has
+      been enabled as a portal/partner user (via <strong>Provision Contact</strong> or the standard "Enable as
+      Partner User" action), action buttons appear on the Contact: <strong>Log in to Experience as
+      User</strong>, <strong>Provision Contact</strong>, <strong>View Partner User</strong>.</p>
+      <figure>
+        <img src="screenshots/gadm-09-contact-overview.png" alt="Contact record for a CBO vendor user showing Log in to Experience as User, Edit, Follow, Provision Contact, Upload Supporting Document, and View Partner User action buttons" />
+        <figcaption>A provisioned CBO vendor Contact &mdash; note the portal-specific action buttons once
+        enabled.</figcaption>
+      </figure>
+      <div class="callout">
+        <b>Logging in as a vendor.</b> As an internal admin, you'll frequently need to see (or test) exactly
+        what a vendor sees &mdash; without needing their password. Click <strong>Log in to Experience as
+        User</strong> right here on their Contact record.
+        <figure>
+          <img src="screenshots/g-login-01-contact-log-in-as-button.png" alt="Contact record action bar showing the Log in to Experience as User button alongside Edit, Provision Contact, and View Partner User" />
+          <figcaption>Log in to Experience as User &mdash; on the vendor's own Contact record.</figcaption>
+        </figure>
+        This logs you into their exact portal view, home page, and menus &mdash; shown here as Priya
+        Fernandez, Site Director at Willow Brook Children's Learning Center.
+        <figure>
+          <img src="screenshots/g-login-02-vendor-portal-home.png" alt="Vendor portal home page after Log in to Experience as User, showing Priya Fernandez's name top-right and Create Budget, Create Invoice, Create Enrollment, Report Incident tiles" />
+          <figcaption>The real vendor portal home page, viewed as the vendor.</figcaption>
+        </figure>
+        If you <em>are</em> the vendor yourself (not an admin impersonating one), you don't need any of the
+        above &mdash; just go to your organization's ECMS vendor portal URL directly and log in with your own
+        username and password, the same as any website login.
+        <figure>
+          <img src="screenshots/g-login-03-vendor-direct-login-page.png" alt="Standalone Salesforce-branded vendor portal login page with Username and Password fields and a Log in button" />
+          <figcaption>The vendor portal's own direct login page.</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <div class="step" id="step-5">
+      <h3><span class="stepnum">5</span>Provision Contact &mdash; grant modules and Sites in one guided flow</h3>
+      <p><span class="lbl lbl-do">DO</span> Click the <strong>Provision Contact</strong> action button on the
+      Contact. This launches a 3-screen guided flow &mdash; this is the mechanism DOE actually
+      uses to give an external user access to modules, not just an inline field edit.</p>
+      <p><span class="lbl lbl-res">RESULT</span> <strong>Screen 1 &mdash; Functions:</strong> a
+      <em>"Do You Want to Remove All ECMS Functions?"</em> Yes/No choice, followed by a description of what
+      each of the 12 available functions grants (Vendor Management, Site Management, Budget Management,
+      Invoice Management, Classroom Management, Enrollment Management, Attendance Management, Student
+      Screening, Checklist Manager, CBO Incident Management, Reporting and Dashboards, Student Contacts), then
+      checkboxes pre-populated with whatever the Contact already holds &mdash; add or remove as needed.</p>
+      <figure>
+        <img src="screenshots/gadm-11-provision-contact-functions.png" alt="Provision Contact guided flow, screen 1, showing the Remove All ECMS Functions radio choice, a description of all 12 available functions, and checkboxes for each one" />
+        <figcaption>Screen 1 of the Provision Contact flow &mdash; module/function selection.</figcaption>
+      </figure>
+      <p><span class="lbl lbl-res">RESULT</span> <strong>Screen 2 &mdash; Sites:</strong> the Sites currently
+      assigned to this Contact appear pre-checked; add or remove Sites the same way.</p>
+      <figure>
+        <img src="screenshots/gadm-12-provision-contact-sites.png" alt="Provision Contact guided flow, screen 2, showing a checkbox list of Sites currently assigned to the Contact" />
+        <figcaption>Screen 2 &mdash; Site assignment.</figcaption>
+      </figure>
+      <p><span class="lbl lbl-res">RESULT</span> <strong>Screen 3 &mdash; Review &amp; Finish:</strong> a
+      plain-text summary of the exact Functions and Sites that will be saved. Clicking <strong>Finish</strong>
+      writes both in one step &mdash; the Functions list writes to the same <code>ECMS User Functions</code>
+      picklist described in Step 6 below, and the Site list writes to this Contact's assigned Sites.</p>
+      <figure>
+        <img src="screenshots/gadm-13-provision-contact-review.png" alt="Provision Contact guided flow, screen 3, showing a review summary of the Functions and Sites that will be saved, with a Finish button" />
+        <figcaption>Screen 3 &mdash; review before Finish.</figcaption>
+      </figure>
+      <div class="note">
+        <b>Note:</b> Provision Contact is the guided, recommended path for granting an external user's module
+        access and Site assignment together. Step 6 still documents the underlying
+        <code>ECMS User Functions</code> field directly, since you can also edit it inline on the Contact if
+        you only need to change Functions and not Sites.
+      </div>
+    </div>
+
+    <div class="step" id="step-6">
+      <h3><span class="stepnum">6</span>Set ECMS User Functions (CBO only)</h3>
+      <p><span class="lbl lbl-do">DO</span> On the same Contact, scroll to the <strong>ECMS Access</strong>
+      section and edit <strong>ECMS User Functions</strong> &mdash; a multi-select picklist.</p>
+      <p><span class="lbl lbl-res">RESULT</span> Each value you add unlocks that module's own Apex sharing
+      rules for this Contact (e.g. adding <code>Budget Management</code> grants read/edit access to Budgets
+      and their related records for this vendor's assigned Sites). A Vendor Admin persona typically holds
+      most or all values; a narrower persona like "Budget Creator" would hold just <code>Budget
+      Management</code> (plus whatever base access it depends on).</p>
+      <figure>
+        <img src="screenshots/gadm-10-contact-user-functions.png" alt="ECMS User Functions multi-select field on a Contact record, populated with Vendor Management, Site Management, Budget Management, Invoice Management, Classroom Management, Enrollment Management, Attendance Management, Student Screening, Checklist Manager, CBO Incident Management, Reporting and Dashboards, and Student Contacts" />
+        <figcaption>ECMS User Functions field &mdash; a real Vendor Admin Contact holding nearly every
+        function at once.</figcaption>
+      </figure>
+      <div class="note">
+        <b>Note:</b> This is the single biggest difference between provisioning a CBO user and provisioning
+        anyone else in ECMS &mdash; there is no PSG step for CBO vendor personas. Assigning a PSG to a CBO
+        Contact's User won't grant the module-level sharing; the picklist is what does it.
+      </div>
+    </div>
+
+    <div class="step" id="step-7">
+      <h3><span class="stepnum">7</span>CBO User Function &rarr; module reference</h3>
+      <table>
+        <tr><th>CBO Persona</th><th>ECMS User Function value(s)</th></tr>
+        <tr><td>Vendor Admin</td><td>All values &mdash; highest level of visibility, can create/assign new vendor users</td></tr>
+        <tr><td>Budget Creator</td><td><code>Budget Management</code></td></tr>
+        <tr><td>Invoice Manager</td><td><code>Invoice Management</code></td></tr>
+        <tr><td>Site Manager</td><td><code>Site Management</code></td></tr>
+        <tr><td>Attendance Taker</td><td><code>Attendance Management</code></td></tr>
+        <tr><td>Enrollment Manager</td><td><code>Enrollment Management</code></td></tr>
+        <tr><td>Classroom Management</td><td><code>Classroom Management</code></td></tr>
+        <tr><td>Student Screener</td><td><code>Student Screening</code></td></tr>
+        <tr><td>Checklist Manager</td><td><code>Checklist Manager</code></td></tr>
+      </table>
+    </div>
+
+    <h2>Provisioning an External FCCN user</h2>
+
+    <div class="step" id="step-8">
+      <h3><span class="stepnum">8</span>Provision an FCCN external user</h3>
+      <p><span class="lbl lbl-do">DO</span> FCCN external users (Network Director, Education Specialist,
+      Monitoring Specialist, Family Worker, Education Director, Affiliation Manager) use the <strong>exact
+      same mechanism as Internal DOE users</strong> &mdash; Profile + Permission Set Group &mdash; NOT the
+      User Functions picklist. Set Profile to <code>ECMS Community User</code>, then assign the matching PSG
+      from the table below, the same way as Step 2 above (Setup &gt; Permission Set Groups &gt; find the PSG
+      &gt; Manage Assignments &gt; Add Assignment).</p>
+      <p><span class="lbl lbl-res">RESULT</span> The user should show all assigned PSGs. Below is a real Network
+      Contact user in this org who holds 14 PSGs at once (one per function &mdash; incident reporting,
+      affiliation management, education specialist logs, reporting/dashboards, etc.), all stacked on top of the
+      single <code>ECMS Community User</code> Profile.</p>
+      <figure>
+        <img src="screenshots/gadm-17-fccn-user-multiple-psgs.png" alt="Permission Set Group Assignments list for a real FCCN Network Contact user, showing 14 distinct PSGs including ECMS Attendance Management, ECMS FCCN Education Directors, ECMS FCCN Family Workers, and ECMS Network Admin External" />
+        <figcaption>A real FCCN Network Contact user's full Permission Set Group Assignments list &mdash; 14 PSGs,
+        one per function.</figcaption>
+      </figure>
+      <div class="note">
+        <b>Note:</b> Don't confuse "FCCN" with "CBO" when provisioning &mdash; they're both external/vendor-
+        side personas, but they use two genuinely different access-control mechanisms (see the Overview
+        above). Using the wrong one is the most common provisioning mistake for external users.
+      </div>
+    </div>
+
+    <div class="step" id="step-9">
+      <h3><span class="stepnum">9</span>FCCN persona &rarr; Permission Set Group reference</h3>
+      <table>
+        <tr><th>FCCN Persona</th><th>Permission Set Group</th></tr>
+        <tr><td>Network Director (highest visibility)</td><td><code>ECMS Network Admin External</code></td></tr>
+        <tr><td>Education Specialist</td><td><code>ECMS FCCN Education Specialists</code></td></tr>
+        <tr><td>Education Director</td><td><code>ECMS FCCN Education Directors</code></td></tr>
+        <tr><td>Monitoring Specialist</td><td><code>ECMS FCCN Monitoring Specialists</code></td></tr>
+        <tr><td>Family Worker</td><td><code>ECMS FCCN Family Workers</code></td></tr>
+        <tr><td>Affiliation Manager</td><td><code>ECMS FCCN External Affiliation Management</code></td></tr>
+        <tr><td>Student Screener (CBO &amp; FCCN)</td><td><code>ECMS External Student Screeners</code></td></tr>
+        <tr><td>Enrollment Manager (CBO &amp; FCCN)</td><td><code>ECMS External Enrollment Specialist</code></td></tr>
+        <tr><td>Classroom Management (CBO &amp; FCCN)</td><td><code>ECMS External Classroom Managers</code></td></tr>
+      </table>
+    </div>
+
+    <h2>Queues and case/incident routing</h2>
+    <div class="callout">
+      <b>Queue membership is mandatory, not optional, for several personas.</b> Having the right PSG does
+      <strong>not</strong> automatically add someone to the Queue their persona depends on &mdash; they are two
+      separate, independent steps. Enrollment Specialists, Operations Analysts, and Incident Management Team
+      members in particular will not be able to act on any routed records until someone also adds them as a
+      Queue member (Step 10) &mdash; a very easy step to forget, and one of the most common real provisioning
+      misses seen in this project's own testing.
+    </div>
+
+    <div class="step" id="step-10">
+      <h3><span class="stepnum">10</span>View Queues and what they route</h3>
+      <p><span class="lbl lbl-do">DO</span> Go to <strong>Setup &gt; Administration &gt; Users &gt;
+      Queues</strong>.</p>
+      <p><span class="lbl lbl-res">RESULT</span> The full list of real Queues in this org, each with a
+      <strong>Supported Objects</strong> column showing what it routes is displayed. For example: <code>Enrollment
+      Specialists</code> routes Enrollment approval requests, <code>Operations Analysts</code>/<code>Operations
+      Directors</code> route Budget and Budget/Journal approvals, and most Incident-related queues
+      (<code>Intake Team</code>, <code>Level 1 Incidents</code>, <code>Incident Owner Assignment</code>,
+      etc.) route Incident Case.</p>
+      <figure>
+        <img src="screenshots/gadm-07-queues-list.png" alt="Queues list in Setup showing real ECMS queues like Central Approvers, Enrollment Specialists, Operations Analysts, Operations Directors, and several Incident Case queues, each with a Supported Objects column" />
+        <figcaption>Queues list &mdash; Supported Objects shows what each queue actually routes.</figcaption>
+      </figure>
+    </div>
+
+    <div class="step" id="step-11">
+      <h3><span class="stepnum">11</span>Open a Queue and manage its members</h3>
+      <p><span class="lbl lbl-do">DO</span> Click into a Queue's name from the list.</p>
+      <p><span class="lbl lbl-res">RESULT</span> The Queue detail page shows its supported object(s) and a
+      member list. Use <strong>Edit</strong> to add or remove members &mdash; anyone on this list can see and
+      act on records routed to the queue (e.g. the Enrollment Specialist approval step we rely on throughout
+      the rest of this guide collection routes to whoever is a member of the <code>Enrollment
+      Specialists</code> queue).</p>
+      <figure>
+        <img src="screenshots/gadm-08-queue-detail.png" alt="Enrollment Specialists queue detail page showing Supported Objects as Enrollment and a member list including a real user" />
+        <figcaption>Queue detail &mdash; real membership for <code>Enrollment Specialists</code>.</figcaption>
+      </figure>
+    </div>
+
+    <h2 id="validation">Post-Provision Validation Steps</h2>
+    <p>Don't consider a user "done" the moment Profile/PSG (or ECMS User Functions, for CBO) is assigned.
+    Confirm the access actually works end to end &mdash; this catches the lag/propagation issues covered in the
+    Troubleshooting section below.</p>
+
+    <div class="step" id="step-12">
+      <h3><span class="stepnum">12</span>Validate the new user's access end-to-end</h3>
+      <p><span class="lbl lbl-do">DO</span> Before closing out any provisioning request &mdash; internal, CBO,
+      or FCCN &mdash; walk through this checklist:</p>
+      <ul class="bul">
+        <li><strong>User can log in.</strong> Internal: have them attempt a normal Salesforce login (or
+        confirm via "Login History" in Setup). CBO/FCCN: use <strong>Log in to Experience as User</strong>
+        from their Contact, or have the vendor/network user try their own portal login once their account is
+        activated.</li>
+        <li><strong>User sees the ECMS application.</strong> Internal: the App Launcher shows ECMS as an
+        available app. CBO/FCCN: the portal home page loads with the expected ECMS branding and navigation
+        &mdash; not a blank page or a generic Experience Cloud default.</li>
+        <li><strong>User can access their assigned module and Site.</strong> Open the specific tab/module
+        their persona needs (e.g. Enrollments for an Enrollment Specialist, Budgets for a CBO Budget Creator)
+        and confirm it loads without a permissions error.</li>
+        <li><strong>User can see the records they should see.</strong> A tab loading is not enough &mdash;
+        open an actual real record (a specific Enrollment, Budget, Site, etc.) that this persona should have
+        visibility into, and confirm it opens cleanly rather than showing an "insufficient privileges" or
+        blank-detail error.</li>
+        <li><strong>User receives email notifications, if their persona depends on one.</strong> Personas
+        tied to an approval workflow (Enrollment Specialist, OA/OD, Incident team) should receive a real
+        notification/approval email during this check &mdash; email deliverability problems look identical
+        to an access problem from the user's side ("I never got anything"), but are a separate issue to
+        diagnose.</li>
+      </ul>
+      <p><span class="lbl lbl-res">RESULT</span> A user who passes all five checks is genuinely ready to use
+      ECMS for their role &mdash; not just "has a PSG assigned."</p>
+      <div class="note">
+        <b>Note:</b> Sharing recalculation after a PSG assignment or Provision Contact grant is not always
+        instant (see Troubleshooting below). If a check fails immediately after provisioning, wait a few
+        minutes and re-check before assuming something is misconfigured.
+      </div>
+    </div>
+
+    <h2 id="deactivate">Deactivating a User</h2>
+    <p>Use this whenever access needs to be fully revoked. Common cases: <strong>an employee leaves
+    DOE</strong>, <strong>vendor staff leaves their organization</strong>, or <strong>an FCCN worker changes
+    role</strong> and needs their old access removed before being re-provisioned under a new persona.
+    Deactivating the User record alone is not sufficient &mdash; stale PSG and Queue
+    memberships left behind can silently re-apply if the account is ever reactivated, so all three steps
+    below are required to complete offboarding.</p>
+
+    <div class="step" id="step-13">
+      <h3><span class="stepnum">13</span>Deactivate the User record</h3>
+      <p><span class="lbl lbl-do">DO</span> Open the User record (<strong>Setup &gt; Users &gt; Users</strong>
+      for internal users, or the person's Contact &rarr; related User for CBO/FCCN external users), click
+      <strong>Edit</strong>, uncheck <strong>Active</strong>, and Save.</p>
+      <p><span class="lbl lbl-res">RESULT</span> The user can no longer log in, internally or through the
+      portal. Records they previously owned are <strong>not</strong> deleted or automatically reassigned
+      &mdash; review Ownership separately if that matters for your case.</p>
+      <div class="note">
+        <b>Note:</b> Salesforce does not allow deleting a User record outright &mdash; unchecking
+        <strong>Active</strong> is the correct, and only, way to fully revoke a user's access.
+      </div>
+    </div>
+
+    <div class="step" id="step-14">
+      <h3><span class="stepnum">14</span>Remove Permission Set Group assignments</h3>
+      <p><span class="lbl lbl-do">DO</span> For each PSG the user holds, go to <strong>Setup &gt; Permission
+      Set Groups</strong>, open that PSG, find the user under <strong>Manage Assignments</strong>, select
+      them, and click <strong>Remove</strong>. Repeat for every PSG they hold &mdash; most real personas hold
+      more than one (see the reference tables above).</p>
+      <p><span class="lbl lbl-res">RESULT</span> The user no longer inherits that PSG's permissions.</p>
+      <div class="note">
+        <b>Note:</b> Deactivating the User does <strong>not</strong> remove their PSG assignments &mdash; they
+        stay on record and would silently re-apply if the account is ever reactivated. Always remove them
+        explicitly as a separate offboarding step.
+      </div>
+    </div>
+
+    <div class="step" id="step-15">
+      <h3><span class="stepnum">15</span>Remove Queue memberships</h3>
+      <p><span class="lbl lbl-do">DO</span> Go to <strong>Setup &gt; Administration &gt; Users &gt;
+      Queues</strong>, open each Queue the user belonged to (<code>Enrollment Specialists</code>,
+      <code>Operations Analysts</code>, the Incident-related queues, etc.), click <strong>Edit</strong>, and
+      remove them from the member list.</p>
+      <p><span class="lbl lbl-res">RESULT</span> Records routed to that queue going forward are no longer
+      visible to, or actionable by, the deactivated user.</p>
+      <div class="note">
+        <b>Note:</b> Just like PSGs, Queue membership is <strong>not</strong> automatically cleared by
+        deactivating the User &mdash; it must be removed separately, or the stale membership will reappear if
+        the account is ever reactivated.
+      </div>
+    </div>
+
+    <h2 id="troubleshooting">Troubleshooting access issues</h2>
+    <div class="callout">
+      <b>"The new user can't see any records on a Site/Budget/Enrollment they should have access to."</b>
+      <p>Sharing recalculation after a PSG assignment, a Contact-level field change, or a Provision Contact
+      grant is <strong>not always instant</strong> &mdash; it can take several minutes for access to take effect. Before concluding something is
+      broken, wait a few minutes and re-check, rather than immediately troubleshooting permissions further.</p>
+    </div>
+    <div class="callout">
+      <b>"I assigned a PSG but the user still can't do X."</b>
+      <p>Check whether the persona actually needs <em>more than one</em> PSG stacked together &mdash; most
+      real personas in this org hold several PSGs at once, not just one. Also confirm you assigned the right
+      <em>kind</em> of access for the persona type: internal/FCCN personas need PSGs; CBO vendor personas need
+      the <code>ECMS User Functions</code> picklist instead (see Overview above) &mdash; assigning a PSG to a
+      CBO Contact's User won't substitute for the picklist.</p>
+    </div>
+    <div class="callout">
+      <b>"Which persona should I search Permission Set Groups for?"</b>
+      <p>Never guess a PSG name from what seems logical &mdash; search live and confirm the description field,
+      which usually states plainly what the PSG is for (e.g. <code>ECMS Admin Internal</code>'s own
+      description: "provides the ability to provision internal &amp; external users, load data files and
+      setup fiscal years"). The reference tables in this guide reflect what's live in UAT today, but PSGs can
+      be added or renamed over time.</p>
+    </div>
+
+  </main>
+</div>
+</div>
+<div class="site-footer">
+  <div class="ft-in">
+    <div class="ft-left"><b>NYC DOE &middot; Division of Early Childhood Education</b><div>Early Childhood Management System (ECMS)</div></div>
+    <nav class="ft-nav"><a href="index.html">User Guide Home</a></nav>
+  </div>
+</div>
+<style>
+.askq-fab{position:fixed;bottom:24px;right:24px;z-index:1000;background:var(--navy);color:#fff;border:none;border-radius:999px;padding:14px 22px;font-weight:700;font-size:14px;font-family:inherit;box-shadow:0 6px 20px rgba(11,37,69,.35);cursor:pointer;display:flex;align-items:center;gap:8px;transition:background .15s,transform .15s;}
+.askq-fab:hover{background:var(--accent);transform:translateY(-1px);}
+.askq-fab svg{width:18px;height:18px;flex-shrink:0;}
+.askq-overlay{position:fixed;inset:0;background:rgba(11,37,69,.55);z-index:1001;display:none;align-items:center;justify-content:center;padding:20px;}
+.askq-overlay.askq-open{display:flex;}
+.askq-modal{background:#fff;border-radius:12px;max-width:480px;width:100%;padding:28px;box-shadow:0 20px 60px rgba(0,0,0,.35);max-height:90vh;overflow:auto;}
+.askq-modal h3{margin:0 0 6px;color:var(--navy);font-size:20px;font-weight:700;}
+.askq-modal .askq-sub{font-size:13.5px;color:var(--muted);margin:0 0 16px;}
+.askq-ctx{font-size:12.5px;color:var(--navy);margin:0 0 18px;padding:9px 12px;background:var(--soft);border:1px solid var(--line);border-radius:6px;}
+.askq-modal label{display:block;font-size:13px;font-weight:700;color:var(--navy);margin:14px 0 6px;}
+.askq-modal textarea,.askq-modal input{width:100%;border:1px solid var(--line);border-radius:6px;padding:10px 12px;font-size:14px;font-family:inherit;box-sizing:border-box;}
+.askq-modal textarea{min-height:90px;resize:vertical;}
+.askq-modal textarea:focus,.askq-modal input:focus{outline:2px solid var(--accent);outline-offset:1px;}
+.askq-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:20px;}
+.askq-btn-cancel{background:#fff;border:1px solid var(--line);color:var(--ink);padding:10px 18px;border-radius:6px;cursor:pointer;font-weight:700;font-size:14px;font-family:inherit;}
+.askq-btn-cancel:hover{background:var(--soft);}
+.askq-btn-submit{background:var(--accent);border:none;color:#fff;padding:10px 20px;border-radius:6px;cursor:pointer;font-weight:700;font-size:14px;font-family:inherit;}
+.askq-btn-submit:hover{background:var(--navy);}
+.askq-btn-submit:disabled{opacity:.6;cursor:default;}
+.askq-success{color:var(--res);font-weight:700;margin-top:14px;font-size:14px;display:none;}
+.askq-error{color:#C0392B;font-weight:700;margin-top:14px;font-size:14px;display:none;}
+@media (max-width:600px){.askq-fab{bottom:16px;right:16px;padding:12px 16px;font-size:13px;}.askq-fab span{display:none;}}
+</style>
+
+<button class="askq-fab" id="askqFab" type="button" aria-haspopup="dialog">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+  <span>Ask a question</span>
+</button>
+
+<div class="askq-overlay" id="askqOverlay" role="dialog" aria-modal="true" aria-labelledby="askqTitle">
+  <div class="askq-modal">
+    <h3 id="askqTitle">Ask a question</h3>
+    <p class="askq-sub">Need more information about what you're reading? Send a question to the ECMS team.</p>
+    <p class="askq-ctx" id="askqContext"></p>
+    <form id="askqForm">
+      <label for="askqMessage">Your question</label>
+      <textarea id="askqMessage" name="message" required placeholder="What would you like to know more about?"></textarea>
+      <label for="askqName">Your name (optional)</label>
+      <input type="text" id="askqName" name="name" placeholder="Jane Doe" autocomplete="name" />
+      <label for="askqEmail">Your email (optional, so we can reply)</label>
+      <input type="email" id="askqEmail" name="_replyto" placeholder="jane@agency.gov" autocomplete="email" />
+      <input type="hidden" name="page" id="askqPageField" />
+      <input type="hidden" name="section" id="askqSectionField" />
+      <input type="hidden" name="_subject" id="askqSubjectField" />
+      <div class="askq-actions">
+        <button type="button" class="askq-btn-cancel" id="askqCancel">Cancel</button>
+        <button type="submit" class="askq-btn-submit" id="askqSubmit">Send question</button>
+      </div>
+      <div class="askq-success" id="askqSuccess">&#10003; Thanks! Your question has been sent to the ECMS team.</div>
+      <div class="askq-error" id="askqErrorMsg">Something went wrong sending your question. Please try again, or email the team directly.</div>
+    </form>
+  </div>
+</div>
+
+<script>
+(function(){
+  var fab = document.getElementById('askqFab');
+  var overlay = document.getElementById('askqOverlay');
+  var cancel = document.getElementById('askqCancel');
+  var form = document.getElementById('askqForm');
+  var ctx = document.getElementById('askqContext');
+  var pageField = document.getElementById('askqPageField');
+  var sectionField = document.getElementById('askqSectionField');
+  var subjectField = document.getElementById('askqSubjectField');
+  var submitBtn = document.getElementById('askqSubmit');
+  var success = document.getElementById('askqSuccess');
+  var errorEl = document.getElementById('askqErrorMsg');
+  if (!fab || !overlay) return;
+
+  function currentSection(){
+    var marks = document.querySelectorAll('main h2, main .step');
+    var best = null;
+    var scrollPos = window.scrollY + 160;
+    marks.forEach(function(el){
+      if (el.offsetTop <= scrollPos) best = el;
+    });
+    if (!best) return 'Overview';
+    if (best.classList && best.classList.contains('step')) {
+      var h3 = best.querySelector('h3');
+      if (h3) {
+        var numEl = h3.querySelector('.stepnum');
+        var num = numEl ? numEl.textContent.trim() : '';
+        var clone = h3.cloneNode(true);
+        var cloneNum = clone.querySelector('.stepnum');
+        if (cloneNum) cloneNum.parentNode.removeChild(cloneNum);
+        var label = clone.textContent.replace(/\s+/g, ' ').trim();
+        return (num ? 'Step ' + num + ': ' : '') + label;
+      }
+    }
+    return best.textContent.replace(/\s+/g, ' ').trim();
+  }
+
+  function openModal(){
+    var pageTitle = document.querySelector('h1') ? document.querySelector('h1').textContent.trim() : document.title;
+    var section = currentSection();
+    ctx.textContent = 'Page: ' + pageTitle + '  \u2014  Section: ' + section;
+    pageField.value = pageTitle;
+    sectionField.value = section;
+    subjectField.value = 'ECMS User Guide question \u2014 ' + pageTitle;
+    overlay.classList.add('askq-open');
+    success.style.display = 'none';
+    errorEl.style.display = 'none';
+    document.getElementById('askqMessage').focus();
+  }
+  function closeModal(){ overlay.classList.remove('askq-open'); }
+
+  fab.addEventListener('click', openModal);
+  cancel.addEventListener('click', closeModal);
+  overlay.addEventListener('click', function(e){ if (e.target === overlay) closeModal(); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeModal(); });
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending\u2026';
+    fetch('https://formspree.io/f/mnpjnqqk', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: new FormData(form)
+    }).then(function(res){
+      if (res.ok) {
+        success.style.display = 'block';
+        errorEl.style.display = 'none';
+        form.reset();
+        setTimeout(closeModal, 2200);
+      } else {
+        errorEl.style.display = 'block';
+      }
+    }).catch(function(){
+      errorEl.style.display = 'block';
+    }).finally(function(){
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send question';
+    });
+  });
+})();
+</script>
+
+</body></html>

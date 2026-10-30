@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Coaching Log — ECMS User Guide</title><style>
+:root{--ink:#1B2430;--head:#0B2545;--muted:#5B6478;--link:#1657CE;--line:#DCE1EA;--line2:#EAEDF3;--code:#F5F7FB;--navy:#0B2545;--accent:#1657CE;--do:#1657CE;--res:#1E8E5A;--soft:#F5F7FB;--brandA:#0072CE;--brandB:#00A65A;--brandC:#F5A623;--brandD:#D0103A;}
+*{box-sizing:border-box;} html{scroll-behavior:smooth;}
+body{margin:0;color:var(--ink);background:#fff;font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;line-height:1.65;font-size:16px;}
+a{color:var(--link);text-decoration:none;} a:hover{text-decoration:underline;}
+code{font-family:'SFMono-Regular',Consolas,Menlo,monospace;background:var(--code);border:1px solid var(--line);border-radius:4px;padding:1px 6px;font-size:13.5px;color:#0a2a5e;}
+.topbar{position:sticky;top:0;z-index:10;box-shadow:0 1px 0 var(--line);}
+.tb-top{background:#fff;border-bottom:1px solid var(--line);}
+.tb-top .in{max-width:1260px;margin:0 auto;padding:14px 32px;display:flex;align-items:center;gap:12px;}
+.doe-logo{display:flex;align-items:baseline;gap:1px;font-weight:800;font-size:20px;letter-spacing:.2px;}
+.doe-logo b:nth-child(1){color:var(--brandA);} .doe-logo b:nth-child(2){color:var(--brandC);} .doe-logo b:nth-child(3){color:var(--brandB);} .doe-logo b:nth-child(4){color:var(--brandD);}
+.doe-sub{color:var(--muted);font-size:12.5px;padding-left:10px;border-left:1px solid var(--line);}
+.tb-bottom{background:var(--navy);}
+.tb-bottom .in{max-width:1260px;margin:0 auto;padding:10px 32px;display:flex;align-items:center;gap:22px;}
+.ecms-brand{color:#fff;font-weight:700;font-size:15px;letter-spacing:.3px;}
+.topnav{display:flex;gap:24px;margin-left:6px;}
+.topnav a{color:#cfe0fb;font-weight:600;font-size:13.5px;}
+.topnav a.cur{color:#fff;}
+@media (max-width:760px){.topnav{display:none;}}
+.crumbs{max-width:1260px;margin:0 auto;padding:16px 32px 0;font-size:13px;color:var(--muted);}
+.crumbs a{color:var(--muted);} .crumbs span{margin:0 7px;}
+.wrap{max-width:1260px;margin:0 auto;padding:8px 32px 60px;display:grid;grid-template-columns:270px minmax(0,1fr);gap:52px;}
+main{min-width:0;max-width:840px;}
+h1{font-size:32px;line-height:1.2;color:var(--head);margin:14px 0 6px;font-weight:700;}
+.lead{font-size:16.5px;color:var(--ink);margin:10px 0 4px;}
+.subtext{color:var(--muted);font-size:14px;margin:2px 0 0;}
+h2{font-size:22px;color:var(--head);font-weight:700;margin:42px 0 6px;padding-bottom:8px;border-bottom:1px solid var(--line);}
+h3{font-size:17.5px;color:var(--head);font-weight:700;margin:8px 0 2px;}
+p{margin:10px 0;}
+ul.bul{margin:10px 0;padding-left:22px;} ul.bul li{margin:6px 0;}
+table{border-collapse:collapse;width:100%;margin:16px 0;font-size:14.5px;}
+th,td{border:1px solid var(--line);padding:9px 13px;text-align:left;vertical-align:top;}
+th{background:var(--soft);color:var(--head);font-weight:700;}
+.lbl{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;padding:2px 9px;border-radius:4px;margin-right:8px;vertical-align:middle;}
+.lbl-do{background:#E6EFFC;color:var(--do);} .lbl-res{background:#E5F5EC;color:var(--res);}
+.step{scroll-margin-top:118px;border-top:1px solid var(--line2);padding-top:28px;margin-top:28px;}
+.step:first-of-type{border-top:none;margin-top:14px;padding-top:8px;}
+.step .stepnum{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;background:var(--navy);color:#fff;font-weight:700;font-size:14px;margin-right:10px;vertical-align:middle;}
+.step h3{display:inline;}
+h2,h3{scroll-margin-top:118px;}
+figure{margin:14px 0 4px;}
+figure img{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:8px;box-shadow:0 4px 14px rgba(11,37,69,.08);}
+figcaption{font-size:13px;color:var(--muted);margin-top:8px;font-style:italic;}
+.callout{background:var(--soft);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:6px;padding:14px 18px;margin:14px 0;}
+.callout b{color:var(--head);}
+.note{background:#fff8ec;border:1px solid #f3e2bd;border-left:4px solid #e0a127;border-radius:6px;padding:6px 18px;margin:14px 0;}
+.sidenav{position:sticky;top:104px;align-self:start;font-size:14px;max-height:calc(100vh - 120px);overflow:auto;padding-right:6px;}
+.nav-cat{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);font-weight:700;padding:0 0 10px;border-bottom:1px solid var(--line);margin-bottom:8px;}
+ul.nav{list-style:none;margin:0;padding:0;} ul.nav>li{margin:2px 0;}
+a.lvl1{display:block;padding:7px 10px;border-radius:6px;color:var(--head);font-weight:600;font-size:13.6px;}
+a.lvl1:hover{background:var(--soft);text-decoration:none;}
+a.lvl1.cur{color:var(--accent);background:var(--soft);border-left:3px solid var(--accent);padding-left:8px;}
+.backhome{display:inline-block;margin:14px 0 4px;font-weight:700;font-size:13.5px;}
+.meta-row{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 6px;}
+.chip{font-size:11.5px;font-weight:600;color:var(--navy);background:var(--soft);border:1px solid var(--line);border-radius:20px;padding:3px 10px;}
+.chip-phase1{color:var(--warn,#B8860B);background:#FBF3E0;border:1px solid #E8D4A0;}
+.site-footer{background:var(--navy);color:#fff;margin-top:48px;}
+.site-footer .ft-in{max-width:1260px;margin:0 auto;padding:22px 32px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px;}
+.ft-left b{font-size:14px;} .ft-left div{color:#B9C7E3;font-size:12.5px;margin-top:4px;}
+.ft-nav a{color:#fff;font-size:13px;}
+@media (max-width:900px){.wrap{grid-template-columns:1fr;}.sidenav{position:static;max-height:none;}}
+</style></head>
+<body>
+<div class="topbar">
+  <div class="tb-top"><div class="in">
+    <span class="doe-logo"><b>N</b><b>Y</b><b>C</b></span>
+    <span class="doe-sub">Department of Education &middot; Division of Early Childhood Education</span>
+  </div></div>
+  <div class="tb-bottom"><div class="in">
+    <span class="ecms-brand">ECMS User Guide</span>
+    <nav class="topnav"><a href="index.html">Home</a></nav>
+  </div></div>
+</div>
+<div class="crumbs"><a href="index.html">ECMS User Guide</a><span>/</span>Coaching Log</div>
+<div class="wrap">
+
+  <nav class="sidenav">
+    <div class="nav-cat">On this page</div>
+    <ul class="nav">
+      <li><a class="lvl1" href="#overview">Overview</a></li>
+      <li><a class="lvl1" href="#step-1">1. Internal-only: no vendor portal access</a></li>
+      <li><a class="lvl1" href="#step-2">2. Submit a Coaching Log entry: pick the right record type</a></li>
+      <li><a class="lvl1" href="#step-3">3. Review a log and its linked Goal</a></li>
+      <li><a class="lvl1" href="#step-4">4. The Fidelity Tool classroom assessment</a></li>
+    </ul>
+    <a class="backhome" href="index.html">&larr; Back to User Guide home</a>
+  </nav>
+
+  <main id="top">
+    <h1>Coaching Log</h1>
+    <p class="lead">How DOE and FCCN coaching/support staff log a site visit, link it to a coaching
+    <strong>Goal</strong>, and (for certain roles) fill in a detailed classroom <strong>Fidelity Tool</strong>
+    assessment.</p>
+    <div class="meta-row">
+      <span class="chip">4 steps</span><span class="chip">~6 min read</span><span class="chip chip-phase1">Phase 1</span><span class="chip">Persona: DOE/FCCN Coach, Specialist, or Social Worker (internal login)</span>
+    </div>
+
+    <h2 id="overview">Overview</h2>
+    <p>A <strong>Coaching Log</strong> records a single coaching/support
+    visit or activity. Seven record types cover both DOE and FCCN-side roles &mdash; confirmed live via the New
+    Coaching Log record-type picker, each with its own description: <strong>Social Worker Log</strong> (DOE
+    social worker), <strong>Education Specialist Log</strong> (FCCN education specialist), <strong>Family
+    Worker Contact Log</strong> and <strong>Family Worker Group Activity Log</strong> (FCCN family worker),
+    <strong>Instructional Coordinator Log</strong> (DOE), <strong>Leadership Coach Log</strong> (DOE), and
+    <strong>Monitoring Specialist Log</strong> (FCCN monitoring specialist).</p>
+
+    <div class="step" id="step-1">
+      <h3><span class="stepnum">1</span>Internal-only: no vendor portal access</h3>
+      <p>Despite several Coaching Log record types explicitly being for FCCN-side roles (Education Specialist,
+      Family Worker, Monitoring Specialist), a live check of both the CBO and FCCN vendor portal navigation
+      &mdash; Home quick-actions and the <strong>More</strong> menu &mdash; found only <strong>Student
+      Screening</strong>, <strong>Report Incident</strong>, and <strong>CheckList</strong>. There is no
+      <strong>Coaching Log</strong> entry point in either vendor portal.</p>
+      <div class="note">
+        <b>Scope note.</b> This is a change worth flagging if you expected FCCN staff to log their own coaching
+        activity from the portal (as the Phase 1 training material's &ldquo;Vendor Administrator View&rdquo;
+        framing implies) &mdash; in the current system, every Coaching Log role (DOE and FCCN alike) appears to
+        require <strong>internal</strong> Salesforce access to create or edit one.
+      </div>
+    </div>
+
+    <div class="step" id="step-2">
+      <h3><span class="stepnum">2</span>Submit a Coaching Log entry: pick the right record type</h3>
+      <p><span class="lbl lbl-do">DO</span> Open the <strong>Coaching Logs</strong> tab.</p>
+      <p><span class="lbl lbl-res">RESULT</span> A list loads showing every existing log with its
+      <strong>Site</strong>, <strong>Record Type</strong>, <strong>Created By</strong>, <strong>Visit
+      date</strong>, and a <strong>Log reviewed</strong> checkbox.</p>
+      <figure>
+        <img src="screenshots/g16-01-internal-coaching-logs-list.png" alt="Coaching Logs list view showing Log-00000 through Log-00004, each with a Site, Record Type (Leadership Coach Log, Education Specialist Log, Family Worker Contact Log, Family Worker Group Activity Log, Monitoring Specialist Log), Created By, Visit date, and a Log reviewed checkbox" />
+        <figcaption>Coaching Logs list &mdash; all seven record types are visible across real existing logs; Log-00000 is already marked reviewed.</figcaption>
+      </figure>
+      <p><span class="lbl lbl-do">DO</span> Click <strong>New</strong>.</p>
+      <p><span class="lbl lbl-res">RESULT</span> A record-type picker lists all seven types with a
+      one-line description of who creates each one (e.g. <em>&ldquo;This type of log is created by an FCCN
+      monitoring specialist&rdquo;</em>) &mdash; picking the right type matters, since each one's layout
+      differs.</p>
+      <p><span class="lbl lbl-do">DO</span> After choosing a type (e.g. Leadership Coach Log) and clicking
+      <strong>Next</strong>, fill in the visit form.</p>
+      <p><span class="lbl lbl-res">RESULT</span> The form asks for the visit's basics (joint visit?, visit
+      date, classroom age groups, visit window), a required <strong>Provider</strong> and <strong>Site</strong>
+      lookup, a required detailed summary, who was present (<strong>Site Visit Participants</strong>,
+      multi-select), and further down (not pictured) coaching-specific fields like <strong>Strategies Used
+      During Visit</strong> and <strong>Action Plan Steps</strong>.</p>
+      <figure>
+        <img src="screenshots/g16-02-internal-new-coaching-log-form.png" alt="New Coaching Log: Leadership Coach Log form with Was this a joint visit, Visit date, Classroom Age Groups dual listbox, Visit Window, Owner, Provider, Site, Please Provide a Detailed Summary, Leadership Coach, Site Visit Participants dual listbox, and Save/Save and New/Cancel buttons" />
+        <figcaption>New Coaching Log (Leadership Coach Log) &mdash; the visit-logging form.</figcaption>
+      </figure>
+    </div>
+
+    <div class="step" id="step-3">
+      <h3><span class="stepnum">3</span>Review a log and its linked Goal</h3>
+      <p><span class="lbl lbl-do">DO</span> Open an existing Coaching Log.</p>
+      <p><span class="lbl lbl-res">RESULT</span> The record shows a <strong>Draft &rarr; Completed</strong>
+      path with a <strong>Mark Status as Complete</strong> action, the filled-in visit details, and &mdash;
+      critically &mdash; a <strong>Goals</strong> related list. This example shows <strong>Goal-00000</strong> (Start Date
+      10/10/2026, Status <em>In progress</em>) linked directly to this log. This is how <strong>&ldquo;Add
+      Coaching Goals&rdquo;</strong> works: Goals are their own related object, not a field on the log itself.</p>
+      <figure>
+        <img src="screenshots/g16-03-internal-coaching-log-reviewed.png" alt="Coaching Log Log-00000 detail page, Status path Draft to Completed, Details tab showing visit fields, and a Goals related list with Goal-00000, Start Date 10/10/2026, Status In progress" />
+        <figcaption>Log-00000 &mdash; a completed Leadership Coach Log with its linked Goal-00000.</figcaption>
+      </figure>
+    </div>
+
+    <div class="step" id="step-4">
+      <h3><span class="stepnum">4</span>The Fidelity Tool classroom assessment</h3>
+      <p><span class="lbl lbl-do">DO</span> On the same log, click the <strong>Fidelity Tool</strong> tab.</p>
+      <p><span class="lbl lbl-res">RESULT</span> Four collapsible sections appear &mdash; <strong>Environment</strong>,
+      <strong>Teacher-Child Interactions</strong>, <strong>Family Partnerships</strong>, and <strong>Use of
+      Daily Resources</strong>. Expanding <strong>Environment</strong> reveals a detailed, ~20-question
+      classroom-quality checklist (e.g. <em>&ldquo;Materials, equipment, and furniture are provided, displayed,
+      and arranged for all children&hellip;&rdquo;</em>), each with its own checkbox, bulleted supporting
+      criteria, and a &ldquo;Learn More&rdquo; citation back to a specific curriculum volume/chapter.</p>
+      <figure>
+        <img src="screenshots/g16-04-internal-fidelity-tool-tab.png" alt="Fidelity Tool tab on Log-00000, Environment section expanded showing Q1 and Q2 with checked checkboxes, supporting information bullet points, and Learn More citations to specific curriculum volumes and chapters" />
+        <figcaption>Fidelity Tool &mdash; Environment section, expanded, with real checked responses on Log-00000.</figcaption>
+      </figure>
+      <div class="note">
+        <b>Confirmed working, contrary to an older bug report.</b> A previously-logged defect
+        (&ldquo;Fidelity Tool tab displays no form for Internal User when editing a Coaching Log&rdquo;)
+        suggested this tab could appear empty. On this live record, the tab rendered its full questionnaire
+        with real saved answers &mdash; worth re-confirming on your own org/record if you encounter a blank
+        tab, since this may be data- or profile-specific rather than universally broken.
+      </div>
+    </div>
+
+    <a class="backhome" href="index.html">&larr; Back to User Guide home</a>
+  </main>
+</div>
+<div class="site-footer">
+  <div class="ft-in">
+    <div class="ft-left"><b>NYC DOE &middot; Division of Early Childhood Education</b><div>Early Childhood Management System (ECMS)</div></div>
+    <nav class="ft-nav"><a href="index.html">User Guide Home</a></nav>
+  </div>
+</div>
+<style>
+.askq-fab{position:fixed;bottom:24px;right:24px;z-index:1000;background:var(--navy);color:#fff;border:none;border-radius:999px;padding:14px 22px;font-weight:700;font-size:14px;font-family:inherit;box-shadow:0 6px 20px rgba(11,37,69,.35);cursor:pointer;display:flex;align-items:center;gap:8px;transition:background .15s,transform .15s;}
+.askq-fab:hover{background:#163a6b;}
+.askq-fab svg{width:18px;height:18px;flex-shrink:0;}
+.askq-overlay{position:fixed;inset:0;background:rgba(11,37,69,.55);z-index:1001;display:none;align-items:center;justify-content:center;padding:20px;}
+.askq-overlay.askq-open{display:flex;}
+.askq-modal{background:#fff;border-radius:12px;max-width:480px;width:100%;padding:28px;box-shadow:0 20px 60px rgba(0,0,0,.35);max-height:90vh;overflow:auto;}
+.askq-modal h3{margin:0 0 6px;color:var(--navy);font-size:20px;font-weight:700;}
+.askq-modal .askq-sub{font-size:13.5px;color:var(--muted);margin:0 0 16px;}
+.askq-ctx{font-size:12.5px;color:var(--navy);margin:0 0 18px;padding:9px 12px;background:var(--soft);border:1px solid var(--line);border-radius:6px;}
+.askq-modal label{display:block;font-size:13px;font-weight:700;color:var(--navy);margin:14px 0 6px;}
+.askq-modal textarea,.askq-modal input{width:100%;border:1px solid var(--line);border-radius:6px;padding:10px 12px;font-size:14px;font-family:inherit;box-sizing:border-box;}
+.askq-modal textarea{min-height:90px;resize:vertical;}
+.askq-modal textarea:focus,.askq-modal input:focus{outline:2px solid var(--accent);outline-offset:1px;}
+.askq-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:20px;}
+.askq-btn-cancel{background:#fff;border:1px solid var(--line);color:var(--ink);padding:10px 18px;border-radius:6px;cursor:pointer;font-weight:700;font-size:14px;font-family:inherit;}
+.askq-btn-cancel:hover{background:var(--soft);}
+.askq-btn-submit{background:var(--accent);border:none;color:#fff;padding:10px 20px;border-radius:6px;cursor:pointer;font-weight:700;font-size:14px;font-family:inherit;}
+.askq-btn-submit:hover{background:var(--navy);}
+.askq-btn-submit:disabled{opacity:.6;cursor:default;}
+.askq-success{color:var(--res);font-weight:700;margin-top:14px;font-size:14px;display:none;}
+.askq-error{color:#C0392B;font-weight:700;margin-top:14px;font-size:14px;display:none;}
+@media (max-width:600px){.askq-fab{bottom:16px;right:16px;padding:12px 16px;font-size:13px;}.askq-fab span{display:none;}}
+</style>
+
+<button class="askq-fab" id="askqFab" type="button" aria-haspopup="dialog">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+  <span>Ask a question</span>
+</button>
+
+<div class="askq-overlay" id="askqOverlay" role="dialog" aria-modal="true" aria-labelledby="askqTitle">
+  <div class="askq-modal">
+    <h3 id="askqTitle">Ask a question</h3>
+    <p class="askq-sub">Need more information about what you're reading? Send a question to the ECMS team.</p>
+    <p class="askq-ctx" id="askqContext"></p>
+    <form id="askqForm">
+      <label for="askqMessage">Your question</label>
+      <textarea id="askqMessage" name="message" required placeholder="What would you like to know more about?"></textarea>
+      <label for="askqName">Your name (optional)</label>
+      <input type="text" id="askqName" name="name" placeholder="Jane Doe" autocomplete="name" />
+      <label for="askqEmail">Your email (optional, so we can reply)</label>
+      <input type="email" id="askqEmail" name="_replyto" placeholder="jane@agency.gov" autocomplete="email" />
+      <input type="hidden" name="page" id="askqPageField" />
+      <input type="hidden" name="section" id="askqSectionField" />
+      <input type="hidden" name="_subject" id="askqSubjectField" />
+      <div class="askq-actions">
+        <button type="button" class="askq-btn-cancel" id="askqCancel">Cancel</button>
+        <button type="submit" class="askq-btn-submit" id="askqSubmit">Send question</button>
+      </div>
+      <div class="askq-success" id="askqSuccess">&#10003; Thanks! Your question has been sent to the ECMS team.</div>
+      <div class="askq-error" id="askqErrorMsg">Something went wrong sending your question. Please try again, or email the team directly.</div>
+    </form>
+  </div>
+</div>
+
+<script>
+(function(){
+  var fab = document.getElementById('askqFab');
+  var overlay = document.getElementById('askqOverlay');
+  var cancel = document.getElementById('askqCancel');
+  var form = document.getElementById('askqForm');
+  var ctx = document.getElementById('askqContext');
+  var pageField = document.getElementById('askqPageField');
+  var sectionField = document.getElementById('askqSectionField');
+  var subjectField = document.getElementById('askqSubjectField');
+  var submitBtn = document.getElementById('askqSubmit');
+  var success = document.getElementById('askqSuccess');
+  var errorEl = document.getElementById('askqErrorMsg');
+  if (!fab || !overlay) return;
+
+  function currentSection(){
+    var marks = document.querySelectorAll('main h2, main .step');
+    var best = null;
+    var scrollPos = window.scrollY + 160;
+    marks.forEach(function(el){
+      if (el.offsetTop <= scrollPos) best = el;
+    });
+    if (!best) return 'Overview';
+    if (best.classList && best.classList.contains('step')) {
+      var h3 = best.querySelector('h3');
+      if (h3) {
+        var numEl = h3.querySelector('.stepnum');
+        var num = numEl ? numEl.textContent.trim() : '';
+        var clone = h3.cloneNode(true);
+        var cloneNum = clone.querySelector('.stepnum');
+        if (cloneNum) cloneNum.parentNode.removeChild(cloneNum);
+        var label = clone.textContent.replace(/\s+/g, ' ').trim();
+        return (num ? 'Step ' + num + ': ' : '') + label;
+      }
+    }
+    return best.textContent.replace(/\s+/g, ' ').trim();
+  }
+
+  function openModal(){
+    var pageTitle = document.querySelector('h1') ? document.querySelector('h1').textContent.trim() : document.title;
+    var section = currentSection();
+    ctx.textContent = 'Page: ' + pageTitle + '  \u2014  Section: ' + section;
+    pageField.value = pageTitle;
+    sectionField.value = section;
+    subjectField.value = 'ECMS User Guide question \u2014 ' + pageTitle;
+    overlay.classList.add('askq-open');
+    success.style.display = 'none';
+    errorEl.style.display = 'none';
+    document.getElementById('askqMessage').focus();
+  }
+  function closeModal(){ overlay.classList.remove('askq-open'); }
+
+  fab.addEventListener('click', openModal);
+  cancel.addEventListener('click', closeModal);
+  overlay.addEventListener('click', function(e){ if (e.target === overlay) closeModal(); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeModal(); });
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending\u2026';
+    fetch('https://formspree.io/f/mnpjnqqk', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: new FormData(form)
+    }).then(function(res){
+      if (res.ok) {
+        success.style.display = 'block';
+        errorEl.style.display = 'none';
+        form.reset();
+        setTimeout(closeModal, 2200);
+      } else {
+        errorEl.style.display = 'block';
+      }
+    }).catch(function(){
+      errorEl.style.display = 'block';
+    }).finally(function(){
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send question';
+    });
+  });
+})();
+</script>
+
+</body></html>

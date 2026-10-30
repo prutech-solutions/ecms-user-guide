@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Incident Reporting — ECMS User Guide</title><style>
+:root{--ink:#1B2430;--head:#0B2545;--muted:#5B6478;--link:#1657CE;--line:#DCE1EA;--line2:#EAEDF3;--code:#F5F7FB;--navy:#0B2545;--accent:#1657CE;--do:#1657CE;--res:#1E8E5A;--soft:#F5F7FB;--brandA:#0072CE;--brandB:#00A65A;--brandC:#F5A623;--brandD:#D0103A;}
+*{box-sizing:border-box;} html{scroll-behavior:smooth;}
+body{margin:0;color:var(--ink);background:#fff;font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;line-height:1.65;font-size:16px;}
+a{color:var(--link);text-decoration:none;} a:hover{text-decoration:underline;}
+code{font-family:'SFMono-Regular',Consolas,Menlo,monospace;background:var(--code);border:1px solid var(--line);border-radius:4px;padding:1px 6px;font-size:13.5px;color:#0a2a5e;}
+.topbar{position:sticky;top:0;z-index:10;box-shadow:0 1px 0 var(--line);}
+.tb-top{background:#fff;border-bottom:1px solid var(--line);}
+.tb-top .in{max-width:1260px;margin:0 auto;padding:14px 32px;display:flex;align-items:center;gap:12px;}
+.doe-logo{display:flex;align-items:baseline;gap:1px;font-weight:800;font-size:20px;letter-spacing:.2px;}
+.doe-logo b:nth-child(1){color:var(--brandA);} .doe-logo b:nth-child(2){color:var(--brandC);} .doe-logo b:nth-child(3){color:var(--brandB);} .doe-logo b:nth-child(4){color:var(--brandD);}
+.doe-sub{color:var(--muted);font-size:12.5px;padding-left:10px;border-left:1px solid var(--line);}
+.tb-bottom{background:var(--navy);}
+.tb-bottom .in{max-width:1260px;margin:0 auto;padding:10px 32px;display:flex;align-items:center;gap:22px;}
+.ecms-brand{color:#fff;font-weight:700;font-size:15px;letter-spacing:.3px;}
+.topnav{display:flex;gap:24px;margin-left:6px;}
+.topnav a{color:#cfe0fb;font-weight:600;font-size:13.5px;}
+.topnav a.cur{color:#fff;}
+@media (max-width:760px){.topnav{display:none;}}
+.crumbs{max-width:1260px;margin:0 auto;padding:16px 32px 0;font-size:13px;color:var(--muted);}
+.crumbs a{color:var(--muted);} .crumbs span{margin:0 7px;}
+.wrap{max-width:1260px;margin:0 auto;padding:8px 32px 60px;display:grid;grid-template-columns:270px minmax(0,1fr);gap:52px;}
+main{min-width:0;max-width:840px;}
+h1{font-size:32px;line-height:1.2;color:var(--head);margin:14px 0 6px;font-weight:700;}
+.lead{font-size:16.5px;color:var(--ink);margin:10px 0 4px;}
+.subtext{color:var(--muted);font-size:14px;margin:2px 0 0;}
+h2{font-size:22px;color:var(--head);font-weight:700;margin:42px 0 6px;padding-bottom:8px;border-bottom:1px solid var(--line);}
+h3{font-size:17.5px;color:var(--head);font-weight:700;margin:8px 0 2px;}
+p{margin:10px 0;}
+ul.bul{margin:10px 0;padding-left:22px;} ul.bul li{margin:6px 0;}
+table{border-collapse:collapse;width:100%;margin:16px 0;font-size:14.5px;}
+th,td{border:1px solid var(--line);padding:9px 13px;text-align:left;vertical-align:top;}
+th{background:var(--soft);color:var(--head);font-weight:700;}
+.lbl{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;padding:2px 9px;border-radius:4px;margin-right:8px;vertical-align:middle;}
+.lbl-do{background:#E6EFFC;color:var(--do);} .lbl-res{background:#E5F5EC;color:var(--res);}
+.step{scroll-margin-top:118px;border-top:1px solid var(--line2);padding-top:28px;margin-top:28px;}
+.step:first-of-type{border-top:none;margin-top:14px;padding-top:8px;}
+.step .stepnum{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;background:var(--navy);color:#fff;font-weight:700;font-size:14px;margin-right:10px;vertical-align:middle;}
+.step h3{display:inline;}
+h2,h3{scroll-margin-top:118px;}
+figure{margin:14px 0 4px;}
+figure img{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:8px;box-shadow:0 4px 14px rgba(11,37,69,.08);}
+figcaption{font-size:13px;color:var(--muted);margin-top:8px;font-style:italic;}
+.callout{background:var(--soft);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:6px;padding:14px 18px;margin:14px 0;}
+.callout b{color:var(--head);}
+.note{background:#fff8ec;border:1px solid #f3e2bd;border-left:4px solid #e0a127;border-radius:6px;padding:6px 18px;margin:14px 0;}
+.sidenav{position:sticky;top:104px;align-self:start;font-size:14px;max-height:calc(100vh - 120px);overflow:auto;padding-right:6px;}
+.nav-cat{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);font-weight:700;padding:0 0 10px;border-bottom:1px solid var(--line);margin-bottom:8px;}
+ul.nav{list-style:none;margin:0;padding:0;} ul.nav>li{margin:2px 0;}
+a.lvl1{display:block;padding:7px 10px;border-radius:6px;color:var(--head);font-weight:600;font-size:13.6px;}
+a.lvl1:hover{background:var(--soft);text-decoration:none;}
+a.lvl1.cur{color:var(--accent);background:var(--soft);border-left:3px solid var(--accent);padding-left:8px;}
+.backhome{display:inline-block;margin:14px 0 4px;font-weight:700;font-size:13.5px;}
+.meta-row{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 6px;}
+.chip{font-size:11.5px;font-weight:600;color:var(--navy);background:var(--soft);border:1px solid var(--line);border-radius:20px;padding:3px 10px;}
+.chip-phase1{color:var(--warn,#B8860B);background:#FBF3E0;border:1px solid #E8D4A0;}
+.site-footer{background:var(--navy);color:#fff;margin-top:48px;}
+.site-footer .ft-in{max-width:1260px;margin:0 auto;padding:22px 32px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px;}
+.ft-left b{font-size:14px;} .ft-left div{color:#B9C7E3;font-size:12.5px;margin-top:4px;}
+.ft-nav a{color:#fff;font-size:13px;}
+@media (max-width:900px){.wrap{grid-template-columns:1fr;}.sidenav{position:static;max-height:none;}}
+</style></head>
+<body>
+<div class="topbar">
+  <div class="tb-top"><div class="in">
+    <span class="doe-logo"><b>N</b><b>Y</b><b>C</b></span>
+    <span class="doe-sub">Department of Education &middot; Division of Early Childhood Education</span>
+  </div></div>
+  <div class="tb-bottom"><div class="in">
+    <span class="ecms-brand">ECMS User Guide</span>
+    <nav class="topnav"><a href="index.html">Home</a></nav>
+  </div></div>
+</div>
+<div class="crumbs"><a href="index.html">ECMS User Guide</a><span>/</span>Incident Reporting</div>
+<div class="wrap">
+
+  <nav class="sidenav">
+    <div class="nav-cat">On this page</div>
+    <ul class="nav">
+      <li><a class="lvl1" href="#overview">Overview</a></li>
+      <li><a class="lvl1" href="#step-1">1. Vendor: report an incident</a></li>
+      <li><a class="lvl1" href="#step-2">2. Internal: view a submitted incident</a></li>
+      <li><a class="lvl1" href="#step-3">3. Internal: edit an incident and move it through its path</a></li>
+      <li><a class="lvl1" href="#step-4">4. Internal: reassignment and escalation</a></li>
+      <li><a class="lvl1" href="#step-5">5. Internal: incident dashboards</a></li>
+      <li><a class="lvl1" href="#step-6">6. System Admin: queue configuration</a></li>
+    </ul>
+    <a class="backhome" href="index.html">&larr; Back to User Guide home</a>
+  </nav>
+
+  <main id="top">
+    <h1>Incident Reporting</h1>
+    <p class="lead">How a vendor reports a safety, facility, or program incident, and how DOE staff track it
+    from intake through investigation and closure.</p>
+    <div class="meta-row">
+      <span class="chip">6 steps</span><span class="chip">~8 min read</span><span class="chip chip-phase1">Phase 1</span><span class="chip">Persona: CBO/FCCN Vendor Staff / ECMS Internal Admin</span>
+    </div>
+
+    <h2 id="overview">Overview</h2>
+    <p>An <strong>Incident</strong> in ECMS is a Salesforce <strong>Case</strong> record using one of two
+    record types &mdash; <strong>Incident</strong> (CBO) or <strong>FCCN_Incident</strong> (FCCN). Vendors self-report incidents through
+    the portal; DOE staff triage, investigate, and close them internally. A fixed taxonomy of
+    <strong>Category</strong> / <strong>Type</strong> / <strong>Concern</strong> values drives both the vendor-facing form and internal reporting.</p>
+
+        <div class="step" id="step-1">
+      <h3><span class="stepnum">1</span>Vendor: report an incident</h3>
+      <div class="callout">
+        <b>Logging in as a vendor, first.</b> If you <em>are</em> the vendor, go to your organization's ECMS
+        vendor portal URL and log in directly with your own username and password.
+        <figure>
+          <img src="screenshots/g-login-03-vendor-direct-login-page.png" alt="Standalone Salesforce-branded vendor portal login page with Username and Password fields and a Log in button" />
+          <figcaption>The vendor portal's own direct login page.</figcaption>
+        </figure>
+        If you're an <strong>internal admin</strong> who needs to see what a vendor sees, open that vendor's
+        <strong>Contact</strong> record and click <strong>Log in to Experience as User</strong>.
+        <figure>
+          <img src="screenshots/g-login-01-contact-log-in-as-button.png" alt="Contact record action bar showing the Log in to Experience as User button" />
+          <figcaption>Log in to Experience as User &mdash; on the vendor's own Contact record.</figcaption>
+        </figure>
+      </div>
+      <p><span class="lbl lbl-do">DO</span> From the vendor portal, click the <strong>Report Incident</strong>
+      quick-action tile on the Home page, or <strong>More &rarr; Report Incident</strong> from the top nav.</p>
+      <p><span class="lbl lbl-res">RESULT</span> A <strong>Create an Incident</strong> form opens with
+      <strong>Subject</strong>, <strong>Site</strong> (lookup), <strong>Category</strong>, <strong>Type</strong>,
+      <strong>Concern</strong>, <strong>Incident Date</strong>, and an optional <strong>Student</strong> lookup
+      &mdash; Category/Type default to <em>Building and Facility Safety and Security</em> / <em>Safety and
+      Security</em>, and the Concern picklist's options change based on the Category/Type picked.</p>
+      <figure>
+        <img src="screenshots/g14-01-portal-report-incident-form.png" alt="Vendor portal Create an Incident form with Subject, Site, Category, Type, Concern, Incident Date, and Student fields, Category defaulted to Building and Facility Safety and Security" />
+        <figcaption>Create an Incident &mdash; the vendor-facing form, opened from the portal's Report Incident tile.</figcaption>
+      </figure>
+      <p><span class="lbl lbl-do">DO</span> Fill in the required fields (Subject, Category, Concern, Incident
+      Date) and optionally link a Site and Student, then click <strong>Submit</strong>.</p>
+      <p><span class="lbl lbl-res">RESULT</span> ECMS confirms with <strong>&ldquo;Incident Case
+      &lsquo;&lt;number&gt;&rsquo; was created&rdquo;</strong> and a <strong>Case summary</strong> showing the
+      Subject and new Case Number.</p>
+      <figure>
+        <img src="screenshots/g14-02-portal-incident-filled.png" alt="Create an Incident form fully filled out with Site Cedar Point - Riverdale Campus, Category Building and Facility Safety and Security, Type Safety and Security, Concern about construction work, Incident Date 10/14/2026, Student Camila Vasquez" />
+        <figcaption>A fully filled Incident form, ready to submit.</figcaption>
+      </figure>
+      <figure>
+        <img src="screenshots/g14-03-portal-incident-submitted.png" alt="Your case was created confirmation page showing Case Number 00001017 and a green Incident Case 00001017 was created toast" />
+        <figcaption>Confirmation after Submit &mdash; Incident Case 00001017 created.</figcaption>
+      </figure>
+    </div>
+
+    <div class="step" id="step-2">
+      <h3><span class="stepnum">2</span>Internal: view a submitted incident</h3>
+      <p><span class="lbl lbl-do">DO</span> As an internal user, open the <strong>Incident Cases</strong> tab in ECMS.</p>
+      <p><span class="lbl lbl-res">RESULT</span> A list loads showing every submitted Incident Case with
+      <strong>Incident Case Number</strong>, <strong>Status</strong>, <strong>Date/Time Opened</strong>, and
+      <strong>Incident Case Owner Alias</strong> &mdash; the Owner is typically a <strong>queue</strong>
+      (e.g. &ldquo;Intake Team&rdquo;, &ldquo;FCCN Support Team&rdquo;), not an individual user, confirming
+      incidents route to a team first.</p>
+      <figure>
+        <img src="screenshots/g14-04-internal-cases-list.png" alt="Incident Cases list view showing records 00001007 and 00001008, both Status New, Incident Case Owner Alias FCCN Support Team" />
+        <figcaption>Incident Cases list &mdash; owned by team queues, not individual users.</figcaption>
+      </figure>
+      <p><span class="lbl lbl-do">DO</span> Click a blue <strong>Incident Case Number</strong> link to open a specific Incident Case.</p>
+      <p><span class="lbl lbl-res">RESULT</span> The detail page shows a <strong>path bar</strong> with six
+      stages (<strong>New &rarr; In Progress &rarr; Queue Assigned &rarr; Assigned &rarr; Under Investigation
+      &rarr; Closed</strong>), the Category/Type/Concern taxonomy, and a prominent <strong>Escalation
+      Level</strong> indicator (1&ndash;4) in the sidebar &mdash; plus an <strong>Involved Parties</strong>
+      tab that auto-links the Student named on submission.</p>
+      <figure>
+        <img src="screenshots/g14-05-internal-case-detail-new.png" alt="Incident Case 00001017 detail page, Status New, path bar showing New through Closed stages, Escalation Level 1 sidebar, Owner Intake Team" />
+        <figcaption>Incident Case 00001017 &mdash; New, with the six-stage path bar and Escalation Level.</figcaption>
+      </figure>
+      <figure>
+        <img src="screenshots/g14-06-internal-involved-parties.png" alt="Involved Parties related list on Incident Case 00001017 showing IP-000003, Camila Vasquez, Role Student" />
+        <figcaption>Involved Parties &mdash; the Student named on the vendor's submission is auto-linked.</figcaption>
+      </figure>
+    </div>
+
+    <div class="step" id="step-3">
+      <h3><span class="stepnum">3</span>Internal: edit an incident and move it through its path</h3>
+      <p><span class="lbl lbl-do">DO</span> Click a later stage on the path bar (e.g. <strong>In
+      Progress</strong>), then <strong>Mark as Current Status</strong>.</p>
+      <p><span class="lbl lbl-res">RESULT</span> ECMS confirms <strong>&ldquo;Status changed
+      successfully&rdquo;</strong>, the Status field and path bar both update, and the Chatter feed logs the
+      exact transition (&ldquo;Incident Case status updated &mdash; Status: New to In Progress&rdquo;) with a
+      timestamp and the editing user's name.</p>
+      <figure>
+        <img src="screenshots/g14-07-internal-case-in-progress.png" alt="Incident Case 00001017 after clicking In Progress and Mark as Current Status, showing a Status changed successfully toast and the feed entry Incident Case status updated, Status New to In Progress" />
+        <figcaption>Case 00001017 moved from New to In Progress &mdash; confirmed live with a feed-logged transition.</figcaption>
+      </figure>
+      <div class="note">
+        <b>Editing fields directly.</b> Any field shown on the layout (Subject, Description, Category, Type,
+        Concern, Site, dates) can also be edited directly via its own pencil icon or the page-level
+        <strong>Edit</strong> button &mdash; moving the path bar is specifically how the <strong>Status</strong>
+        field gets updated as the incident progresses.
+      </div>
+    </div>
+
+    <div class="step" id="step-4">
+      <h3><span class="stepnum">4</span>Internal: reassignment and escalation</h3>
+      <p><span class="lbl lbl-do">DO</span> From the <strong>Incident Cases</strong> list view, check the box
+      next to one or more incidents, then click <strong>Change Owner</strong> in the action bar.</p>
+      <p><span class="lbl lbl-res">RESULT</span> A Change Owner dialog opens, confirming how many records are
+      selected. Search for and select the new owner (a User or a Queue, e.g. moving from Intake Team to FCCN
+      Support Team), optionally check <strong>Send notification email</strong>, and click <strong>Submit</strong>.</p>
+      <figure>
+        <img src="screenshots/g14-10-incident-change-owner-dialog.png" alt="Change Owner dialog for a selected Incident Case, showing a Select New Owner search field, a Send notification email checkbox, and Submit/Cancel buttons, with the Change Owner and Assign Label buttons visible on the list view behind it" />
+        <figcaption>Change Owner &mdash; reached from the Incident Cases list view's action bar after selecting
+        a record.</figcaption>
+      </figure>
+      <p>The object also has its own <strong>Reason for Reassign</strong> text field, available on the record
+      itself, to document why an incident moved between queues or investigators.</p>
+      <div class="note">
+        <b>Escalation:</b> confirmed live fields <strong>Escalation Level</strong> (a 1&ndash;4
+        picklist, prominently surfaced in the sidebar) and a separate <strong>Escalated</strong> checkbox
+        together drive how seriously an incident is being tracked &mdash; edit these directly on the record,
+        the same way as any other field (see Step 3's note on editing fields directly).
+      </div>
+    </div>
+
+    <div class="step" id="step-5">
+      <h3><span class="stepnum">5</span>Internal: incident dashboards</h3>
+      <p><span class="lbl lbl-do">DO</span> Click the <strong>App Launcher</strong> (grid-of-dots icon next to
+      the ECMS logo) and search for <strong>"Dashboards"</strong>.</p>
+      <figure>
+        <img src="screenshots/g14-07b-find-dashboards-app-launcher.png" alt="App Launcher panel with Dashboards typed into the search box, showing a Dashboards item under Items" />
+        <figcaption>App Launcher &rarr; search "Dashboards".</figcaption>
+      </figure>
+      <p><span class="lbl lbl-res">RESULT</span> The <strong>Dashboards</strong> tab opens on a list of every
+      dashboard you have access to, including <strong>ECMS Incident Dashboard</strong> in the ECMS Dashboards
+      folder. Click its name to open it.</p>
+      <figure>
+        <img src="screenshots/g14-07c-dashboards-tab-list.png" alt="Dashboards tab Recent list showing ECMS reporting Dashboard, Coaching Log reports, Seat Capacity Planning Dashboard, ECMS Attendance for Vendors, and ECMS Incident Dashboard, each with its Folder and Created By columns" />
+        <figcaption>Dashboards tab &mdash; ECMS Incident Dashboard is listed under the ECMS Dashboards folder.</figcaption>
+      </figure>
+      <p><span class="lbl lbl-res">RESULT</span> Six live widgets summarize the incident queue at a glance:
+      <strong>Incident Case Owned By Intake Team</strong>, <strong>Open Incidents assigned by Queue</strong>
+      (broken out by team, e.g. FCCN Support Team), <strong>New Escalation 1</strong>, <strong>Aged Escalation
+      1</strong>, <strong>Open Incidents by Owner</strong>, and <strong>Open Incidents by Category</strong>
+      &mdash; giving DOE staff a proactive view of backlog and escalations without opening every case.</p>
+      <figure>
+        <img src="screenshots/g14-08-internal-incident-dashboard.png" alt="ECMS Incident Dashboard with six widgets: Incident Case Owned By Intake Team, Open Incidents assigned by Queue, New Escalation 1, Aged Escalation 1, Open Incidents by Owner, and Open Incidents by Category" />
+        <figcaption>ECMS Incident Dashboard &mdash; live, in the ECMS Dashboards folder.</figcaption>
+      </figure>
+    </div>
+
+    <div class="step" id="step-6">
+      <h3><span class="stepnum">6</span>System Admin: queue configuration</h3>
+      <p>The Phase 1 topic <strong>&ldquo;Configure ECMS Queue Field Values&rdquo;</strong> refers to Setup-side
+      administration of the <strong>Case assignment queues</strong> themselves (e.g. Intake Team, FCCN Support
+      Team) &mdash; who's a member of each queue, and which queue a given incident routes to by
+      default &mdash; rather than a separate custom object. A System Administrator manages this the same way
+      as any other Salesforce queue, under <strong>Setup &rarr; Queues</strong>. A live walkthrough of changing
+      queue membership wasn't performed for this guide to avoid altering a shared routing configuration that
+      other open incidents currently depend on &mdash; confirm the exact Setup path with a System Administrator
+      before making a change.</p>
+    </div>
+
+    <a class="backhome" href="index.html">&larr; Back to User Guide home</a>
+  </main>
+</div>
+<div class="site-footer">
+  <div class="ft-in">
+    <div class="ft-left"><b>NYC DOE &middot; Division of Early Childhood Education</b><div>Early Childhood Management System (ECMS)</div></div>
+    <nav class="ft-nav"><a href="index.html">User Guide Home</a></nav>
+  </div>
+</div>
+<style>
+.askq-fab{position:fixed;bottom:24px;right:24px;z-index:1000;background:var(--navy);color:#fff;border:none;border-radius:999px;padding:14px 22px;font-weight:700;font-size:14px;font-family:inherit;box-shadow:0 6px 20px rgba(11,37,69,.35);cursor:pointer;display:flex;align-items:center;gap:8px;transition:background .15s,transform .15s;}
+.askq-fab:hover{background:#163a6b;}
+.askq-fab svg{width:18px;height:18px;flex-shrink:0;}
+.askq-overlay{position:fixed;inset:0;background:rgba(11,37,69,.55);z-index:1001;display:none;align-items:center;justify-content:center;padding:20px;}
+.askq-overlay.askq-open{display:flex;}
+.askq-modal{background:#fff;border-radius:12px;max-width:480px;width:100%;padding:28px;box-shadow:0 20px 60px rgba(0,0,0,.35);max-height:90vh;overflow:auto;}
+.askq-modal h3{margin:0 0 6px;color:var(--navy);font-size:20px;font-weight:700;}
+.askq-modal .askq-sub{font-size:13.5px;color:var(--muted);margin:0 0 16px;}
+.askq-ctx{font-size:12.5px;color:var(--navy);margin:0 0 18px;padding:9px 12px;background:var(--soft);border:1px solid var(--line);border-radius:6px;}
+.askq-modal label{display:block;font-size:13px;font-weight:700;color:var(--navy);margin:14px 0 6px;}
+.askq-modal textarea,.askq-modal input{width:100%;border:1px solid var(--line);border-radius:6px;padding:10px 12px;font-size:14px;font-family:inherit;box-sizing:border-box;}
+.askq-modal textarea{min-height:90px;resize:vertical;}
+.askq-modal textarea:focus,.askq-modal input:focus{outline:2px solid var(--accent);outline-offset:1px;}
+.askq-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:20px;}
+.askq-btn-cancel{background:#fff;border:1px solid var(--line);color:var(--ink);padding:10px 18px;border-radius:6px;cursor:pointer;font-weight:700;font-size:14px;font-family:inherit;}
+.askq-btn-cancel:hover{background:var(--soft);}
+.askq-btn-submit{background:var(--accent);border:none;color:#fff;padding:10px 20px;border-radius:6px;cursor:pointer;font-weight:700;font-size:14px;font-family:inherit;}
+.askq-btn-submit:hover{background:var(--navy);}
+.askq-btn-submit:disabled{opacity:.6;cursor:default;}
+.askq-success{color:var(--res);font-weight:700;margin-top:14px;font-size:14px;display:none;}
+.askq-error{color:#C0392B;font-weight:700;margin-top:14px;font-size:14px;display:none;}
+@media (max-width:600px){.askq-fab{bottom:16px;right:16px;padding:12px 16px;font-size:13px;}.askq-fab span{display:none;}}
+</style>
+
+<button class="askq-fab" id="askqFab" type="button" aria-haspopup="dialog">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+  <span>Ask a question</span>
+</button>
+
+<div class="askq-overlay" id="askqOverlay" role="dialog" aria-modal="true" aria-labelledby="askqTitle">
+  <div class="askq-modal">
+    <h3 id="askqTitle">Ask a question</h3>
+    <p class="askq-sub">Need more information about what you're reading? Send a question to the ECMS team.</p>
+    <p class="askq-ctx" id="askqContext"></p>
+    <form id="askqForm">
+      <label for="askqMessage">Your question</label>
+      <textarea id="askqMessage" name="message" required placeholder="What would you like to know more about?"></textarea>
+      <label for="askqName">Your name (optional)</label>
+      <input type="text" id="askqName" name="name" placeholder="Jane Doe" autocomplete="name" />
+      <label for="askqEmail">Your email (optional, so we can reply)</label>
+      <input type="email" id="askqEmail" name="_replyto" placeholder="jane@agency.gov" autocomplete="email" />
+      <input type="hidden" name="page" id="askqPageField" />
+      <input type="hidden" name="section" id="askqSectionField" />
+      <input type="hidden" name="_subject" id="askqSubjectField" />
+      <div class="askq-actions">
+        <button type="button" class="askq-btn-cancel" id="askqCancel">Cancel</button>
+        <button type="submit" class="askq-btn-submit" id="askqSubmit">Send question</button>
+      </div>
+      <div class="askq-success" id="askqSuccess">&#10003; Thanks! Your question has been sent to the ECMS team.</div>
+      <div class="askq-error" id="askqErrorMsg">Something went wrong sending your question. Please try again, or email the team directly.</div>
+    </form>
+  </div>
+</div>
+
+<script>
+(function(){
+  var fab = document.getElementById('askqFab');
+  var overlay = document.getElementById('askqOverlay');
+  var cancel = document.getElementById('askqCancel');
+  var form = document.getElementById('askqForm');
+  var ctx = document.getElementById('askqContext');
+  var pageField = document.getElementById('askqPageField');
+  var sectionField = document.getElementById('askqSectionField');
+  var subjectField = document.getElementById('askqSubjectField');
+  var submitBtn = document.getElementById('askqSubmit');
+  var success = document.getElementById('askqSuccess');
+  var errorEl = document.getElementById('askqErrorMsg');
+  if (!fab || !overlay) return;
+
+  function currentSection(){
+    var marks = document.querySelectorAll('main h2, main .step');
+    var best = null;
+    var scrollPos = window.scrollY + 160;
+    marks.forEach(function(el){
+      if (el.offsetTop <= scrollPos) best = el;
+    });
+    if (!best) return 'Overview';
+    if (best.classList && best.classList.contains('step')) {
+      var h3 = best.querySelector('h3');
+      if (h3) {
+        var numEl = h3.querySelector('.stepnum');
+        var num = numEl ? numEl.textContent.trim() : '';
+        var clone = h3.cloneNode(true);
+        var cloneNum = clone.querySelector('.stepnum');
+        if (cloneNum) cloneNum.parentNode.removeChild(cloneNum);
+        var label = clone.textContent.replace(/\s+/g, ' ').trim();
+        return (num ? 'Step ' + num + ': ' : '') + label;
+      }
+    }
+    return best.textContent.replace(/\s+/g, ' ').trim();
+  }
+
+  function openModal(){
+    var pageTitle = document.querySelector('h1') ? document.querySelector('h1').textContent.trim() : document.title;
+    var section = currentSection();
+    ctx.textContent = 'Page: ' + pageTitle + '  \u2014  Section: ' + section;
+    pageField.value = pageTitle;
+    sectionField.value = section;
+    subjectField.value = 'ECMS User Guide question \u2014 ' + pageTitle;
+    overlay.classList.add('askq-open');
+    success.style.display = 'none';
+    errorEl.style.display = 'none';
+    document.getElementById('askqMessage').focus();
+  }
+  function closeModal(){ overlay.classList.remove('askq-open'); }
+
+  fab.addEventListener('click', openModal);
+  cancel.addEventListener('click', closeModal);
+  overlay.addEventListener('click', function(e){ if (e.target === overlay) closeModal(); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeModal(); });
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending\u2026';
+    fetch('https://formspree.io/f/mnpjnqqk', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: new FormData(form)
+    }).then(function(res){
+      if (res.ok) {
+        success.style.display = 'block';
+        errorEl.style.display = 'none';
+        form.reset();
+        setTimeout(closeModal, 2200);
+      } else {
+        errorEl.style.display = 'block';
+      }
+    }).catch(function(){
+      errorEl.style.display = 'block';
+    }).finally(function(){
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send question';
+    });
+  });
+})();
+</script>
+
+</body></html>
