@@ -84,11 +84,10 @@ a.lvl1.cur{color:var(--accent);background:var(--soft);border-left:3px solid var(
       <li><a class="lvl1" href="#step-4">4. Choose the type of change</a></li>
       <li><a class="lvl1" href="#step-5">5. Change Seat Type</a></li>
       <li><a class="lvl1" href="#step-6">6. Change Class</a></li>
-      <li><a class="lvl1" href="#step-7">7. Change Program Type</a></li>
-      <li><a class="lvl1" href="#step-8">8. Discharge Request</a></li>
-      <li><a class="lvl1" href="#step-9">9. DOE reviews the submitted request</a></li>
-      <li><a class="lvl1" href="#step-10">10. DOE approves the change</a></li>
-      <li><a class="lvl1" href="#step-11">11. Confirm the result on the Enrollment</a></li>
+      <li><a class="lvl1" href="#step-7">7. Discharge Request</a></li>
+      <li><a class="lvl1" href="#step-8">8. DOE reviews the submitted request</a></li>
+      <li><a class="lvl1" href="#step-9">9. DOE approves the change</a></li>
+      <li><a class="lvl1" href="#step-10">10. Confirm the result on the Enrollment</a></li>
     </ul>
     <a class="backhome" href="index.html">&larr; Back to User Guide home</a>
   </nav>
@@ -96,11 +95,11 @@ a.lvl1.cur{color:var(--accent);background:var(--soft);border-left:3px solid var(
   <main id="top">
     <h1>Change Requests</h1>
     <p class="lead">How a CBO/FCCN vendor requests a change to a currently-enrolled child's placement &mdash;
-    a different seat type, a different class, aging up from Infant to Toddler, or ending the placement
+    a different seat type, a different class, or ending the placement
     entirely &mdash; and how DOE reviews and approves that request through the same
-    <strong>Enrollment Change Request</strong> mechanism for all four.</p>
+    <strong>Enrollment Change Request</strong> mechanism for all three.</p>
     <div class="meta-row">
-      <span class="chip">11 steps</span><span class="chip">~13 min read</span><span class="chip">Persona: CBO/FCCN Enrollment Manager / DOE Enrollment Specialist</span>
+      <span class="chip">10 steps</span><span class="chip">~12 min read</span><span class="chip">Persona: CBO/FCCN Enrollment Manager / DOE Enrollment Specialist</span>
     </div>
 
     <h2 id="overview">Overview</h2>
@@ -108,12 +107,10 @@ a.lvl1.cur{color:var(--accent);background:var(--soft);border-left:3px solid var(
     currently-enrolled child's placement, without having to re-enroll them from scratch. It's initiated by the
     vendor &mdash; usually the <strong>Enrollment Manager</strong> &mdash; from the child's active or approved
     <strong>Enrollment</strong> record, through the same <strong>Enrollment Change Request</strong> wizard for
-    all four scenarios this guide covers:</p>
+    all three request types this guide covers:</p>
     <ul class="bul">
       <li><strong>Change Seat Type</strong> &mdash; e.g. moving a student from an SDY seat to an EDY seat.</li>
       <li><strong>Change Class</strong> &mdash; moving a student to a different class/classroom.</li>
-      <li><strong>Change Program Type</strong> &mdash; aging up from Infant to Toddler, once the child is past
-      the vendor-specific age threshold.</li>
       <li><strong>Discharge Request</strong> &mdash; formally ending the placement (the child ages out of the
       program, the family moves away, or a parent decides to stop).</li>
     </ul>
@@ -123,7 +120,7 @@ a.lvl1.cur{color:var(--accent);background:var(--soft);border-left:3px solid var(
       <b>Where this fits.</b> Change Requests sit alongside the enrollment lifecycle covered in the Enrollment
       guides: <strong>Draft &rarr; Submitted &rarr; Approved &rarr; Active &rarr; &hellip; &rarr;
       Discharged</strong>. A Discharge Request is what finally moves an enrollment to that last
-      <strong>Discharged</strong> stage &mdash; the other three request types (Seat Type, Class, Program Type)
+      <strong>Discharged</strong> stage &mdash; the other two request types (Seat Type and Class)
       update an Active/Approved enrollment in place without changing its lifecycle stage. Discharge is also
       the last link in the overall workflow chain &mdash; Site/Contract setup &rarr; Enrollment &rarr;
       Attendance &rarr; Budget &rarr; Invoice &rarr; Payment &rarr; Discharge.
@@ -185,19 +182,8 @@ a.lvl1.cur{color:var(--accent);background:var(--soft);border-left:3px solid var(
       <p><span class="lbl lbl-do">DO</span> On the first wizard screen, review the enrollment's current
       <strong>Class</strong>, <strong>Program Type</strong>, <strong>Seat Type</strong>, and <strong>First Day
       of Attendance</strong>, then select the type of change being requested.</p>
-      <p><span class="lbl lbl-res">RESULT</span> The wizard offers up to four change types: <strong>Discharge
-      Request</strong>, <strong>Change Seat Type</strong>, <strong>Change Class</strong>, and <strong>Change
-      Program Type</strong>.</p>
-      <figure>
-        <img src="screenshots/g10-04-change-type-selection.png" alt="Enrollment Change Request wizard first screen showing current Class, Program Type, Seat Type, and First Day of Attendance, with four radio options: Discharge Request, Change Seat Type, Change Class, and Change Program Type" />
-        <figcaption>Selecting the type of change &mdash; all four options shown for this enrollment.</figcaption>
-      </figure>
-      <div class="note">
-        <b>Note:</b> <strong>Change Program Type</strong> is always listed as an option, but it only actually
-        succeeds for an <strong>Infant</strong>-program enrollment that has aged past the vendor-specific
-        threshold (1st birthday for CBO/GFDC, 2nd birthday for FCC) &mdash; see Step 7 for what happens either
-        way. The other three options work the same regardless of program type.
-      </div>
+      <p><span class="lbl lbl-res">RESULT</span> The wizard offers three change types: <strong>Discharge
+      Request</strong>, <strong>Change Seat Type</strong>, and <strong>Change Class</strong>.</p>
     </div>
 
     <div class="step" id="step-5">
@@ -228,30 +214,7 @@ a.lvl1.cur{color:var(--accent);background:var(--soft);border-left:3px solid var(
     </div>
 
     <div class="step" id="step-7">
-      <h3><span class="stepnum">7</span>Change Program Type</h3>
-      <p><span class="lbl lbl-do">DO</span> Select <strong>Change Program Type</strong> and click
-      <strong>Next</strong>, on an <strong>Infant</strong>-program enrollment whose child has aged past the
-      1st (CBO/GFDC) or 2nd (FCC) birthday threshold.</p>
-      <p><span class="lbl lbl-res">RESULT</span> The wizard auto-detects the eligible transition &mdash;
-      <strong>"Changing Program Type from: Infant to: Toddler"</strong> &mdash; and asks for a <strong>New
-      Toddler Class</strong>, an <strong>Effective Date</strong>, and optional <strong>Comments</strong>.</p>
-      <figure>
-        <img src="screenshots/g10-11-change-program-type-form.png" alt="Change Program Type screen showing Current Class Infant Room - 2800 Verify, Changing Program Type from Infant to Toddler, Seat Type Head Start CTL, a New Toddler Class picklist, Effective Date, and Comments fields" />
-        <figcaption>Change Program Type &mdash; eligible case: Infant to Toddler, with a class picker.</figcaption>
-      </figure>
-      <p><span class="lbl lbl-do">DO</span> Try the same option on an Infant enrollment whose child is still
-      <strong>under</strong> that age threshold.</p>
-      <p><span class="lbl lbl-res">RESULT</span> Instead of a class picker, the wizard immediately blocks with
-      <strong>"Program Type Change Not Allowed &mdash; This student is not currently eligible to change from
-      Infant to Toddler for the vendor type associated with this enrollment."</strong></p>
-      <figure>
-        <img src="screenshots/g10-12-program-type-not-allowed.png" alt="Program Type Change Not Allowed message: This student is not currently eligible to change from Infant to Toddler for the vendor type associated with this enrollment" />
-        <figcaption>Change Program Type &mdash; blocked for a student still under the age threshold.</figcaption>
-      </figure>
-    </div>
-
-    <div class="step" id="step-8">
-      <h3><span class="stepnum">8</span>Discharge Request</h3>
+      <h3><span class="stepnum">7</span>Discharge Request</h3>
       <p><span class="lbl lbl-do">DO</span> Select <strong>Discharge Request</strong> and click
       <strong>Next</strong>, when the child is leaving the program entirely (aging out, moving away, or a
       parent deciding to stop).</p>
@@ -277,14 +240,14 @@ a.lvl1.cur{color:var(--accent);background:var(--soft);border-left:3px solid var(
       </div>
     </div>
 
-    <div class="step" id="step-9">
-      <h3><span class="stepnum">9</span>DOE reviews the submitted request</h3>
-      <p><span class="lbl lbl-do">DO</span> Once the vendor submits any of the four request types, it lands
+    <div class="step" id="step-8">
+      <h3><span class="stepnum">8</span>DOE reviews the submitted request</h3>
+      <p><span class="lbl lbl-do">DO</span> Once the vendor submits one of the three request types, it lands
       with a DOE Enrollment Specialist for review. Internally, they open the Enrollment Change Request record
-      to check its <strong>Record Type</strong> (Discharge Request, Seat Type Change, Class Change, or Program
-      Type Change), Status, linked Enrollment, and the old/new values being requested.</p>
+      to check its <strong>Record Type</strong> (Discharge Request, Seat Type Change, or Class Change),
+      Status, linked Enrollment, and the old/new values being requested.</p>
       <p><span class="lbl lbl-res">RESULT</span> The record shows <strong>Status: Submitted</strong>, awaiting
-      DOE action, linked back to its Enrollment &mdash; the same pattern regardless of which of the four
+      DOE action, linked back to its Enrollment &mdash; the same pattern regardless of which of the three
       Record Types it is. Here's a <strong>Seat Type Change</strong> example alongside the Discharge one, to
       show they're genuinely the same mechanism: Old Seat Type <strong>SDY</strong>, New Seat Type
       <strong>EDY</strong>.</p>
@@ -298,10 +261,10 @@ a.lvl1.cur{color:var(--accent);background:var(--soft);border-left:3px solid var(
       </figure>
     </div>
 
-    <div class="step" id="step-10">
-      <h3><span class="stepnum">10</span>DOE approves the change</h3>
+    <div class="step" id="step-9">
+      <h3><span class="stepnum">9</span>DOE approves the change</h3>
       <p><span class="lbl lbl-do">DO</span> After confirming the request is in order (paperwork and dates for a
-      Discharge; capacity on the new Class/Seat Type for the other three), the DOE Enrollment Specialist
+      Discharge; capacity on the new Class/Seat Type for the other two), the DOE Enrollment Specialist
       approves the request.</p>
       <p><span class="lbl lbl-res">RESULT</span> The Enrollment Change Request record's Status moves to
       <strong>Approved</strong> &mdash; a fully processed, closed-out example of the same record type.</p>
@@ -311,15 +274,15 @@ a.lvl1.cur{color:var(--accent);background:var(--soft);border-left:3px solid var(
       </figure>
     </div>
 
-    <div class="step" id="step-11">
-      <h3><span class="stepnum">11</span>Confirm the result on the Enrollment</h3>
+    <div class="step" id="step-10">
+      <h3><span class="stepnum">10</span>Confirm the result on the Enrollment</h3>
       <p><span class="lbl lbl-do">DO</span> Once approved, open the underlying Enrollment record and check its
       lifecycle status bar and Key Fields.</p>
       <p><span class="lbl lbl-res">RESULT</span> For a <strong>Discharge Request</strong>, the status bar now
       shows <strong>Discharged</strong> as the current stage, with the Discharge Date and Status Reason
-      populated in Key Fields. For a <strong>Seat Type</strong>, <strong>Class</strong>, or <strong>Program
-      Type</strong> change, the enrollment's lifecycle stage doesn't move &mdash; it stays Active/Approved,
-      with just the relevant field (Seat Type, Class, or Program Type) updated to the new value as of the
+      populated in Key Fields. For a <strong>Seat Type</strong> or <strong>Class</strong> change, the
+      enrollment's lifecycle stage doesn't move &mdash; it stays Active/Approved,
+      with the requested Seat Type or Class updated to the new value as of the
       request's Effective Date.</p>
       <figure>
         <img src="screenshots/g10-08-enrollment-discharged-status.png" alt="Enrollment record for Kai Nakamura with lifecycle status bar at Discharged, Key Fields showing Discharge Date 7/31/2026 and Status Reason End of School Period, and Student OSIS number populated" />
@@ -335,7 +298,7 @@ a.lvl1.cur{color:var(--accent);background:var(--soft);border-left:3px solid var(
         sends an updated class code to OASIS.
       </div>
       <p>A Discharge closes out the enrollment lifecycle for this child &mdash; if the family re-enrolls at a
-      later date, a brand-new Enrollment record is created rather than reopening this one. The other three
+      later date, a brand-new Enrollment record is created rather than reopening this one. The other two
       request types simply update the existing, still-active enrollment in place.</p>
     </div>
 
